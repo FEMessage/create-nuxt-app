@@ -1,0 +1,73 @@
+{
+  "name": "@femessage/create-nuxt-app",
+  "version": "1.0.0",
+  "description": "Create a Deepexi App in seconds.",
+  "bin": {
+    "create-nuxt-app": "bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "generator/",
+    "template/"
+  ],
+  "repository": {
+    "url": "git+https://github.com/FEmessage/create-nuxt-app.git",
+    "type": "git"
+  },
+  "scripts": {
+    "lint": "eslint ./",
+    "test": "ava test --verbose",
+    "test:snapshot": "ava test --verbose --update-snapshots",
+    "build": "node bin/cli.js -a -o release",
+    "build:release": "node bin/cli.js -a -o release && node bin/zip.js"
+  },
+  "dependencies": {
+    "cross-spawn": "^6.0.5",
+    "glob": "^7.1.3",
+    "lodash": "^4.17.11",
+    "sao": "^1.6.1",
+    "superb": "^2.0.0",
+    "validate-npm-package-name": "^3.0.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^0.0.1",
+    "@semantic-release/github": "semantic-release/github",
+    "archiver": "^3.0.0",
+    "ava": "^1.2.1",
+    "eslint": "^5.13.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jest": "^22.2.2",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.1.0",
+    "semantic-release": "^15.13.12"
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            {
+              "path": "release/*.zip"
+            }
+          ]
+        }
+      ]
+    ]
+  },
+  "authors": [
+    "Egoist <0x142857@gmail.com>",
+    "Nuxt team <team@nuxtjs.org>",
+    "Clark Du <clark.duxin@gmail.com>",
+    "Han <xsytby1112@gmail.com>"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT"
+}

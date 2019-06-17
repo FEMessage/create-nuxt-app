@@ -1,0 +1,35 @@
+/**
+ * 框架的模板配置
+ * 对象的 value 对应 template/frameworks 里面的文件夹名
+ * command 和 folder 属性必须唯一
+ * @required 必填项
+ * @property {string} command  生成框架的命令名
+ * @property {string} folder   生成框架的目录名，最好使用仓库名，因为在ci中也会使用
+ * @property {string} template 生成框架的主要模板
+ * @options 以下为可选项，可扩展新的属性，同样会生成对应的文件
+ * @property {string} ui       default: 'element-ui'  框架使用的 ui
+ * @property {string} ci       default: 'travis-ci'   框架使用的 ci
+ * @property {string} axios    default: 'axios'       拦截请求 plugins
+ * @property {string} meta     default: 'meta'        获取元信息 middleware
+ * @property {string} auth     default: 'auth'        路由鉴权 middleware
+ * @property {string} release  default: 'release-log' autoRelease rc
+ */
+
+// nuxt-element-dashboard 框架配置
+const single = {
+  folder: 'nuxt-element-dashboard',
+  template: 'single',
+  'gitlab-ci': 'gitlab-ci'
+}
+
+// nuxt-multiple-spa 框架配置
+const multiple = {
+  folder: 'nuxt-multiple-spa',
+  template: 'multiple',
+  ci: 'gitlab-ci'
+}
+
+module.exports = [
+  single,
+  multiple
+]

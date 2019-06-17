@@ -1,0 +1,88 @@
+{
+  "name": "nuxt-element-dashboard",
+  "version": "2.4.2",
+  "description": "Nuxt2 + element UI project",
+  "authors": [
+    "levy <levy9527@qq.com>",
+    "Han <xsytby1112@gmail.com>"
+  ],
+  "keywords": [
+    "vue",
+    "nuxt",
+    "dashboard",
+    "element-ui"
+  ],
+  "private": true,
+  "engines": {
+    "npm": ">= 5.2.0"
+  },
+  "scripts": {
+    "mock": "cross-env MODE=mock nuxt",
+    "dev": "cross-env MODE=dev nuxt",
+    "mock:nologin": "cross-env MODE=mock NO_LOGIN=1 nuxt",
+    "dev:nologin": "cross-env MODE=dev NO_LOGIN=1 nuxt",
+    "build": "cross-env MODE=prod nuxt build",
+    "test": "jest",
+    "start": "cross-env HOST=0.0.0.0 PORT=3333 MODE=prod nuxt start",
+    "stdver": "standard-version -m '[skip ci] chore(release): v%s'",
+    "release": "gren release --override"
+  },
+  "dependencies": {
+    "@femessage/el-form-renderer": "^1.3.0",
+    "@femessage/theme-deepexi": "^2.4.11",
+    "@nuxtjs/axios": "^5.0.1",
+    "@nuxtjs/dotenv": "^1.3.0",
+    "dayjs": "^1.7.4",
+    "dotenv": "^6.0.0",
+    "el-data-table": "^1.1.1",
+    "element-ui": "2.4.11",
+    "js-cookie": "^2.2.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "nuxt": "^2.7.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.4.5",
+    "@babel/core": "^7.4.5",
+    "babel-jest": "^24.1.0",
+    "jest": "^24.1.0",
+    "@nuxtjs/style-resources": "^0.1.2",
+    "babel-eslint": "^8.2.1",
+    "babel-plugin-component": "^1.1.0",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.15.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-vue": "^4.0.0",
+    "github-release-notes": "^0.17.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.16.0",
+    "standard-version": "^6.0.1",
+    "stylelint": "^9.10.0",
+    "stylelint-config-standard": "^18.2.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1",
+      "^~/(.*)$": "<rootDir>/src/$1"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-commit": "git update-index --again"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.vue": [
+      "prettier --write",
+      "stylelint --fix",
+      "git add"
+    ]
+  }
+}
