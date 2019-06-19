@@ -8,7 +8,8 @@
   "files": [
     "bin/",
     "generator/",
-    "template/"
+    "template/",
+    "*.js"
   ],
   "repository": {
     "url": "git+https://github.com/FEmessage/create-nuxt-app.git",
