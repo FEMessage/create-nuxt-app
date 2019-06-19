@@ -6,7 +6,8 @@ const glob = require('glob')
 const releaseDir = path.join(__dirname, '../release')
 
 const zipDirList = glob.sync('*', {
-  cwd: releaseDir
+  cwd: releaseDir,
+  ignore: '*.zip'
 })
 
 function zip(source, target) {
@@ -48,7 +49,10 @@ function zip(source, target) {
   archive.pipe(output)
 
   // append files from a sub-directory, putting its contents at the root of archive
-  archive.directory(source, false)
+  archive.glob('**', {
+    cwd: source,
+    ignore: ['node_modules/**', 'dist/**', '.nuxt/**']
+  })
 
   // finalize the archive (ie we are done appending files but streams have to finish yet)
   // 'close', 'end' or 'finish' may be fired right after calling this method so register to them beforehand
