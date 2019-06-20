@@ -25,13 +25,12 @@ const defaultConfig = {
  */
 class Template {
   constructor(opts = {}) {
-    const { command, npmClient, outDir, logLevel, generator, ...rest } = opts
+    const { command, npmClient, outDir, generator, ...rest } = opts
     this.config = Object.assign({}, defaultConfig, rest)
     this.command = command
     this.generator = generator || path.resolve(__dirname, '../generator')
     this.outDir = outDir && path.resolve(`${outDir}`)
     this.npmClient = npmClient || 'yarn'
-    this.logLevel = logLevel
   }
 
   generate(saoOptions = {}, cmdOptions = {}) {
@@ -40,7 +39,7 @@ class Template {
     }
     const { generate, ...rest } = this
     this.config.folder = this.config.folder || saoOptions.folder
-    const options = Object.assign({}, rest, saoOptions)
+    const options = Object.assign({ logLevel: 2 }, rest, saoOptions)
     return sao({ getContext, ...options }).run()
   }
 }
