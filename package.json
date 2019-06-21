@@ -8,7 +8,8 @@
   "files": [
     "bin/",
     "generator/",
-    "template/"
+    "template/",
+    "*.js"
   ],
   "repository": {
     "url": "git+https://github.com/FEmessage/create-nuxt-app.git",
@@ -19,7 +20,8 @@
     "test": "ava test --verbose",
     "test:snapshot": "ava test --verbose --update-snapshots",
     "build": "node bin/cli.js -a -o release",
-    "build:release": "node bin/cli.js -a -o release && node bin/zip.js"
+    "build:release": "node bin/cli.js -a -o release && node bin/zip.js",
+    "deploy": "yarn build && node bin/deploy/build.js"
   },
   "dependencies": {
     "cross-spawn": "^6.0.5",
@@ -48,6 +50,7 @@
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
       [
         "@semantic-release/github",
         {
