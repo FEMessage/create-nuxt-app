@@ -39,7 +39,7 @@ create-nuxt-app -h
 
 <details><summary>Preview</summary>
 
-![preview](https://i.loli.net/2019/06/14/5d034feaed62768051.gif)
+![preview](https://i.loli.net/2019/06/24/5d108d92206de47421.gif)
 </details>
 
 
@@ -51,13 +51,13 @@ create-nuxt-app -h
 create-nuxt-app -t single
 ```
 
-![nuxt-element-dashboard](https://i.screenshot.net/4pj3xie)
+![nuxt-element-dashboard](https://i.loli.net/2019/06/24/5d108e301184d60426.png)
 
 ```bash
 create-nuxt-app -t multiple
 ```
 
-![nuxt-multiple-spa](https://i.screenshot.net/xovynhr)
+![nuxt-multiple-spa](https://i.loli.net/2019/06/24/5d108e300bc8e21918.png)
 
 [⬆ Back to Top](#table-of-contents)
 
