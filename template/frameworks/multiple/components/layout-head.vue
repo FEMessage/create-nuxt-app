@@ -25,10 +25,10 @@
         <el-dropdown placement="bottom-end" @command="exitBtn">
           <span class="el-dropdown-link">
             <div class="head-active">
-              <img :src="userImg" class="userName-img" alt="userName-img" />
+              <img :src="userImg" class="username-img" alt="username-img" />
             </div>
             <!-- 用户名称 -->
-            <div class="userName-text">{{ userName }}</div>
+            <div class="username-text">{{ userName }}</div>
             <i class="el-icon-arrow-down el-icon--right set-iconcolor"></i>
           </span>
           <el-dropdown-menu slot="dropdown" class="user-drop-menu">
@@ -215,7 +215,7 @@ export default {
       align-items: center;
       cursor: pointer;
       .head-active {
-        .userName-img {
+        .username-img {
           width: 30px;
           height: 30px;
           border-radius: 50%;
@@ -223,7 +223,7 @@ export default {
         }
       }
 
-      .userName-text {
+      .username-text {
         text-align: center;
         overflow: hidden;
         color: #fff;
