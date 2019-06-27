@@ -59,25 +59,15 @@ create-nuxt-app -t multiple
 
 ![nuxt-multiple-spa](https://i.loli.net/2019/06/24/5d108e300bc8e21918.png)
 
-[⬆ Back to Top](#table-of-contents)
-
-## Feature
-
-1. Http requrest:
-    - [Axios](https://github.com/nuxt-community/axios-module)
-
-2. UI framework:
-    - [Element UI](https://femessage.github.io/element/#/zh-CN/component/quickstart)
-
-3. Test framework:
-    - [Jest](https://github.com/facebook/jest)
-
+this is a pratice of micro-frontends
 
 [⬆ Back to Top](#table-of-contents)
+
 
 ## Reference
 
-[create-nuxt-app](https://github.com/nuxt/create-nuxt-app)
+- [create-nuxt-app](https://github.com/nuxt/create-nuxt-app)
+- [nuxt-element-dashboard](https://github.com/levy9527/nuxt-element-dashboard)
 
 [⬆ Back to Top](#table-of-contents)
 
