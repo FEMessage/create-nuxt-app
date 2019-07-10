@@ -46,7 +46,7 @@ export default {
       default: 'medium'
     },
 
-    handleBack: {
+    onClick: {
       type: Function
     },
 
