@@ -16,27 +16,27 @@ let publicPath = process.env.PUBLIC_PATH
 const config = {
   aliIconFont: '',
   env: {
-    <% if (template === 'single') { %>
+    <%_ if (template === 'single') { _%>
     mock: {
       '/deepexi-tenant': mockServer,
       '/deepexi-permission': mockServer
     },
-    dev: {
+    dev: apiServer ? {
       '/deepexi-tenant': apiServer,
       '/deepexi-permission': apiServer
-    }
-    <% } else if (template === 'multiple') { %>
+    } : {}
+    <%_ } else if (template === 'multiple') { _%>
     mock: {
       '/deepexi-dashboard': mockServer,
       '/xpaas-enterprise-contact': mockServer,
       '/xpaas-console-api': mockServer
     },
-    dev: {
+    dev: apiServer ? {
       '/deepexi-dashboard': apiServer,
       '/xpaas-enterprise-contact': apiServer,
       '/xpaas-console-api': apiServer
-    }
-    <% } %>
+    } : {}
+    <%_ } _%>
   }
 }
 
