@@ -35,8 +35,7 @@ export const mutations = {
         path: cookiePath
       })
     })
-    // 清空state，跳转到login页的逻辑交给路由守卫
-    location.reload()
+    this.$router.replace('/login')
   },
 
   update(state, payload) {

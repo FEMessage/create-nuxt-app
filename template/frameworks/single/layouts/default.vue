@@ -39,13 +39,13 @@
       <div class="header-wrap">
         <el-row class="head-container" type="flex" justify="end" align="middle">
           <div class="head-right">
-            <div class="head-active">
-              <img :src="userImg" class="userName-Img" alt="userName-Img" />
-            </div>
-            <!-- 用户名称 -->
-            <div class="userName-text">{{ $store.state.user.nickname }}</div>
             <el-dropdown placement="bottom-end" @command="exitBtn">
               <span class="el-dropdown-link">
+                <div class="head-active">
+                  <img :src="userImg" class="username-img" alt="username-img" />
+                </div>
+                <!-- 用户名称 -->
+                <div class="username-text">{{ $store.state.user.nickname }}</div>
                 <i class="el-icon-arrow-down el-icon--right set-Iconcolor"></i>
               </span>
               <el-dropdown-menu slot="dropdown" class="user-drop-menu">
@@ -137,26 +137,26 @@ export default {
 
     .head-right {
       margin-right: 10px;
-      display: flex;
-      align-items: center;
 
-      div {
-        display: inline-block;
-      }
+      .el-dropdown-link {
+        display: flex;
+        align-items: center;
 
-      .head-active {
-        .userName-Img {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          margin: 0 15px;
+        .head-active {
+          .username-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 0 15px;
+          }
         }
-      }
 
-      .userName-text {
-        text-align: center;
-        overflow: hidden;
-        margin-right: 10px;
+        .username-text {
+          text-align: center;
+          overflow: hidden;
+          margin-right: 10px;
+          color: rgba(0, 0, 0, 0.65);
+        }
       }
 
       .head-search {
