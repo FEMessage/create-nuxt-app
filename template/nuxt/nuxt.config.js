@@ -69,7 +69,7 @@ module.exports = {
    */
   build: {
     publicPath,
-    extractCSS: true,
+    extractCSS: isProd,
     babel: {
       plugins: [
         [
