@@ -141,6 +141,10 @@ module.exports = {
     {
       src: '~assets/global.less',
       lang: 'less'
+    },
+    {
+      src: '~assets/font-awesome/css/font-awesome.min.css',
+      lang: 'css'
     }
   ],
   plugins: [
