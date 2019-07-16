@@ -1,5 +1,5 @@
 <template>
-  <i :class="'iconfont ' + icon"></i>
+  <i :class="`${iconClass} ${icon}`"></i>
 </template>
 
 <script>
@@ -8,6 +8,11 @@ export default {
   props: {
     icon: {
       type: String
+    }
+  },
+  computed: {
+    iconClass() {
+      return this.icon.startsWith('fa') ? 'fa' : 'iconfont'
     }
   }
 }
