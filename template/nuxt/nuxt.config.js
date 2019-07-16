@@ -118,6 +118,11 @@ module.exports = {
           'https://deepexi.oss-cn-shenzhen.aliyuncs.com/deepexi-services/favicon32x32.png'
       },
       {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href: '//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+      },
+      {
         // rel: 'stylesheet',
         // type: 'text/css',
         // href: config.aliIconFont
@@ -141,10 +146,6 @@ module.exports = {
     {
       src: '~assets/global.less',
       lang: 'less'
-    },
-    {
-      src: '~assets/font-awesome/css/font-awesome.min.css',
-      lang: 'css'
     }
   ],
   plugins: [
