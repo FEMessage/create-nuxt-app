@@ -1,5 +1,5 @@
 <template>
-  <div
+  <main
     class="layout-login"
     :style="{backgroundImage: 'url(' + $store.state.meta.loginBgImg + ')'}"
   >
@@ -18,7 +18,7 @@
     <div class="buttom-wrapper">
       <copyright></copyright>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

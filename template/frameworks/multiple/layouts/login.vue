@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-login">
+  <main class="layout-login">
     <div class="login-form">
       <h1 class="title">
         <img
@@ -14,7 +14,7 @@
     <div class="buttom-wrapper font-s text-center ">
       <copyright></copyright>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
