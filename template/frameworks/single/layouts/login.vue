@@ -9,7 +9,7 @@
           v-if="$store.state.meta.logoLogin"
           class="logo-login"
           :src="$store.state.meta.logoLogin"
-          alt=""
+          alt="deepexi-logo"
         />
         <span v-else>{{ $store.state.meta.appName }}</span>
       </h1>
