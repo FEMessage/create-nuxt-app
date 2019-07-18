@@ -15,7 +15,7 @@ const defaultConfig = {
   constant: 'constant',
   components: 'components',
   test: 'jest',
-  iconfont: 'icon-font'
+  "icon-font": 'icon-font'
 }
 
 /**
