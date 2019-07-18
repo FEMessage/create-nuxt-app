@@ -13,7 +13,7 @@
             v-if="checkUrl(m.icon)"
             class="menu-item-img"
             :src="m.icon"
-            alt="menu-icon"
+            :alt="m.name"
           />
           <icon-font v-else :icon="m.icon"></icon-font>
           <span class="sub-menu-title">{{ m.name }}</span>
