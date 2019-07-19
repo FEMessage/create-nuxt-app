@@ -2,7 +2,7 @@
   <div>
     <div v-for="m in menuList" :key="m.id" class="menu-item">
       <el-menu-item :index="m.url" v-if="!m.children">
-        <icon-font :icon="m.icon"></icon-font>
+        <icon-font prefix="iconfont" :icon="m.icon"></icon-font>
         <span slot="title" class="item-title">{{ m.name }}</span>
       </el-menu-item>
 
@@ -13,9 +13,9 @@
             v-if="checkUrl(m.icon)"
             class="menu-item-img"
             :src="m.icon"
-            alt=""
+            :alt="m.name"
           />
-          <icon-font v-else :icon="m.icon"></icon-font>
+          <icon-font v-else prefix="iconfont" :icon="m.icon"></icon-font>
           <span class="sub-menu-title">{{ m.name }}</span>
         </template>
 
@@ -26,13 +26,8 @@
 </template>
 
 <script>
-import IconFont from './icon-font.vue'
-
 export default {
   name: 'MenuItem',
-  components: {
-    IconFont
-  },
   props: {
     menuList: {
       type: Array

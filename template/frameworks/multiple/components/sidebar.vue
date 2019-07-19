@@ -19,7 +19,7 @@
 
       <div class="fix-btn-wrap">
         <div class="collapse-btn" @click="toggleCollapse">
-          <icon-font icon="icon-expand" class="btn-icon"></icon-font>
+          <icon-font prefix="iconfont" icon="expand" class="btn-icon"></icon-font>
         </div>
       </div>
     </el-menu>
@@ -29,7 +29,6 @@
 <script>
 import {mapState} from 'vuex'
 import MenuItem from '@/components/menu-item.vue'
-import IconFont from '@/components/icon-font.vue'
 import variables from '~/assets/export.less'
 import Scrollbar from '@/components/scrollbar/index.js'
 
@@ -42,7 +41,6 @@ export default {
   },
   components: {
     MenuItem,
-    IconFont,
     Scrollbar
   },
   computed: {

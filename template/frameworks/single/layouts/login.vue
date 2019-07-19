@@ -1,5 +1,5 @@
 <template>
-  <div
+  <main
     class="layout-login"
     :style="{backgroundImage: 'url(' + $store.state.meta.loginBgImg + ')'}"
   >
@@ -9,7 +9,7 @@
           v-if="$store.state.meta.logoLogin"
           class="logo-login"
           :src="$store.state.meta.logoLogin"
-          alt=""
+          alt="logo"
         />
         <span v-else>{{ $store.state.meta.appName }}</span>
       </h1>
@@ -18,7 +18,7 @@
     <div class="buttom-wrapper">
       <copyright></copyright>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

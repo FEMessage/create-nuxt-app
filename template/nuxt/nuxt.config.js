@@ -149,6 +149,9 @@ module.exports = {
     },
     {
       src: '~/plugins/element'
+    },
+    {
+      src: '~/plugins/icon-font'
     }
   ],
   modules: [
