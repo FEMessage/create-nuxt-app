@@ -5,7 +5,7 @@
         <img
           class="logo-login"
           src="https://deepexi.oss-cn-shenzhen.aliyuncs.com/xpaas-console/logo_SPaaS_black.png"
-          alt="deepexi-logo"
+          alt="logo"
         />
         <!--<span>{{$store.state.meta.appName}}</span>-->
       </h1>
