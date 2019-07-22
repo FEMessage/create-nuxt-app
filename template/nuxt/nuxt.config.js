@@ -69,7 +69,9 @@ module.exports = {
    */
   build: {
     publicPath,
-    extractCSS: isProd,
+    parallel: true,
+    extractCSS: true,
+    optimizeCSS: true,
     babel: {
       plugins: [
         [
@@ -86,12 +88,12 @@ module.exports = {
      */
     extend(config, {isDev}) {
       if (isDev && process.client) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
+        // config.module.rules.push({
+        //   enforce: 'pre',
+        //   test: /\.(js|vue)$/,
+        //   loader: 'eslint-loader',
+        //   exclude: /(node_modules)/
+        // })
       }
     }
   },
@@ -99,6 +101,9 @@ module.exports = {
    ** Headers of the page
    */
   head: {
+    htmlAttrs: {
+      lang: 'zh-CN'
+    },
     title: '',
     meta: [
       {charset: 'utf-8'},
