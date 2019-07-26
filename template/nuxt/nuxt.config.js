@@ -70,7 +70,7 @@ module.exports = {
   build: {
     publicPath,
     parallel: true,
-    extractCSS: true,
+    extractCSS: isProd,
     optimizeCSS: true,
     babel: {
       plugins: [
