@@ -29,7 +29,16 @@ const multiple = {
   ci: 'gitlab-ci'
 }
 
+// nuxt-mobile 框架配置
+const mobile = {
+  folder: 'nuxt-mobile',
+  template: 'mobile',
+  ci: 'gitlab-ci',
+  ui: 'vant'
+}
+
 module.exports = [
   single,
-  multiple
+  multiple,
+  mobile
 ]
