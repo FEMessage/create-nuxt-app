@@ -51,8 +51,7 @@ const multiple = {
 const mobile = {
   ...common,
   folder: 'nuxt-mobile',
-  template: 'mobile',
-  ui: 'vant'
+  template: 'mobile'
 }
 
 module.exports = [
