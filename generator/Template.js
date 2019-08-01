@@ -4,20 +4,6 @@ const getContext = require('./GeneratorContext.js')
 
 const templateList = []
 
-const defaultConfig = {
-  ui: 'element-ui',
-  ci: 'travis-ci',
-  axios: 'axios',
-  auth: 'auth',
-  meta: 'meta',
-  release: 'release-log',
-  styles: 'styles',
-  constant: 'constant',
-  components: 'components',
-  test: 'jest',
-  'icon-font': 'icon-font'
-}
-
 /**
  * 存放 Template 相关配置
  * 并将配置注入到 sao generator
@@ -27,7 +13,7 @@ const defaultConfig = {
 class Template {
   constructor(opts = {}) {
     const { command, npmClient, outDir, logLevel, generator, ...rest } = opts
-    this.config = Object.assign({}, defaultConfig, rest)
+    this.config = rest
     this.command = command
     this.generator = generator || path.resolve(__dirname, '../generator')
     this.outDir = outDir && path.resolve(`${outDir}`)
@@ -55,7 +41,7 @@ const addTemplate = function (opts) {
   if (hasRepeated({ folder })) {
     return console.trace(`There was a same "${folder}" template existed`)
   }
-  list().push(new Template(Object.assign({}, defaultConfig, opts)))
+  list().push(new Template(opts))
 }
 
 const hasRepeated = function ({ folder = '' }) {

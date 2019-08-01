@@ -15,25 +15,43 @@
  * @property {string} release  default: 'release-log' autoRelease rc
  */
 
+const common = {
+  release: 'release-log'
+}
+
+const desktop = {
+  ...common,
+  ui: 'element-ui',
+  axios: 'axios',
+  ci: 'gitlab-ci',
+  auth: 'auth',
+  meta: 'meta',
+  styles: 'styles',
+  constant: 'constant',
+  components: 'components',
+  test: 'jest',
+  'icon-font': 'icon-font' // REVIEW: 是否属于common？
+}
+
 // nuxt-element-dashboard 框架配置
 const single = {
+  ...desktop,
   folder: 'nuxt-element-dashboard',
-  template: 'single',
-  'gitlab-ci': 'gitlab-ci'
+  template: 'single'
 }
 
 // nuxt-multiple-spa 框架配置
 const multiple = {
+  ...desktop,
   folder: 'nuxt-multiple-spa',
-  template: 'multiple',
-  ci: 'gitlab-ci'
+  template: 'multiple'
 }
 
 // nuxt-mobile 框架配置
 const mobile = {
+  ...common,
   folder: 'nuxt-mobile',
   template: 'mobile',
-  ci: 'gitlab-ci',
   ui: 'vant'
 }
 
