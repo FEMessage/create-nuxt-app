@@ -42,6 +42,7 @@ class Template {
     const { generate, ...rest } = this
     this.config.folder = this.config.folder || saoOptions.folder
     const options = Object.assign({}, rest, saoOptions)
+    // FYI: sao的配置在文档上并不全，需要深入源码
     return sao({ getContext, ...options }).run()
   }
 }

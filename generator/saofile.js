@@ -51,6 +51,9 @@ module.exports = {
       ...this.template
     }
   },
+  /**
+   * 注意，outDir指向目标目录的src文件夹，具体看GeneratorContext.js
+   */
   actions() {
     const { folder } = this.answers
     const validation = validate(folder || this.outFolder)
@@ -70,6 +73,11 @@ module.exports = {
       templateDir: resolveTml('nuxt')
     }]
 
+    /**
+     * 包括template.config.js中的配置 & Template.js中的defaultOptions
+     * 定义见GeneratorContext.js
+     * 这里只用到values；key是为了方便覆盖配置用的
+     */
     Object.values(this.template).forEach((value) => {
       actions.push({
         type: 'add',
@@ -96,17 +104,17 @@ module.exports = {
 
     actions.push({
       type: 'move',
-      patterns: {
-        '_.gitignore': '../.gitignore',
-        '_package.json': '../package.json',
-        '_.eslintrc.js': '../.eslintrc.js',
-        'test': '../test'
-      }
+      patterns: files
     })
 
     actions.push({
       type: 'move',
-      patterns: files
+      patterns: {
+        '../_.gitignore': '../.gitignore',
+        '../_package.json': '../package.json',
+        '../_.eslintrc.js': '../.eslintrc.js',
+        'test': '../test'
+      }
     })
 
     return actions
