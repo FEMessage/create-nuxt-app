@@ -32,18 +32,18 @@
     </van-cell-group>
 
     <van-goods-action>
-      <van-goods-action-mini-btn icon="chat" @click="sorry">
+      <van-goods-action-icon icon="chat" @click="sorry">
         客服
-      </van-goods-action-mini-btn>
-      <van-goods-action-mini-btn icon="cart" @click="onClickCart">
+      </van-goods-action-icon>
+      <van-goods-action-icon icon="cart" @click="onClickCart">
         购物车
-      </van-goods-action-mini-btn>
-      <van-goods-action-big-btn @click="sorry">
+      </van-goods-action-icon>
+      <van-goods-action-button type="warning" @click="sorry">
         加入购物车
-      </van-goods-action-big-btn>
-      <van-goods-action-big-btn primary @click="sorry">
+      </van-goods-action-button>
+      <van-goods-action-button type="danger" @click="sorry">
         立即购买
-      </van-goods-action-big-btn>
+      </van-goods-action-button>
     </van-goods-action>
   </div>
 </template>
@@ -54,8 +54,8 @@ import {
   Swipe,
   SwipeItem,
   GoodsAction,
-  GoodsActionBigBtn,
-  GoodsActionMiniBtn
+  GoodsActionButton,
+  GoodsActionIcon
 } from 'vant'
 
 export default {
@@ -64,8 +64,8 @@ export default {
     'van-swipe': Swipe,
     'van-swipe-item': SwipeItem,
     'van-goods-action': GoodsAction,
-    'van-goods-action-big-btn': GoodsActionBigBtn,
-    'van-goods-action-mini-btn': GoodsActionMiniBtn
+    'van-goods-action-button': GoodsActionButton,
+    'van-goods-action-icon': GoodsActionIcon
   },
 
   data() {

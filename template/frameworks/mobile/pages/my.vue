@@ -33,8 +33,8 @@
           v-model="password"
           placeholder="请输入密码"
         ></van-field>
-        <p class="text-center mt-2">
-          <van-checkbox v-model="checked">
+        <p>
+          <van-checkbox v-model="checked" style="justify-content: center">
             <span class="gray">登录即表示同意</span>
             <span class="blue" @click.stop="showAgreement = true"
               >滴普科技服务协议</span
