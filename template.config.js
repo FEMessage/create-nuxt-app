@@ -16,21 +16,22 @@
  */
 
 const common = {
-  release: 'release-log'
+  ci: 'gitlab-ci',
+  axios: 'axios',
+  auth: 'auth',
+  constant: 'constant',
+  meta: 'meta',
+  release: 'release-log',
+  styles: 'styles',
+  'icon-font': 'icon-font'
 }
 
 const desktop = {
   ...common,
   ui: 'element-ui',
-  axios: 'axios',
-  ci: 'gitlab-ci',
-  auth: 'auth',
-  meta: 'meta',
-  styles: 'styles',
-  constant: 'constant',
+  stylesDesktop: 'styles-desktop',
   components: 'components',
-  test: 'jest',
-  'icon-font': 'icon-font' // REVIEW: 是否属于common？
+  test: 'jest'
 }
 
 // nuxt-element-dashboard 框架配置

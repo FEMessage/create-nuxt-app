@@ -78,6 +78,7 @@ export const actions = {
   },
   // 配置的元信息
   async fetchMetaInfo({commit}, {projectNo}) {
+    return
     let resp = await this.$axios.$get('/security/api/v1/configs')
     let meta = {}
     resp.payload.forEach(item => {
