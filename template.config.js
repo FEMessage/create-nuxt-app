@@ -19,6 +19,7 @@ const common = {
   ci: 'gitlab-ci',
   axios: 'axios',
   auth: 'auth',
+  components: 'components',
   constant: 'constant',
   meta: 'meta',
   release: 'release-log',
@@ -30,7 +31,7 @@ const desktop = {
   ...common,
   ui: 'element-ui',
   stylesDesktop: 'styles-desktop',
-  components: 'components',
+  componentsDesktop: 'components-desktop',
   test: 'jest'
 }
 
