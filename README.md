@@ -59,6 +59,12 @@ create-nuxt-app -t multiple
 
 ![nuxt-multiple-spa](https://i.loli.net/2019/06/24/5d108e300bc8e21918.png)
 
+```bash
+create-nuxt-app -t mobile
+```
+
+<img style="width: 50%" src="https://cdn.nlark.com/yuque/0/2019/png/304775/1564743644859-564c43b6-3514-447b-b947-c326f6906274.png">
+
 this is a pratice of micro-frontends
 
 [⬆ Back to Top](#table-of-contents)
