@@ -24,15 +24,15 @@ const common = {
   meta: 'meta',
   release: 'release-log',
   styles: 'styles',
-  'icon-font': 'icon-font'
+  'icon-font': 'icon-font',
+  test: 'jest'
 }
 
 const desktop = {
   ...common,
   ui: 'element-ui',
   stylesDesktop: 'styles-desktop',
-  componentsDesktop: 'components-desktop',
-  test: 'jest'
+  componentsDesktop: 'components-desktop'
 }
 
 // nuxt-element-dashboard 框架配置
