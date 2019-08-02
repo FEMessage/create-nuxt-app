@@ -37,6 +37,11 @@ export default {
           icon: 'shopping-cart-o'
         },
         {
+          title: '全部订单',
+          url: '/order-list',
+          icon: 'records'
+        },
+        {
           title: '我的',
           url: '/my',
           icon: 'user-o'
