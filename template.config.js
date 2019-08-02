@@ -52,7 +52,7 @@ const multiple = {
 // nuxt-mobile 框架配置
 const mobile = {
   ...common,
-  folder: 'nuxt-mobile',
+  folder: 'nuxt-vant',
   template: 'mobile'
 }
 

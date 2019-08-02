@@ -73,6 +73,13 @@ module.exports = {
       templateDir: resolveTml('nuxt')
     }]
 
+    // add rc files
+    actions.push({
+      type: 'add',
+      files: '*',
+      templateDir: resolveTml()
+    })
+
     /**
      * 定义见 template.config.js
      * 这里只用到values；key是为了方便覆盖配置用的
@@ -83,13 +90,6 @@ module.exports = {
         files: '**',
         templateDir: resolveTml(`frameworks/${value}`)
       })
-    })
-
-    // add rc files
-    actions.push({
-      type: 'add',
-      files: '*',
-      templateDir: resolveTml()
     })
 
     // 将 src 中的配置文件移动到根目录
