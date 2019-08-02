@@ -39,7 +39,9 @@ export default async ({store, redirect, env, route}) => {
 
   // 未登录
   if (!userId || !token) {
+    <% if (template !== 'mobile') { %>
     redirect(LOGIN_PATH)
+    <% } %>
     return
   }
 
