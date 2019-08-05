@@ -61,6 +61,12 @@ create-nuxt-app -t multiple
 
 this is a pratice of micro-frontends
 
+```bash
+create-nuxt-app -t mobile
+```
+
+<img style="width: 50%" src="https://cdn.nlark.com/yuque/0/2019/png/304775/1564743644859-564c43b6-3514-447b-b947-c326f6906274.png">
+
 [⬆ Back to Top](#table-of-contents)
 
 

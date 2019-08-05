@@ -15,21 +15,49 @@
  * @property {string} release  default: 'release-log' autoRelease rc
  */
 
+const common = {
+  ci: 'gitlab-ci',
+  axios: 'axios',
+  auth: 'auth',
+  components: 'components',
+  constant: 'constant',
+  meta: 'meta',
+  release: 'release-log',
+  styles: 'styles',
+  'icon-font': 'icon-font',
+  test: 'jest'
+}
+
+const desktop = {
+  ...common,
+  ui: 'element-ui',
+  stylesDesktop: 'styles-desktop',
+  componentsDesktop: 'components-desktop'
+}
+
 // nuxt-element-dashboard 框架配置
 const single = {
+  ...desktop,
   folder: 'nuxt-element-dashboard',
-  template: 'single',
-  'gitlab-ci': 'gitlab-ci'
+  template: 'single'
 }
 
 // nuxt-multiple-spa 框架配置
 const multiple = {
+  ...desktop,
   folder: 'nuxt-multiple-spa',
-  template: 'multiple',
-  ci: 'gitlab-ci'
+  template: 'multiple'
+}
+
+// nuxt-mobile 框架配置
+const mobile = {
+  ...common,
+  folder: 'nuxt-vant',
+  template: 'mobile'
 }
 
 module.exports = [
   single,
-  multiple
+  multiple,
+  mobile
 ]

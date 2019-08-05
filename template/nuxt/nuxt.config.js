@@ -1,17 +1,19 @@
 require('dotenv').config()
+const {env} = process
 ;['PUBLIC_PATH', 'API_SERVER', 'NO_LOGIN', 'COOKIE_PATH'].forEach(key =>
-  console.log('%s\t: %s', key, process.env[key])
+  console.log('%s\t: %s', key, env[key])
 )
 
-const env = process.env
 const isProd = env.MODE == 'prod'
+<%_ if (template !== 'mobile') { _%>
 const mockServer =
   'https://easy-mock.com/mock/5c1b3895fe5907404e654045/femessage-mock'
+<%_ } _%>
 
 // 不能以斜杠结尾
-let apiServer = process.env.API_SERVER
+let apiServer = env.API_SERVER
 // 必须以斜杠结尾
-let publicPath = process.env.PUBLIC_PATH
+let publicPath = env.PUBLIC_PATH<%- `${template === 'mobile' ? " || 'http://cdn.deepexi.com/'" : ''}` %>
 
 const config = {
   aliIconFont: '',
@@ -36,6 +38,13 @@ const config = {
       '/xpaas-enterprise-contact': apiServer,
       '/xpaas-console-api': apiServer
     } : {}
+    <%_ } else if (template === 'mobile') { _%>
+    mock: {
+      '/security': 'http://yapi.demo.qunar.com/mock/9638'
+    },
+    dev: {
+      '/security': 'http://your.dev.server'
+    }
     <%_ } _%>
   }
 }
@@ -56,8 +65,8 @@ module.exports = {
   srcDir: 'src/',
   mode: 'spa',
   env: {
-    NO_LOGIN: process.env.NO_LOGIN,
-    COOKIE_PATH: process.env.COOKIE_PATH || '/'
+    NO_LOGIN: env.NO_LOGIN,
+    COOKIE_PATH: env.COOKIE_PATH || '/'
   },
   proxy: config.env[env.MODE],
   router: {
@@ -73,11 +82,21 @@ module.exports = {
     babel: {
       plugins: [
         [
+          <%_ if (template === 'mobile') { _%>
+          'import',
+          {
+            libraryName: 'vant',
+            libraryDirectory: 'es',
+            style: true
+          },
+          'vant'
+          <%_ } else { _%>
           'component',
           {
             libraryName: 'element-ui',
             styleLibraryName: '~node_modules/@femessage/theme-deepexi/lib'
           }
+          <%_ } _%>
         ]
       ]
     },
@@ -144,15 +163,14 @@ module.exports = {
     }
   ],
   plugins: [
-    {
-      src: '~/plugins/axios'
-    },
-    {
-      src: '~/plugins/element'
-    },
-    {
-      src: '~/plugins/icon-font'
-    }
+    {src: '~plugins/axios'},
+    <%_ if (template === 'mobile') { _%>
+    {src: '~/plugins/vant'},
+    {src: '~/plugins/filter'}
+    <%_ } else { _%>
+    {src: '~plugins/element'},
+    {src: '~plugins/icon-font'}
+    <%_ } _%>
   ],
   modules: [
     // Doc: https://github.com/nuxt-community/style-resources-module
@@ -164,5 +182,3 @@ module.exports = {
   ],
   axios
 }
-
-
