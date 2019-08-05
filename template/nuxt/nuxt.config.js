@@ -100,6 +100,15 @@ module.exports = {
         ]
       ]
     },
+    <%_ if (template === 'mobile') { _%>
+    postcss: {
+      plugins: {
+        'postcss-px-to-viewport': {
+          viewportWidth: 375
+        }
+      }
+    },
+    <%_ } _%>
     /*
      ** Run ESLint on save
      */
