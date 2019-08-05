@@ -97,33 +97,33 @@ export default {
   }
 
   &-group {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
   }
 
   &-links {
-    padding: 15px 0;
-    font-size: 12px;
+    padding: 30px 0;
+    font-size: 24px;
     text-align: center;
     background-color: #fff;
 
     .van-icon {
       display: block;
-      font-size: 24px;
+      font-size: 48px;
     }
   }
 
   .login {
-    padding: 10px;
+    padding: 20px;
 
     .title {
-      margin-bottom: 20px;
+      margin-bottom: 40px;
     }
   }
 
   .login-btn {
     width: 100%;
     background: #6495fe;
-    border: 1px solid #6495fe;
+    border: 2px solid #6495fe;
   }
 }
 </style>
