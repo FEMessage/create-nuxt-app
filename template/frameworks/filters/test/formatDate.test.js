@@ -1,4 +1,4 @@
-import {formatDate} from '@/const/filter.js'
+import {formatDate} from '@/plugins/filters.js'
 
 const date = 0
 
