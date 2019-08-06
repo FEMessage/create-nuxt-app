@@ -48,6 +48,14 @@ export default {
         }
       ]
     }
+  },
+  watch: {
+    $route: {
+      handler({path}) {
+        this.active = this.footerTab.findIndex(e => e.url === path)
+      },
+      immediate: true
+    }
   }
 }
 </script>

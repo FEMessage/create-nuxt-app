@@ -15,6 +15,7 @@
 import DataList from '@femessage/data-list'
 
 export default {
+  layout: 'layout-with-footer',
   components: {
     DataList
   },
