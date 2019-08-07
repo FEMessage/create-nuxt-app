@@ -13,6 +13,7 @@
   - [Usage](#usage)
   - [Demo](#demo)
   - [Feature](#feature)
+  - [Development](#development)
   - [Reference](#reference)
   - [Contributors](#contributors)
   - [License](#license)
@@ -69,6 +70,11 @@ create-nuxt-app -t mobile
 
 [⬆ Back to Top](#table-of-contents)
 
+## Development
+
+If `git push` failed, maybe you change the generated directory structure; then you can run `yarn test:snapshot` to make sure that your pull request can pass CI pipeline.
+
+[⬆ Back to Top](#table-of-contents)
 
 ## Reference
 
