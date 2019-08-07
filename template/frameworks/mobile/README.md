@@ -3,17 +3,17 @@
 
 ## Table of Contents
 
-- **[Feature](#feature)**
-- **[快速开始](#快速开始)**
-- **[工程结构](#工程结构)**
-- **[开发](#开发)**
-  - **[新建页面](#新建页面)**
-  - **[调用接口](#调用接口)**
-  - **[CRUD](#CRUD)**
-  - **[设置代理](#设置代理)**
-- **[环境变量](#环境变量)**
-- **[构建](#构建)**
-- **[License](#license)**
+* [Feature](#feature)
+* [快速开始](#快速开始)
+* [工程结构](#工程结构)
+* [开发](#开发)
+  * [新建页面](#新建页面)
+  * [调用接口](#调用接口)
+  * [CRUD](#crud)
+  * [设置代理](#设置代理)
+* [环境变量](#环境变量)
+* [构建](#构建)
+* [License](#license)
 
 ## Feature
 
@@ -25,6 +25,9 @@
 - css预处理器：[less](http://lesscss.org/)
 - 代码格式化：[prettier](https://github.com/prettier/prettier)
 - 环境变量: [dotenv](https://www.npmjs.com/package/dotenv)
+- 样式自适应屏幕宽度: [px-to-viewport](https://www.npmjs.com/package/postcss-px-to-viewport)
+  - 可按750px宽的设计稿书写样式
+  - 如需调整请修改`postcss.config.js`
 
 [⬆ Back to Top](#table-of-contents)
 
