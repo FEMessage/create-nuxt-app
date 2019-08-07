@@ -13,6 +13,7 @@
   - [Usage](#usage)
   - [Demo](#demo)
   - [Feature](#feature)
+  - [Development](#development)
   - [Reference](#reference)
   - [Contributors](#contributors)
   - [License](#license)
@@ -69,6 +70,11 @@ create-nuxt-app -t mobile
 
 [⬆ Back to Top](#table-of-contents)
 
+## Development
+
+If you change the generated directory structure, remember running `yarn test:snapshot` to ensure passing the snapshot test on the CI
+
+[⬆ Back to Top](#table-of-contents)
 
 ## Reference
 
