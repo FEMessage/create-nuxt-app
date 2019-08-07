@@ -2,15 +2,14 @@
  * nuxt3 将不支持 postcss.config.js。详情参考 yarn dev 时的 WARN 信息
  */
 module.exports = ({file}) => {
-  let vwUnit
+  // 设计稿宽度
+  let vwUnit = 750
   /**
    * 使vant组件代码自适应viewport。引入其他第三方样式库时可参考此方式处理
    * @see https://github.com/youzan/vant/issues/1181
    */
   if (file && file.dirname && /node_modules\/vant/.test(file.dirname)) {
     vwUnit = 375
-  } else {
-    vwUnit = 750
   }
   return {
     plugins: [
