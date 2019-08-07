@@ -4,7 +4,7 @@
 module.exports = ({file}) => {
   let vwUnit
   /**
-   * 使vant组件代码自适应viewport
+   * 使vant组件代码自适应viewport。引入其他第三方样式库时可参考此方式处理
    * @see https://github.com/youzan/vant/issues/1181
    */
   if (file && file.dirname && /node_modules\/vant/.test(file.dirname)) {
