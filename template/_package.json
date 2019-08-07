@@ -57,6 +57,7 @@
     "@commitlint/config-conventional": "^8.0.0",
     <%_ if (template === 'mobile') { _%>
     "babel-plugin-import": "^1.12.0",
+    "postcss-px-to-viewport": "^1.1.1",
     <%_ } else { _%>
     "babel-plugin-component": "^1.1.0",
     <%_ } _%>
