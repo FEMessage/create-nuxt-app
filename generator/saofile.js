@@ -84,7 +84,12 @@ module.exports = {
      * 定义见 template.config.js
      * 这里只用到values；key是为了方便覆盖配置用的
      */
-    Object.values(this.template).forEach((value) => {
+    const configItem = config.find(t => t.template === this.answers.template)
+    const template = {
+      ...configItem,
+      ...this.template
+    }
+    Object.values(template).forEach((value) => {
       actions.push({
         type: 'add',
         files: '**',

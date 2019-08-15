@@ -13,6 +13,7 @@
   - [Usage](#usage)
   - [Demo](#demo)
   - [Feature](#feature)
+  - [Development](#development)
   - [Reference](#reference)
   - [Contributors](#contributors)
   - [License](#license)
@@ -69,6 +70,11 @@ create-nuxt-app -t mobile
 
 [⬆ Back to Top](#table-of-contents)
 
+## Development
+
+If `git push` failed, maybe you change the generated directory structure; then you can run `yarn test:snapshot` to make sure that your pull request can pass CI pipeline.
+
+[⬆ Back to Top](#table-of-contents)
 
 ## Reference
 
@@ -83,6 +89,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
+<table><tr><td align="center"><a href="https://github.com/lianghx-319"><img src="https://avatars2.githubusercontent.com/u/27187946?v=4" width="100px;" alt="Han"/><br /><sub><b>Han</b></sub></a><br /><a href="https://github.com/FEMessage/create-nuxt-app/commits?author=lianghx-319" title="Code">💻</a> <a href="https://github.com/FEMessage/create-nuxt-app/commits?author=lianghx-319" title="Documentation">📖</a> <a href="https://github.com/FEMessage/create-nuxt-app/commits?author=lianghx-319" title="Tests">⚠️</a> <a href="#infra-lianghx-319" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td><td align="center"><a href="https://github.com/levy9527/blog"><img src="https://avatars3.githubusercontent.com/u/9384365?v=4" width="100px;" alt="levy"/><br /><sub><b>levy</b></sub></a><br /><a href="#review-levy9527" title="Reviewed Pull Requests">👀</a></td><td align="center"><a href="http://67.216.223.155/resume/"><img src="https://avatars3.githubusercontent.com/u/26338853?v=4" width="100px;" alt="OuZuYu"/><br /><sub><b>OuZuYu</b></sub></a><br /><a href="https://github.com/FEMessage/create-nuxt-app/commits?author=OuZuYu" title="Code">💻</a></td><td align="center"><a href="https://evila.me"><img src="https://avatars3.githubusercontent.com/u/19513289?v=4" width="100px;" alt="EVILLT"/><br /><sub><b>EVILLT</b></sub></a><br /><a href="https://github.com/FEMessage/create-nuxt-app/commits?author=evillt" title="Code">💻</a></td><td align="center"><a href="https://donaldshen.github.io/portfolio"><img src="https://avatars3.githubusercontent.com/u/19591950?v=4" width="100px;" alt="Donald Shen"/><br /><sub><b>Donald Shen</b></sub></a><br /><a href="https://github.com/FEMessage/create-nuxt-app/commits?author=donaldshen" title="Code">💻</a></td><td align="center"><a href="https://colmugx.github.io"><img src="https://avatars1.githubusercontent.com/u/21327913?v=4" width="100px;" alt="ColMugX"/><br /><sub><b>ColMugX</b></sub></a><br /><a href="https://github.com/FEMessage/create-nuxt-app/commits?author=colmugx" title="Code">💻</a></td></tr></table>
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

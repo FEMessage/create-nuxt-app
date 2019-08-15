@@ -111,16 +111,16 @@ export default {
       .van-checkbox__label {
         width: 100%;
         height: auto;
-        padding: 0 10px 0 15px;
+        padding: 0 20px 0 30px;
         box-sizing: border-box;
       }
 
       .van-checkbox__icon {
         top: 50%;
-        left: 10px;
+        left: 20px;
         z-index: 1;
         position: absolute;
-        margin-top: -10px;
+        margin-top: -20px;
       }
 
       .van-card__price {
@@ -130,7 +130,7 @@ export default {
   }
 
   .van-submit-bar {
-    bottom: 50px;
+    bottom: 100px;
   }
 }
 </style>
