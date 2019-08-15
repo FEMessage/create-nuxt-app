@@ -1,5 +1,4 @@
 const spawn = require('cross-spawn')
-const config = require('../template.config')
 
 module.exports = function (BaseGeneratorContext) {
   return class GeneratorContext extends BaseGeneratorContext {
@@ -7,13 +6,8 @@ module.exports = function (BaseGeneratorContext) {
       if (this.sao.opts.mock) {
         return this.sao.opts.mock.answers
       }
-      const { answers = {} } = this
-      const template = config.find(t => t.template === answers.template)
-      if (template) {
-        delete template.folder
-        Object.assign(this.sao.opts.config, template)
-      }
-      return Object.assign(this.sao.opts.config, answers)
+      const answer = this.answers || {}
+      return Object.assign(this.sao.opts.config, answer)
     }
 
     get outDir() {
