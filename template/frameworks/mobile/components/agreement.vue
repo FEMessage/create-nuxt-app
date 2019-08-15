@@ -173,8 +173,8 @@ export default {
 <style lang="less">
 .agreement {
   .content-wrapper {
-    margin-top: 50px;
-    padding: 0 10px;
+    margin-top: 100px;
+    padding: 0 20px;
     height: 100%;
     overflow-y: auto;
   }

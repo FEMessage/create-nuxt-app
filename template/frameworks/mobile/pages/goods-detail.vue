@@ -105,7 +105,7 @@ export default {
   }
 
   .title {
-    font-size: 16px;
+    font-size: 32px;
   }
 
   .price {
@@ -114,12 +114,12 @@ export default {
 
   .express {
     color: #999;
-    font-size: 12px;
-    padding: 5px 15px;
+    font-size: 24px;
+    padding: 10px 30px;
   }
 
   .cell-group {
-    margin: 15px 0;
+    margin: 30px 0;
 
     .van-cell__value {
       color: #999;
@@ -127,7 +127,7 @@ export default {
   }
 
   .tag {
-    margin-left: 5px;
+    margin-left: 10px;
   }
 }
 </style>

@@ -94,7 +94,7 @@ export default {
 <style lang="less">
 .index {
   .van-swipe {
-    height: 200px;
+    height: 400px;
 
     .banner {
       max-height: 100%;
@@ -104,14 +104,14 @@ export default {
 
   .goods {
     .van-row {
-      padding: 5px;
+      padding: 10px;
     }
 
     .block {
-      margin: 5px;
-      box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-      font-size: 14px;
+      margin: 10px;
+      box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      font-size: 28px;
     }
 
     .price {
@@ -121,7 +121,7 @@ export default {
     .name,
     .price {
       margin: 0;
-      margin-left: 10px;
+      margin-left: 20px;
     }
 
     .good-img {

@@ -15,6 +15,7 @@
 import DataList from '@femessage/data-list'
 
 export default {
+  layout: 'layout-with-footer',
   components: {
     DataList
   },
@@ -30,14 +31,14 @@ export default {
 .order-list {
   .order {
     display: flex;
-    height: 50px;
-    line-height: 50px;
-    margin: 0 10px;
+    height: 100px;
+    line-height: 100px;
+    margin: 0 20px;
     justify-content: space-between;
 
     img {
-      height: 40px;
-      margin-right: 10px;
+      height: 80px;
+      margin-right: 20px;
     }
   }
 }
