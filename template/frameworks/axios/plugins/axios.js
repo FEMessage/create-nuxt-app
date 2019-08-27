@@ -59,7 +59,7 @@ export default function({$axios, store, app, redirect}) {
 
       Vue.$notify.error({
         title: data.code || resp.status,
-        message: data.msg || data.payload
+        message: data.msg || data.payload,
       })
 
       if (resp.status == 401) {

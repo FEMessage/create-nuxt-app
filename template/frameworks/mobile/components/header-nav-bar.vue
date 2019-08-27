@@ -15,8 +15,8 @@ import {NavBar} from 'vant'
 export default {
   name: 'HeaderNavBar',
   components: {
-    'van-nav-bar': NavBar
-  }
+    'van-nav-bar': NavBar,
+  },
 }
 </script>
 

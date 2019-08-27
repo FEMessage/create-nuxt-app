@@ -34,7 +34,7 @@ export default {
     'van-card': Card,
     'van-checkbox': Checkbox,
     'van-submit-bar': SubmitBar,
-    'van-checkbox-group': CheckboxGroup
+    'van-checkbox-group': CheckboxGroup,
   },
 
   data() {
@@ -48,7 +48,7 @@ export default {
           price: 200,
           num: 1,
           thumb:
-            'https://img.yzcdn.cn/public_files/2017/10/24/2f9a36046449dafb8608e99990b3c205.jpeg'
+            'https://img.yzcdn.cn/public_files/2017/10/24/2f9a36046449dafb8608e99990b3c205.jpeg',
         },
         {
           id: '2',
@@ -57,7 +57,7 @@ export default {
           price: 690,
           num: 1,
           thumb:
-            'https://img.yzcdn.cn/public_files/2017/10/24/f6aabd6ac5521195e01e8e89ee9fc63f.jpeg'
+            'https://img.yzcdn.cn/public_files/2017/10/24/f6aabd6ac5521195e01e8e89ee9fc63f.jpeg',
         },
         {
           id: '3',
@@ -66,9 +66,9 @@ export default {
           price: 2680,
           num: 1,
           thumb:
-            'https://img.yzcdn.cn/public_files/2017/10/24/320454216bbe9e25c7651e1fa51b31fd.jpeg'
-        }
-      ]
+            'https://img.yzcdn.cn/public_files/2017/10/24/320454216bbe9e25c7651e1fa51b31fd.jpeg',
+        },
+      ],
     }
   },
 
@@ -82,9 +82,9 @@ export default {
       return this.goods.reduce(
         (total, item) =>
           total + (this.checkedGoods.indexOf(item.id) !== -1 ? item.price : 0),
-        0
+        0,
       )
-    }
+    },
   },
 
   methods: {
@@ -94,8 +94,8 @@ export default {
 
     onSubmit() {
       this.$toast('点击结算')
-    }
-  }
+    },
+  },
 }
 </script>
 

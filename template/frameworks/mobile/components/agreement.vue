@@ -152,13 +152,13 @@ import {NavBar} from 'vant'
 export default {
   name: 'Agreement',
   components: {
-    'van-nav-bar': NavBar
+    'van-nav-bar': NavBar,
   },
   props: {
     show: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {}
@@ -166,8 +166,8 @@ export default {
   methods: {
     onClickLeft() {
       this.$emit('close')
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="less">

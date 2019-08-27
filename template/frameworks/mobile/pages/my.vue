@@ -64,7 +64,7 @@ export default {
   layout: 'layout-with-footer',
   components: {
     'van-checkbox': Checkbox,
-    agreement: Agreement
+    agreement: Agreement,
   },
   data() {
     return {
@@ -73,7 +73,7 @@ export default {
       password: '',
       checked: false,
       isLoading: false,
-      showAgreement: false
+      showAgreement: false,
     }
   },
   methods: {
@@ -84,8 +84,8 @@ export default {
     },
     submit() {
       this.showLogin = false
-    }
-  }
+    },
+  },
 }
 </script>
 

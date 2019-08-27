@@ -29,7 +29,7 @@ export default async function(context) {
     // 已登录
     store.commit('update', {
       token: getCookie(req.headers.cookie, 'token'),
-      userId
+      userId,
     })
     let p
     try {

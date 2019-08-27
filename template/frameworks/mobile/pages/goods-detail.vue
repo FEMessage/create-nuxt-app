@@ -55,7 +55,7 @@ import {
   SwipeItem,
   GoodsAction,
   GoodsActionButton,
-  GoodsActionIcon
+  GoodsActionIcon,
 } from 'vant'
 
 export default {
@@ -65,7 +65,7 @@ export default {
     'van-swipe-item': SwipeItem,
     'van-goods-action': GoodsAction,
     'van-goods-action-button': GoodsActionButton,
-    'van-goods-action-icon': GoodsActionIcon
+    'van-goods-action-icon': GoodsActionIcon,
   },
 
   data() {
@@ -77,9 +77,9 @@ export default {
         remain: 19,
         thumb: [
           'https://img.yzcdn.cn/public_files/2017/10/24/e5a5a02309a41f9f5def56684808d9ae.jpeg',
-          'https://img.yzcdn.cn/public_files/2017/10/24/1791ba14088f9c2be8c610d0a6cc0f93.jpeg'
-        ]
-      }
+          'https://img.yzcdn.cn/public_files/2017/10/24/1791ba14088f9c2be8c610d0a6cc0f93.jpeg',
+        ],
+      },
     }
   },
 
@@ -90,8 +90,8 @@ export default {
 
     sorry() {
       this.$toast('暂无后续逻辑~')
-    }
-  }
+    },
+  },
 }
 </script>
 
