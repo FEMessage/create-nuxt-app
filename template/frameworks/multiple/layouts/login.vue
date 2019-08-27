@@ -20,7 +20,7 @@
 <script>
 import Copyright from '@/components/copyright.vue'
 export default {
-  name: 'login',
+  name: 'Login',
   components: {
     Copyright
   },

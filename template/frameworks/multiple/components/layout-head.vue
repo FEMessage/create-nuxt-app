@@ -14,8 +14,8 @@
           <li
             v-for="(item, index) in headMenu"
             :class="{active: url === item.url}"
-            @click="handleMenu(item)"
             :key="index"
+            @click="handleMenu(item)"
           >
             <span class="button-container">{{ item.name }}</span>
           </li>
@@ -51,6 +51,16 @@ import cookie from 'js-cookie'
 
 export default {
   name: 'LayoutHead',
+  props: {
+    searchUrl: {
+      type: Object,
+      default() {
+        return {
+          url: ''
+        }
+      }
+    }
+  },
   data() {
     let currentHref = this.getCurrentPath()
     return {
@@ -77,16 +87,6 @@ export default {
       ]
     }
   },
-  props: {
-    searchUrl: {
-      type: Object,
-      default() {
-        return {
-          url: ''
-        }
-      }
-    }
-  },
   computed: {
     userName() {
       return cookie.get('username') || 'xPaaS'
@@ -99,6 +99,7 @@ export default {
     },
     ...mapMutations(['logout'])
   },
+  mounted() {},
   methods: {
     exitBtn(key, keyPath) {
       key == 'exit' ? this.$store.commit('logout') : ''
@@ -117,8 +118,7 @@ export default {
       const pathStr = path.replace(/(^\/*)/g, '')
       return `/${pathStr}`
     }
-  },
-  mounted() {}
+  }
 }
 </script>
 

@@ -5,21 +5,25 @@
       :collapse="setting.collapse"
       :default-active="$route.path"
       :collapse-transition="false"
-      router
-      class="aside-menu"
       :background-color="variables.menuBg"
       :text-color="variables.menuText"
+      router
+      class="aside-menu"
     >
       <div class="system-name">
         {{ appName }}
       </div>
-      <scrollbar wrap-class="scrollbar-wrapper" :noresize="false">
-        <menu-item :menuList="permission.menuList"></menu-item>
+      <scrollbar :noresize="false" wrap-class="scrollbar-wrapper">
+        <menu-item :menu-list="permission.menuList"></menu-item>
       </scrollbar>
 
       <div class="fix-btn-wrap">
         <div class="collapse-btn" @click="toggleCollapse">
-          <icon-font prefix="iconfont" icon="expand" class="btn-icon"></icon-font>
+          <icon-font
+            prefix="iconfont"
+            icon="expand"
+            class="btn-icon"
+          ></icon-font>
         </div>
       </div>
     </el-menu>
@@ -34,14 +38,14 @@ import Scrollbar from '@/components/scrollbar/index.js'
 
 export default {
   name: 'Sidebar',
+  components: {
+    MenuItem,
+    Scrollbar
+  },
   data() {
     return {
       variables
     }
-  },
-  components: {
-    MenuItem,
-    Scrollbar
   },
   computed: {
     ...mapState(['permission', 'setting']),
@@ -55,9 +59,6 @@ export default {
         setting: {collapse: !this.setting.collapse}
       })
     }
-  },
-  mounted() {
-    console.log(this.permission)
   }
 }
 </script>
@@ -81,9 +82,7 @@ export default {
 
   //reset element-ui css
   .horizontal-collapse-transition {
-    transition:
-      0s width ease-in-out,
- 0s padding-left ease-in-out,
+    transition: 0s width ease-in-out, 0s padding-left ease-in-out,
       0s padding-right ease-in-out;
   }
 
