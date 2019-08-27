@@ -14,7 +14,8 @@ export default {
   name: 'IconFont',
   props: {
     icon: {
-      type: String
+      type: String,
+      default: ''
     },
     prefix: {
       type: String,

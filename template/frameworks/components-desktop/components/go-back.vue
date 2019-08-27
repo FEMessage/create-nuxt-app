@@ -1,13 +1,6 @@
 <template>
-  <nuxt-link
-    v-if="to"
-    :to="to"
-  >
-    <el-button
-      :type="btnType"
-      :size="size"
-      icon="el-icon-arrow-left"
-    >
+  <nuxt-link v-if="to" :to="to">
+    <el-button :type="btnType" :size="size" icon="el-icon-arrow-left">
       {{ btnText }}
     </el-button>
   </nuxt-link>
@@ -15,14 +8,15 @@
     v-else
     :type="btnType"
     :size="size"
-    @click="defaultBack"
     icon="el-icon-arrow-left"
-  >{{ btnText }}</el-button>
+    @click="defaultBack"
+    >{{ btnText }}</el-button
+  >
 </template>
 
 <script>
 export default {
-  name: 'go-back',
+  name: 'GoBack',
 
   props: {
     /**
@@ -47,7 +41,8 @@ export default {
     },
 
     onClick: {
-      type: Function
+      type: Function,
+      default() {}
     },
 
     /**

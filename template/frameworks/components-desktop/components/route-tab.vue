@@ -32,7 +32,10 @@ export default {
   props: {
     // el-tabs attribute
     tab: {
-      type: Object
+      type: Object,
+      default() {
+        return {}
+      }
     },
     routes: {
       type: Array,

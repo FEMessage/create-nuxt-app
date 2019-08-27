@@ -1,8 +1,8 @@
 <template>
   <div>
     <div v-for="m in menuList" :key="m.id" class="menu-item">
-      <el-menu-item :index="m.url" v-if="!m.children">
-        <icon-font prefix="iconfont" :icon="m.icon"></icon-font>
+      <el-menu-item v-if="!m.children" :index="m.url">
+        <icon-font :icon="m.icon" prefix="iconfont"></icon-font>
         <span slot="title" class="item-title">{{ m.name }}</span>
       </el-menu-item>
 
@@ -11,15 +11,15 @@
           <!--<i class="el-icon-menu"></i>-->
           <img
             v-if="checkUrl(m.icon)"
-            class="menu-item-img"
             :src="m.icon"
             :alt="m.name"
+            class="menu-item-img"
           />
-          <icon-font v-else prefix="iconfont" :icon="m.icon"></icon-font>
+          <icon-font v-else :icon="m.icon" prefix="iconfont"></icon-font>
           <span class="sub-menu-title">{{ m.name }}</span>
         </template>
 
-        <menu-item :menuList="m.children"></menu-item>
+        <menu-item :menu-list="m.children"></menu-item>
       </el-submenu>
     </div>
   </div>
@@ -30,7 +30,10 @@ export default {
   name: 'MenuItem',
   props: {
     menuList: {
-      type: Array
+      type: Array,
+      default() {
+        return []
+      }
     }
   },
   methods: {
