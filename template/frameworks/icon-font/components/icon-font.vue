@@ -15,6 +15,7 @@ export default {
   props: {
     icon: {
       type: String,
+      default: ''
     },
     prefix: {
       type: String,
