@@ -1,14 +1,14 @@
 <template>
   <main
-    class="layout-login"
     :style="{backgroundImage: 'url(' + $store.state.meta.loginBgImg + ')'}"
+    class="layout-login"
   >
     <div class="login-form">
       <h1 class="title">
         <img
           v-if="$store.state.meta.logoLogin"
-          class="logo-login"
           :src="$store.state.meta.logoLogin"
+          class="logo-login"
           alt="logo"
         />
         <span v-else>{{ $store.state.meta.appName }}</span>
@@ -24,7 +24,7 @@
 <script>
 import Copyright from '../components/copyright.vue'
 export default {
-  name: 'login',
+  name: 'Login',
   components: {
     Copyright
   },

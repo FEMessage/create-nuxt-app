@@ -3,30 +3,30 @@
     <!--样式在layout/login-->
     <div class="main">
       <el-form
-        :model="form"
-        status-icon
-        :rules="rules"
         ref="loginForm"
+        :model="form"
+        :rules="rules"
+        status-icon
         class=""
       >
         <el-form-item label="" prop="username">
-          <el-input placeholder="账号" v-model.trim="form.username"></el-input>
+          <el-input v-model.trim="form.username" placeholder="账号"></el-input>
         </el-form-item>
         <el-form-item label="" prop="password">
           <el-input
+            v-model.trim="form.password"
             placeholder="密码"
             type="password"
-            v-model.trim="form.password"
             auto-complete="off"
             @keyup.enter.native="login"
           ></el-input>
         </el-form-item>
         <el-form-item>
           <el-button
-            type="primary"
-            @click="login"
             :loading="loading"
+            type="primary"
             size="medium"
+            @click="login"
             >登录</el-button
           >
         </el-form-item>
@@ -41,7 +41,7 @@
 <script>
 export default {
   layout: 'login',
-  name: 'login',
+  name: 'Login',
   components: {},
   data() {
     return {
@@ -71,7 +71,7 @@ export default {
             .catch(e => {
               // TODO 异常处理
               this.loading = false
-              console.log(e)
+              console.error(e)
             })
         } else {
           return false
