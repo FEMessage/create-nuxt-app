@@ -5,8 +5,8 @@
         title="用户服务协议"
         left-text="返回"
         left-arrow
-        @click-left="onClickLeft"
         fixed
+        @click-left="onClickLeft"
       />
       <div class="content-wrapper pd-cell">
         <p>
@@ -150,7 +150,7 @@
 <script>
 import {NavBar} from 'vant'
 export default {
-  name: 'agreement',
+  name: 'Agreement',
   components: {
     'van-nav-bar': NavBar
   },

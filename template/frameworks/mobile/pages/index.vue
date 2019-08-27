@@ -8,7 +8,7 @@
     <van-row class="goods">
       <van-cell title="热销商品" icon="fire-o" />
       <van-row>
-        <van-col span="12" v-for="(good, index) in goods" :key="index">
+        <van-col v-for="(good, index) in goods" :key="index" span="12">
           <div class="block" @click="goDetail(good)">
             <img :src="good.img" class="good-img" />
             <p class="name">{{ good.name }}</p>

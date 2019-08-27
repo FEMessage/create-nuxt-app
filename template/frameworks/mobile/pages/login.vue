@@ -5,7 +5,7 @@
 <script>
 export default {
   layout: 'login',
-  name: 'login',
+  name: 'Login',
   components: {},
   data() {
     return {
@@ -31,7 +31,7 @@ export default {
         .catch(e => {
           // TODO 异常处理
           this.loading = false
-          console.log(e)
+          console.error(e)
         })
     }
   }

@@ -16,8 +16,8 @@ export default {
   data() {
     return {}
   },
-  methods: {},
-  computed: {}
+  computed: {},
+  methods: {}
 }
 </script>
 

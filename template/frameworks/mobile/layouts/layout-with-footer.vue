@@ -2,12 +2,12 @@
   <div class="layout-with-footer">
     <nuxt></nuxt>
     <div class="fixed-box">
-      <van-tabbar fixed v-model="active">
+      <van-tabbar v-model="active" fixed>
         <van-tabbar-item
           v-for="(item, i) in footerTab"
           :key="i"
-          @click="$router.push(item.url)"
           :icon="item.icon"
+          @click="$router.push(item.url)"
         >
           {{ item.title }}
         </van-tabbar-item>

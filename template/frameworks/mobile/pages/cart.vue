@@ -1,11 +1,11 @@
 <template>
   <div class="cart">
-    <van-checkbox-group class="card-goods" v-model="checkedGoods">
+    <van-checkbox-group v-model="checkedGoods" class="card-goods">
       <van-checkbox
-        class="card-goods__item"
         v-for="item in goods"
         :key="item.id"
         :name="item.id"
+        class="card-goods__item"
       >
         <van-card
           :title="item.title"
