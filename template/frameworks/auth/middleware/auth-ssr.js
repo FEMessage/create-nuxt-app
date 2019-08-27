@@ -39,7 +39,7 @@ export default async function(context) {
       // TODO
       // 1. clear cookie
       // 2. show message
-      console.log('auth error: ', e)
+      console.error('auth error: ', e)
       redirect('/login')
     }
   }
