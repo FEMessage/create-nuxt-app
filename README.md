@@ -1,11 +1,11 @@
 # create-nuxt-app
 
 [![Build Status](https://travis-ci.com/FEMessage/create-nuxt-app.svg?branch=master)](https://travis-ci.com/FEMessage/create-nuxt-app)
-[![NPM Download](https://img.shields.io/npm/dm/@femessage/create-nuxt-app.svg)](https://www.npmjs.com/package/@femessage/create-nuxt-app)
-[![NPM Version](https://img.shields.io/npm/v/@femessage/create-nuxt-app.svg)](https://www.npmjs.com/package/@femessage/create-nuxt-app)
-[![NPM License](https://img.shields.io/npm/l/@femessage/create-nuxt-app.svg)](https://github.com/FEMessage/create-nuxt-app/blob/master/LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/FEMessage/create-nuxt-app/pulls)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![NPM Download](https://badgen.net/npm/dm/@femessage/create-nuxt-app)](https://www.npmjs.com/package/@femessage/create-nuxt-app)
+[![NPM Version](https://badgen.net/npm/v/@femessage/create-nuxt-app)](https://www.npmjs.com/package/@femessage/create-nuxt-app)
+[![NPM License](https://badgen.net/npm/license/@femessage/create-nuxt-app)](https://github.com/FEMessage/create-nuxt-app/blob/master/LICENSE)
+[![PRs Welcome](https://badgen.net/badge/PRs/welcome/green)](https://github.com/FEMessage/create-nuxt-app/pulls)
+[![semantic-release](https://badgen.net/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80/semantic-release/e10079)](https://github.com/semantic-release/semantic-release)
 
 ## Table of Contents
 
