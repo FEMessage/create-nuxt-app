@@ -99,19 +99,6 @@ module.exports = {
           <%_ } _%>
         ]
       ]
-    },
-    /*
-     ** Run ESLint on save
-     */
-    extend(config, {isDev}) {
-      if (isDev && process.client) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
     }
   },
   /*
