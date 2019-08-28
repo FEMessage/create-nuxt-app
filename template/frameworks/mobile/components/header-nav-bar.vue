@@ -3,8 +3,8 @@
     <van-nav-bar
       left-text="返回"
       left-arrow
-      @click-left="$router.back()"
       fixed
+      @click-left="$router.back()"
     />
   </div>
 </template>
@@ -13,10 +13,10 @@
 import {NavBar} from 'vant'
 
 export default {
-  name: 'header-nav-bar',
+  name: 'HeaderNavBar',
   components: {
-    'van-nav-bar': NavBar
-  }
+    'van-nav-bar': NavBar,
+  },
 }
 </script>
 

@@ -5,19 +5,19 @@
 <script>
 export default {
   layout: 'login',
-  name: 'login',
+  name: 'Login',
   components: {},
   data() {
     return {
       loading: false,
       form: {
         username: '',
-        password: ''
+        password: '',
       },
       rules: {
         username: [{required: true, message: '请输入账号', trigger: 'blur'}],
-        password: [{required: true, message: '请输入密码', trigger: 'blur'}]
-      }
+        password: [{required: true, message: '请输入密码', trigger: 'blur'}],
+      },
     }
   },
   methods: {
@@ -31,9 +31,9 @@ export default {
         .catch(e => {
           // TODO 异常处理
           this.loading = false
-          console.log(e)
+          console.error(e)
         })
-    }
-  }
+    },
+  },
 }
 </script>

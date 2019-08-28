@@ -11,13 +11,13 @@ import HeaderNavBar from '@/components/header-nav-bar'
 
 export default {
   components: {
-    'header-nav-bar': HeaderNavBar
+    HeaderNavBar,
   },
   data() {
     return {}
   },
+  computed: {},
   methods: {},
-  computed: {}
 }
 </script>
 
