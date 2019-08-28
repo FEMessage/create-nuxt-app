@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <img class="home-img" :src="$store.state.meta.homePageImg" alt="homeImg" />
+    <img :src="$store.state.meta.homePageImg" class="home-img" alt="homeImg" />
   </div>
 </template>
 
@@ -9,7 +9,7 @@ export default {
   data() {
     return {}
   },
-  methods: {}
+  methods: {},
 }
 </script>
 <style lang="less">

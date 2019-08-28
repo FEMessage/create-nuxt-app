@@ -1,13 +1,6 @@
 <template>
-  <nuxt-link
-    v-if="to"
-    :to="to"
-  >
-    <el-button
-      :type="btnType"
-      :size="size"
-      icon="el-icon-arrow-left"
-    >
+  <nuxt-link v-if="to" :to="to">
+    <el-button :type="btnType" :size="size" icon="el-icon-arrow-left">
       {{ btnText }}
     </el-button>
   </nuxt-link>
@@ -15,14 +8,15 @@
     v-else
     :type="btnType"
     :size="size"
-    @click="defaultBack"
     icon="el-icon-arrow-left"
-  >{{ btnText }}</el-button>
+    @click="defaultBack"
+    >{{ btnText }}</el-button
+  >
 </template>
 
 <script>
 export default {
-  name: 'go-back',
+  name: 'GoBack',
 
   props: {
     /**
@@ -30,12 +24,12 @@ export default {
      */
     btnType: {
       type: String,
-      default: 'text'
+      default: 'text',
     },
 
     btnText: {
       type: String,
-      default: '返回'
+      default: '返回',
     },
 
     /**
@@ -43,11 +37,12 @@ export default {
      */
     size: {
       type: String,
-      default: 'medium'
+      default: 'medium',
     },
 
     onClick: {
-      type: Function
+      type: Function,
+      default() {},
     },
 
     /**
@@ -57,8 +52,8 @@ export default {
      */
     to: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
 
   methods: {
@@ -68,7 +63,7 @@ export default {
         return
       }
       this.$router.back()
-    }
-  }
+    },
+  },
 }
 </script>

@@ -3,32 +3,32 @@
     <!--样式在layout/login-->
     <div class="main">
       <el-form
-        :model="form"
-        status-icon
-        :rules="rules"
         ref="loginForm"
+        :model="form"
+        :rules="rules"
+        status-icon
         class="login-content"
       >
         <el-form-item label="" prop="code">
           <el-input
+            v-model.trim="form.code"
             placeholder="租户ID"
             type="code"
-            v-model.trim="form.code"
             auto-complete="off"
             @keyup.enter.native="login"
           ></el-input>
         </el-form-item>
         <el-form-item label="" prop="username">
           <el-input
-            placeholder="用户名/邮箱"
             v-model.trim="form.username"
+            placeholder="用户名/邮箱"
           ></el-input>
         </el-form-item>
         <el-form-item label="" prop="password">
           <el-input
+            v-model.trim="form.password"
             placeholder="密码"
             type="password"
-            v-model.trim="form.password"
             auto-complete="off"
             @keyup.enter.native="login"
           ></el-input>
@@ -36,11 +36,11 @@
         <!--<p style="margin-bottom: 24px">用户名：{{test.username}}; 密码：{{test.password}}</p>-->
         <el-form-item>
           <el-button
-            type="primary"
-            @click="login"
             :loading="loading"
+            type="primary"
             size="medium"
             class="login-button primary-button"
+            @click="login"
             >登录</el-button
           >
         </el-form-item>
@@ -55,11 +55,11 @@
 <script>
 export default {
   layout: 'login',
-  name: 'login',
+  name: 'Login',
   components: {},
   head() {
     return {
-      title: 'xPaaS Console 登录'
+      title: 'xPaaS Console 登录',
     }
   },
   data() {
@@ -81,19 +81,19 @@ export default {
     return {
       test: {
         username: 'guest',
-        password: 'guest1234'
+        password: 'guest1234',
       },
       loading: false,
       form: {
         username: '',
         password: '',
-        code: ''
+        code: '',
       },
       rules: {
         username: [{validator: validateUserName, trigger: 'blur'}],
         password: [{validator: validatePsw, required: true, trigger: 'blur'}],
-        code: [{required: true, trigger: 'blur', message: '请输入租户ID'}]
-      }
+        code: [{required: true, trigger: 'blur', message: '请输入租户ID'}],
+      },
     }
   },
   methods: {
@@ -106,7 +106,7 @@ export default {
             username: this.form.username,
             password: this.form.password,
             channel: 'xPaaS',
-            code: this.form.code
+            code: this.form.code,
           }
           this.$store
             .dispatch('loginByUsername', params)
@@ -117,7 +117,7 @@ export default {
             .catch(e => {
               // TODO 异常处理
               this.loading = false
-              console.log(e)
+              console.error(e)
             })
         } else {
           return false
@@ -127,8 +127,8 @@ export default {
 
     toSignUp() {
       this.$router.push('/register')
-    }
-  }
+    },
+  },
 }
 </script>
 

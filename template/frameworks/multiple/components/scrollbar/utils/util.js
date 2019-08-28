@@ -7,7 +7,7 @@ export const BAR_MAP = {
     key: 'vertical',
     axis: 'Y',
     client: 'clientY',
-    direction: 'top'
+    direction: 'top',
   },
   horizontal: {
     offset: 'offsetWidth',
@@ -17,8 +17,8 @@ export const BAR_MAP = {
     key: 'horizontal',
     axis: 'X',
     client: 'clientX',
-    direction: 'left'
-  }
+    direction: 'left',
+  },
 }
 
 export function renderThumbStyle({move, size, bar}) {
