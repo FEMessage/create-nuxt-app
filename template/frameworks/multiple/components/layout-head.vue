@@ -14,8 +14,8 @@
           <li
             v-for="(item, index) in headMenu"
             :class="{active: url === item.url}"
-            @click="handleMenu(item)"
             :key="index"
+            @click="handleMenu(item)"
           >
             <span class="button-container">{{ item.name }}</span>
           </li>
@@ -51,6 +51,16 @@ import cookie from 'js-cookie'
 
 export default {
   name: 'LayoutHead',
+  props: {
+    searchUrl: {
+      type: Object,
+      default() {
+        return {
+          url: '',
+        }
+      },
+    },
+  },
   data() {
     let currentHref = this.getCurrentPath()
     return {
@@ -59,32 +69,22 @@ export default {
       dropdownList: [
         {
           title: '退出',
-          command: 'exit'
-        }
+          command: 'exit',
+        },
       ],
       searchType: 'default',
       headMenu: [
         {
           name: '员工中心',
           type: 'console',
-          url: '/'
+          url: '/',
         },
         {
           name: '控制台',
           type: 'resources',
-          url: '/spaas-console/index.html'
-        }
-      ]
-    }
-  },
-  props: {
-    searchUrl: {
-      type: Object,
-      default() {
-        return {
-          url: ''
-        }
-      }
+          url: '/spaas-console/index.html',
+        },
+      ],
     }
   },
   computed: {
@@ -97,8 +97,9 @@ export default {
         'https://deepexi.oss-cn-shenzhen.aliyuncs.com/xpaas-console/user-portrait.png'
       )
     },
-    ...mapMutations(['logout'])
+    ...mapMutations(['logout']),
   },
+  mounted() {},
   methods: {
     exitBtn(key, keyPath) {
       key == 'exit' ? this.$store.commit('logout') : ''
@@ -116,9 +117,8 @@ export default {
       const path = currentPath.split(currentOrigin)[1] || ''
       const pathStr = path.replace(/(^\/*)/g, '')
       return `/${pathStr}`
-    }
+    },
   },
-  mounted() {}
 }
 </script>
 
@@ -214,6 +214,7 @@ export default {
       display: flex;
       align-items: center;
       cursor: pointer;
+
       .head-active {
         .username-img {
           width: 30px;

@@ -20,14 +20,14 @@
 <script>
 import Copyright from '@/components/copyright.vue'
 export default {
-  name: 'login',
+  name: 'Login',
   components: {
-    Copyright
+    Copyright,
   },
   data() {
     return {}
   },
-  methods: {}
+  methods: {},
 }
 </script>
 <style lang="less">

@@ -32,7 +32,10 @@ export default {
   props: {
     // el-tabs attribute
     tab: {
-      type: Object
+      type: Object,
+      default() {
+        return {}
+      },
     },
     routes: {
       type: Array,
@@ -40,29 +43,29 @@ export default {
         return [
           // tab 名字跟对应路由
           // 后面两个对应 el-tab-pane attribute
-          {name: '', path: '', disabled: false, closable: false}
+          {name: '', path: '', disabled: false, closable: false},
         ]
-      }
-    }
+      },
+    },
   },
   data() {
     return {
-      active: this.$route.path
+      active: this.$route.path,
     }
   },
   watch: {
     '$route.path'(path) {
       this.active = path
-    }
+    },
   },
   methods: {
     onClick() {
       this.$router.push({
         path: this.active,
-        query: this.$route.query
+        query: this.$route.query,
       })
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="less">

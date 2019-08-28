@@ -23,18 +23,18 @@
       <div class="login">
         <div class="title">用户登录</div>
         <van-field
-          class="login-input"
           v-model="phone"
+          class="login-input"
           placeholder="请输入手机号"
         ></van-field>
         <van-field
+          v-model="password"
           class="login-input"
           type="password"
-          v-model="password"
           placeholder="请输入密码"
         ></van-field>
         <p>
-          <van-checkbox v-model="checked" style="justify-content: center">
+          <van-checkbox v-model="checked" style="justify-content: center;">
             <span class="gray">登录即表示同意</span>
             <span class="blue" @click.stop="showAgreement = true"
               >滴普科技服务协议</span
@@ -42,11 +42,11 @@
           </van-checkbox>
         </p>
         <van-button
+          :disabled="!checked"
+          :loading="isLoading"
           type="primary"
           class="login-btn"
           @click="submit"
-          :disabled="!checked"
-          :loading="isLoading"
           >登 录</van-button
         >
       </div>
@@ -64,7 +64,7 @@ export default {
   layout: 'layout-with-footer',
   components: {
     'van-checkbox': Checkbox,
-    agreement: Agreement
+    agreement: Agreement,
   },
   data() {
     return {
@@ -73,7 +73,7 @@ export default {
       password: '',
       checked: false,
       isLoading: false,
-      showAgreement: false
+      showAgreement: false,
     }
   },
   methods: {
@@ -84,8 +84,8 @@ export default {
     },
     submit() {
       this.showLogin = false
-    }
-  }
+    },
+  },
 }
 </script>
 

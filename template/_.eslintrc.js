@@ -8,12 +8,28 @@ module.exports = {
     parser: 'babel-eslint'
   },
   extends: [
-    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    'plugin:vue/essential'
+    /**
+     * Switched to `recommended` from `essential` for stricter rules.
+     * https://eslint.vuejs.org/rules/#priority-c-recommended-minimizing-arbitrary-choices-and-cognitive-overhead
+     */
+    'plugin:vue/recommended',
+    'prettier/vue'
   ],
-  // required to lint *.vue files
-  plugins: ['vue'],
-  // add your custom rules here
-  rules: {}
+  plugins: [
+    // To lint *.vue files
+    'vue',
+    // To apply .prettierrc
+    'prettier'
+  ],
+  // Add your custom rules here
+  rules: {
+    'no-console': [
+      'error',
+      {
+        allow: ['error']
+      }
+    ],
+    'no-debugger': 'error',
+    'prettier/prettier': 'error'
+  }
 }
