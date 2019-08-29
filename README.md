@@ -15,7 +15,7 @@
 - [Usage](#usage)
 - [Frameworks](#frameworks)
 - [Contributing](#contributing)
-- [Development](#development)
+- [Developer Guide](#developer-guide)
 - [Contributors](#contributors)
 - [License](#license)
 
@@ -127,9 +127,9 @@ For those who are interested in contributing to this project, such as:
 - fix a bug
 - implement a new feature
 
-## Development
+## Developer Guide
 
-If `git push` failed, maybe you change the generated directory structure; then you can run `yarn test:snapshot` to make sure that your pull request can pass CI pipeline.
+Please check out [developer guide](./developer-guide.md).
 
 [⬆ Back to Top](#table-of-contents)
 
