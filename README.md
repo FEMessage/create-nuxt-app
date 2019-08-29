@@ -14,7 +14,6 @@
 - [Links](#links)
 - [Usage](#usage)
 - [Frameworks](#frameworks)
-- [Contributing](#contributing)
 - [Developer Guide](#developer-guide)
 - [Contributors](#contributors)
 - [License](#license)
@@ -52,7 +51,7 @@ Make sure you have [npx](https://www.npmjs.com/package/npx) installed (`npx` is 
 One-off usage via npx:
 
 ```bash
-npx @femessage/create-nuxt-app [my-project] -t [template]
+$ npx @femessage/create-nuxt-app [my-project] -t [template]
 ```
 
 Global install:
@@ -64,7 +63,7 @@ yarn global add @femessage/create-nuxt-app
 Help text:
 
 ```bash
-$ create-nuxt-app -h
+$ npx create-nuxt-app -h
 
 Usage:
   $ create-nuxt-app [options]
@@ -93,7 +92,7 @@ Options:
 ### Single
 
 ```bash
-create-nuxt-app -t single
+$ npx create-nuxt-app -t single
 ```
 
 ![nuxt-element-dashboard](https://i.loli.net/2019/06/24/5d108e301184d60426.png)
@@ -101,7 +100,7 @@ create-nuxt-app -t single
 ### Multiple
 
 ```bash
-create-nuxt-app -t multiple
+$ npx create-nuxt-app -t multiple
 ```
 
 ![nuxt-multiple-spa](https://i.loli.net/2019/06/24/5d108e300bc8e21918.png)
@@ -111,21 +110,12 @@ This is a pratice of micro-frontends
 ### Mobile
 
 ```bash
-create-nuxt-app -t mobile
+$ npx create-nuxt-app -t mobile
 ```
 
 <img style="width: 50%" src="https://i.loli.net/2019/08/29/mTyvRhrHPWSwitK.png">
 
 [⬆ Back to Top](#table-of-contents)
-
-## Contributing
-
-For those who are interested in contributing to this project, such as:
-
-- report a bug
-- request new feature
-- fix a bug
-- implement a new feature
 
 ## Developer Guide
 
