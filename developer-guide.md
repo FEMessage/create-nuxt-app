@@ -4,7 +4,9 @@
 
 Please check out [saojs.org](https://saojs.org) to know what is SAO.
 
-## Add module (Use Jest for example)
+## Add module
+
+Add Jest for exampel
 
 ### Add module files
 
@@ -43,7 +45,9 @@ Check is the new feature works.
 
 If this module pass your test and feeling good, then run `yarn test:snapshot` to update the snapshots.
 
-## Add framework-template (Use mobile for example)
+## Add framework-template
+
+Add mobile for exmaple
 
 ### Adding a new template
 
@@ -55,17 +59,17 @@ Template exclusive files, organized in the standalone folder. e.g. `framework/mo
 
 ![](https://i.loli.net/2019/08/29/f5zn8FoBW63lmYi.png)
 
-For reusable modules, please check out [Add module (Use Jest for example)](add-module-(use-jest-for-example))
+For reusable modules, please check out [Add module](#add-module)
 
-## Case to using the same file (Powered by EJS)
+## Using the same file
 
-Facing problem: a template using `element-ui` for desktop but another template using `vant-ui` for mobile.
+Facing problem: a template uses `element-ui` for the desktop side but another template uses `vant-ui` for the mobile side.
 
 Add vant-ui module:
 
 ![](https://i.loli.net/2019/08/29/rzmj9P1iElXAOyw.png)
 
-Add `vant-ui` as a dependency to `template/_package.json`. In the same time, if I using `vant-ui` then I don't need `element-ui` any more.
+Add `vant-ui` as a dependency to `template/_package.json`. If the project uses `vant-ui` and no longer requires `element-ui`.
 
 ![](https://i.loli.net/2019/08/29/AZw4HGka9Xmyjrq.png)
 
@@ -73,10 +77,10 @@ Modify the `template/nuxt/nuxt.config.js`
 
 ![](https://i.loli.net/2019/08/29/xnEosSHWl2RAkv3.png)
 
-👋, your lovely template is ready to work with you.
+👋 your lovely template is ready to work with you.
 
 ## Links
 
-- [create-nuxt-app](https://github.com/nuxt/create-nuxt-app)
+- [Create Nuxt App](https://github.com/nuxt/create-nuxt-app)
 - [SAO](https://saojs.org)
 - [CAC](https://github.com/cacjs/cac)
