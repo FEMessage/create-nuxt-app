@@ -49,14 +49,33 @@ Create a Deepexi Nuxt App in seconds.
 
 Make sure you have [npx](https://www.npmjs.com/package/npx) installed (`npx` is shipped by default since [npm](https://www.npmjs.com/get-npm) `5.2.0`)
 
+One-off usage via npx:
+
 ```bash
 npx @femessage/create-nuxt-app [my-project] -t [template]
 ```
 
+Global install:
+
 ```bash
 yarn global add @femessage/create-nuxt-app
+```
 
-create-nuxt-app -h
+Help text:
+
+```bash
+$ create-nuxt-app -h
+
+Usage:
+  $ create-nuxt-app [options]
+
+Options:
+  -t, --template <template>  create a preset template
+  -l, --list                 the list of preset template
+  -a, --all                  generate all preset template
+  -o, --output <output>      the output path of the generator
+  -h, --help                 Display this message
+  -v, --version              Display version number
 ```
 
 <details><summary>Preview</summary>
