@@ -15,7 +15,7 @@
 - [Usage](#usage)
 - [Frameworks](#frameworks)
 - [Contributing](#contributing)
-- [Developer Guide](#developer-guide)
+- [Development](#development)
 - [Contributors](#contributors)
 - [License](#license)
 
@@ -108,11 +108,9 @@ For those who are interested in contributing to this project, such as:
 - fix a bug
 - implement a new feature
 
-## Developer Guide
+## Development
 
-This scaffolding is use SAO under the hood.
-
-PS: If `git push` failed, maybe you change the generated directory structure; then you can run `yarn test:snapshot` to make sure that your pull request can pass CI pipeline.
+If `git push` failed, maybe you change the generated directory structure; then you can run `yarn test:snapshot` to make sure that your pull request can pass CI pipeline.
 
 [⬆ Back to Top](#table-of-contents)
 
