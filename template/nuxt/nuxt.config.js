@@ -151,9 +151,9 @@ module.exports = {
   ],
   plugins: [
     {src: '~plugins/axios'},
+    {src: '~/plugins/filters'},
     <%_ if (template === 'mobile') { _%>
     {src: '~/plugins/vant'},
-    {src: '~/plugins/filter'}
     <%_ } else { _%>
     {src: '~plugins/element'},
     {src: '~plugins/icon-font'}
