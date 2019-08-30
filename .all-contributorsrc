@@ -46,7 +46,9 @@
       "avatar_url": "https://avatars3.githubusercontent.com/u/19513289?v=4",
       "profile": "https://evila.me",
       "contributions": [
-        "code"
+        "code",
+        "doc",
+        "tool"
       ]
     },
     {
@@ -55,7 +57,8 @@
       "avatar_url": "https://avatars3.githubusercontent.com/u/19591950?v=4",
       "profile": "https://donaldshen.github.io/portfolio",
       "contributions": [
-        "code"
+        "code",
+        "test"
       ]
     },
     {
