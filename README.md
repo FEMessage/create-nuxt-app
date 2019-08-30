@@ -9,14 +9,14 @@
 
 ## Table of Contents
 
-  - [Introduction](#introduction)
-  - [Usage](#usage)
-  - [Demo](#demo)
-  - [Feature](#feature)
-  - [Development](#development)
-  - [Reference](#reference)
-  - [Contributors](#contributors)
-  - [License](#license)
+- [Introduction](#introduction)
+- [Features](#features)
+- [Links](#links)
+- [Usage](#usage)
+- [Frameworks](#frameworks)
+- [Developer Guide](#developer-guide)
+- [Contributors](#contributors)
+- [License](#license)
 
 ## Introduction
 
@@ -24,62 +24,102 @@ Create a Deepexi Nuxt App in seconds.
 
 [⬆ Back to Top](#table-of-contents)
 
+## Features
+
+- [x] [prettier](https://prettier.io/) Prettier is an opinionated code formatter
+- [x] [eslint](https://eslint.org/) A fully pluggable tool for identifying and reporting on patterns in JavaScript
+- [x] [stylelint](https://stylelint.io/) A mighty, modern style linter
+- [x] [commitlint](https://conventional-changelog.github.io/commitlint/) Lint commit messages
+- [x] [gitlab-ci](https://about.gitlab.com/product/continuous-integration/) GitLab CI
+- [x] [dotenv](https://github.com/motdotla/dotenv) Loads environment variables from .env for nodejs projects
+- [x] [element-ui](https://element.eleme.io/) A Vue.js 2.0 UI Toolkit for Web
+- [x] [vant](https://youzan.github.io/vant) Lightweight Mobile UI Components built on Vue
+
+[⬆ Back to Top](#table-of-contents)
+
+## Links
+
+- [create-nuxt-app](https://github.com/nuxt/create-nuxt-app)
+- [nuxt-element-dashboard](https://github.com/levy9527/nuxt-element-dashboard)
+
+[⬆ Back to Top](#table-of-contents)
+
 ## Usage
 
 Make sure you have [npx](https://www.npmjs.com/package/npx) installed (`npx` is shipped by default since [npm](https://www.npmjs.com/get-npm) `5.2.0`)
+
+One-off usage via npx:
 
 ```bash
 npx @femessage/create-nuxt-app [my-project] -t [template]
 ```
 
+Global install:
+
 ```bash
 yarn global add @femessage/create-nuxt-app
+```
 
-create-nuxt-app -h
+Help text:
+
+```bash
+npx @femessage/create-nuxt-app -h
+
+Usage:
+  create-nuxt-app [options]
+
+Options:
+  -t, --template <template>  create a preset template
+  -l, --list                 the list of preset template
+  -a, --all                  generate all preset template
+  -o, --output <output>      the output path of the generator
+  -h, --help                 Display this message
+  -v, --version              Display version number
 ```
 
 <details><summary>Preview</summary>
 
 ![preview](https://i.loli.net/2019/06/24/5d108d92206de47421.gif)
+
 </details>
 
+<br>
 
 [⬆ Back to Top](#table-of-contents)
 
-## Demo
+## Frameworks
+
+### Single
 
 ```bash
-create-nuxt-app -t single
+npx @femessage/create-nuxt-app -t single
 ```
 
 ![nuxt-element-dashboard](https://i.loli.net/2019/06/24/5d108e301184d60426.png)
 
+### Multiple
+
 ```bash
-create-nuxt-app -t multiple
+npx @femessage/create-nuxt-app -t multiple
 ```
 
 ![nuxt-multiple-spa](https://i.loli.net/2019/06/24/5d108e300bc8e21918.png)
 
-this is a pratice of micro-frontends
+This is a pratice of micro-frontends
+
+### Mobile
 
 ```bash
-create-nuxt-app -t mobile
+npx @femessage/create-nuxt-app -t mobile
 ```
 
-<img style="width: 50%" src="https://cdn.nlark.com/yuque/0/2019/png/304775/1564743644859-564c43b6-3514-447b-b947-c326f6906274.png">
+<img style="width: 50%" src="https://i.loli.net/2019/08/29/mTyvRhrHPWSwitK.png">
 
 [⬆ Back to Top](#table-of-contents)
 
-## Development
+## Developer Guide
 
-If `git push` failed, maybe you change the generated directory structure; then you can run `yarn test:snapshot` to make sure that your pull request can pass CI pipeline.
-
-[⬆ Back to Top](#table-of-contents)
-
-## Reference
-
-- [create-nuxt-app](https://github.com/nuxt/create-nuxt-app)
-- [nuxt-element-dashboard](https://github.com/levy9527/nuxt-element-dashboard)
+Please check out [developer guide](./developer-guide.md).
 
 [⬆ Back to Top](#table-of-contents)
 
