@@ -4,6 +4,12 @@
 
 Please check out [saojs.org](https://saojs.org) to know what is SAO.
 
+## Table of Contents
+
+- [Add module](#add-module)
+- [Add framework-template](#add-framework-template)
+- [Links](#links)
+
 ## Add module
 
 Add Jest for example
@@ -45,6 +51,8 @@ Check is the new feature works.
 
 If this module pass your test and feeling good, then run `yarn test:snapshot` to update the snapshots.
 
+[⬆ Back to Top](#table-of-contents)
+
 ## Add framework-template
 
 Add mobile command for example
@@ -60,6 +68,8 @@ Template exclusive files, organized in the standalone folder. e.g. `framework/mo
 ![](https://i.loli.net/2019/08/29/f5zn8FoBW63lmYi.png)
 
 For reusable modules, please check out [Add module](#add-module)
+
+[⬆ Back to Top](#table-of-contents)
 
 ## Using the same file
 
@@ -79,8 +89,12 @@ Modify the `template/nuxt/nuxt.config.js`
 
 👋 your lovely template is ready to work with you.
 
+[⬆ Back to Top](#table-of-contents)
+
 ## Links
 
 - [Create Nuxt App](https://github.com/nuxt/create-nuxt-app)
 - [SAO](https://saojs.org)
 - [CAC](https://github.com/cacjs/cac)
+
+[⬆ Back to Top](#table-of-contents)
