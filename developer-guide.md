@@ -14,9 +14,9 @@ Add module files to `template/frameworks`
 
 ![](https://i.loli.net/2019/08/29/vUXaQZIbLo15pxY.png)
 
-### Add this module for framework-template
+### Add the module for framework-template
 
-Then modify the `template.config.js` which framework-template need to use this module.
+Then modify the `template.config.js` which framework-template need to use the module.
 
 ![](https://i.loli.net/2019/08/29/KNXGvEsxjymS9TU.png)
 
