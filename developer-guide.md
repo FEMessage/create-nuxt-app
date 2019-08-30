@@ -6,7 +6,7 @@ Please check out [saojs.org](https://saojs.org) to know what is SAO.
 
 ## Add module
 
-Add Jest for exampel
+Add Jest for example
 
 ### Add module files
 
@@ -47,11 +47,11 @@ If this module pass your test and feeling good, then run `yarn test:snapshot` to
 
 ## Add framework-template
 
-Add mobile for exmaple
+Add mobile command for example
 
-### Adding a new template
+### Add a new template
 
-Add a mobile template config in `template.config.js`
+Add a mobile template config in `template.config.js`, it uses vant-ui under the hood.
 
 ![](https://i.loli.net/2019/08/29/XrMzQBceA29kmRy.png)
 
@@ -63,7 +63,7 @@ For reusable modules, please check out [Add module](#add-module)
 
 ## Using the same file
 
-Facing problem: a template uses `element-ui` for the desktop side but another template uses `vant-ui` for the mobile side.
+Facing problem: a template uses `element-ui` for the desktop-side but another template uses `vant-ui` for the mobile-side.
 
 Add vant-ui module:
 
