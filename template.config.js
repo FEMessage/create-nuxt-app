@@ -21,6 +21,7 @@ const common = {
   auth: 'auth',
   components: 'components',
   constant: 'constant',
+  filters: 'filters',
   meta: 'meta',
   release: 'release-log',
   styles: 'styles',
