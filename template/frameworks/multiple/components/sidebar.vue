@@ -5,21 +5,25 @@
       :collapse="setting.collapse"
       :default-active="$route.path"
       :collapse-transition="false"
-      router
-      class="aside-menu"
       :background-color="variables.menuBg"
       :text-color="variables.menuText"
+      router
+      class="aside-menu"
     >
       <div class="system-name">
         {{ appName }}
       </div>
-      <scrollbar wrap-class="scrollbar-wrapper" :noresize="false">
-        <menu-item :menuList="permission.menuList"></menu-item>
+      <scrollbar :noresize="false" wrap-class="scrollbar-wrapper">
+        <menu-item :menu-list="permission.menuList"></menu-item>
       </scrollbar>
 
       <div class="fix-btn-wrap">
         <div class="collapse-btn" @click="toggleCollapse">
-          <icon-font prefix="iconfont" icon="expand" class="btn-icon"></icon-font>
+          <icon-font
+            prefix="iconfont"
+            icon="expand"
+            class="btn-icon"
+          ></icon-font>
         </div>
       </div>
     </el-menu>
@@ -34,31 +38,28 @@ import Scrollbar from '@/components/scrollbar/index.js'
 
 export default {
   name: 'Sidebar',
-  data() {
-    return {
-      variables
-    }
-  },
   components: {
     MenuItem,
-    Scrollbar
+    Scrollbar,
+  },
+  data() {
+    return {
+      variables,
+    }
   },
   computed: {
     ...mapState(['permission', 'setting']),
     appName() {
       return this.permission.spaName
-    }
+    },
   },
   methods: {
     toggleCollapse() {
       this.$store.commit('update', {
-        setting: {collapse: !this.setting.collapse}
+        setting: {collapse: !this.setting.collapse},
       })
-    }
+    },
   },
-  mounted() {
-    console.log(this.permission)
-  }
 }
 </script>
 

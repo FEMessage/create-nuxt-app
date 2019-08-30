@@ -13,15 +13,15 @@
         <div class="logo">
           <nuxt-link to="/">
             <img
-              class="logo-img"
               :src="$store.state.meta.logoSidebar"
+              class="logo-img"
               alt="logo"
             />
             <h1 class="logo-text">{{ $store.state.meta.appName }}</h1>
           </nuxt-link>
         </div>
         <el-scrollbar wrap-class="scrollbar-wrapper">
-          <menu-item :menuList="menuList"></menu-item>
+          <menu-item :menu-list="menuList"></menu-item>
         </el-scrollbar>
 
         <div class="fix-btn-wrap">
@@ -45,7 +45,9 @@
                   <img :src="userImg" class="username-img" alt="username-img" />
                 </div>
                 <!-- 用户名称 -->
-                <div class="username-text">{{ $store.state.user.nickname }}</div>
+                <div class="username-text">
+                  {{ $store.state.user.nickname }}
+                </div>
                 <i class="el-icon-arrow-down el-icon--right set-Iconcolor"></i>
               </span>
               <el-dropdown-menu slot="dropdown" class="user-drop-menu">
@@ -81,7 +83,7 @@ export default {
   components: {
     Copyright,
     MenuItem,
-    ElScrollbar: Scrollbar
+    ElScrollbar: Scrollbar,
   },
   data() {
     return {
@@ -89,9 +91,9 @@ export default {
       dropdownList: [
         {
           title: '退出',
-          command: 'exit'
-        }
-      ]
+          command: 'exit',
+        },
+      ],
     }
   },
   computed: {
@@ -101,15 +103,15 @@ export default {
         this.$store.state.user.avatar ||
         'https://deepexi.oss-cn-shenzhen.aliyuncs.com/xpaas-console/user-portrait.png'
       )
-    }
+    },
   },
   methods: {
     exitBtn(key, keyPath) {
       if (key == 'exit') {
         this.$store.commit('logout')
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

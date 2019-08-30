@@ -59,7 +59,7 @@ export default function({$axios, store, app, redirect}) {
 
       Vue.$notify.error({
         title: data.code || resp.status,
-        message: data.msg || data.payload
+        message: data.msg || data.payload,
       })
 
       if (resp.status == 401) {
@@ -68,7 +68,7 @@ export default function({$axios, store, app, redirect}) {
       }
     } else {
       // TODO asyncData 的错误 需要日志监控
-      console.log('error', error)
+      console.error('error', error)
     }
 
     // 将错误信息继续抛出，业务逻辑可以进行后续的操作

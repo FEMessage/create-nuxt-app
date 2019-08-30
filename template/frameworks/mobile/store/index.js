@@ -11,7 +11,7 @@ export const state = () => ({
 
   user: {},
   menuList: [],
-  permission: {}
+  permission: {},
 })
 
 //  mutation 必须同步执行
@@ -41,7 +41,7 @@ export const mutations = {
     Object.keys(payload).forEach(k => {
       state[k] = payload[k]
     })
-  }
+  },
 }
 
 // Action 提交的是 mutation，而不是直接变更状态
@@ -63,17 +63,17 @@ export const actions = {
     commit('update', {user: user.payload})
 
     let menuResources = await this.$axios.$get(
-      `/security/api/v1/users/${userId}/menuResources`
+      `/security/api/v1/users/${userId}/menuResources`,
     )
     if (!menuResources.payload)
       menuResources.payload = {
         menu: [],
-        permission: {}
+        permission: {},
       }
 
     commit('update', {
       menuList: menuResources.payload.menu,
-      permission: menuResources.payload.permission
+      permission: menuResources.payload.permission,
     })
   },
   // 配置的元信息
@@ -85,5 +85,5 @@ export const actions = {
       meta[item.key] = item.value
     })
     commit('update', {meta})
-  }
+  },
 }

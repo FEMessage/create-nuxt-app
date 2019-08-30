@@ -6,12 +6,12 @@
 
 <script>
 export default {
-  name: 'login',
+  name: 'Login',
   components: {},
   data() {
     return {}
   },
-  methods: {}
+  methods: {},
 }
 </script>
 <style lang="less"></style>

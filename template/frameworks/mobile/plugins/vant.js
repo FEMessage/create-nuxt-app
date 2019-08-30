@@ -14,7 +14,7 @@ import {
   Popup,
   RadioGroup,
   Radio,
-  Toast
+  Toast,
 } from 'vant'
 
 Vue.use(Button)

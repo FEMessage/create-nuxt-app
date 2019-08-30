@@ -15,11 +15,11 @@ export default {
   props: {
     horizontal: {
       type: Boolean,
-      default: false
+      default: false,
     }, // 是否显示横向滚动条
     vertical: {
       type: Boolean,
-      default: true
+      default: true,
     }, // 是否显示竖向滚动条
     wrapStyle: {},
     wrapClass: {},
@@ -27,8 +27,8 @@ export default {
     viewStyle: {},
     noresize: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
 
   data() {
@@ -36,7 +36,7 @@ export default {
       sizeWidth: '0',
       sizeHeight: '0',
       moveX: 0,
-      moveY: 0
+      moveY: 0,
     }
   },
 
@@ -46,7 +46,7 @@ export default {
     },
     slotsWrap() {
       return this.$refs.slotsWrap
-    }
+    },
   },
 
   render(h) {
@@ -76,7 +76,7 @@ export default {
         class={[
           this.wrapClass,
           'scrollbar__wrap',
-          gutter ? '' : 'scrollbar__wrap--hidden-default'
+          gutter ? '' : 'scrollbar__wrap--hidden-default',
         ]}
       >
         {
@@ -127,7 +127,7 @@ export default {
 
       this.sizeHeight = heightPercentage < 100 ? heightPercentage + '%' : ''
       this.sizeWidth = widthPercentage < 100 ? widthPercentage + '%' : ''
-    }
+    },
   },
 
   mounted() {
@@ -137,5 +137,5 @@ export default {
 
   beforeDestroy() {
     !this.noresize && removeResizeListener(this.$refs.slotsWrap, this.update)
-  }
+  },
 }

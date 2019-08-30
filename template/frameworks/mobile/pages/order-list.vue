@@ -17,14 +17,14 @@ import DataList from '@femessage/data-list'
 export default {
   layout: 'layout-with-footer',
   components: {
-    DataList
+    DataList,
   },
   data() {
     return {
       url:
-        'https://easy-mock.com/mock/5c63e5758d3685565177d822/optimus-mobile/list'
+        'https://easy-mock.com/mock/5c63e5758d3685565177d822/optimus-mobile/list',
     }
-  }
+  },
 }
 </script>
 <style lang="less">

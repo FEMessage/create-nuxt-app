@@ -7,25 +7,26 @@
 const ICON_PREFIX = {
   el: 'el-icon-',
   fa: 'fa fa-',
-  iconfont: 'iconfont icon-'
+  iconfont: 'iconfont icon-',
 }
 
 export default {
   name: 'IconFont',
   props: {
     icon: {
-      type: String
+      type: String,
+      default: '',
     },
     prefix: {
       type: String,
-      default: 'el'
-    }
+      default: 'el',
+    },
   },
   computed: {
     iconClass() {
       return `${ICON_PREFIX[this.prefix]}${this.icon}`
-    }
-  }
+    },
+  },
 }
 </script>
 <style></style>
