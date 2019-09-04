@@ -1,6 +1,7 @@
 require('dotenv').config()
 const {env} = process
 ;['PUBLIC_PATH', 'API_SERVER', 'NO_LOGIN', 'COOKIE_PATH'].forEach(key =>
+  // eslint-disable-next-line no-console
   console.log('%s\t: %s', key, env[key])
 )
 
