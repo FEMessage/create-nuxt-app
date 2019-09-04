@@ -13,7 +13,7 @@ export function price(val, cancelFixed) {
   return parseFloat(val).toLocaleString('zh-Hans-CN', {
     style: 'currency',
     currency: 'CNY',
-    minimumFractionDigits: cancelFixed ? 0 : 2
+    minimumFractionDigits: cancelFixed ? 0 : 2,
   })
 }
 
