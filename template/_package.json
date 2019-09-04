@@ -31,7 +31,7 @@
     "start": "cross-env HOST=0.0.0.0 PORT=3333 MODE=prod nuxt start",
     "stdver": "standard-version -m '[skip ci] chore(release): v%s'",
     "release": "gren release --override",
-    "lint": "eslint . --ext .js,.vue --fix && stylelint src/**/*.{vue,less} --fix"
+    "lint": "eslint 'src/**/*.@(js|vue)' --fix && stylelint src/**/*.{vue,less} --fix"
   },
   "dependencies": {
     <%_ if (template === 'mobile') { _%>
