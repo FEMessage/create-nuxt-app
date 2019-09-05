@@ -21,9 +21,6 @@ describe('测试 utils.getRouterBase 函数', () => {
     expect(getRouterBase('https://serverless.deepexi.top/bbb#/hash')).toBe(
       '/bbb/'
     )
-  })
-
-  test('传入带有多级路由的域名，返回多级路由', () => {
     expect(getRouterBase('https://static.deepexi.top/aaa/bbb')).toBe('/aaa/bbb/')
     expect(
       getRouterBase('https://static.deepexi.top/serverless-console/aaa/bbb')
