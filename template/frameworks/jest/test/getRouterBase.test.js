@@ -1,7 +1,7 @@
 const {getRouterBase} = require('../src/utils')
 
 describe('测试 utils.getRouterBase 函数', () => {
-  test('传入错误的参数，返回空字符串', () => {
+  test('传入非法的参数，返回根路径', () => {
     expect(getRouterBase()).toBe('/')
     expect(getRouterBase(false)).toBe('/')
     expect(getRouterBase(12345)).toBe('/')
@@ -13,14 +13,11 @@ describe('测试 utils.getRouterBase 函数', () => {
 
   test('只传入域名，返回根路径', () => {
     expect(getRouterBase('https://bing.com')).toBe('/')
-    expect(getRouterBase('https://static.deepexi.top')).toBe('/')
-    expect(getRouterBase('https://serverless.deepexi.top')).toBe('/')
     expect(getRouterBase('https://static.deepexi.top#/hash')).toBe('/')
   })
 
   test('传入带有路由的域名，返回路由', () => {
     expect(getRouterBase('https://bing.com/aaa')).toBe('/aaa/')
-    expect(getRouterBase('https://serverless.deepexi.top/bbb')).toBe('/bbb/')
     expect(getRouterBase('https://serverless.deepexi.top/bbb#/hash')).toBe(
       '/bbb/'
     )
@@ -28,9 +25,6 @@ describe('测试 utils.getRouterBase 函数', () => {
 
   test('传入带有多级路由的域名，返回多级路由', () => {
     expect(getRouterBase('https://static.deepexi.top/aaa/bbb')).toBe('/aaa/bbb/')
-    expect(getRouterBase('https://serverless.deepexi.top/aaa/bbb')).toBe(
-      '/aaa/bbb/'
-    )
     expect(
       getRouterBase('https://static.deepexi.top/serverless-console/aaa/bbb')
     ).toBe('/serverless-console/aaa/bbb/')
@@ -40,12 +34,6 @@ describe('测试 utils.getRouterBase 函数', () => {
     expect(
       getRouterBase(
         'https://serverless.deepexi.top/serverless-console/index.html#/app-list'
-      )
-    ).toBe('/serverless-console/')
-
-    expect(
-      getRouterBase(
-        'https://serverless.deepexi.top/serverless-console/index.html#/material/resource'
       )
     ).toBe('/serverless-console/')
 
