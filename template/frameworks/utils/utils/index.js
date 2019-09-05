@@ -1,4 +1,4 @@
-exports.getRouterBase = (href = '') => {
+function getRouterBase(href = '') {
   if (!href || typeof href !== 'string') {
     return '/'
   }
@@ -13,4 +13,8 @@ exports.getRouterBase = (href = '') => {
       .filter(p => !/\./g.test(p))
       .join('/') + '/'
   )
+}
+
+module.exports = {
+  getRouterBase
 }
