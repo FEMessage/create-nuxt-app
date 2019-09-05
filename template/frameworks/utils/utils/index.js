@@ -7,8 +7,13 @@ function getRouterBase(href = '') {
     return '/'
   }
 
+  const { pathname } = new URL(href)
+  if (pathname === '/') {
+    return '/'
+  }
+
   return (
-    new URL(href).pathname
+    pathname
       .split('/')
       .filter(p => !/\./g.test(p))
       .join('/') + '/'
