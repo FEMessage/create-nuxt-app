@@ -1,4 +1,5 @@
 require('dotenv').config()
+const { getRouterBase } = require('./src/utils')
 const {env} = process
 ;['PUBLIC_PATH', 'API_SERVER', 'NO_LOGIN', 'COOKIE_PATH'].forEach(key =>
   // eslint-disable-next-line no-console
@@ -170,5 +171,14 @@ module.exports = {
     // Doc: https://pwa.nuxtjs.org/
     '@nuxtjs/pwa'
   ],
-  axios
+  axios,
+  workbox: {
+    routerBase: getRouterBase(publicPath),
+    runtimeCaching: [
+      {
+        urlPattern: 'https://easy-mock.com/*',
+        handler: 'staleWhileRevalidate'
+      }
+    ]
+  }
 }
