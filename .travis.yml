@@ -17,5 +17,4 @@ deploy:
     skip_cleanup: true
     script: npx semantic-release
 after_script:
-  - GREN_GITHUB_TOKEN=$GITHUB_TOKEN yarn release
   - ./notify.sh
