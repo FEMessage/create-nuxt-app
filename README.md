@@ -34,6 +34,7 @@ Create a Deepexi Nuxt App in seconds.
 - [x] [dotenv](https://github.com/motdotla/dotenv) Loads environment variables from .env for nodejs projects
 - [x] [element-ui](https://element.eleme.io/) A Vue.js 2.0 UI Toolkit for Web
 - [x] [vant](https://youzan.github.io/vant) Lightweight Mobile UI Components built on Vue
+- [x] [PWA](https://pwa.nuxtjs.org) Nuxt Progressive Web Apps solution
 
 [⬆ Back to Top](#table-of-contents)
 
