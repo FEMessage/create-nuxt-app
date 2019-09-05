@@ -18,9 +18,14 @@
 
 import Vue from 'vue'
 
+const skipUrls = ['easy-mock']
+
 export default function({$axios, store, app, redirect}) {
   $axios.onRequest(config => {
     let url = config.url
+
+    if (skipUrls.some(skipUrl => url.indexOf(skipUrl) > -1)) return
+
     // jwt 验证
     if (store.state.token) {
       config.headers.common['Authorization'] = `Bearer ${store.state.token}`

@@ -26,7 +26,8 @@ const common = {
   release: 'release-log',
   styles: 'styles',
   'icon-font': 'icon-font',
-  test: 'jest'
+  test: 'jest',
+  utils: 'utils'
 }
 
 const desktop = {

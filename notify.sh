@@ -5,6 +5,8 @@ then
   exit 1
 fi
 
+GREN_GITHUB_TOKEN=$GITHUB_TOKEN yarn release
+
 url=https://api.github.com/repos/$TRAVIS_REPO_SLUG/releases/latest
 resp_tmp_file=resp.tmp
 
