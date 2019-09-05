@@ -2,13 +2,13 @@ const {getRouterBase} = require('../src/utils')
 
 describe('测试 utils.getRouterBase 函数', () => {
   test('传入错误的参数，返回空字符串', () => {
-    expect(getRouterBase()).toBe('')
-    expect(getRouterBase(false)).toBe('')
-    expect(getRouterBase(12345)).toBe('')
-    expect(getRouterBase('abcde')).toBe('')
-    expect(getRouterBase(null)).toBe('')
-    expect(getRouterBase({})).toBe('')
-    expect(getRouterBase(undefined)).toBe('')
+    expect(getRouterBase()).toBe('/')
+    expect(getRouterBase(false)).toBe('/')
+    expect(getRouterBase(12345)).toBe('/')
+    expect(getRouterBase('abcde')).toBe('/')
+    expect(getRouterBase(null)).toBe('/')
+    expect(getRouterBase({})).toBe('/')
+    expect(getRouterBase(undefined)).toBe('/')
   })
 
   test('只传入域名，返回根路径', () => {
@@ -19,21 +19,21 @@ describe('测试 utils.getRouterBase 函数', () => {
   })
 
   test('传入带有路由的域名，返回路由', () => {
-    expect(getRouterBase('https://bing.com/aaa')).toBe('/aaa')
-    expect(getRouterBase('https://serverless.deepexi.top/bbb')).toBe('/bbb')
+    expect(getRouterBase('https://bing.com/aaa')).toBe('/aaa/')
+    expect(getRouterBase('https://serverless.deepexi.top/bbb')).toBe('/bbb/')
     expect(getRouterBase('https://serverless.deepexi.top/bbb#/hash')).toBe(
-      '/bbb'
+      '/bbb/'
     )
   })
 
   test('传入带有多级路由的域名，返回多级路由', () => {
-    expect(getRouterBase('https://static.deepexi.top/aaa/bbb')).toBe('/aaa/bbb')
+    expect(getRouterBase('https://static.deepexi.top/aaa/bbb')).toBe('/aaa/bbb/')
     expect(getRouterBase('https://serverless.deepexi.top/aaa/bbb')).toBe(
-      '/aaa/bbb'
+      '/aaa/bbb/'
     )
     expect(
       getRouterBase('https://static.deepexi.top/serverless-console/aaa/bbb')
-    ).toBe('/serverless-console/aaa/bbb')
+    ).toBe('/serverless-console/aaa/bbb/')
   })
 
   test('传入带有文件名的域名，只返回路由', () => {
@@ -41,18 +41,18 @@ describe('测试 utils.getRouterBase 函数', () => {
       getRouterBase(
         'https://serverless.deepexi.top/serverless-console/index.html#/app-list'
       )
-    ).toBe('/serverless-console')
+    ).toBe('/serverless-console/')
 
     expect(
       getRouterBase(
         'https://serverless.deepexi.top/serverless-console/index.html#/material/resource'
       )
-    ).toBe('/serverless-console')
+    ).toBe('/serverless-console/')
 
     expect(
       getRouterBase(
         'https://serverless.deepexi.top/serverless-console/aaa/bbb/ccc/index.html#/app-list'
       )
-    ).toBe('/serverless-console/aaa/bbb/ccc')
+    ).toBe('/serverless-console/aaa/bbb/ccc/')
   })
 })
