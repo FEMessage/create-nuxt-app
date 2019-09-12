@@ -1,13 +1,10 @@
 <template>
   <div class="layout-Head">
     <div class="fixed-head">
-      <h1 class="head-logo">
-        <img
-          src="https://deepexi.oss-cn-shenzhen.aliyuncs.com/xpaas-console/logo_SPaaS_white.png"
-          alt="xPaaS"
-          class="layout-logo"
-        />
-      </h1>
+      <div class="head-logo">
+        <logo />
+        <span class="logo-text">{{$store.state.meta.appName}}</span>
+      </div>
       <!-- 头部菜单 -->
       <div class="head-menu">
         <ul class="clearfix">
@@ -48,9 +45,13 @@
 <script>
 import {mapMutations} from 'vuex'
 import cookie from 'js-cookie'
+import Logo from '@/components/logo.vue'
 
 export default {
   name: 'LayoutHead',
+  components: {
+    Logo,
+  },
   props: {
     searchUrl: {
       type: Object,
@@ -145,9 +146,9 @@ export default {
     align-items: center;
     width: 200px;
 
-    .layout-logo {
-      width: 80%;
-      height: auto;
+    .logo-text {
+      font-weight: 500;
+      color: #fff;
     }
   }
 

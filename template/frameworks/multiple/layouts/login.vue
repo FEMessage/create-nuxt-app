@@ -1,14 +1,10 @@
 <template>
   <main class="layout-login">
     <div class="login-form">
-      <h1 class="title">
-        <img
-          class="logo-login"
-          src="https://deepexi.oss-cn-shenzhen.aliyuncs.com/xpaas-console/logo_SPaaS_black.png"
-          alt="logo"
-        />
-        <!--<span>{{$store.state.meta.appName}}</span>-->
-      </h1>
+      <div class="logo">
+        <logo />
+        <span class="logo-text">{{$store.state.meta.appName}}</span>
+      </div>
       <nuxt></nuxt>
     </div>
     <div class="buttom-wrapper font-s text-center ">
@@ -19,10 +15,12 @@
 
 <script>
 import Copyright from '@/components/copyright.vue'
+import Logo from '@/components/logo.vue'
 export default {
   name: 'Login',
   components: {
     Copyright,
+    Logo,
   },
   data() {
     return {}
@@ -48,23 +46,25 @@ export default {
     vertical-align: middle;
   }
 
-  .title {
-    position: relative;
-    height: 34px;
-    line-height: 34px;
-    margin: 0 auto 45px;
-    text-align: center;
-    font-size: 38px;
-    font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    font-weight: 500;
-  }
-
   .login-form {
     width: 450px;
     margin: 0 auto 100px;
     padding: 50px 0 20px;
     background: #fff;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 45px;
+
+      .logo-text {
+        font-size: 2em;
+        font-weight: 500;
+        color: #1F3762;
+      }
+    }
   }
 
   .buttom-wrapper {
