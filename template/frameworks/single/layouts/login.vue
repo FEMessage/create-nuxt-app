@@ -4,7 +4,7 @@
     class="layout-login"
   >
     <div class="login-form">
-      <div class="logo" style="margin-bottom: 45px;">
+      <div class="logo">
         <logo />
         <span class="logo-text">{{ $store.state.meta.appName }}</span>
       </div>
@@ -72,6 +72,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-bottom: 45px;
 
       .logo-text {
         font-size: 2em;
