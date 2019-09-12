@@ -10,16 +10,12 @@
         background-color="#2D303B"
         text-color="#FFFFFF"
       >
-        <div class="logo">
-          <nuxt-link to="/">
-            <img
-              :src="$store.state.meta.logoSidebar"
-              class="logo-img"
-              alt="logo"
-            />
+        <nuxt-link to="/">
+          <div class="logo">
+            <logo class="logo-img" />
             <h1 class="logo-text">{{ $store.state.meta.appName }}</h1>
-          </nuxt-link>
-        </div>
+          </div>
+        </nuxt-link>
         <el-scrollbar wrap-class="scrollbar-wrapper">
           <menu-item :menu-list="menuList"></menu-item>
         </el-scrollbar>
@@ -78,12 +74,14 @@ import {mapState} from 'vuex'
 import MenuItem from '@/components/menu-item.vue'
 import IconFont from '@/components/icon-font.vue'
 import {Scrollbar} from 'element-ui'
+import Logo from '@/components/logo.vue'
 
 export default {
   components: {
     Copyright,
     MenuItem,
     ElScrollbar: Scrollbar,
+    Logo,
   },
   data() {
     return {
@@ -229,9 +227,11 @@ export default {
       position: relative;
       height: 60px;
       line-height: 60px;
-      padding-left: 10px;
+      padding: 0 10px;
       background: #2d303b;
       overflow: hidden;
+      display: flex;
+      align-items: center;
 
       .logo-img {
         /* width: 32px; */
@@ -248,6 +248,7 @@ export default {
         margin: 0 0 0 5px;
         font-weight: 400;
         opacity: 1;
+        white-space: nowrap;
       }
     }
 
