@@ -4,10 +4,7 @@
     class="layout-login"
   >
     <div class="login-form">
-      <div class="logo">
-        <logo />
-        <span class="logo-text">{{ $store.state.meta.appName }}</span>
-      </div>
+      <logo class="login-logo" />
       <nuxt></nuxt>
     </div>
     <div class="buttom-wrapper">
@@ -68,16 +65,12 @@ export default {
     background: #fff;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
 
-    .logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .login-logo {
       margin-bottom: 45px;
 
-      .logo-text {
-        font-size: 2em;
-        font-weight: 500;
-        color: #1F3762;
+      svg {
+        width: 48px;
+        height: 48px;
       }
     }
   }

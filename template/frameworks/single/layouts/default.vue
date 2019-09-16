@@ -11,10 +11,7 @@
         text-color="#FFFFFF"
       >
         <nuxt-link to="/">
-          <div class="logo">
-            <logo class="logo-img" />
-            <h1 class="logo-text">{{ $store.state.meta.appName }}</h1>
-          </div>
+          <logo class="home-logo" />
         </nuxt-link>
         <el-scrollbar wrap-class="scrollbar-wrapper">
           <menu-item :menu-list="menuList"></menu-item>
@@ -223,34 +220,14 @@ export default {
         0s padding-right ease-in-out;
     }
 
-    .logo {
+    .home-logo {
       position: relative;
       height: 60px;
       line-height: 60px;
       padding: 0 10px;
-      background: #2d303b;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .logo-img {
-        /* width: 32px; */
-
-        /* height: 32px; */
-        vertical-align: middle;
-      }
-
-      .logo-text {
-        color: #fff;
-        display: inline-block;
-        vertical-align: middle;
-        font-size: 20px;
-        margin: 0 0 0 5px;
-        font-weight: 400;
-        opacity: 1;
-        white-space: nowrap;
-      }
+      color: #fff;
+      font-size: 20px;
+      font-weight: 400;
     }
 
     .scrollbar-wrapper {
