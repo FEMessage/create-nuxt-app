@@ -1,10 +1,7 @@
 <template>
   <div class="layout-Head">
     <div class="fixed-head">
-      <div class="head-logo">
-        <logo />
-        <span class="logo-text">{{$store.state.meta.appName}}</span>
-      </div>
+      <logo class="head-logo" />
       <!-- 头部菜单 -->
       <div class="head-menu">
         <ul class="clearfix">
@@ -141,15 +138,10 @@ export default {
   }
 
   .head-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 200px;
-
-    .logo-text {
-      font-weight: 500;
-      color: #fff;
-    }
+    color: #fff;
+    font-weight: 500;
+    font-size: 20px;
   }
 
   .head-menu {
