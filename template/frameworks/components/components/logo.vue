@@ -78,9 +78,22 @@
         </g>
       </g>
     </svg>
-    <span class="text">{{ $store.state.meta.appName }}</span>
+    <span class="text">{{ text }}</span>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    text: {
+      type: String,
+      default() {
+        return this.$store.state.meta.appName
+      }
+    }
+  }
+}
+</script>
 
 <style scoped>
 .logo {
