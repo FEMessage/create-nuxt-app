@@ -232,6 +232,7 @@ export default {
       overflow: hidden;
       display: flex;
       align-items: center;
+      justify-content: center;
 
       .logo-img {
         /* width: 32px; */
