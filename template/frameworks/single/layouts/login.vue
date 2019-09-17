@@ -4,15 +4,7 @@
     class="layout-login"
   >
     <div class="login-form">
-      <h1 class="title">
-        <img
-          v-if="$store.state.meta.logoLogin"
-          :src="$store.state.meta.logoLogin"
-          class="logo-login"
-          alt="logo"
-        />
-        <span v-else>{{ $store.state.meta.appName }}</span>
-      </h1>
+      <logo class="login-logo" />
       <nuxt></nuxt>
     </div>
     <div class="buttom-wrapper">
@@ -22,10 +14,12 @@
 </template>
 
 <script>
-import Copyright from '../components/copyright.vue'
+import Logo from '@/components/logo.vue'
+import Copyright from '@/components/copyright.vue'
 export default {
   name: 'Login',
   components: {
+    Logo,
     Copyright,
   },
   data() {
@@ -70,6 +64,15 @@ export default {
     padding: 50px 0 20px;
     background: #fff;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+
+    .login-logo {
+      margin-bottom: 45px;
+
+      svg {
+        width: 48px;
+        height: 48px;
+      }
+    }
   }
 
   .buttom-wrapper {
