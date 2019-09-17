@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import Agreement from '../components/agreement'
+import Agreement from '@/components/agreement'
 import {Checkbox} from 'vant'
 
 export default {

@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import Logo from '../components/logo.vue'
-import Copyright from '../components/copyright.vue'
+import Logo from '@/components/logo.vue'
+import Copyright from '@/components/copyright.vue'
 export default {
   name: 'Login',
   components: {
