@@ -17,6 +17,7 @@ cache:
   - directories:
     - release/nuxt-element-dashboard/node_modules
     - release/nuxt-multiple-spa/node_modules
+    - release/nuxt-vant/node_modules
 deploy:
   - provider: pages
     skip_cleanup: true
