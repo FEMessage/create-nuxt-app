@@ -4,7 +4,7 @@
     <div>
       <sidebar />
       <div :class="{spreadContainer: setting.collapse}" class="main-container">
-        <scrollbar wrap-class="main-scrollbar" :noresize="false">
+        <scrollbar :noresize="false" wrap-class="main-scrollbar">
           <el-container direction="vertical">
             <el-main class="nuxt-main">
               <nuxt class="nuxt-container"></nuxt>
@@ -31,14 +31,14 @@ export default {
     Copyright,
     LayoutHead,
     Sidebar,
-    Scrollbar
+    Scrollbar,
   },
   computed: {
     ...mapState(['permission', 'setting']),
     appName() {
       return this.permission.spaName
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="less">

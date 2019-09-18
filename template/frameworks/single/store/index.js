@@ -13,7 +13,7 @@ export const state = () => ({
 
   user: {},
   menuList: [],
-  permission: {}
+  permission: {},
 })
 
 //  mutation 必须同步执行
@@ -23,7 +23,7 @@ export const mutations = {
     cookieKeys.forEach(key => {
       state[key] = payload[key]
       cookie.set(key, payload[key], {
-        path: cookiePath
+        path: cookiePath,
       })
     })
   },
@@ -32,18 +32,17 @@ export const mutations = {
     cookieKeys.forEach(key => {
       state[key] = ''
       cookie.remove(key, {
-        path: cookiePath
+        path: cookiePath,
       })
     })
-    // 清空state，跳转到login页的逻辑交给路由守卫
-    location.reload()
+    this.$router.replace('/login')
   },
 
   update(state, payload) {
     Object.keys(payload).forEach(k => {
       state[k] = payload[k]
     })
-  }
+  },
 }
 
 // Action 提交的是 mutation，而不是直接变更状态
@@ -55,7 +54,7 @@ export const actions = {
 
     let resp = await this.$axios.$post(
       `/deepexi-tenant/api/v1/tenants/login`,
-      payload
+      payload,
     )
 
     const userDetail = {...resp.payload}
@@ -67,18 +66,18 @@ export const actions = {
 
   async fetchUserAndMenuList({commit}) {
     let user = await this.$axios.$get(
-      `/deepexi-permission/api/v1/users/currentUser`
+      `/deepexi-permission/api/v1/users/currentUser`,
     )
 
     commit('update', {user: user.payload || {}})
 
     let menuResources = await this.$axios.$get(
-      `/deepexi-permission/api/v2/apps/service/userResource`
+      `/deepexi-permission/api/v2/apps/service/userResource`,
     )
     if (menuResources && menuResources.payload) {
       commit('update', {
-        menuList: menuResources.payload
+        menuList: menuResources.payload,
       })
     }
-  }
+  },
 }

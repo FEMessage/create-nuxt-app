@@ -29,7 +29,7 @@ export default async function(context) {
     // 已登录
     store.commit('update', {
       token: getCookie(req.headers.cookie, 'token'),
-      userId
+      userId,
     })
     let p
     try {
@@ -39,7 +39,7 @@ export default async function(context) {
       // TODO
       // 1. clear cookie
       // 2. show message
-      console.log('auth error: ', e)
+      console.error('auth error: ', e)
       redirect('/login')
     }
   }

@@ -7,7 +7,7 @@ export default {
   props: {
     vertical: Boolean,
     size: String,
-    move: Number
+    move: Number,
   },
 
   computed: {
@@ -17,7 +17,7 @@ export default {
 
     wrap() {
       return this.$parent.wrap
-    }
+    },
   },
 
   render(h) {
@@ -49,7 +49,7 @@ export default {
     clickTrackHandler(e) {
       const offset = Math.abs(
         e.target.getBoundingClientRect()[this.bar.direction] -
-          e[this.bar.client]
+          e[this.bar.client],
       )
       const thumbHalf = this.$refs.thumb[this.bar.offset] / 2
       const thumbPositionPercentage =
@@ -91,10 +91,10 @@ export default {
       this[this.bar.axis] = 0
       off(document, 'mousemove', this.mouseMoveDocumentHandler)
       document.onselectstart = null
-    }
+    },
   },
 
   destroyed() {
     off(document, 'mouseup', this.mouseUpDocumentHandler)
-  }
+  },
 }

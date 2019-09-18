@@ -24,12 +24,12 @@ export const state = () => ({
     thirdId: '',
     menuList: [],
     menuReady: false,
-    spaName: meta.spaName
+    spaName: meta.spaName,
   },
 
   setting: {
-    collapse: false // 是否收缩侧边栏
-  }
+    collapse: false, // 是否收缩侧边栏
+  },
 })
 
 export const mutations = {
@@ -40,7 +40,7 @@ export const mutations = {
     cookieKeys.forEach(key => {
       state[key] = payload[key]
       cookie.set(key, payload[key], {
-        path: cookiePath
+        path: cookiePath,
       })
     })
   },
@@ -48,7 +48,7 @@ export const mutations = {
     cookieKeys.forEach(key => {
       state[key] = ''
       cookie.remove(key, {
-        path: cookiePath
+        path: cookiePath,
       })
     })
     // 清空state，跳转到login页的逻辑交给路由守卫
@@ -62,7 +62,7 @@ export const mutations = {
         state[k] = payload[k]
       }
     })
-  }
+  },
 }
 
 export const actions = {
@@ -86,12 +86,12 @@ export const actions = {
   // 获取头部列表的thirdId
   async fetchThirdId({commit, dispatch, state}, {tenantId}) {
     let {payload} = await this.$axios.$get(
-      `${adminUser}${tenantId ? `?tenantId=${tenantId}` : ''}`
+      `${adminUser}${tenantId ? `?tenantId=${tenantId}` : ''}`,
     )
     const {thirdId} = payload || {}
 
     commit('update', {
-      permission: {thirdId}
+      permission: {thirdId},
     })
 
     try {
@@ -113,7 +113,7 @@ export const actions = {
     let headMenuListRes = await this.$axios.$get(getXpaasTag(thirdId))
     const payload = headMenuListRes.payload || []
     commit('update', {
-      permission: {headMenuList: payload}
+      permission: {headMenuList: payload},
     })
     return payload
   },
@@ -123,8 +123,8 @@ export const actions = {
     const payload = userMenuTreeRes.payload || []
     // 获取路由对应的页面名
     commit('update', {
-      permission: {menuList: payload}
+      permission: {menuList: payload},
     })
     commit('userMenuTreeReady', true)
-  }
+  },
 }

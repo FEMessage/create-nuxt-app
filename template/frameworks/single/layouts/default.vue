@@ -10,18 +10,11 @@
         background-color="#2D303B"
         text-color="#FFFFFF"
       >
-        <div class="logo">
-          <nuxt-link to="/">
-            <img
-              class="logo-img"
-              :src="$store.state.meta.logoSidebar"
-              alt="logo"
-            />
-            <h1 class="logo-text">{{ $store.state.meta.appName }}</h1>
-          </nuxt-link>
-        </div>
+        <nuxt-link to="/">
+          <logo class="home-logo" />
+        </nuxt-link>
         <el-scrollbar wrap-class="scrollbar-wrapper">
-          <menu-item :menuList="menuList"></menu-item>
+          <menu-item :menu-list="menuList"></menu-item>
         </el-scrollbar>
 
         <div class="fix-btn-wrap">
@@ -29,7 +22,7 @@
             <img
               class="btn-icon"
               src="https://deepexi.oss-cn-shenzhen.aliyuncs.com/deepexi-services/%E5%B7%A6%E4%BE%A7%E8%8F%9C%E5%8D%95/expand.svg"
-              alt=""
+              alt="toggle-sidebar-btn"
             />
           </div>
         </div>
@@ -39,13 +32,15 @@
       <div class="header-wrap">
         <el-row class="head-container" type="flex" justify="end" align="middle">
           <div class="head-right">
-            <div class="head-active">
-              <img :src="userImg" class="userName-Img" alt="userName-Img" />
-            </div>
-            <!-- 用户名称 -->
-            <div class="userName-text">{{ $store.state.user.nickname }}</div>
             <el-dropdown placement="bottom-end" @command="exitBtn">
               <span class="el-dropdown-link">
+                <div class="head-active">
+                  <img :src="userImg" class="username-img" alt="username-img" />
+                </div>
+                <!-- 用户名称 -->
+                <div class="username-text">
+                  {{ $store.state.user.nickname }}
+                </div>
                 <i class="el-icon-arrow-down el-icon--right set-Iconcolor"></i>
               </span>
               <el-dropdown-menu slot="dropdown" class="user-drop-menu">
@@ -76,12 +71,14 @@ import {mapState} from 'vuex'
 import MenuItem from '@/components/menu-item.vue'
 import IconFont from '@/components/icon-font.vue'
 import {Scrollbar} from 'element-ui'
+import Logo from '@/components/logo.vue'
 
 export default {
   components: {
     Copyright,
     MenuItem,
-    ElScrollbar: Scrollbar
+    ElScrollbar: Scrollbar,
+    Logo,
   },
   data() {
     return {
@@ -89,9 +86,9 @@ export default {
       dropdownList: [
         {
           title: '退出',
-          command: 'exit'
-        }
-      ]
+          command: 'exit',
+        },
+      ],
     }
   },
   computed: {
@@ -101,15 +98,15 @@ export default {
         this.$store.state.user.avatar ||
         'https://deepexi.oss-cn-shenzhen.aliyuncs.com/xpaas-console/user-portrait.png'
       )
-    }
+    },
   },
   methods: {
     exitBtn(key, keyPath) {
       if (key == 'exit') {
         this.$store.commit('logout')
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -137,26 +134,26 @@ export default {
 
     .head-right {
       margin-right: 10px;
-      display: flex;
-      align-items: center;
 
-      div {
-        display: inline-block;
-      }
+      .el-dropdown-link {
+        display: flex;
+        align-items: center;
 
-      .head-active {
-        .userName-Img {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          margin: 0 15px;
+        .head-active {
+          .username-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 0 15px;
+          }
         }
-      }
 
-      .userName-text {
-        text-align: center;
-        overflow: hidden;
-        margin-right: 10px;
+        .username-text {
+          text-align: center;
+          overflow: hidden;
+          margin-right: 10px;
+          color: rgba(0, 0, 0, 0.65);
+        }
       }
 
       .head-search {
@@ -223,30 +220,14 @@ export default {
         0s padding-right ease-in-out;
     }
 
-    .logo {
+    .home-logo {
       position: relative;
       height: 60px;
       line-height: 60px;
-      padding-left: 10px;
-      background: #2d303b;
-      overflow: hidden;
-
-      .logo-img {
-        /* width: 32px; */
-
-        /* height: 32px; */
-        vertical-align: middle;
-      }
-
-      .logo-text {
-        color: #fff;
-        display: inline-block;
-        vertical-align: middle;
-        font-size: 20px;
-        margin: 0 0 0 5px;
-        font-weight: 400;
-        opacity: 1;
-      }
+      padding: 0 10px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 400;
     }
 
     .scrollbar-wrapper {

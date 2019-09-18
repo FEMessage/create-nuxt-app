@@ -1,35 +1,29 @@
 <template>
   <div class="layout-Head">
     <div class="fixed-head">
-      <h1 class="head-logo">
-        <img
-          src="https://deepexi.oss-cn-shenzhen.aliyuncs.com/xpaas-console/logo_SPaaS_white.png"
-          alt="xPaaS"
-          class="layout-logo"
-        />
-      </h1>
+      <logo class="head-logo" />
       <!-- 头部菜单 -->
       <div class="head-menu">
         <ul class="clearfix">
           <li
             v-for="(item, index) in headMenu"
             :class="{active: url === item.url}"
-            @click="handleMenu(item)"
             :key="index"
+            @click="handleMenu(item)"
           >
             <span class="button-container">{{ item.name }}</span>
           </li>
         </ul>
       </div>
       <div class="head-right">
-        <div class="head-active">
-          <img :src="userImg" class="userName-Img" alt="userName-Img" />
-        </div>
-        <!-- 用户名称 -->
-        <div class="userName-text">{{ userName }}</div>
         <el-dropdown placement="bottom-end" @command="exitBtn">
           <span class="el-dropdown-link">
-            <i class="el-icon-arrow-down el-icon--right set-Iconcolor"></i>
+            <div class="head-active">
+              <img :src="userImg" class="username-img" alt="username-img" />
+            </div>
+            <!-- 用户名称 -->
+            <div class="username-text">{{ userName }}</div>
+            <i class="el-icon-arrow-down el-icon--right set-iconcolor"></i>
           </span>
           <el-dropdown-menu slot="dropdown" class="user-drop-menu">
             <el-dropdown-item
@@ -48,9 +42,23 @@
 <script>
 import {mapMutations} from 'vuex'
 import cookie from 'js-cookie'
+import Logo from '@/components/logo.vue'
 
 export default {
   name: 'LayoutHead',
+  components: {
+    Logo,
+  },
+  props: {
+    searchUrl: {
+      type: Object,
+      default() {
+        return {
+          url: '',
+        }
+      },
+    },
+  },
   data() {
     let currentHref = this.getCurrentPath()
     return {
@@ -59,32 +67,22 @@ export default {
       dropdownList: [
         {
           title: '退出',
-          command: 'exit'
-        }
+          command: 'exit',
+        },
       ],
       searchType: 'default',
       headMenu: [
         {
           name: '员工中心',
           type: 'console',
-          url: '/'
+          url: '/',
         },
         {
           name: '控制台',
           type: 'resources',
-          url: '/spaas-console/index.html'
-        }
-      ]
-    }
-  },
-  props: {
-    searchUrl: {
-      type: Object,
-      default() {
-        return {
-          url: ''
-        }
-      }
+          url: '/spaas-console/index.html',
+        },
+      ],
     }
   },
   computed: {
@@ -97,8 +95,9 @@ export default {
         'https://deepexi.oss-cn-shenzhen.aliyuncs.com/xpaas-console/user-portrait.png'
       )
     },
-    ...mapMutations(['logout'])
+    ...mapMutations(['logout']),
   },
+  mounted() {},
   methods: {
     exitBtn(key, keyPath) {
       key == 'exit' ? this.$store.commit('logout') : ''
@@ -116,9 +115,8 @@ export default {
       const path = currentPath.split(currentOrigin)[1] || ''
       const pathStr = path.replace(/(^\/*)/g, '')
       return `/${pathStr}`
-    }
+    },
   },
-  mounted() {}
 }
 </script>
 
@@ -140,15 +138,10 @@ export default {
   }
 
   .head-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 200px;
-
-    .layout-logo {
-      width: 80%;
-      height: auto;
-    }
+    color: #fff;
+    font-weight: 500;
+    font-size: 20px;
   }
 
   .head-menu {
@@ -206,28 +199,30 @@ export default {
     display: flex;
     align-items: center;
 
-    div {
-      display: inline-block;
-    }
-
-    .set-Iconcolor {
+    .set-iconcolor {
       color: @headMenu;
     }
 
-    .head-active {
-      .userName-Img {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
+    .el-dropdown-link {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .head-active {
+        .username-img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+      }
+
+      .username-text {
+        text-align: center;
+        overflow: hidden;
+        color: #fff;
         margin-right: 10px;
       }
-    }
-
-    .userName-text {
-      text-align: center;
-      overflow: hidden;
-      color: #fff;
-      margin-right: 10px;
     }
 
     .head-search {

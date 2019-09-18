@@ -1,42 +1,53 @@
 require('dotenv').config()
+const {getRouterBase} = require('./src/utils')
+const {env} = process
 ;['PUBLIC_PATH', 'API_SERVER', 'NO_LOGIN', 'COOKIE_PATH'].forEach(key =>
-  console.log('%s\t: %s', key, process.env[key])
+  // eslint-disable-next-line no-console
+  console.log('%s\t: %s', key, env[key])
 )
 
-const env = process.env
 const isProd = env.MODE == 'prod'
+<%_ if (template !== 'mobile') { _%>
 const mockServer =
   'https://easy-mock.com/mock/5c1b3895fe5907404e654045/femessage-mock'
+<%_ } _%>
 
 // 不能以斜杠结尾
-let apiServer = process.env.API_SERVER
+let apiServer = env.API_SERVER
 // 必须以斜杠结尾
-let publicPath = process.env.PUBLIC_PATH
+let publicPath = env.PUBLIC_PATH<%- `${template === 'mobile' ? " || 'http://cdn.deepexi.com/'" : ''}` %>
 
 const config = {
   aliIconFont: '',
   env: {
-    <% if (template === 'single') { %>
+    <%_ if (template === 'single') { _%>
     mock: {
       '/deepexi-tenant': mockServer,
       '/deepexi-permission': mockServer
     },
-    dev: {
+    dev: apiServer ? {
       '/deepexi-tenant': apiServer,
       '/deepexi-permission': apiServer
-    }
-    <% } else if (template === 'multiple') { %>
+    } : {}
+    <%_ } else if (template === 'multiple') { _%>
     mock: {
       '/deepexi-dashboard': mockServer,
       '/xpaas-enterprise-contact': mockServer,
       '/xpaas-console-api': mockServer
     },
-    dev: {
+    dev: apiServer ? {
       '/deepexi-dashboard': apiServer,
       '/xpaas-enterprise-contact': apiServer,
       '/xpaas-console-api': apiServer
+    } : {}
+    <%_ } else if (template === 'mobile') { _%>
+    mock: {
+      '/security': 'http://yapi.demo.qunar.com/mock/9638'
+    },
+    dev: {
+      '/security': 'http://your.dev.server'
     }
-    <% } %>
+    <%_ } _%>
   }
 }
 
@@ -56,8 +67,8 @@ module.exports = {
   srcDir: 'src/',
   mode: 'spa',
   env: {
-    NO_LOGIN: process.env.NO_LOGIN,
-    COOKIE_PATH: process.env.COOKIE_PATH || '/'
+    NO_LOGIN: env.NO_LOGIN,
+    COOKIE_PATH: env.COOKIE_PATH || '/'
   },
   proxy: config.env[env.MODE],
   router: {
@@ -69,30 +80,27 @@ module.exports = {
    */
   build: {
     publicPath,
-    extractCSS: true,
+    extractCSS: isProd,
     babel: {
       plugins: [
         [
+          <%_ if (template === 'mobile') { _%>
+          'import',
+          {
+            libraryName: 'vant',
+            libraryDirectory: 'es',
+            style: true
+          },
+          'vant'
+          <%_ } else { _%>
           'component',
           {
             libraryName: 'element-ui',
             styleLibraryName: '~node_modules/@femessage/theme-deepexi/lib'
           }
+          <%_ } _%>
         ]
       ]
-    },
-    /*
-     ** Run ESLint on save
-     */
-    extend(config, {isDev}) {
-      if (isDev && process.client) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
     }
   },
   /*
@@ -144,12 +152,14 @@ module.exports = {
     }
   ],
   plugins: [
-    {
-      src: '~/plugins/axios'
-    },
-    {
-      src: '~/plugins/element'
-    }
+    {src: '~plugins/axios'},
+    {src: '~plugins/filters'},
+    <%_ if (template === 'mobile') { _%>
+    {src: '~plugins/vant'},
+    <%_ } else { _%>
+    {src: '~plugins/element'},
+    {src: '~plugins/icon-font'}
+    <%_ } _%>
   ],
   modules: [
     // Doc: https://github.com/nuxt-community/style-resources-module
@@ -157,9 +167,18 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    ['@nuxtjs/dotenv', {path: './'}]
+    ['@nuxtjs/dotenv', {path: './'}],
+    // Doc: https://pwa.nuxtjs.org/
+    '@nuxtjs/pwa'
   ],
-  axios
+  axios,
+  workbox: {
+    routerBase: getRouterBase(publicPath),
+    runtimeCaching: [
+      {
+        urlPattern: 'https://easy-mock.com/*',
+        handler: 'staleWhileRevalidate'
+      }
+    ]
+  }
 }
-
-
