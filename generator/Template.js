@@ -18,7 +18,6 @@ class Template {
     this.generator = generator || path.resolve(__dirname, '../generator')
     this.outDir = outDir && path.resolve(`${outDir}`)
     this.npmClient = npmClient || 'yarn'
-    this.logLevel = logLevel
   }
 
   generate(saoOptions = {}, cmdOptions = {}) {

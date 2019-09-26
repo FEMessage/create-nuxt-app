@@ -101,7 +101,12 @@ module.exports = {
           <%_ } _%>
         ]
       ]
-    }
+    },
+    extend(config, {isDev}) {
+      if (isDev) {
+        config.devtool = '#source-map'
+      }
+    },
   },
   /*
    ** Headers of the page
