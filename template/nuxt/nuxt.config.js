@@ -69,14 +69,6 @@ module.exports = {
   env: {
     NO_LOGIN: env.NO_LOGIN,
     COOKIE_PATH: env.COOKIE_PATH || '/',
-    /**
-     * upload-to-ali所需环境变量
-     * 建议使用.env文件来管理环境变量，这样也不用手动在这里声明注入了
-     */
-    OSS_KEY: env.OSS_KEY,
-    OSS_SECRET: env.OSS_SECRET,
-    OSS_BUCKET: env.OSS_BUCKET,
-    OSS_REGION: env.OSS_REGION,
   },
   proxy: config.env[env.MODE],
   router: {
