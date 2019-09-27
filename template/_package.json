@@ -51,7 +51,8 @@
     "less": "3.9.0",
     "less-loader": "4.1.0",
     "@nuxtjs/style-resources": "^0.1.2",
-    "nuxt": "^2.7.1"
+    "nuxt": "^2.7.1",
+    "@femessage/upload-to-ali": "^1.8.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.0.0",

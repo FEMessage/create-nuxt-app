@@ -25,7 +25,8 @@ const common = {
   release: 'release-log',
   styles: 'styles',
   'icon-font': 'icon-font',
-  test: 'jest'
+  test: 'jest',
+  upload: 'upload-to-ali',
 }
 
 const desktop = {

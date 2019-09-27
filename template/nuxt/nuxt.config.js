@@ -99,12 +99,24 @@ module.exports = {
           <%_ } _%>
         ]
       ]
+    },
+    extend(config) {
+      /**
+       * upload-to-ali组件依赖ali-oss脚本，体积较大。
+       * 这里将该依赖放在script处用引入，可利用cdn加速，并减少项目最终打包体积
+       */
+      config.externals = {
+        'ali-oss': 'OSS'
+      }
     }
   },
   /*
    ** Headers of the page
    */
   head: {
+    script: [
+      {src: 'https://cdn.jsdelivr.net/npm/ali-oss@6.1.1/dist/aliyun-oss-sdk.min.js'}
+    ],
     title: '',
     meta: [
       {charset: 'utf-8'},
@@ -151,6 +163,7 @@ module.exports = {
   ],
   plugins: [
     {src: '~plugins/axios'},
+    {src: '~plugins/upload-to-ali'},
     <%_ if (template === 'mobile') { _%>
     {src: '~/plugins/vant'},
     {src: '~/plugins/filter'}
