@@ -109,6 +109,7 @@ module.exports = {
       /**
        * upload-to-ali组件依赖ali-oss脚本，体积较大。
        * 这里将该依赖放在script处用引入，可利用cdn加速，并减少项目最终打包体积
+       * FYI: 如果不需要upload-to-ali组件，记得在移除组件后也要移除在script引用的ali-oss脚本
        */
       config.externals = {
         'ali-oss': 'OSS'
