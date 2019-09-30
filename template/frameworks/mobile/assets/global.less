@@ -1,7 +1,6 @@
 body {
   font-size: 28px;
-  padding-bottom: constant(safe-area-inset-bottom);
-  padding-bottom: env(safe-area-inset-bottom);
+  .compatible-fullscrren();
 }
 
 .text-center {
@@ -47,12 +46,14 @@ body {
 *  .van-tabbar-fixed,
 *  .van-popup--bottom
 **/
-.compatible-fullscrren,
+.compatible-fullscrren {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
 .van-sku-container,
 .van-goods-action,
 .van-tabbar--fixed,
 .van-popup--bottom {
-  padding-bottom: constant(safe-area-inset-bottom);
-  padding-bottom: env(safe-area-inset-bottom);
+  .compatible-fullscrren();
 }
 
