@@ -1,5 +1,5 @@
 <template>
-  <div class="login compatible-fullscrren"></div>
+  <div class="login"></div>
 </template>
 
 <script>

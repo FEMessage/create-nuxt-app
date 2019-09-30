@@ -1,5 +1,5 @@
 <template>
-  <div class="order-list compatible-fullscrren">
+  <div class="order-list">
     <data-list ref="dataList" :url="url">
       <ul slot-scope="props">
         <li v-for="(item, index) in props.list" :key="index" class="order">

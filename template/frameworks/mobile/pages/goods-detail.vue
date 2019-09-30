@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-detail compatible-fullscrren">
+  <div class="goods-detail">
     <van-swipe :autoplay="3000" class="swipe">
       <van-swipe-item v-for="thumb in goods.thumb" :key="thumb">
         <img :src="thumb" />
