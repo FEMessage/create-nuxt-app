@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="index compatible-fullscrren">
     <van-swipe :autoplay="3000" indicator-color="white">
       <van-swipe-item v-for="(image, index) in images" :key="index">
         <img :src="image" class="banner" />

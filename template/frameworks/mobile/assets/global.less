@@ -34,3 +34,24 @@ body {
   position: relative;
   height: 120px;
 }
+
+/**
+* fixed定位在底部的tab-bar界面，内容
+* 区域需加上compatible-fullscrren
+* 兼容处理，以免tab-bar遮挡内容区域
+
+* vant组件兼容全面屏：
+*  .van-sku-container,
+*  .van-goods-action,
+*  .van-tabbar-fixed,
+*  .van-popup--bottom
+**/
+.compatible-fullscrren,
+.van-sku-container,
+.van-goods-action,
+.van-tabbar--fixed,
+.van-popup--bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
