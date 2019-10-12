@@ -126,7 +126,11 @@ module.exports = {
     title: '',
     meta: [
       {charset: 'utf-8'},
+      <%_ if (template === 'mobile') { _%>
+      {name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover'},
+      <%_ } else { _%>
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      <%_ } _%>
       {'http-equiv': 'x-ua-compatible', content: 'IE=edge, chrome=1'},
       {
         hid: 'description',
