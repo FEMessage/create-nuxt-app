@@ -1,5 +1,6 @@
 body {
   font-size: 28px;
+  .safe-area-inset-bottom();
 }
 
 .text-center {
@@ -33,4 +34,17 @@ body {
 .fixed-box { // fixed-btn 用relative的父元素站位
   position: relative;
   height: 120px;
+}
+
+// 安全区适配 (https://developer.mozilla.org/en-US/docs/Web/CSS/@viewport/viewport-fit)
+.safe-area-inset-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+// vant 组件安全区全局适配
+.van-tabbar--fixed,
+.van-goods-action,
+.van-submit-bar,
+.van-popup--bottom {
+  .safe-area-inset-bottom();
 }
