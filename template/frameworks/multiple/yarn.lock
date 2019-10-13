@@ -950,10 +950,10 @@
   dependencies:
     lodash.get "^4.4.2"
 
-"@femessage/el-form-renderer@^1.6.0":
-  version "1.11.1"
-  resolved "https://registry.npm.taobao.org/@femessage/el-form-renderer/download/@femessage/el-form-renderer-1.11.1.tgz#899bc46e469bd8187a54a1626c7f92dfeb95c37c"
-  integrity sha1-iZvEbkab2Bh6VKFibH+S3+uVw3w=
+"@femessage/el-form-renderer@^1.11.5":
+  version "1.11.5"
+  resolved "https://registry.npm.taobao.org/@femessage/el-form-renderer/download/@femessage/el-form-renderer-1.11.5.tgz#d7d54684dd1a3e9a2afbb1056a6589d9604d0ae1"
+  integrity sha1-19VGhN0aPpoq+7EFamWJ2WBNCuE=
   dependencies:
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
