@@ -39,7 +39,7 @@
     "vant": "^2.1.0",
     <%_ } else { _%>
     "element-ui": "2.4.11",
-    "@femessage/el-form-renderer": "^1.6.0",
+    "@femessage/el-form-renderer": "^1.11.5",
     "@femessage/theme-deepexi": "^2.4.11",
     "@femessage/el-data-table": "^1.6.2",
     <%_ } _%>
