@@ -1,6 +1,7 @@
 /**
  * 框架的模板配置
  * 对象的 value 对应 template/frameworks 里面的文件夹名
+ * 对象的 key 可用来在不同模板间覆盖配置，比如不同模板可能需要不同的 ci 模块
  * folder 属性必须唯一
  * @required 必填项
  * @property {string} folder   生成框架的目录名，最好使用仓库名，因为在ci中也会使用
