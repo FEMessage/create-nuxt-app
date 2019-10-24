@@ -35,9 +35,6 @@ module.exports = {
   templateData() {
     return this.sao.opts.config
   },
-  /**
-   * 注意，outDir指向目标目录的src文件夹，具体看GeneratorContext.js
-   */
   actions() {
     const {
       sao: {opts},
