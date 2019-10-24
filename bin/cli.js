@@ -13,6 +13,7 @@ cli.option('-t, --template <template>', 'create a preset template')
 cli.option('-o, --output <output>', 'the output path of the generator')
 
 function run(config, outDir) {
+  // 构造参数可以在saofile.js中通过this.sao.opts获取
   sao({
     npmClient: 'yarn',
     generator: path.resolve(__dirname, '../generator'),

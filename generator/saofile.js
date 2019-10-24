@@ -114,7 +114,30 @@ module.exports = {
       },
     }
 
-    return [...setUpFramework, ...addModules, restoreConfigsName, moveDirsToSrc]
+    /**
+     * 移除yarn.lock中对 @femessage 组件的锁定
+     * 这样用户执行yarn时总是下载最新版本的 @femessage 组件
+     */
+    const removeFemessageInLockFile = {
+      type: 'modify',
+      files: 'yarn.lock',
+      handler(data) {
+        const sep = '\n\n'
+        const reg = /^"@femessage\//
+        return data
+          .split(sep)
+          .filter(str => !reg.test(str))
+          .join(sep)
+      },
+    }
+
+    return [
+      ...setUpFramework,
+      ...addModules,
+      restoreConfigsName,
+      moveDirsToSrc,
+      removeFemessageInLockFile,
+    ]
   },
   completed() {
     const cd = () => {
