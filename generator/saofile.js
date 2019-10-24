@@ -3,8 +3,6 @@ const glob = require('glob')
 const validate = require('validate-npm-package-name')
 const configs = require('../template.config')
 
-const getTemplateDir = (dir = '') => path.resolve(__dirname, '../template', dir)
-
 module.exports = {
   prompts() {
     if (this.sao.opts.mock) return []
@@ -74,46 +72,52 @@ module.exports = {
     }
     opts.outDir = path.resolve(opts.outDir, opts.config.folder)
 
-    // add the basic folder
-    const actions = [
+    const resolveDir = dir => path.resolve(__dirname, '../template', dir)
+
+    const setUpFramework = [
       {
         type: 'add',
         files: '**',
-        templateDir: getTemplateDir('nuxt'),
+        templateDir: resolveDir('framework'),
       },
-      ...Object.values(opts.config)
-        .filter(v => !['folder'].includes(v))
-        .map(v => ({
-          type: 'add',
-          files: '**',
-          templateDir: getTemplateDir(`frameworks/${v}`),
-        })),
-    ]
-    actions.push(
       {
         type: 'add',
-        files: '*',
-        templateDir: getTemplateDir(),
+        files: '**',
+        templateDir: resolveDir(`framework-${opts.config.template}`),
       },
-      {
-        type: 'move',
-        patterns: {
-          '_.eslintrc.js': '.eslintrc.js',
-          '_.gitignore': '.gitignore',
-          '_package.json': 'package.json',
-          ...actions
-            .map(({templateDir}) =>
-              glob.sync('!(test)/', {
-                cwd: templateDir,
-              }),
-            )
-            .reduce((dirs1, dirs2) => [...dirs1, ...dirs2])
-            .reduce((res, dir) => ({...res, [dir]: `src/${dir}`}), {}),
-        },
+    ]
+    const addModules = Object.keys(opts.config)
+      .filter(k => !['folder', 'template'].includes(k))
+      .map(k => ({
+        type: 'add',
+        files: '**',
+        templateDir: resolveDir(`modules/${opts.config[k]}`),
+      }))
+    // 这些配置文件在模板中是加了'_'前缀的（防止影响到本项目），移到生成的项目后要去掉前缀
+    const restoreConfigsName = {
+      type: 'move',
+      patterns: {
+        '_.eslintrc.js': '.eslintrc.js',
+        '_.gitignore': '.gitignore',
+        '_package.json': 'package.json',
       },
-    )
+    }
+    // 生成的nuxt项目的srcDir配置=src。这里我们把除test以外的文件夹移动到src目录下
+    const moveDirsToSrc = {
+      type: 'move',
+      patterns: {
+        ...[...setUpFramework, ...addModules]
+          .map(({templateDir}) =>
+            glob.sync('!(test)/', {
+              cwd: templateDir,
+            }),
+          )
+          .reduce((dirs1, dirs2) => [...dirs1, ...dirs2])
+          .reduce((res, dir) => ({...res, [dir]: `src/${dir}`}), {}),
+      },
+    }
 
-    return actions
+    return [...setUpFramework, ...addModules, restoreConfigsName, moveDirsToSrc]
   },
   completed() {
     const cd = () => {

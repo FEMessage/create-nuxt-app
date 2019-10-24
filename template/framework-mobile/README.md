@@ -1,29 +1,33 @@
-# nuxt2 + element dashboard
+# nuxt2 + vant
+
 [![Build Status](https://travis-ci.com/levy9527/nuxt-element-dashboard.svg?branch=master)](https://travis-ci.com/levy9527/nuxt-element-dashboard)[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/levy9527/nuxt-element-dashboard/pulls)[![Automated Release Notes by gren](https://img.shields.io/badge/%F0%9F%A4%96-release%20notes-00B2EE.svg)](https://github-tools.github.io/github-release-notes/)
 
 ## Table of Contents
 
-- **[Feature](#feature)**
-- **[快速开始](#快速开始)**
-- **[工程结构](#工程结构)**
-- **[开发](#开发)**
-  - **[新建页面](#新建页面)**
-  - **[调用接口](#调用接口)**
-  - **[CRUD](#CRUD)**
-  - **[设置代理](#设置代理)**
-- **[环境变量](#环境变量)**
-- **[构建](#构建)**
-- **[License](#license)**
+- [Feature](#feature)
+- [快速开始](#快速开始)
+- [工程结构](#工程结构)
+- [开发](#开发)
+  - [新建页面](#新建页面)
+  - [调用接口](#调用接口)
+  - [CRUD](#crud)
+  - [设置代理](#设置代理)
+  - [样式自适应宽度](#样式自适应宽度)
+- [环境变量](#环境变量)
+- [构建](#构建)
+- [License](#license)
 
 ## Feature
 
 在[Nuxt.js](https://github.com/nuxt/nuxt.js)的基础上，集成以下技术栈：
 
-- UI库：[element-ui](http://element.eleme.io/#/)
-- ajax库： [axios](https://github.com/axios/axios)
-- css预处理器：[less](http://lesscss.org/)
+- UI 库：[vant](https://youzan.github.io/vant/#/zh-CN/intro)
+- 滚动加载更多：[data-list](https://github.com/FEMessage/data-list)
+- ajax 库： [axios](https://github.com/axios/axios)
+- css 预处理器：[less](http://lesscss.org/)
 - 代码格式化：[prettier](https://github.com/prettier/prettier)
 - 环境变量: [dotenv](https://www.npmjs.com/package/dotenv)
+- 样式自适应屏幕宽度: [px-to-viewport](https://www.npmjs.com/package/postcss-px-to-viewport)
 
 [⬆ Back to Top](#table-of-contents)
 
@@ -80,7 +84,7 @@ yarn generate
 │   │   └── login.vue
 │   ├── plugins            应用插件，在Vue.js 初始化前运行，可在这里引入第三方类库
 │   │   ├── axios.js       请求拦截
-│   │   └── element.js     引入element-ui
+│   │   └── vant.js        引入vant
 │   └── store              Vuex状态管理文件
 │       └── index.js
 ├── static                 静态资源
@@ -113,7 +117,7 @@ Nuxt.js 会依据 `pages` 目录中的所有 `*.vue` 文件生成应用的路由
 
 使用`this.$axios` 调用接口：
 
-- 建议使用`$get $post $[methods]`等方法，respone中会直接返回请求的body
+- 建议使用`$get $post $[methods]`等方法，respone 中会直接返回请求的 body
 - 可以在 `*.vue` 文件中的生命周期钩子函数中调用
 - 可以在 `methods` 里调用
 - 可以在 `store/*.js` 的 `actions` 里调用
@@ -123,12 +127,12 @@ Nuxt.js 会依据 `pages` 目录中的所有 `*.vue` 文件生成应用的路由
 export default {
   mounted() {
     this.$axios.$get(url)
-  },
+  },
   methods: {
     fetchData() {
       this.$axios.$get(url)
-    }
-  }
+    },
+  },
 }
 ```
 
@@ -138,7 +142,7 @@ export const actions = {
   async fetchData({commit}, {params}) {
     let resp = await this.$axios.$get(url, {params})
     commit('update', resp)
-  }
+  },
 }
 ```
 
@@ -146,7 +150,7 @@ export const actions = {
 
 ### CRUD
 
-注意方法前有$
+注意方法前有\$
 
 ```js
 // GET 请求
@@ -158,32 +162,32 @@ this.$axios.$get('/users', {params: {key: value})
 
 ```js
 // POST 请求
-this.$axios.$post('/user', {
+this.$axios
+  .$post('/user', {
     firstName: 'Fred',
-    lastName: 'Flintstone'
+    lastName: 'Flintstone',
   })
- .then(resp => {
-  })
-.catch(e => {})
+  .then(resp => {})
+  .catch(e => {})
 ```
 
 ```js
 // PUT 请求
-this.$axios.$put('/user/1', {
+this.$axios
+  .$put('/user/1', {
     firstName: 'Fred',
-    lastName: 'Flintstone'
+    lastName: 'Flintstone',
   })
- .then(resp => {
-  })
-.catch(e => {})
+  .then(resp => {})
+  .catch(e => {})
 ```
 
 ```js
 // DELETE 请求
-this.$axios.$delete('/user/1')
- .then(resp => {
-  })
-.catch(e => {})
+this.$axios
+  .$delete('/user/1')
+  .then(resp => {})
+  .catch(e => {})
 ```
 
 ```js
@@ -192,8 +196,8 @@ this.$axios({
   method: 'delete',
   url: '/users',
   data: {
-    rows: [1,2],
-  }
+    rows: [1, 2],
+  },
 })
 ```
 
@@ -201,7 +205,7 @@ this.$axios({
 
 ### 设置代理
 
-开发时，api使用的都是相对路径，通过代理来解决跨域问题。
+开发时，api 使用的都是相对路径，通过代理来解决跨域问题。
 
 在 `nuxt.config.js` 中找到 `config` 变量，修改 `mock` 设置：
 
@@ -220,19 +224,27 @@ env: {
 
 1. 在 `yarn mock` 模式下，都会变成 `http://mock.api.server/api`
 
-1. 在 `yarn dev` 模式下，都会变成 `http://real.api.server/api`
+2. 在 `yarn dev` 模式下，都会变成 `http://real.api.server/api`
 
 **注意，每次修改代理设置，都需要重新启动应用才能生效**
 
 [⬆ Back to Top](#table-of-contents)
 
+### 样式自适应宽度
+
+项目自带了`postcss-px-to-viewport`插件。这样页面在不同宽度的手机 📱 上使用了`px`的样式会自适应缩放。
+
+模板内的`px`样式默认是按`750px`宽度的设计稿填写。也即：设计稿`10px`，css 就是写`10px`。
+
+如果产品设计稿的宽度是`375px`，则修改`postcss.config.js`文件中的`vwUnit`属性为`375`。
+
 ## 环境变量
 
-使用.env设置环境变量, 即在项目根目录新建一个.env文件, 填写环境变量即可。
+使用.env 设置环境变量, 即在项目根目录新建一个.env 文件, 填写环境变量即可。
 
 **注意，该文件不能提交至版本控制系统中。**
 
-.env文件示例:
+.env 文件示例:
 
 ```sh
 # 左边是变量名(一般大写，下划线分割单词)，右边是变量值
@@ -241,7 +253,7 @@ TESTING_VAR=just-fot-testing
 ANOTHER_VAR=another
 ```
 
-可以在项目的vue文件或js文件中读取
+可以在项目的 vue 文件或 js 文件中读取
 
 ```js
 mounted() {
@@ -251,18 +263,18 @@ mounted() {
 
 **自带的环境变量说明**
 
-| 环境变量名  | 说明                                                         | 是否必须             | 默认值                   | 示例 |
-| ----------- | ------------------------------------------------------------ | ----------------------- | ------------------------- | ----------- |
-| PUBLIC_PATH | 对应webpack的publicPath，用于指定静态文件访问路径 | 是 |  | http://cdn.deepexi.com |
-| API_SERVER | axios的baseURL，可不传。不传时，使用相对路径发送请求 | 否 |    | https://www.easy-mock.com |
-| NO_LOGIN    | 是否登陆拦截，传1则不会有登录拦截                            | 否 |                          | 1 |
-| COOKIE_PATH | 用于设置cookie的path，如果多个项目需要共享cookie，则应该保证项目在共同的目录下，且设置COOKIE_PATH为它们的共同目录地址 | 否                      | /                   | /xpaas |
+| 环境变量名  | 说明                                                                                                                        | 是否必须 | 默认值 | 示例                      |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------- | -------- | ------ | ------------------------- |
+| PUBLIC_PATH | 对应 webpack 的 publicPath，用于指定静态文件访问路径                                                                        | 是       |        | http://cdn.deepexi.com    |
+| API_SERVER  | axios 的 baseURL，可不传。不传时，使用相对路径发送请求                                                                      | 否       |        | https://www.easy-mock.com |
+| NO_LOGIN    | 是否登陆拦截，传 1 则不会有登录拦截                                                                                         | 否       |        | 1                         |
+| COOKIE_PATH | 用于设置 cookie 的 path，如果多个项目需要共享 cookie，则应该保证项目在共同的目录下，且设置 COOKIE_PATH 为它们的共同目录地址 | 否       | /      | /xpaas                    |
 
 [⬆ Back to Top](#table-of-contents)
 
 ## 构建
 
-构建会读取根目录下的.env文件获取环境变量, 默认生成的是hash路由模式的spa, 在`dist`目录输出静态文件
+构建会读取根目录下的.env 文件获取环境变量, 默认生成的是 hash 路由模式的 spa, 在`dist`目录输出静态文件
 
 命令如下:
 
