@@ -1,5 +1,5 @@
 {
-  "name": "<%- template === 'mobile' ? 'nuxt-vant' : 'nuxt-element-dashboard' %>",
+  "name": "<%- template === 'mobile' ? 'nuxt-vant' : template === 'single' ? 'nuxt-element-dashboard' : 'nuxt-multiple-spa' %>",
   "version": "2.4.2",
   "description": "Nuxt2 + <%- template === 'mobile' ? 'vant mobile' : 'element UI' %> project",
   "authors": [
