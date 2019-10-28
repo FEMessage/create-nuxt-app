@@ -12,10 +12,11 @@ resp_tmp_file=resp.tmp
 
 curl -H "Authorization: token $GITHUB_TOKEN" $url > $resp_tmp_file
 
-html_url=`cat $resp_tmp_file | sed -n 5p | sed 's/\"html_url\"://g' | awk -F '"' '{print $2}'`
-body=`cat $resp_tmp_file | grep body | sed 's/\"body\"://g;s/\"//g'`
+html_url=$(sed -n 5p $resp_tmp_file | sed 's/\"html_url\"://g' | awk -F '"' '{print $2}')
+body=$(grep body < $resp_tmp_file | sed 's/\"body\"://g;s/\"//g')
+version=$(echo $html_url | awk -F '/' '{print $NF}')
 
-msg='{"msgtype": "markdown", "markdown": {"title": "create-nuxt-app更新", "text": "@所有人\n# [create-nuxt-app]('$html_url')\n'$body'"}}'
+msg='{"msgtype": "markdown", "markdown": {"title": "create-nuxt-app更新", "text": "@所有人\n# [create-nuxt-app('$version')]('$html_url')\n'$body'"}}'
 
 curl -X POST https://oapi.dingtalk.com/robot/send\?access_token\=$DINGTALK_ROBOT_TOKEN -H 'Content-Type: application/json' -d "$msg"
 

@@ -1,73 +1,43 @@
 #!/usr/bin/env node
-const program = require('cac')()
-const config = require('../template.config.js')
-const { Template } = require('../generator/Template')
-const preset = require('../generator/config')
+const cli = require('cac')()
+const path = require('path')
+const sao = require('sao')
+const configs = require('../template.config')
 
-const logError = (err) => {
-  console.trace(err)
-  process.exit(1)
+cli.version(require('../package.json').version)
+cli.help()
+
+cli.option('-l, --list', 'the list of preset template') // 优先级 1
+cli.option('-a, --all', 'generate all preset template') // 优先级 2
+cli.option('-t, --template <template>', 'create a preset template')
+cli.option('-o, --output <output>', 'the output path of the generator')
+
+function run(config, outDir) {
+  // 构造参数可以在saofile.js中通过this.sao.opts获取
+  sao({
+    npmClient: 'yarn',
+    generator: path.resolve(__dirname, '../generator'),
+    outDir,
+    config,
+  })
+    .run()
+    .catch(err => {
+      console.trace(err)
+      throw err
+    })
 }
 
-const getTemplateByName = name => config.find(item => item.template === name)
-
-program.option('-t, --template <template>', 'create a preset template')
-
-program.option('-l, --list', 'the list of preset template')
-
-program.option('-a, --all', 'generate all preset template')
-
-program.option('-o, --output <output>', 'the output path of the generator')
-
-program.help()
-
-program.version('1.0.0')
-
-const { options, args } = program.parse()
-
-function init(options, args) {
-  let [folderName, targetPath = '.'] = args
-  if (folderName) {
-    options.folder = folderName
-  }
-  if (options.output) {
-    targetPath = options.output
-  }
-
-  // show preset template list
-  if (options.list) {
-    return config.forEach((item) => {
-      console.log(item.template)
-    })
-  }
-
-  // designation template
-  if (options.template) {
-    const config = getTemplateByName(options.template)
-    if (!config) {
-      return console.error(`template "${options.template}" is not exist!`)
+;(function main({options, args: [folder]}) {
+  const outDir = options.o || '.'
+  if (options.l) {
+    configs.forEach(item => console.log(item.template))
+  } else if (options.a) {
+    configs.forEach(c => run(c, outDir))
+  } else {
+    const config = {
+      ...(folder ? {folder} : {}),
+      ...(options.t ? {template: options.t} : {}),
     }
-    folderName && (config.folder = folderName)
-    const template = new Template(config)
-    return (template.generate({}, {
-      output: targetPath
-    }).catch(logError))
+    run(config, outDir)
   }
-
-  // generate all preset
-  if (options.all) {
-    return preset.forEach((item) => {
-      item.generate({}, {
-        output: targetPath
-      }).catch(logError)
-    })
-  }
-
-  new Template().generate({
-    folder: folderName,
-    outDir: targetPath,
-    template: options.template
-  }).catch(logError)
-}
-
-init(options, args)
+})(cli.parse())

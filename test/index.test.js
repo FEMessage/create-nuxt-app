@@ -1,32 +1,23 @@
-// import path from 'path'
-import test from 'ava'
+/* eslint-disable */
+import ava from 'ava'
 import sao from 'sao'
-import getContext from '../generator/GeneratorContext'
-import configs from '../generator/config'
+import configs from '../template.config'
+/* eslint-enable */
 
-// const generator = path.join(__dirname, '..')
-
-const getPkgFields = (pkg) => {
+const getPkgFields = pkg => {
+  const blackList = ['name', 'author', 'version', 'description']
   pkg = JSON.parse(pkg)
-  delete pkg.name
-  delete pkg.author
-  delete pkg.version
-  delete pkg.description
+  blackList.forEach(p => delete pkg[p])
   return pkg
 }
 
-const verifyPkg = async (t, generator, answers) => {
-  const stream = await sao.mock({ getContext, generator }, answers)
-
-  const pkg = await stream.readFile(`${answers.folder}/package.json`)
+const verifyPkg = async (t, answers) => {
+  const generator = require('path').resolve(__dirname, '../generator')
+  const stream = await sao.mock({generator}, answers)
+  const pkg = await stream.readFile('package.json')
   t.snapshot(stream.fileList, 'Generated files')
-  t.snapshot(getPkgFields(pkg), `package.json`)
+  t.snapshot(getPkgFields(pkg), 'package.json')
 }
 
-configs.forEach((item) => {
-  const { config, generator } = item
-
-  test(config.template, async (t) => {
-    await verifyPkg(t, generator, config)
-  })
-})
+// FYI: ava的回调必须返回promise，否则报错
+configs.forEach(c => ava(c.template, t => verifyPkg(t, c)))
