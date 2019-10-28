@@ -23,6 +23,17 @@
       ]
     },
     {
+      "login": "donaldshen",
+      "name": "Donald Shen",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/19591950?v=4",
+      "profile": "https://donaldshen.github.io/portfolio",
+      "contributions": [
+        "code",
+        "test",
+        "maintenance"
+      ]
+    },
+    {
       "login": "levy9527",
       "name": "levy",
       "avatar_url": "https://avatars3.githubusercontent.com/u/9384365?v=4",
@@ -49,16 +60,6 @@
         "code",
         "doc",
         "tool"
-      ]
-    },
-    {
-      "login": "donaldshen",
-      "name": "Donald Shen",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/19591950?v=4",
-      "profile": "https://donaldshen.github.io/portfolio",
-      "contributions": [
-        "code",
-        "test"
       ]
     },
     {
