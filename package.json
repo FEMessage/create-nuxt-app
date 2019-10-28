@@ -6,7 +6,7 @@
     "create-nuxt-app": "bin/cli.js"
   },
   "engines": {
-    "node": "^10"
+    "node": ">=8.3.0"
   },
   "files": [
     "bin/",
