@@ -9,8 +9,8 @@ git:
 install:
 - yarn --frozen-lockfile
 script:
-  - yarn test
   - yarn build:release
+  - yarn test
   - yarn deploy
 cache: 
   - yarn
