@@ -9,9 +9,8 @@ git:
 install:
 - yarn --frozen-lockfile
 script:
-  # 先 build 再 test 是因为需要测试 zip 脚本的 glob files 是否符合预期
-  - yarn build:release
   - yarn test
+  - yarn build:release
   - yarn deploy
 cache: 
   - yarn

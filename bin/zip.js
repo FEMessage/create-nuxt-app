@@ -11,17 +11,6 @@ const zipDirList = glob.sync('*', {
   ignore: '*.zip',
 })
 
-const zipFileGlobOptions = source => ({
-  cwd: source,
-  dot: true,
-  ignore: ['node_modules/**', 'dist/**', '.nuxt/**'],
-})
-
-function mockZip(source) {
-  source = `${releaseDir}/${source}/`
-  return glob.sync('**', zipFileGlobOptions(source))
-}
-
 function zip(source, target) {
   const output = fs.createWriteStream(target)
   const archive = archiver('zip', {
@@ -63,7 +52,11 @@ function zip(source, target) {
   archive.pipe(output)
 
   // append files from a sub-directory, putting its contents at the root of archive
-  archive.glob('**', zipFileGlobOptions(source))
+  archive.glob('**', {
+    cwd: source,
+    dot: true,
+    ignore: ['node_modules/**', 'dist/**', '.nuxt/**'],
+  })
 
   // finalize the archive (ie we are done appending files but streams have to finish yet)
   // 'close', 'end' or 'finish' may be fired right after calling this method so register to them beforehand
@@ -75,7 +68,3 @@ zipDirList.forEach(source => {
   source = `${releaseDir}/${source}/`
   zip(source, target)
 })
-
-module.exports = {
-  mockZip,
-}

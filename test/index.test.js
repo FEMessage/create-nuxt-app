@@ -2,7 +2,6 @@
 import ava from 'ava'
 import sao from 'sao'
 import configs from '../template.config'
-import {mockZip} from '../bin/zip'
 /* eslint-enable */
 
 const getPkgFields = pkg => {
@@ -16,7 +15,6 @@ const verifyPkg = async (t, answers) => {
   const generator = require('path').resolve(__dirname, '../generator')
   const stream = await sao.mock({generator}, answers)
   const pkg = await stream.readFile('package.json')
-  t.snapshot(mockZip(answers.folder), 'Zip files')
   t.snapshot(stream.fileList, 'Generated files')
   t.snapshot(getPkgFields(pkg), 'package.json')
 }
