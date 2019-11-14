@@ -95,8 +95,8 @@ module.exports = {
           <%_ } else { _%>
           'component',
           {
-            libraryName: 'element-ui',
-            styleLibraryName: '~node_modules/@femessage/theme-deepexi/lib'
+            libraryName: '@femessage/element-ui',
+            styleLibraryName: 'theme-chalk'
           }
           <%_ } _%>
         ]

@@ -943,35 +943,51 @@
   resolved "https://registry.npm.taobao.org/@csstools/convert-colors/download/@csstools/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha1-rUldxBsS511YjG24uYNPCPoTHrc=
 
-"@femessage/el-data-table@^1.13.0":
-  version "1.13.0"
-  resolved "https://registry.npm.taobao.org/@femessage/el-data-table/download/@femessage/el-data-table-1.13.0.tgz#1e74e32d4c58cf549b23e19f75c1ef38f7c1cc98"
-  integrity sha1-HnTjLUxYz1SbI+GfdcHvOPfBzJg=
+"@femessage/el-data-table@latest":
+  version "1.13.1"
+  resolved "https://registry.npm.taobao.org/@femessage/el-data-table/download/@femessage/el-data-table-1.13.1.tgz#5297a4f7a37171d62fbc6c85f3c359b17e2d7bb9"
+  integrity sha1-Upek96NxcdYvvGyF88NZsX4te7k=
   dependencies:
     lodash.get "^4.4.2"
 
-"@femessage/el-form-renderer@^1.11.5":
-  version "1.11.5"
-  resolved "https://registry.npm.taobao.org/@femessage/el-form-renderer/download/@femessage/el-form-renderer-1.11.5.tgz#d7d54684dd1a3e9a2afbb1056a6589d9604d0ae1"
-  integrity sha1-19VGhN0aPpoq+7EFamWJ2WBNCuE=
+"@femessage/el-form-renderer@latest":
+  version "1.11.6"
+  resolved "https://registry.npm.taobao.org/@femessage/el-form-renderer/download/@femessage/el-form-renderer-1.11.6.tgz#ad673c3a65465c08ee6f76ce4376985ec5ea4ac5"
+  integrity sha1-rWc8OmVGXAjub3bOQ3aYXsXqSsU=
   dependencies:
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
+
+"@femessage/element-ui@latest":
+  version "2.12.2"
+  resolved "https://registry.npm.taobao.org/@femessage/element-ui/download/@femessage/element-ui-2.12.2.tgz#08679fedb8cc20e03ecd270fabcb34fe0d11c73a"
+  integrity sha1-CGef7bjMIOA+zScPq8s0/g0Rxzo=
+  dependencies:
+    async-validator "~1.8.1"
+    babel-helper-vue-jsx-merge-props "^2.0.0"
+    classnames "^2.2.6"
+    deepmerge "^1.2.0"
+    normalize-wheel "^1.0.1"
+    omit.js "^1.0.2"
+    raf "^3.4.1"
+    resize-observer-polyfill "^1.5.0"
+    shallowequal "^1.1.0"
+    throttle-debounce "^1.0.1"
 
 "@femessage/img-preview@^1.2.0":
   version "1.2.4"
   resolved "https://registry.npm.taobao.org/@femessage/img-preview/download/@femessage/img-preview-1.2.4.tgz#8efcaccf0bcd8bed58e926d7382a80dffe2bb2e2"
   integrity sha1-jvyszwvNi+1Y6SbXOCqA3/4rsuI=
 
-"@femessage/theme-deepexi@^2.4.11":
+"@femessage/theme-deepexi@latest":
   version "2.4.11"
   resolved "https://registry.npm.taobao.org/@femessage/theme-deepexi/download/@femessage/theme-deepexi-2.4.11.tgz#1d95ccfb522d3c02ad320a2d93a0cab1fd939963"
   integrity sha1-HZXM+1ItPAKtMgotk6DKsf2TmWM=
 
-"@femessage/upload-to-ali@^1.9.0":
-  version "1.9.0"
-  resolved "https://registry.npm.taobao.org/@femessage/upload-to-ali/download/@femessage/upload-to-ali-1.9.0.tgz#91556fc63ee40f17ab59f81a36224128e60904dc"
-  integrity sha1-kVVvxj7kDxerWfgaNiJBKOYJBNw=
+"@femessage/upload-to-ali@latest":
+  version "1.9.2"
+  resolved "https://registry.npm.taobao.org/@femessage/upload-to-ali/download/@femessage/upload-to-ali-1.9.2.tgz#289f9de7817386590b57fff9a452a729d921a0a3"
+  integrity sha1-KJ+d54FzhlkLV//5pFKnKdkhoKM=
   dependencies:
     "@femessage/img-preview" "^1.2.0"
     ali-oss "^6.0.1"
@@ -3378,6 +3394,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classnames@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.npm.taobao.org/classnames/download/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha1-Q5Nb/90pHzJtrQogUwmzjQD2UM4=
+
 clean-css@4.2.x, clean-css@^4.2.1:
   version "4.2.1"
   resolved "https://registry.npm.taobao.org/clean-css/download/clean-css-4.2.1.tgz#2d411ef76b8569b6d0c84068dabe85b0aa5e5c17"
@@ -4770,18 +4791,6 @@ elegant-spinner@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/elegant-spinner/download/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
   integrity sha1-2wQ1IcldfjA/2PNFvtwzSc+wcp4=
-
-element-ui@2.4.11:
-  version "2.4.11"
-  resolved "https://registry.npm.taobao.org/element-ui/download/element-ui-2.4.11.tgz#db6a2d37001b8fe5fff9f176fb58bb3908cfa9c9"
-  integrity sha1-22otNwAbj+X/+fF2+1i7OQjPqck=
-  dependencies:
-    async-validator "~1.8.1"
-    babel-helper-vue-jsx-merge-props "^2.0.0"
-    deepmerge "^1.2.0"
-    normalize-wheel "^1.0.1"
-    resize-observer-polyfill "^1.5.0"
-    throttle-debounce "^1.0.1"
 
 elliptic@^6.0.0:
   version "6.5.0"
@@ -9399,6 +9408,13 @@ omggif@^1.0.9:
   resolved "https://registry.npm.taobao.org/omggif/download/omggif-1.0.10.tgz?cache=0&sync_timestamp=1563267388359&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fomggif%2Fdownload%2Fomggif-1.0.10.tgz#ddaaf90d4a42f532e9e7cb3a95ecdd47f17c7b19"
   integrity sha1-3ar5DUpC9TLp58s6lezdR/F8exk=
 
+omit.js@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npm.taobao.org/omit.js/download/omit.js-1.0.2.tgz#91a14f0eba84066dfa015bf30e474c47f30bc858"
+  integrity sha1-kaFPDrqEBm36AVvzDkdMR/MLyFg=
+  dependencies:
+    babel-runtime "^6.23.0"
+
 on-finished@~2.3.0:
   version "2.3.0"
   resolved "https://registry.npm.taobao.org/on-finished/download/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
@@ -10991,6 +11007,13 @@ qw@~1.0.1:
   resolved "https://registry.npm.taobao.org/qw/download/qw-1.0.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fqw%2Fdownload%2Fqw-1.0.1.tgz#efbfdc740f9ad054304426acb183412cc8b996d4"
   integrity sha1-77/cdA+a0FQwRCassYNBLMi5ltQ=
 
+raf@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.npm.taobao.org/raf/download/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
+  integrity sha1-B0LpmkplUvRF1z4+4DKK8P8e3jk=
+  dependencies:
+    performance-now "^2.1.0"
+
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
   version "2.1.0"
   resolved "https://registry.npm.taobao.org/randombytes/download/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -11854,6 +11877,11 @@ sha@^3.0.0:
   integrity sha1-svL5CvaQwWo6g5pqbGgOpR/t0a4=
   dependencies:
     graceful-fs "^4.1.2"
+
+shallowequal@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npm.taobao.org/shallowequal/download/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
+  integrity sha1-GI1SHelbkIdAT9TctosT3wrk5/g=
 
 shebang-command@^1.2.0:
   version "1.2.0"
