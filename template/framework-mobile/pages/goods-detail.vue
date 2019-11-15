@@ -56,7 +56,7 @@ import {
   GoodsAction,
   GoodsActionButton,
   GoodsActionIcon,
-} from 'vant'
+} from '@femessage/vant'
 
 export default {
   components: {
