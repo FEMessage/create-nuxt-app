@@ -21,7 +21,7 @@
 //import tabCss from 'element-ui/lib/theme-chalk/tabs.css'
 //import tabPaneCss from 'element-ui/lib/theme-chalk/tab-pane.css'
 import Vue from 'vue'
-import {Tabs, TabPane} from 'element-ui'
+import {Tabs, TabPane} from '@femessage/element-ui'
 
 Vue.use(Tabs)
 Vue.use(TabPane)

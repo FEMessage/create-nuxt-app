@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import {Swipe, SwipeItem} from 'vant'
+import {Swipe, SwipeItem} from '@femessage/vant'
 
 export default {
   layout: 'layout-with-footer',

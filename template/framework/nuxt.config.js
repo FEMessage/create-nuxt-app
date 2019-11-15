@@ -87,16 +87,16 @@ module.exports = {
           <%_ if (template === 'mobile') { _%>
           'import',
           {
-            libraryName: 'vant',
+            libraryName: '@femessage/vant',
             libraryDirectory: 'es',
             style: true
           },
-          'vant'
+          '@femessage/vant'
           <%_ } else { _%>
           'component',
           {
-            libraryName: 'element-ui',
-            styleLibraryName: '~node_modules/@femessage/theme-deepexi/lib'
+            libraryName: '@femessage/element-ui',
+            styleLibraryName: 'theme-chalk'
           }
           <%_ } _%>
         ]

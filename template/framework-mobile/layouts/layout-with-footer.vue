@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-import {Tabbar, TabbarItem} from 'vant'
+import {Tabbar, TabbarItem} from '@femessage/vant'
 export default {
   components: {
     'van-tabbar': Tabbar,

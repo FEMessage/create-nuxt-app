@@ -70,7 +70,7 @@ import Copyright from '@/components/copyright.vue'
 import {mapState} from 'vuex'
 import MenuItem from '@/components/menu-item.vue'
 import IconFont from '@/components/icon-font.vue'
-import {Scrollbar} from 'element-ui'
+import {Scrollbar} from '@femessage/element-ui'
 import Logo from '@/components/logo.vue'
 
 export default {

@@ -33,7 +33,7 @@ import {
   DropdownItem,
   Row,
   Col,
-} from 'element-ui'
+} from '@femessage/element-ui'
 import ElFormRenderer from '@femessage/el-form-renderer'
 import ElDataTable from '@femessage/el-data-table'
 
