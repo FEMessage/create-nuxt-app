@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import {Checkbox, CheckboxGroup, Card, SubmitBar} from 'vant'
+import {Checkbox, CheckboxGroup, Card, SubmitBar} from '@femessage/vant'
 
 export default {
   layout: 'layout-with-footer',

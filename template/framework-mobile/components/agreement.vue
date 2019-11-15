@@ -148,7 +148,7 @@
   </div>
 </template>
 <script>
-import {NavBar} from 'vant'
+import {NavBar} from '@femessage/vant'
 export default {
   name: 'Agreement',
   components: {

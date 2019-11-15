@@ -15,7 +15,7 @@ import {
   RadioGroup,
   Radio,
   Toast,
-} from 'vant'
+} from '@femessage/vant'
 
 Vue.use(Button)
 Vue.use(Cell).use(CellGroup)

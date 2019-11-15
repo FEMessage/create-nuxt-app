@@ -87,11 +87,11 @@ module.exports = {
           <%_ if (template === 'mobile') { _%>
           'import',
           {
-            libraryName: 'vant',
+            libraryName: '@femessage/vant',
             libraryDirectory: 'es',
             style: true
           },
-          'vant'
+          '@femessage/vant'
           <%_ } else { _%>
           'component',
           {

@@ -58,7 +58,7 @@
 
 <script>
 import Agreement from '@/components/agreement'
-import {Checkbox} from 'vant'
+import {Checkbox} from '@femessage/vant'
 
 export default {
   layout: 'layout-with-footer',
