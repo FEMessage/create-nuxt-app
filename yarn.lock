@@ -500,24 +500,24 @@
 
 "@semantic-release/github@semantic-release/github":
   version "0.0.0-development"
-  resolved "https://codeload.github.com/semantic-release/github/tar.gz/30d5175a0a52dcf3f7e0af62f270919f92d5d1b3"
+  uid "585d924bdf96a859526c3551e3017071ac009cff"
+  resolved "https://codeload.github.com/semantic-release/github/tar.gz/585d924bdf96a859526c3551e3017071ac009cff"
   dependencies:
     "@octokit/rest" "^16.27.0"
     "@semantic-release/error" "^2.2.0"
     aggregate-error "^3.0.0"
     bottleneck "^2.18.1"
     debug "^4.0.0"
-    dir-glob "^2.0.0"
+    dir-glob "^3.0.0"
     fs-extra "^8.0.0"
-    globby "^9.0.0"
+    globby "^10.0.0"
     http-proxy-agent "^2.1.0"
-    https-proxy-agent "^2.2.1"
-    issue-parser "^4.0.0"
+    https-proxy-agent "^3.0.0"
+    issue-parser "^5.0.0"
     lodash "^4.17.4"
     mime "^2.4.3"
     p-filter "^2.0.0"
     p-retry "^4.0.0"
-    parse-github-url "^1.0.1"
     url-join "^4.0.0"
 
 "@semantic-release/npm@^5.0.5":
@@ -3238,7 +3238,7 @@ globby@^7.1.1:
     pify "^3.0.0"
     slash "^1.0.0"
 
-globby@^9.0.0, globby@^9.2.0:
+globby@^9.2.0:
   version "9.2.0"
   resolved "https://registry.npm.taobao.org/globby/download/globby-9.2.0.tgz#fd029a706c703d29bdd170f4b6db3a3f7a7cb63d"
   dependencies:
@@ -3450,6 +3450,14 @@ https-proxy-agent@^2.2.1:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-2.2.4.tgz#4ee7a737abd92678a293d9b34a1af4d0d08c787b"
   integrity sha512-OmvfoQ53WLjtA9HeYP9RNrWMJzzAz1JGaSFr1nijg0PVR1JaD/xbJq1mdEIIlxGpXp9eSe/O2LgU9DJmTPd0Eg==
+  dependencies:
+    agent-base "^4.3.0"
+    debug "^3.1.0"
+
+https-proxy-agent@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-3.0.1.tgz#b8c286433e87602311b01c8ea34413d856a4af81"
+  integrity sha512-+ML2Rbh6DAuee7d07tYGEKOEi2voWPUGan+ExdPbPW6Z3svq+JCqr0v8WmKPOkz1vOVykPCBSuobe7G8GJUtVg==
   dependencies:
     agent-base "^4.3.0"
     debug "^3.1.0"
@@ -4075,6 +4083,17 @@ issue-parser@^4.0.0:
     lodash.isstring "^4.0.1"
     lodash.uniqby "^4.7.0"
 
+issue-parser@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/issue-parser/-/issue-parser-5.0.0.tgz#0e22a40bc275b6c7da6ddf4a9b979e8ca9faf0d4"
+  integrity sha512-q/16W7EPHRL0FKVz9NU++TUsoygXGj6JOi88oulyAcQG+IEZ0T6teVdE+VLbe19OfL/tbV8Wi3Dfo0HedeHW0Q==
+  dependencies:
+    lodash.capitalize "^4.2.1"
+    lodash.escaperegexp "^4.1.2"
+    lodash.isplainobject "^4.0.6"
+    lodash.isstring "^4.0.1"
+    lodash.uniqby "^4.7.0"
+
 isurl@^1.0.0-alpha5:
   version "1.0.0"
   resolved "https://registry.npmjs.org/isurl/-/isurl-1.0.0.tgz#b27f4f49f3cdaa3ea44a0a5b7f3462e6edc39d67"
@@ -4614,11 +4633,7 @@ lodash.without@~4.4.0:
   version "4.4.0"
   resolved "https://registry.npm.taobao.org/lodash.without/download/lodash.without-4.4.0.tgz#3cd4574a00b67bae373a94b748772640507b7aac"
 
-lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4:
-  version "4.17.13"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.13.tgz#0bdc3a6adc873d2f4e0c4bac285df91b64fc7b93"
-
-lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.2.1, lodash@^4.3.0:
+lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.2.1, lodash@^4.3.0:
   version "4.17.15"
   resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
 
