@@ -20,7 +20,7 @@
 
 ## Introduction
 
-Create a Deepexi Nuxt App in seconds.
+Create an enterprise nuxt app in seconds.
 
 [⬆ Back to Top](#table-of-contents)
 
@@ -38,7 +38,7 @@ Create a Deepexi Nuxt App in seconds.
 
 [⬆ Back to Top](#table-of-contents)
 
-## Links
+## Inspiration
 
 - [create-nuxt-app](https://github.com/nuxt/create-nuxt-app)
 - [nuxt-element-dashboard](https://github.com/levy9527/nuxt-element-dashboard)

@@ -26,5 +26,4 @@ Vue.use(Row).use(Col)
 Vue.use(Field)
 Vue.use(Popup)
 Vue.use(RadioGroup).use(Radio)
-
-Vue.$toast = Toast
+Vue.use(Toast)
