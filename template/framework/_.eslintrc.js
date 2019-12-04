@@ -8,14 +8,18 @@ module.exports = {
     parser: 'babel-eslint'
   },
   extends: [
-    /**
-     * Switched to `recommended` from `essential` for stricter rules.
-     * https://eslint.vuejs.org/rules/#priority-c-recommended-minimizing-arbitrary-choices-and-cognitive-overhead
-     */
+    'eslint:recommended',
+    'plugin:jest/recommended',
     'plugin:vue/recommended',
-    'prettier/vue'
+    'plugin:prettier/recommended',
+    /**
+     * 关闭 plugin:vue 中与 prettier 冲突的 rule
+     * @see https://github.com/prettier/eslint-config-prettier/blob/master/README.md#eslint-config-prettier-
+     */
+    'prettier/vue',
   ],
   plugins: [
+    'jest',
     // To lint *.vue files
     'vue',
     // To apply .prettierrc
