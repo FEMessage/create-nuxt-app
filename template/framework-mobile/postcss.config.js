@@ -11,7 +11,7 @@ module.exports = ({file}) => {
   if (
     file &&
     file.dirname &&
-    /node_modules\/\@femessage\/vant/.test(file.dirname)
+    /node_modules\/@femessage\/vant/.test(file.dirname)
   ) {
     vwUnit = 375
   }
