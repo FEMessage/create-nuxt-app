@@ -7,12 +7,7 @@
     "Han <xsytby1112@gmail.com>",
     "donaldshen <825870831@qq.com>"
   ],
-  "keywords": [
-    "vue",
-    "nuxt",
-    "dashboard",
-    "element-ui"
-  ],
+  "keywords": ["vue", "nuxt", "dashboard", "element-ui"],
   "private": true,
   "engines": {
     "npm": ">= 5.2.0"
@@ -52,7 +47,6 @@
     "@commitlint/config-conventional": "^8.0.0",
     "babel-eslint": "^8.2.1",
     "babel-jest": "^24.1.0",
-    "babel-plugin-component": "^1.1.0",
     "cross-env": "^5.1.3",
     "eslint": "^4.15.0",
     "eslint-config-prettier": "^6.1.0",
@@ -83,17 +77,8 @@
     }
   },
   "lint-staged": {
-    "*.{js,vue}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{vue,less}": [
-      "stylelint --fix",
-      "git add"
-    ],
-    "*.{md,json}": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.{js,vue}": ["eslint --fix", "git add"],
+    "*.{vue,less}": ["stylelint --fix", "git add"],
+    "*.{md,json}": ["prettier --write", "git add"]
   }
 }
