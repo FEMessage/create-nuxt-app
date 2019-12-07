@@ -186,6 +186,15 @@ module.exports = {
     {src: '~plugins/icon-font'}
     <%_ } _%>
   ],
+  // FYI: https://analytics.google.com/analytics/web/
+  // buildModules: [
+  //   [
+  //     '@nuxtjs/google-analytics',
+  //     {
+  //       id: ''
+  //     }
+  //   ]
+  // ],
   modules: [
     // Doc: https://github.com/nuxt-community/style-resources-module
     '@nuxtjs/style-resources',
