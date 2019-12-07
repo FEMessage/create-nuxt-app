@@ -14,7 +14,6 @@
             :src="m.icon"
             :alt="m.name"
             class="menu-item-img"
-            width="100"
           />
           <icon-font v-else :icon="m.icon" prefix="iconfont"></icon-font>
           <span class="sub-menu-title">{{ m.name }}</span>

@@ -23,7 +23,6 @@
               class="btn-icon"
               src="https://deepexi.oss-cn-shenzhen.aliyuncs.com/deepexi-services/%E5%B7%A6%E4%BE%A7%E8%8F%9C%E5%8D%95/expand.svg"
               alt="toggle-sidebar-btn"
-              width="100"
             />
           </div>
         </div>
@@ -36,7 +35,7 @@
             <el-dropdown placement="bottom-end" @command="exitBtn">
               <span class="el-dropdown-link">
                 <div class="head-active">
-                  <v-img :src="userImg" class="username-img" alt="username-img" width="100" />
+                  <v-img :src="userImg" class="username-img" alt="username-img" />
                 </div>
                 <!-- 用户名称 -->
                 <div class="username-text">
