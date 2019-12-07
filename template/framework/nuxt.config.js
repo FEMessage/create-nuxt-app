@@ -9,7 +9,7 @@ const {env} = process
 const isProd = env.MODE == 'prod'
 <%_ if (template !== 'mobile') { _%>
 const mockServer =
-  'https://easy-mock.com/mock/5c1b3895fe5907404e654045/femessage-mock'
+  'https://mockapi.eolinker.com/IeZWjzy87c204a1f7030b2a17b00f3776ce0a07a5030a1b'
 <%_ } _%>
 
 // 不能以斜杠结尾
@@ -81,10 +81,10 @@ module.exports = {
   build: {
     publicPath,
     extractCSS: isProd,
+    <%_ if (template === 'mobile') { _%>
     babel: {
       plugins: [
         [
-          <%_ if (template === 'mobile') { _%>
           'import',
           {
             libraryName: '@femessage/vant',
@@ -92,37 +92,31 @@ module.exports = {
             style: true
           },
           '@femessage/vant'
-          <%_ } else { _%>
-          'component',
-          {
-            libraryName: '@femessage/element-ui',
-            styleLibraryName: 'theme-chalk'
-          }
-          <%_ } _%>
         ]
       ]
     },
+    <%_ } _%>
     extend(config, {isDev}) {
       if (isDev) {
         config.devtool = '#source-map'
       }
       /**
-       * upload-to-ali组件依赖ali-oss脚本，体积较大。
+       * 有些依赖如 excel-it 组件依赖 XLSX 脚本，体积较大。
        * 这里将该依赖放在script处用引入，可利用cdn加速，并减少项目最终打包体积
-       * FYI: 如果不需要upload-to-ali组件，记得在移除组件后也要移除在script引用的ali-oss脚本
+       * FYI: 如果不需要 excel-it 组件，记得在移除组件后也要移除在 script 引用的 XLSX 脚本
        */
-      config.externals = {
-        'ali-oss': 'OSS'
-      }
+      // config.externals = {
+      //   xlsx: 'XLSX'
+      // }
     },
   },
   /*
    ** Headers of the page
    */
   head: {
-    script: [
-      {src: 'https://cdn.jsdelivr.net/npm/ali-oss@6.1.1/dist/aliyun-oss-sdk.min.js'}
-    ],
+    // script: [
+    //   {src: '//cdn.jsdelivr.net/npm/xlsx@0.15.1/dist/xlsx.full.min.js'}
+    // ],
     title: '',
     meta: [
       {charset: 'utf-8'},
@@ -149,7 +143,18 @@ module.exports = {
         // rel: 'stylesheet',
         // type: 'text/css',
         // href: config.aliIconFont
-      }
+      },
+      <%_ if (template !== 'mobile') { _%>
+      {
+        rel: 'preconnect',
+        href: 'https://cdn.jsdelivr.net'
+      },
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href: `https://cdn.jsdelivr.net/npm/@femessage/element-ui@${require('@femessage/element-ui/package').version}/lib/theme-chalk/index.min.css`
+      },
+      <%_ } _%>
     ]
   },
   /*
@@ -181,6 +186,15 @@ module.exports = {
     {src: '~plugins/icon-font'}
     <%_ } _%>
   ],
+  // FYI: https://analytics.google.com/analytics/web/
+  // buildModules: [
+  //   [
+  //     '@nuxtjs/google-analytics',
+  //     {
+  //       id: ''
+  //     }
+  //   ]
+  // ],
   modules: [
     // Doc: https://github.com/nuxt-community/style-resources-module
     '@nuxtjs/style-resources',
