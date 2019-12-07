@@ -101,22 +101,22 @@ module.exports = {
         config.devtool = '#source-map'
       }
       /**
-       * upload-to-ali组件依赖ali-oss脚本，体积较大。
+       * 有些依赖如 excel-it 组件依赖 XLSX 脚本，体积较大。
        * 这里将该依赖放在script处用引入，可利用cdn加速，并减少项目最终打包体积
-       * FYI: 如果不需要upload-to-ali组件，记得在移除组件后也要移除在script引用的ali-oss脚本
+       * FYI: 如果不需要 excel-it 组件，记得在移除组件后也要移除在 script 引用的 XLSX 脚本
        */
-      config.externals = {
-        'ali-oss': 'OSS'
-      }
+      // config.externals = {
+      //   xlsx: 'XLSX'
+      // }
     },
   },
   /*
    ** Headers of the page
    */
   head: {
-    script: [
-      {src: 'https://cdn.jsdelivr.net/npm/ali-oss@6.1.1/dist/aliyun-oss-sdk.min.js'}
-    ],
+    // script: [
+    //   {src: '//cdn.jsdelivr.net/npm/xlsx@0.15.1/dist/xlsx.full.min.js'}
+    // ],
     title: '',
     meta: [
       {charset: 'utf-8'},
