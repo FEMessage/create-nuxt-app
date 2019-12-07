@@ -20,7 +20,7 @@ const meta = {
 
   // 登录页背景
   loginBgImg:
-    'https://deepexi.oss-cn-shenzhen.aliyuncs.com/deepexi-services/login-bg.jpg',
+    'https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg',
 
   // console 首页背景
   homePageImg:

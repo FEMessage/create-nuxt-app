@@ -1,7 +1,7 @@
 <template>
   <main
-    :style="{backgroundImage: 'url(' + $store.state.meta.loginBgImg + ')'}"
     class="layout-login"
+    v-img="{src}"
   >
     <div class="login-form">
       <logo class="login-logo" />
@@ -23,7 +23,9 @@ export default {
     Copyright,
   },
   data() {
-    return {}
+    return {
+      src: this.$store.state.meta.loginBgImg,
+    }
   },
   methods: {},
 }
@@ -37,7 +39,7 @@ export default {
   width: 100%;
   min-height: 100%;
   background-color: #f0f2f5;
-  background-image: url(https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg);
+  // background-image: url(https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 
