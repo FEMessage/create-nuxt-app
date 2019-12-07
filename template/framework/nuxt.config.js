@@ -9,7 +9,7 @@ const {env} = process
 const isProd = env.MODE == 'prod'
 <%_ if (template !== 'mobile') { _%>
 const mockServer =
-  'https://easy-mock.com/mock/5c1b3895fe5907404e654045/femessage-mock'
+  'https://mockapi.eolinker.com/IeZWjzy87c204a1f7030b2a17b00f3776ce0a07a5030a1b'
 <%_ } _%>
 
 // 不能以斜杠结尾
