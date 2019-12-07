@@ -7,7 +7,11 @@
     "Han <xsytby1112@gmail.com>",
     "donaldshen <825870831@qq.com>"
   ],
-  "keywords": ["vue", "nuxt", "vant"],
+  "keywords": [
+    "vue",
+    "nuxt",
+    "vant"
+  ],
   "private": true,
   "engines": {
     "npm": ">= 5.2.0"
@@ -80,8 +84,17 @@
     }
   },
   "lint-staged": {
-    "*.{js,vue}": ["eslint --fix", "git add"],
-    "*.{vue,less}": ["stylelint --fix", "git add"],
-    "*.{md,json}": ["prettier --write", "git add"]
+    "*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{vue,less}": [
+      "stylelint --fix",
+      "git add"
+    ],
+    "*.{md,json}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
