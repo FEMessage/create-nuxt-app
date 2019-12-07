@@ -19,7 +19,7 @@
         <el-dropdown placement="bottom-end" @command="exitBtn">
           <span class="el-dropdown-link">
             <div class="head-active">
-              <img :src="userImg" class="username-img" alt="username-img" />
+              <v-img :src="userImg" class="username-img" alt="username-img" width="100" />
             </div>
             <!-- 用户名称 -->
             <div class="username-text">{{ userName }}</div>
@@ -43,11 +43,13 @@
 import {mapMutations} from 'vuex'
 import cookie from 'js-cookie'
 import Logo from '@/components/logo.vue'
+import Vimg from '@femessage/v-img'
 
 export default {
   name: 'LayoutHead',
   components: {
     Logo,
+    'v-img': Vimg,
   },
   props: {
     searchUrl: {

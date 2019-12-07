@@ -2,7 +2,7 @@
   <div class="index">
     <van-swipe :autoplay="3000" indicator-color="white">
       <van-swipe-item v-for="(image, index) in images" :key="index">
-        <img :src="image" class="banner" />
+        <v-img :src="image" class="banner" width="100" />
       </van-swipe-item>
     </van-swipe>
     <van-row class="goods">
@@ -10,7 +10,7 @@
       <van-row>
         <van-col v-for="(good, index) in goods" :key="index" span="12">
           <div class="block" @click="goDetail(good)">
-            <img :src="good.img" class="good-img" />
+            <v-img :src="good.img" class="good-img" width="100" />
             <p class="name">{{ good.name }}</p>
             <p class="price">{{ good.price | price }}</p>
           </div>
@@ -23,11 +23,14 @@
 <script>
 import {Swipe, SwipeItem} from '@femessage/vant'
 
+import Vimg from '@femessage/v-img'
+
 export default {
   layout: 'layout-with-footer',
   components: {
     'van-swipe': Swipe,
     'van-swipe-item': SwipeItem,
+    'v-img': Vimg,
   },
   data() {
     return {

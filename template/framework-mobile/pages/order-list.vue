@@ -3,7 +3,7 @@
     <data-list ref="dataList" :url="url">
       <ul slot-scope="props">
         <li v-for="(item, index) in props.list" :key="index" class="order">
-          <img :src="item.productPhoto" />
+          <v-img :src="item.productPhoto" width="100" />
           <span class="title">{{ item.name }}</span>
           <span>{{ (item.sellCount * item.sellPrice) | price }}</span>
         </li>
@@ -14,10 +14,13 @@
 <script>
 import DataList from '@femessage/data-list'
 
+import Vimg from '@femessage/v-img'
+
 export default {
   layout: 'layout-with-footer',
   components: {
     DataList,
+    'v-img': Vimg,
   },
   data() {
     return {

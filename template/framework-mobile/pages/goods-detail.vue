@@ -2,7 +2,7 @@
   <div class="goods-detail">
     <van-swipe :autoplay="3000" class="swipe">
       <van-swipe-item v-for="thumb in goods.thumb" :key="thumb">
-        <img :src="thumb" />
+        <v-img :src="thumb" width="100" />
       </van-swipe-item>
     </van-swipe>
 
@@ -58,6 +58,8 @@ import {
   GoodsActionIcon,
 } from '@femessage/vant'
 
+import Vimg from '@femessage/v-img'
+
 export default {
   components: {
     'van-tag': Tag,
@@ -66,6 +68,7 @@ export default {
     'van-goods-action': GoodsAction,
     'van-goods-action-button': GoodsActionButton,
     'van-goods-action-icon': GoodsActionIcon,
+    'v-img': Vimg,
   },
 
   data() {

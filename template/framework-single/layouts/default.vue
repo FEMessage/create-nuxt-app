@@ -19,10 +19,11 @@
 
         <div class="fix-btn-wrap">
           <div class="collapse-btn" @click="collapse = !collapse">
-            <img
+            <v-img
               class="btn-icon"
               src="https://deepexi.oss-cn-shenzhen.aliyuncs.com/deepexi-services/%E5%B7%A6%E4%BE%A7%E8%8F%9C%E5%8D%95/expand.svg"
               alt="toggle-sidebar-btn"
+              width="100"
             />
           </div>
         </div>
@@ -35,7 +36,7 @@
             <el-dropdown placement="bottom-end" @command="exitBtn">
               <span class="el-dropdown-link">
                 <div class="head-active">
-                  <img :src="userImg" class="username-img" alt="username-img" />
+                  <v-img :src="userImg" class="username-img" alt="username-img" width="100" />
                 </div>
                 <!-- 用户名称 -->
                 <div class="username-text">
@@ -72,6 +73,7 @@ import MenuItem from '@/components/menu-item.vue'
 import IconFont from '@/components/icon-font.vue'
 import {Scrollbar} from '@femessage/element-ui'
 import Logo from '@/components/logo.vue'
+import Vimg from '@femessage/v-img'
 
 export default {
   components: {
@@ -79,6 +81,7 @@ export default {
     MenuItem,
     ElScrollbar: Scrollbar,
     Logo,
+    'v-img': Vimg,
   },
   data() {
     return {

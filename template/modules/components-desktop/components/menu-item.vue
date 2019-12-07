@@ -9,11 +9,12 @@
       <el-submenu v-else :index="m.id + ''">
         <template slot="title">
           <!--<i class="el-icon-menu"></i>-->
-          <img
+          <v-img
             v-if="checkUrl(m.icon)"
             :src="m.icon"
             :alt="m.name"
             class="menu-item-img"
+            width="100"
           />
           <icon-font v-else :icon="m.icon" prefix="iconfont"></icon-font>
           <span class="sub-menu-title">{{ m.name }}</span>
@@ -26,8 +27,13 @@
 </template>
 
 <script>
+import Vimg from '@femessage/v-img'
+
 export default {
   name: 'MenuItem',
+  components: {
+    'v-img': Vimg,
+  },
   props: {
     menuList: {
       type: Array,
