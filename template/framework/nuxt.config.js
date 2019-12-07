@@ -146,6 +146,10 @@ module.exports = {
       },
       <%_ if (template !== 'mobile') { _%>
       {
+        rel: 'preconnect',
+        href: 'https://cdn.jsdelivr.net'
+      },
+      {
         rel: 'stylesheet',
         type: 'text/css',
         href: `https://cdn.jsdelivr.net/npm/@femessage/element-ui@${require('@femessage/element-ui/package').version}/lib/theme-chalk/index.min.css`
