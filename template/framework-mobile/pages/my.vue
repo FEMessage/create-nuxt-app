@@ -3,7 +3,7 @@
     <v-img
       class="my-poster"
       src="https://img.yzcdn.cn/public_files/2017/10/23/8690bb321356070e0b8c4404d087f8fd.png"
-      width="100"
+      width="100%"
     />
     <van-cell-group class="user-group">
       <van-cell
