@@ -81,10 +81,10 @@ module.exports = {
   build: {
     publicPath,
     extractCSS: isProd,
+    <%_ if (template === 'mobile') { _%>
     babel: {
       plugins: [
         [
-          <%_ if (template === 'mobile') { _%>
           'import',
           {
             libraryName: '@femessage/vant',
@@ -92,16 +92,10 @@ module.exports = {
             style: true
           },
           '@femessage/vant'
-          <%_ } else { _%>
-          'component',
-          {
-            libraryName: '@femessage/element-ui',
-            styleLibraryName: 'theme-chalk'
-          }
-          <%_ } _%>
         ]
       ]
     },
+    <%_ } _%>
     extend(config, {isDev}) {
       if (isDev) {
         config.devtool = '#source-map'
@@ -149,7 +143,18 @@ module.exports = {
         // rel: 'stylesheet',
         // type: 'text/css',
         // href: config.aliIconFont
-      }
+      },
+      <%_ if (template !== 'mobile') { _%>
+      {
+        rel: 'preconnect',
+        href: 'https://cdn.jsdelivr.net'
+      },
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href: `https://cdn.jsdelivr.net/npm/@femessage/element-ui@${require('@femessage/element-ui/package').version}/lib/theme-chalk/index.min.css`
+      },
+      <%_ } _%>
     ]
   },
   /*
