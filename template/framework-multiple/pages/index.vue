@@ -4,16 +4,6 @@
   </div>
 </template>
 
-<script>
-import Vimg from '@femessage/v-img'
-
-export default {
-  components: {
-    'v-img': Vimg,
-  },
-}
-</script>
-
 <style lang="less">
 .index {
   .home-img {

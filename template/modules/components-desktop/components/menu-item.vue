@@ -27,13 +27,8 @@
 </template>
 
 <script>
-import Vimg from '@femessage/v-img'
-
 export default {
   name: 'MenuItem',
-  components: {
-    'v-img': Vimg,
-  },
   props: {
     menuList: {
       type: Array,

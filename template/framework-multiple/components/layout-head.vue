@@ -43,13 +43,11 @@
 import {mapMutations} from 'vuex'
 import cookie from 'js-cookie'
 import Logo from '@/components/logo.vue'
-import Vimg from '@femessage/v-img'
 
 export default {
   name: 'LayoutHead',
   components: {
     Logo,
-    'v-img': Vimg,
   },
   props: {
     searchUrl: {

@@ -23,14 +23,11 @@
 <script>
 import {Swipe, SwipeItem} from '@femessage/vant'
 
-import Vimg from '@femessage/v-img'
-
 export default {
   layout: 'layout-with-footer',
   components: {
     'van-swipe': Swipe,
     'van-swipe-item': SwipeItem,
-    'v-img': Vimg,
   },
   data() {
     return {

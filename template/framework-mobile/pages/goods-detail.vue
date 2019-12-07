@@ -58,8 +58,6 @@ import {
   GoodsActionIcon,
 } from '@femessage/vant'
 
-import Vimg from '@femessage/v-img'
-
 export default {
   components: {
     'van-tag': Tag,
@@ -68,7 +66,6 @@ export default {
     'van-goods-action': GoodsAction,
     'van-goods-action-button': GoodsActionButton,
     'van-goods-action-icon': GoodsActionIcon,
-    'v-img': Vimg,
   },
 
   data() {

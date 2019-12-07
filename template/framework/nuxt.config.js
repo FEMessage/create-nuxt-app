@@ -174,6 +174,7 @@ module.exports = {
   plugins: [
     {src: '~plugins/axios'},
     {src: '~plugins/filters'},
+    {src: '~plugins/v-img'},
     <%_ if (template === 'mobile') { _%>
     {src: '~plugins/vant'},
     <%_ } else { _%>

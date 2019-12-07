@@ -73,7 +73,6 @@ import MenuItem from '@/components/menu-item.vue'
 import IconFont from '@/components/icon-font.vue'
 import {Scrollbar} from '@femessage/element-ui'
 import Logo from '@/components/logo.vue'
-import Vimg from '@femessage/v-img'
 
 export default {
   components: {
@@ -81,7 +80,6 @@ export default {
     MenuItem,
     ElScrollbar: Scrollbar,
     Logo,
-    'v-img': Vimg,
   },
   data() {
     return {

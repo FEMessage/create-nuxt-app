@@ -14,13 +14,11 @@
 <script>
 import DataList from '@femessage/data-list'
 
-import Vimg from '@femessage/v-img'
 
 export default {
   layout: 'layout-with-footer',
   components: {
     DataList,
-    'v-img': Vimg,
   },
   data() {
     return {

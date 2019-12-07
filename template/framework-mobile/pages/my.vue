@@ -60,14 +60,12 @@
 <script>
 import Agreement from '@/components/agreement'
 import {Checkbox} from '@femessage/vant'
-import Vimg from '@femessage/v-img'
 
 export default {
   layout: 'layout-with-footer',
   components: {
     'van-checkbox': Checkbox,
     agreement: Agreement,
-    'v-img': Vimg,
   },
   data() {
     return {

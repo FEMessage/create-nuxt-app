@@ -5,16 +5,6 @@
 </template>
 
 <script>
-import Vimg from '@femessage/v-img'
-
-export default {
-  components: {
-    'v-img': Vimg,
-  },
-}
-</script>
-
-<script>
 export default {
   data() {
     return {}
