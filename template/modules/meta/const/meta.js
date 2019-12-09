@@ -1,6 +1,6 @@
 const meta = {
   favicon:
-    'https://deepexi.oss-cn-shenzhen.aliyuncs.com/deepexi-services/favicon32x32.png',
+    'https://deepexi.oss-cn-shenzhen.aliyuncs.com/deepexi-services/logo_Deepexi_32x32.png',
 
   // 登录表单上的图片
   logoLogin:
