@@ -35,7 +35,6 @@ export default {
 
 .layout-login {
   position: absolute;
-  padding: 8% 0 0;
   width: 100%;
   min-height: 100%;
   background-color: #f0f2f5;
