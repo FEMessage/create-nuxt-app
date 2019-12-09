@@ -41,7 +41,14 @@ export default {
   background-color: #f0f2f5;
   // background-image: url(https://deepexi.oss-cn-shenzhen.aliyuncs.com/xpaas-console/bg_login.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 8%;
+  }
 
   .logo-login {
     width: 260px;

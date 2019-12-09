@@ -35,13 +35,19 @@ export default {
 
 .layout-login {
   position: absolute;
-  padding: 8% 0 0;
   width: 100%;
   min-height: 100%;
   background-color: #f0f2f5;
   // background-image: url(https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 8%;
+  }
 
   .logo-login {
     width: 260px;

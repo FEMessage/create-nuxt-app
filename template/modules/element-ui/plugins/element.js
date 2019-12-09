@@ -36,6 +36,7 @@ import {
 } from '@femessage/element-ui'
 import ElFormRenderer from '@femessage/el-form-renderer'
 import ElDataTable from '@femessage/el-data-table'
+import Vimg from '@femessage/v-img';
 
 Vue.prototype.$ELEMENT = {size: 'medium'}
 
@@ -70,6 +71,7 @@ Vue.use(Dialog)
 Vue.use(Tooltip)
 // Vue.use(Cascader)
 // Vue.use(Autocomplete)
+Vue.use(Vimg)
 
 // steps
 // Vue.use(Steps)
