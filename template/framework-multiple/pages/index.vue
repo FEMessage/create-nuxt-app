@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <v-img :src="$store.state.meta.homePageImg" class="home-img" alt="homeImg" has-loading="false" />
+    <v-img :src="$store.state.meta.homePageImg" class="home-img" alt="homeImg" :has-loading="false" />
   </div>
 </template>
 
