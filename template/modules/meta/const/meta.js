@@ -20,7 +20,7 @@ const meta = {
 
   // 登录页背景
   loginBgImg:
-    'https://deepexi.oss-cn-shenzhen.aliyuncs.com/xpaas-console/bg_login.png',
+    'https://deepexi.oss-cn-shenzhen.aliyuncs.com/deepexi-services/login-bg.jpg',
 
   // console 首页背景
   homePageImg:
