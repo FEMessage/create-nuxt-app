@@ -8,10 +8,14 @@ git:
   depth: 15
 install:
 - yarn --frozen-lockfile
+- yarn global add @lhci/cli
 script:
   - yarn test
   - yarn build:release
   - yarn deploy
+  - lhci autorun --upload.target=temporary-public-storage --collect.staticDistDir=./dist --collect.url=http://localhost/nuxt-element-dashboard --collect.url=http://localhost/nuxt-multiple-spa --collect.url=http://localhost/nuxt-vant
+addons:
+  chrome: stable
 cache: 
   - yarn
   - directories:
@@ -19,12 +23,12 @@ cache:
     - release/nuxt-multiple-spa/node_modules
     - release/nuxt-vant/node_modules
 deploy:
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-    local-dir: dist
-    on:
-      branch: master
+  #- provider: pages
+  #  skip_cleanup: true
+  #  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  #  local-dir: dist
+  #  on:
+  #    branch: master
   - provider: script
     skip_cleanup: true
     script: npx semantic-release
