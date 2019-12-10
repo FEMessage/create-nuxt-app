@@ -10,7 +10,7 @@
       <van-row>
         <van-col v-for="(good, index) in goods" :key="index" span="12">
           <div class="block" @click="goDetail(good)">
-            <v-img :src="good.img" class="good-img" width="100%" />
+            <v-img :src="good.img" class="good-img" width="100" />
             <p class="name">{{ good.name }}</p>
             <p class="price">{{ good.price | price }}</p>
           </div>
