@@ -22,9 +22,9 @@
     "lint": "eslint ./",
     "test": "ava test --verbose",
     "test:snapshot": "ava test --verbose --update-snapshots",
-    "build": "node bin/cli.js -a -o release",
-    "build:release": "node bin/cli.js -a -o release && node bin/zip.js",
-    "deploy": "yarn build && node bin/deploy/build.js",
+    "generate": "node bin/cli.js -a -o release",
+    "zip": "node bin/zip.js",
+    "build": "node bin/deploy/build.js",
     "release": "gren release --override"
   },
   "dependencies": {

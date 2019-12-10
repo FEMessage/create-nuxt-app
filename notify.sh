@@ -1,4 +1,10 @@
 #!/bin/sh
+if [ "$TRAVIS_BRANCH" != "master" ]
+then
+  echo "do not notify cause not on master branch"
+  exit 0
+fi
+
 if [ "$TRAVIS_TEST_RESULT" != "0" ]
 then
   echo "build not success, bye"
