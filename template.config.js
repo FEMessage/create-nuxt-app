@@ -28,7 +28,6 @@ const common = {
   'icon-font': 'icon-font',
   test: 'jest',
   utils: 'utils',
-  'v-img': 'v-img',
 }
 
 const desktop = {
