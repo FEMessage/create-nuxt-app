@@ -2,7 +2,7 @@
   <div class="index">
     <van-swipe :autoplay="3000" indicator-color="white">
       <van-swipe-item v-for="(image, index) in images" :key="index">
-        <v-img :src="image" class="banner" width="100%" />
+        <v-img :src="image" class="banner" width="100" />
       </van-swipe-item>
     </van-swipe>
     <van-row class="goods">
