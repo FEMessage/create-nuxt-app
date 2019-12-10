@@ -16,6 +16,7 @@ import {
   Radio,
   Toast,
 } from '@femessage/vant'
+import Vimg from '@femessage/v-img';
 
 Vue.use(Button)
 Vue.use(Cell).use(CellGroup)
@@ -27,3 +28,4 @@ Vue.use(Field)
 Vue.use(Popup)
 Vue.use(RadioGroup).use(Radio)
 Vue.use(Toast)
+Vue.use(Vimg)

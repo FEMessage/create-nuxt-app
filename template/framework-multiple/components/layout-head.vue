@@ -19,7 +19,7 @@
         <el-dropdown placement="bottom-end" @command="exitBtn">
           <span class="el-dropdown-link">
             <div class="head-active">
-              <img :src="userImg" class="username-img" alt="username-img" />
+              <v-img :src="userImg" class="username-img" alt="username-img" />
             </div>
             <!-- 用户名称 -->
             <div class="username-text">{{ userName }}</div>

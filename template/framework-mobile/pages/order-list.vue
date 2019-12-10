@@ -3,7 +3,7 @@
     <data-list ref="dataList" :url="url">
       <ul slot-scope="props">
         <li v-for="(item, index) in props.list" :key="index" class="order">
-          <img :src="item.productPhoto" />
+          <v-img :src="item.productPhoto" />
           <span class="title">{{ item.name }}</span>
           <span>{{ (item.sellCount * item.sellPrice) | price }}</span>
         </li>

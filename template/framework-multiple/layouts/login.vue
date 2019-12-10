@@ -1,5 +1,8 @@
 <template>
-  <main class="layout-login">
+  <main
+    class="layout-login"
+    v-img="{src}"
+  >
     <div class="login-form">
       <logo class="login-logo" />
       <nuxt></nuxt>
@@ -20,7 +23,9 @@ export default {
     Logo,
   },
   data() {
-    return {}
+    return {
+      src: this.$store.state.meta.loginBgImg,
+    }
   },
   methods: {},
 }
@@ -30,13 +35,19 @@ export default {
 
 .layout-login {
   position: absolute;
-  padding: 8% 0 0;
   width: 100%;
   min-height: 100%;
   background-color: #f0f2f5;
-  background-image: url(https://deepexi.oss-cn-shenzhen.aliyuncs.com/xpaas-console/bg_login.png);
+  // background-image: url(https://deepexi.oss-cn-shenzhen.aliyuncs.com/xpaas-console/bg_login.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 8%;
+  }
 
   .logo-login {
     width: 260px;
