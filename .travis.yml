@@ -1,6 +1,7 @@
 branches:
   only:
     - master
+    - dev
 language: node_js
 node_js:
 - lts/*
@@ -8,12 +9,11 @@ git:
   depth: 15
 install:
 - yarn --frozen-lockfile
-- yarn global add @lhci/cli
 script:
   - yarn test
-  - yarn build:release
-  - yarn deploy
-  - lhci autorun --upload.target=temporary-public-storage --collect.staticDistDir=./dist --collect.url=http://localhost/nuxt-element-dashboard --collect.url=http://localhost/nuxt-multiple-spa --collect.url=http://localhost/nuxt-vant
+  - yarn generate
+  - test "$TRAVIS_BRANCH" = "dev" && ./lhci.sh
+  - test "$TRAVIS_BRANCH" = "master" &&  yarn zip
 addons:
   chrome: stable
 cache: 
@@ -32,5 +32,7 @@ deploy:
   - provider: script
     skip_cleanup: true
     script: npx semantic-release
+    on:
+      branch: master
 after_script:
   - ./notify.sh
