@@ -9,7 +9,7 @@
       <el-submenu v-else :index="m.id + ''">
         <template slot="title">
           <!--<i class="el-icon-menu"></i>-->
-          <img
+          <v-img
             v-if="checkUrl(m.icon)"
             :src="m.icon"
             :alt="m.name"

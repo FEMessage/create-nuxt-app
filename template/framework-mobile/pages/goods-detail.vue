@@ -2,7 +2,7 @@
   <div class="goods-detail">
     <van-swipe :autoplay="3000" class="swipe">
       <van-swipe-item v-for="thumb in goods.thumb" :key="thumb">
-        <img :src="thumb" />
+        <v-img :src="thumb" />
       </van-swipe-item>
     </van-swipe>
 

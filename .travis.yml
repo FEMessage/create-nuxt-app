@@ -1,6 +1,7 @@
 branches:
   only:
     - master
+    - dev
 language: node_js
 node_js:
 - lts/*
@@ -10,8 +11,12 @@ install:
 - yarn --frozen-lockfile
 script:
   - yarn test
-  - yarn build:release
-  - yarn deploy
+  - yarn generate
+  # https://stackoverflow.com/questions/37544306/travis-different-script-for-different-branch
+  - test "$TRAVIS_BRANCH" = "dev" && yarn build && ./lhci.sh || echo skip
+  - test "$TRAVIS_BRANCH" = "master" &&  yarn zip || echo skip
+addons:
+  chrome: stable
 cache: 
   - yarn
   - directories:
@@ -19,14 +24,16 @@ cache:
     - release/nuxt-multiple-spa/node_modules
     - release/nuxt-vant/node_modules
 deploy:
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-    local-dir: dist
-    on:
-      branch: master
+  #- provider: pages
+  #  skip_cleanup: true
+  #  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  #  local-dir: dist
+  #  on:
+  #    branch: master
   - provider: script
     skip_cleanup: true
     script: npx semantic-release
+    on:
+      branch: master
 after_script:
   - ./notify.sh

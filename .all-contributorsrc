@@ -79,7 +79,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "zhn4",
+      "name": "zhn4",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11404946?v=4",
+      "profile": "https://github.com/zhn4",
+      "contributions": [
+        "code"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "skipCi": true
 }

@@ -32,6 +32,7 @@
     "@femessage/data-list": "latest",
     "@femessage/upload-to-ali": "latest",
     "@femessage/vant": "latest",
+    "@femessage/v-img": "latest",
     "@nuxtjs/axios": "^5.0.1",
     "@nuxtjs/dotenv": "^1.3.0",
     "@nuxtjs/google-analytics": "^2.2.2",
