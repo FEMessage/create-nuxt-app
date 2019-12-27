@@ -143,7 +143,7 @@ module.exports = {
       mergePackageJson,
       addModules,
       moveDirsToSrc,
-    ].flat() // https://node.green/#ES2019-features-Array-prototype--flat--flatMap-
+    ].reduce((r, a) => r.concat(a), []) // 和 flat（node >= 11.15.0) 效果一样，性能差点
   },
   completed() {
     const cd = () => {
