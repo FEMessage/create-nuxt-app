@@ -2,6 +2,7 @@ const path = require('path')
 const glob = require('glob')
 const validate = require('validate-npm-package-name')
 const configs = require('../template.config')
+const {mergeJson, sortObj} = require('./utils')
 
 module.exports = {
   prompts() {
@@ -71,25 +72,11 @@ module.exports = {
 
     const resolveDir = dir => path.resolve(__dirname, '../template', dir)
 
-    const setUpFramework = [
-      {
-        type: 'add',
-        files: '**',
-        templateDir: resolveDir('framework'),
-      },
-      {
-        type: 'add',
-        files: '**',
-        templateDir: resolveDir(`framework-${opts.config.template}`),
-      },
-    ]
-    const addModules = Object.keys(opts.config)
-      .filter(k => !['folder', 'template'].includes(k))
-      .map(k => ({
-        type: 'add',
-        files: '**',
-        templateDir: resolveDir(`modules/${opts.config[k]}`),
-      }))
+    const addBaseFramework = {
+      type: 'add',
+      files: '**',
+      templateDir: resolveDir('framework'),
+    }
     // 这些配置文件在模板中是加了'_'前缀的（防止影响到本项目），移到生成的项目后要去掉前缀
     const restoreConfigsName = {
       type: 'move',
@@ -99,14 +86,49 @@ module.exports = {
         '_package.json': 'package.json',
       },
     }
+
+    const addCustomFramework = {
+      type: 'add',
+      files: '**',
+      templateDir: resolveDir(`framework-${opts.config.template}`),
+    }
+    // 合并基础模板和特定模板的 package.json
+    const mergePackageJson = [
+      {
+        type: 'modify',
+        files: 'package.json',
+        handler(basePackage) {
+          const customPackage = require(path.resolve(
+            opts.outDir,
+            '_package.json',
+          ))
+          const result = mergeJson(basePackage, customPackage)
+          ;['dependencies', 'devDependencies'].forEach(k => sortObj(result[k]))
+          return result
+        },
+      },
+      {
+        type: 'remove',
+        files: '_package.json',
+      },
+    ]
+
+    const addModules = Object.keys(opts.config)
+      .filter(k => !['folder', 'template'].includes(k))
+      .map(k => ({
+        type: 'add',
+        files: '**',
+        templateDir: resolveDir(`modules/${opts.config[k]}`),
+      }))
     // 生成的nuxt项目的srcDir配置=src。这里我们把除test以外的文件夹移动到src目录下
     const moveDirsToSrc = {
       type: 'move',
       patterns: {
-        ...[...setUpFramework, ...addModules]
-          .map(({templateDir}) =>
+        ...[addBaseFramework, addCustomFramework, ...addModules]
+          .filter(a => a.templateDir)
+          .map(a =>
             glob.sync('!(test)/', {
-              cwd: templateDir,
+              cwd: a.templateDir,
             }),
           )
           .reduce((dirs1, dirs2) => [...dirs1, ...dirs2])
@@ -114,30 +136,14 @@ module.exports = {
       },
     }
 
-    /**
-     * 移除yarn.lock中对 @femessage 组件的锁定
-     * 这样用户执行yarn时总是下载最新版本的 @femessage 组件
-     */
-    const removeFemessageInLockFile = {
-      type: 'modify',
-      files: 'yarn.lock',
-      handler(data) {
-        const sep = '\n\n'
-        const reg = /^"@femessage\//
-        return data
-          .split(sep)
-          .filter(str => !reg.test(str))
-          .join(sep)
-      },
-    }
-
     return [
-      ...setUpFramework,
-      ...addModules,
+      addBaseFramework,
       restoreConfigsName,
+      addCustomFramework,
+      mergePackageJson,
+      addModules,
       moveDirsToSrc,
-      removeFemessageInLockFile,
-    ]
+    ].flat() // https://node.green/#ES2019-features-Array-prototype--flat--flatMap-
   },
   completed() {
     const cd = () => {

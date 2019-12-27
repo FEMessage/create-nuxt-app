@@ -1,100 +1,13 @@
 {
   "name": "nuxt-element-dashboard",
-  "version": "2.4.2",
   "description": "Nuxt2 + element UI project",
-  "authors": [
-    "levy <levy9527@qq.com>",
-    "Han <xsytby1112@gmail.com>",
-    "donaldshen <825870831@qq.com>"
-  ],
   "keywords": [
-    "vue",
-    "nuxt",
     "dashboard",
     "element-ui"
   ],
-  "private": true,
-  "engines": {
-    "npm": ">= 5.2.0"
-  },
-  "scripts": {
-    "mock": "cross-env MODE=mock nuxt",
-    "dev": "cross-env MODE=dev nuxt",
-    "mock:nologin": "cross-env MODE=mock NO_LOGIN=1 nuxt",
-    "dev:nologin": "cross-env MODE=dev NO_LOGIN=1 nuxt",
-    "build": "cross-env MODE=prod nuxt build",
-    "test": "jest",
-    "start": "cross-env HOST=0.0.0.0 PORT=3333 MODE=prod nuxt start",
-    "stdver": "standard-version -m '[skip ci] chore(release): v%s'",
-    "release": "gren release --override",
-    "lint": "eslint 'src/**/*.@(js|vue)' --fix && stylelint src/**/*.{vue,less} --fix"
-  },
   "dependencies": {
     "@femessage/el-data-table": "latest",
     "@femessage/el-form-renderer": "latest",
-    "@femessage/element-ui": "latest",
-    "@femessage/upload-to-ali": "latest",
-    "@femessage/v-img": "latest",
-    "@nuxtjs/axios": "^5.0.1",
-    "@nuxtjs/dotenv": "^1.3.0",
-    "@nuxtjs/google-analytics": "^2.2.2",
-    "@nuxtjs/pwa": "^3.0.0-beta.16",
-    "@nuxtjs/style-resources": "^0.1.2",
-    "dayjs": "^1.7.4",
-    "dotenv": "^6.0.0",
-    "js-cookie": "^2.2.0",
-    "less": "3.9.0",
-    "less-loader": "4.1.0",
-    "nuxt": "^2.7.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@commitlint/cli": "^8.0.0",
-    "@commitlint/config-conventional": "^8.0.0",
-    "babel-eslint": "^8.2.1",
-    "babel-jest": "^24.1.0",
-    "cross-env": "^5.1.3",
-    "eslint": "^4.15.0",
-    "eslint-config-prettier": "^6.1.0",
-    "eslint-friendly-formatter": "^3.0.0",
-    "eslint-plugin-jest": "^23.1.1",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-vue": "^4.0.0",
-    "github-release-notes": "^0.17.0",
-    "husky": "1.3.1",
-    "jest": "^24.1.0",
-    "lint-staged": "^8.1.0",
-    "prettier": "1.18.2",
-    "standard-version": "^6.0.1",
-    "stylelint": "^9.10.0",
-    "stylelint-config-standard": "^18.2.0"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1",
-      "^~/(.*)$": "<rootDir>/src/$1"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "post-commit": "git update-index --again"
-    }
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{vue,less}": [
-      "stylelint --fix",
-      "git add"
-    ],
-    "*.{md,json}": [
-      "prettier --write",
-      "git add"
-    ]
+    "@femessage/element-ui": "latest"
   }
 }
