@@ -75,9 +75,10 @@ module.exports = {
     const addBaseFramework = {
       type: 'add',
       files: '**',
-      templateDir: resolveDir('framework'),
+      templateDir: resolveDir('framework-base'),
     }
     // 这些配置文件在模板中是加了'_'前缀的（防止影响到本项目），移到生成的项目后要去掉前缀
+    // 同时也防止这些文件无法发布至 npm
     const restoreConfigsName = {
       type: 'move',
       patterns: {
