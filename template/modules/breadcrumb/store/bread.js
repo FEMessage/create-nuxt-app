@@ -42,12 +42,4 @@ export const actions = {
       commit('setBreads', breads)
     }
   },
-  async getAccountTypeInfo(_, route) {
-    const id = route.params.id
-    const result = await this.$axios.get(
-      `https://api.github.com/users/${id}`,
-    )
-
-    return result.data.name
-  },
 }
