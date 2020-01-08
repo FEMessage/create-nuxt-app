@@ -33,6 +33,7 @@ const common = {
 const desktop = {
   ...common,
   ui: 'element-ui',
+  breadcrumb: 'breadcrumb',
   stylesDesktop: 'styles-desktop',
   componentsDesktop: 'components-desktop',
 }
