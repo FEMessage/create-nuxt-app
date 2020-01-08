@@ -18,12 +18,11 @@ export const getters = {
 
 export const actions = {
   async generateBreadcrumb({ commit, dispatch }, route) {
-    const { path, name } = route
-    const finded = breadData.find(item => item.name === name)
+    const { path, name, meta } = route
 
-    if (finded) {
+    const commitSetBreads = async breadcrumb => {
       const paths = path.split('/')
-      const allPromise = finded.breadcrumb.map(async (item, index) => {
+      const allPromise = breadcrumb.map(async (item, index) => {
         const path = paths.slice(0, index + 2).join('/')
         const matchComps = this.$router.getMatchedComponents(path)
 
@@ -40,6 +39,16 @@ export const actions = {
 
       const breads = await Promise.all(allPromise)
       commit('setBreads', breads)
+    }
+
+    if (meta && meta.breadcrumb) {
+      commitSetBreads(meta.breadcrumb)
+    } else {
+      const finded = breadData.find(item => item.name === name)
+
+      if (finded) {
+        commitSetBreads(finded.breadcrumb)
+      }
     }
   },
 }
