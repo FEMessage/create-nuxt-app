@@ -1,6 +1,7 @@
 const HOME = { name: '首页' }
 const ACCOUNT = { name: '账户管理' }
 const TEST = { name: '测试' }
+const HELLO = { name: '你好' }
 
 const ACCOUNT_TYPE = {
   name: '',
@@ -21,7 +22,7 @@ export default [
     breadcrumb: [ACCOUNT, TEST]
   },
   {
-    name: "account-id-test",
-    breadcrumb: [ACCOUNT, ACCOUNT_TYPE, TEST]
+    name: "account-id-hello",
+    breadcrumb: [ACCOUNT, ACCOUNT_TYPE, HELLO]
   },
 ]
