@@ -1,4 +1,3 @@
-import client from '@/services/apiClient'
 import breadData from '@/components/breadcrumb/bread-data'
 
 export const state = () => ({
