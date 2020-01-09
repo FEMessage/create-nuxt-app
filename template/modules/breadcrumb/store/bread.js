@@ -20,33 +20,22 @@ export const getters = {
 export const actions = {
   async generateBreadcrumb({ commit, dispatch }, route) {
     const { path: routePath, name, meta } = route
-    const componentNames = this.$router.options.routes.filter(item => item.name !== 'all').map(item => item.component.name)
-    console.log(this.$router.options.routes)
 
     const commitSetBreads = async breadcrumb => {
       const paths = routePath.split('/')
       const allPromise = breadcrumb.map(async (item, index) => {
         const path = paths.slice(0, index + 2).join('/')
         const matchComps = this.$router.getMatchedComponents(path)
-        let to
-
-        if (matchComps.length) {
-          const matchCompsName = matchComps[0].name
-          const isNameExist = componentNames.includes(matchCompsName)
-
-          console.log(matchCompsName, isNameExist)
-
-          if (isNameExist || matchCompsName === 'VueComponent') {
-            to = path
-          }
-        }
 
         if (item.action) {
           const name = await dispatch(item.action, route)
           item.name = name ? name : ''
         }
 
-        return { name: item.name, to }
+        return {
+          name: item.name,
+          to: matchComps.length ? path : '',
+        }
       })
 
       const breads = await Promise.all(allPromise)

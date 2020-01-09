@@ -4,12 +4,10 @@ const TEST = { name: '测试' }
 const HELLO = { name: '你好' }
 
 const ACCOUNT_TYPE = {
-  name: '',
   action: 'getAccountTypeInfo',
 }
 
 const USER_TYPE = {
-  name: '',
   action: 'getUserTypeInfo',
 }
 
@@ -25,6 +23,10 @@ export default [
   {
     name: 'account-test',
     breadcrumb: [ACCOUNT, TEST]
+  },
+  {
+    name: "account-id",
+    breadcrumb: [ACCOUNT, ACCOUNT_TYPE]
   },
   {
     name: "account-id-hello",
