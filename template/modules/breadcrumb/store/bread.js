@@ -16,14 +16,12 @@ export const getters = {
   },
 }
 
-let componentNames = []
 
 export const actions = {
   async generateBreadcrumb({ commit, dispatch }, route) {
     const { path: routePath, name, meta } = route
-    if (!componentNames.length) {
-      componentNames = this.$router.options.routes.filter(item => item.name !== 'all').map(item => item.component.name)
-    }
+    const componentNames = this.$router.options.routes.filter(item => item.name !== 'all').map(item => item.component.name)
+    console.log(componentNames)
 
     const commitSetBreads = async breadcrumb => {
       const paths = routePath.split('/')
@@ -35,6 +33,8 @@ export const actions = {
         if (matchComps.length) {
           const matchCompsName = matchComps[0].name
           const isNameExist = componentNames.includes(matchCompsName)
+
+          console.log(matchCompsName, isNameExist)
 
           if (isNameExist || matchCompsName === 'VueComponent') {
             to = path
