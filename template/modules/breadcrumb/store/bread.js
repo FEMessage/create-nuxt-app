@@ -24,13 +24,19 @@ export const actions = {
       const paths = routePath.split('/')
       const allPromise = breadcrumb.map(async (item, index) => {
         const path = paths.slice(0, index + 2).join('/')
+        const matchComps = this.$router.getMatchedComponents(path)
+        let to = ''
 
         if (item.action) {
           const name = await dispatch(item.action, route)
           item.name = name ? name : ''
         }
 
-        return { name: item.name, to: item.clickable === false ? '' : path }
+        if (!item.disabled && matchComps.length) {
+          to = path
+        }
+
+        return { name: item.name, to }
       })
 
       const breads = await Promise.all(allPromise)

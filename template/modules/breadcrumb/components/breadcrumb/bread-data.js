@@ -4,12 +4,12 @@ const TEST = { name: '测试' }
 const HELLO = { name: '你好' }
 
 const ACCOUNT_TYPE = {
-  clickable: false,
+  disabled: true,
   action: 'getAccountTypeInfo',
 }
 
 const USER_TYPE = {
-  clickable: false,
+  disabled: true,
   action: 'getUserTypeInfo',
 }
 
