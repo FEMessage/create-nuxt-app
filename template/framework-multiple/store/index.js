@@ -44,7 +44,7 @@ export const mutations = {
       })
     })
   },
-  logout(state) {
+  logout(state, redirect) {
     cookieKeys.forEach(key => {
       state[key] = ''
       cookie.remove(key, {
@@ -52,7 +52,10 @@ export const mutations = {
       })
     })
     // 清空state，跳转到login页的逻辑交给路由守卫
-    location.reload()
+    const loginUri = redirect
+      ? `/login?redirect=${encodeURIComponent(redirect)}`
+      : '/login'
+    this.$router.replace(loginUri)
   },
   update(state, payload) {
     Object.keys(payload).forEach(k => {
