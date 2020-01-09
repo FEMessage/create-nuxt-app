@@ -6,6 +6,7 @@
       <div :class="{spreadContainer: setting.collapse}" class="main-container">
         <scrollbar :noresize="false" wrap-class="main-scrollbar">
           <el-container direction="vertical">
+            <bread-crumb />
             <el-main class="nuxt-main">
               <nuxt class="nuxt-container"></nuxt>
             </el-main>
@@ -25,6 +26,7 @@ import LayoutHead from '@/components/layout-head.vue'
 import {mapState, mapGetters} from 'vuex'
 import Sidebar from '@/components/sidebar.vue'
 import Scrollbar from '@/components/scrollbar/index.js'
+import BreadCrumb from '@/components/breadcrumb'
 
 export default {
   components: {
@@ -32,6 +34,7 @@ export default {
     LayoutHead,
     Sidebar,
     Scrollbar,
+    BreadCrumb,
   },
   computed: {
     ...mapState(['permission', 'setting']),

@@ -16,25 +16,37 @@ export const getters = {
   },
 }
 
+let componentNames = []
+
 export const actions = {
   async generateBreadcrumb({ commit, dispatch }, route) {
     const { path, name, meta } = route
+    if (!componentNames.length) {
+      componentNames = this.$router.options.routes.filter(item => item.name !== 'all').map(item => item.component.name)
+    }
 
     const commitSetBreads = async breadcrumb => {
       const paths = path.split('/')
       const allPromise = breadcrumb.map(async (item, index) => {
         const path = paths.slice(0, index + 2).join('/')
         const matchComps = this.$router.getMatchedComponents(path)
+        let to
+
+        if (matchComps.length) {
+          const matchCompsName = matchComps[0].name
+          const isNameExist = componentNames.includes(matchCompsName)
+
+          if (isNameExist || matchCompsName === 'VueComponent') {
+            to = path
+          }
+        }
 
         if (item.action) {
           const name = await dispatch(item.action, route)
           item.name = name ? name : ''
         }
 
-        return {
-          name: item.name,
-          to: matchComps.length && path,
-        }
+        return { name: item.name, to }
       })
 
       const breads = await Promise.all(allPromise)
@@ -44,11 +56,23 @@ export const actions = {
     if (meta && meta.breadcrumb) {
       commitSetBreads(meta.breadcrumb)
     } else {
-      const finded = breadData.find(item => item.name === name)
+      const found = breadData.find(item => item.name === name)
 
-      if (finded) {
-        commitSetBreads(finded.breadcrumb)
+      if (found) {
+        commitSetBreads(found.breadcrumb)
       }
     }
+  },
+  async getAccountTypeInfo(_, route) {
+    const id = route.params.id
+    const result = await this.$axios.get(`https://api.github.com/users/${id}`)
+
+    return result.data.login
+  },
+  async getUserTypeInfo(_, route) {
+    const id = route.params.id
+    const result = await this.$axios.get(`https://api.github.com/users/${id}`)
+
+    return result.data.name
   },
 }
