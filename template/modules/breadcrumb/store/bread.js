@@ -16,7 +16,6 @@ export const getters = {
   },
 }
 
-
 export const actions = {
   async generateBreadcrumb({ commit, dispatch }, route) {
     const { path: routePath, name, meta } = route
@@ -25,17 +24,13 @@ export const actions = {
       const paths = routePath.split('/')
       const allPromise = breadcrumb.map(async (item, index) => {
         const path = paths.slice(0, index + 2).join('/')
-        const matchComps = this.$router.getMatchedComponents(path)
 
         if (item.action) {
           const name = await dispatch(item.action, route)
           item.name = name ? name : ''
         }
 
-        return {
-          name: item.name,
-          to: matchComps.length ? path : '',
-        }
+        return { name: item.name, to: item.clickable === false ? '' : path }
       })
 
       const breads = await Promise.all(allPromise)
