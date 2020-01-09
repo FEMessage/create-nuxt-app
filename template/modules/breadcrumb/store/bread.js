@@ -65,13 +65,13 @@ export const actions = {
   },
   async getAccountTypeInfo(_, route) {
     const id = route.params.id
-    const result = await this.$axios.get(`https://api.github.com/users/${id}`)
+    const result = await this.$axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
 
     return result.data.name
   },
   async getUserTypeInfo(_, route) {
     const id = route.params.uid
-    const result = await this.$axios.get(`https://api.github.com/users/${id}`)
+    const result = await this.$axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
 
     return result.data.name
   },
