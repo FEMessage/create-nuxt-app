@@ -28,14 +28,17 @@ export const mutations = {
     })
   },
 
-  logout(state) {
+  logout(state, redirect) {
     cookieKeys.forEach(key => {
       state[key] = ''
       cookie.remove(key, {
         path: cookiePath,
       })
     })
-    this.$router.replace('/login')
+    const loginUri = redirect
+      ? `/login?redirect=${encodeURIComponent(redirect)}`
+      : '/login'
+    this.$router.replace(loginUri)
   },
 
   update(state, payload) {

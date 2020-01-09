@@ -56,6 +56,13 @@ export default {
       },
     }
   },
+
+  computed: {
+    redirect() {
+      return this.$route.query.redirect || '/' 
+    }
+  },
+
   methods: {
     login() {
       this.$refs.loginForm.validate(valid => {
@@ -66,7 +73,7 @@ export default {
             .dispatch('login', this.form)
             .then(() => {
               this.loading = false
-              this.$router.replace('/')
+              this.$router.replace(this.redirect)
             })
             .catch(e => {
               // TODO 异常处理

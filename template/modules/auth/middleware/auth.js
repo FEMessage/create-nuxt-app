@@ -2,7 +2,7 @@
  * @Author: Han
  * @Date: 2019-05-08 14:32:04
  * @Last Modified by: Han
- * @Last Modified time: 2019-06-04 17:22:28
+ * @Last Modified time: 2020-01-07 15:16:20
  * @Description 路由鉴权中间件，实现其他路由守卫功能请新建一个中间件
  *
  * **********************************************************
@@ -21,7 +21,7 @@ export default async ({store, redirect, env, route}) => {
   if (process.server) return
 
   const {NO_LOGIN} = env
-  const {path} = route
+  const {path, fullPath} = route
 
   // 开发时可以用 NO_LOGIN 跳过路由鉴权
   if (NO_LOGIN > 0) return
@@ -40,7 +40,7 @@ export default async ({store, redirect, env, route}) => {
   // 未登录
   if (!userId || !token) {
     <% if (template !== 'mobile') { %>
-    redirect(LOGIN_PATH)
+    redirect(`${LOGIN_PATH}?redirect=${encodeURIComponent(fullPath)}`)
     <% } %>
     return
   }
