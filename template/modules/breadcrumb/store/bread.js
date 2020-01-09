@@ -21,7 +21,7 @@ export const actions = {
   async generateBreadcrumb({ commit, dispatch }, route) {
     const { path: routePath, name, meta } = route
     const componentNames = this.$router.options.routes.filter(item => item.name !== 'all').map(item => item.component.name)
-    console.log(componentNames)
+    console.log(this.$router.options.routes)
 
     const commitSetBreads = async breadcrumb => {
       const paths = routePath.split('/')
