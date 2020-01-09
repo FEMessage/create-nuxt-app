@@ -20,13 +20,13 @@ let componentNames = []
 
 export const actions = {
   async generateBreadcrumb({ commit, dispatch }, route) {
-    const { path, name, meta } = route
+    const { path: routePath, name, meta } = route
     if (!componentNames.length) {
       componentNames = this.$router.options.routes.filter(item => item.name !== 'all').map(item => item.component.name)
     }
 
     const commitSetBreads = async breadcrumb => {
-      const paths = path.split('/')
+      const paths = routePath.split('/')
       const allPromise = breadcrumb.map(async (item, index) => {
         const path = paths.slice(0, index + 2).join('/')
         const matchComps = this.$router.getMatchedComponents(path)
@@ -67,10 +67,10 @@ export const actions = {
     const id = route.params.id
     const result = await this.$axios.get(`https://api.github.com/users/${id}`)
 
-    return result.data.login
+    return result.data.name
   },
   async getUserTypeInfo(_, route) {
-    const id = route.params.id
+    const id = route.params.uid
     const result = await this.$axios.get(`https://api.github.com/users/${id}`)
 
     return result.data.name
