@@ -9,6 +9,5 @@
     "@femessage/el-data-table": "latest",
     "@femessage/el-form-renderer": "latest",
     "@femessage/element-ui": "latest",
-    "@hanxx/nuxt-modularize": "^0.0.1"
   }
 }
