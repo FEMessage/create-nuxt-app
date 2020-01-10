@@ -1,3 +1,3 @@
 <template>
-  <div>account</div>
+  <p>staff</p>
 </template>

@@ -1,7 +1,6 @@
 const HOME = { name: '首页' }
 const ACCOUNT = { name: '账户管理' }
-const TEST = { name: '测试' }
-const HELLO = { name: '你好' }
+const STAFF = { name: '员工管理' }
 
 const ACCOUNT_TYPE = {
   disabled: true,
@@ -23,19 +22,15 @@ export default [
     breadcrumb: [ACCOUNT]
   },
   {
-    name: 'account-test',
-    breadcrumb: [ACCOUNT, TEST]
-  },
-  {
     name: "account-id",
     breadcrumb: [ACCOUNT, ACCOUNT_TYPE]
   },
   {
-    name: "account-id-hello",
-    breadcrumb: [ACCOUNT, ACCOUNT_TYPE, HELLO]
+    name: "account-id-staff",
+    breadcrumb: [ACCOUNT, ACCOUNT_TYPE, STAFF]
   },
   {
-    name: "account-id-hello-uid",
-    breadcrumb: [ACCOUNT, ACCOUNT_TYPE, HELLO, USER_TYPE]
+    name: "account-id-staff-uid",
+    breadcrumb: [ACCOUNT, ACCOUNT_TYPE, STAFF, USER_TYPE]
   },
 ]
