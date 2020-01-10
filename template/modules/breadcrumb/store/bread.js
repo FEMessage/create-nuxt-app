@@ -29,7 +29,7 @@ export const actions = {
 
         if (item.action) {
           const name = await dispatch(item.action, route)
-          item.name = name ? name : ''
+          item.name = name || ''
         }
 
         if (!item.disabled && matchComps.length) {
