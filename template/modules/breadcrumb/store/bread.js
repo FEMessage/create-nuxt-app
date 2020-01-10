@@ -20,7 +20,7 @@ export const actions = {
   async generateBreadcrumb({ commit, dispatch }, route) {
     const { path: routePath, name, meta } = route
 
-    const commitSetBreads = async breadcrumb => {
+    const setBreads = async breadcrumb => {
       const paths = routePath.split('/')
       const allPromise = breadcrumb.map(async (item, index) => {
         const path = paths.slice(0, index + 2).join('/')
@@ -44,12 +44,12 @@ export const actions = {
     }
 
     if (meta && meta.breadcrumb) {
-      commitSetBreads(meta.breadcrumb)
+      setBreads(meta.breadcrumb)
     } else {
       const found = breadData.find(item => item.name === name)
 
       if (found) {
-        commitSetBreads(found.breadcrumb)
+        setBreads(found.breadcrumb)
       }
     }
   },
