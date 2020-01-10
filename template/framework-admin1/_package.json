@@ -1,0 +1,14 @@
+{
+  "name": "nuxt-admin1",
+  "description": "Nuxt2 + element UI project",
+  "keywords": [
+    "admin",
+    "element-ui"
+  ],
+  "dependencies": {
+    "@femessage/el-data-table": "latest",
+    "@femessage/el-form-renderer": "latest",
+    "@femessage/element-ui": "latest",
+    "@hanxx/nuxt-modularize": "^0.0.1"
+  }
+}
