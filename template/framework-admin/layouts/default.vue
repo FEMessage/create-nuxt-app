@@ -10,7 +10,7 @@
       @clickTitle="$router.push('/?skip=1')"
     >
       <template slot="title">
-        <svg-icon icon-class="logo" style="margin-right: 5px;"></svg-icon>DEEPEXI IAM
+        <svg-icon icon-class="logo" style="margin-right: 5px;"></svg-icon>DEEPEXI ADMIN
       </template>
     </layout-header>
 
@@ -20,15 +20,13 @@
       <sidebar :menu-list="sideMenu" class="nav"></sidebar>
       <section class="main-content">
         <bread-crumb />
-
         <section class="sub-content">
           <el-scrollbar wrap-class="scrollbar-wrapper">
             <section class="content">
               <nuxt />
             </section>
-
             <!-- footer -->
-            <el-footer :height="footerHeight">
+            <el-footer :height="FOOTER_HEIGHT">
               <copyright></copyright>
             </el-footer>
           </el-scrollbar>
@@ -46,7 +44,7 @@
         </section>
 
         <!-- footer -->
-        <el-footer :height="footerHeight">
+        <el-footer :height="FOOTER_HEIGHT">
           <copyright></copyright>
         </el-footer>
       </el-scrollbar>
@@ -56,11 +54,11 @@
 
 <script>
 import {mapState, mapGetters, mapMutations} from 'vuex'
-import {footerHeight, asideWidth, breadcrumbHeight} from '@/assets/export.less'
+import {FOOTER_HEIGHT} from '@/assets/export.less'
 import LayoutHeader from '@/containers/header.vue'
 import Copyright from '@/components/copyright.vue'
-import Sidebar from '@/components/sidebar.vue'
 import BreadCrumb from '@/components/breadcrumb'
+import Sidebar from '@/components/sidebar.vue'
 
 export default {
   components: {
@@ -79,9 +77,7 @@ export default {
 
   data() {
     return {
-      footerHeight,
-      asideWidth,
-      breadcrumbHeight,
+      FOOTER_HEIGHT,
       dropDownList: [
         {
           name: '退出',
@@ -119,6 +115,8 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
+    background-color: @--background-color-base;
 
     .sub-container {
       flex: 1;
@@ -127,14 +125,14 @@ export default {
       justify-content: space-between;
 
       .nav {
-        width: @--aside-width;
+        width: @sidebar-width;
         flex-shrink: 0;
       }
     }
 
     .main-content {
       flex: 1;
-      width: calc(100vw - @--aside-width);
+      width: calc(100vw - @sidebar-width);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -142,7 +140,7 @@ export default {
 
     .sub-content {
       overflow: hidden;
-      height: calc(100vh - @--header-height - @--breadcrumb-height);
+      min-height: calc(100vh - @--header-height - @--breadcrumb-height);
 
       & .el-scrollbar__thumb {
         background-color: rgba(0, 0, 0, 0.4) !important;
@@ -162,15 +160,13 @@ export default {
     }
 
     .content {
+      box-sizing: border-box;
       min-height: calc(
         100vh - @--header-height - @--footer-height - @--breadcrumb-height
       );
-      margin: 0 20px;
-      box-sizing: border-box;
-      padding: 24px;
-      background-color: @--color-white;
+      padding: 0 20px;
       border-radius: 8px;
-      overflow-x: hidden;
+      background-color: @--background-color-white;
     }
 
     .blank-content {

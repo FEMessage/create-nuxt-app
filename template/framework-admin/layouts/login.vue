@@ -41,7 +41,7 @@ export default {
     content: '';
     display: block;
     width: 100%;
-    padding-top: 8%;
+    padding-top: 20%;
   }
 
   .logo-login {

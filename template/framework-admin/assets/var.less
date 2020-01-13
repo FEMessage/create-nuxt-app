@@ -8,6 +8,8 @@
 -------------------------- */
 /// color|1|Brand Color|0
 @--color-primary: #5D81F9; // 409EFF
+@--color-primary-hover: #6D8DF9; // 409EFF
+@--color-primary-click: #5373DF; // 409EFF
 @primary-color: @--color-primary;
 /// color|1|Background Color|4
 @--color-white: #FFFFFF;
@@ -39,9 +41,20 @@
 /// color|1|Border Color|3
 @--border-color-extra-light: #F2F6FC;
 
+// Font size
+@--font-size-heading1: 32px;
+@--font-size-heading2: 24px;
+@--font-size-heading3: 18px;
+@--font-size-heading4: 16px;
+@--font-size-heading5: 14px;
+@--font-size-heading6: 12px;
+
 // Background
 /// color|1|Background Color|4
-@--background-color-base: #F0F2F5; // F5F7FA
+@--background-color-black: #333643;
+@--background-color-base: #F0F2F5;
+@--background-color-light: #F5F6F9;
+@--background-color-white: #FFFFFF;
 @--background-color-header: #2D303B;
 
 // main content width
@@ -49,7 +62,6 @@
 @--min-width: 1280px;
 @--header-height: 48px;
 @--footer-height: 48px;
-@--aside-width: 200px;
 @--breadcrumb-height: 40px;
 
 @menu-text-color: @--color-text-secondary;
@@ -60,4 +72,3 @@
 @submenu-hover-color:#001528;
 @sidebar-width: 200px; // 侧边栏宽度
 @sidebar-min-width: 80px; // 侧边栏最小宽度
-@breadcrumb-height: 40px; // 面包屑高度

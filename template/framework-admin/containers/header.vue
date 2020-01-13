@@ -1,5 +1,5 @@
 <template>
-  <el-header :height="headerHeight" class="layout-header">
+  <el-header class="layout-header" :height="HEADER_HEIGHT">
     <section class="layout-header-content">
       <el-row type="flex" justify="space-between">
         <!-- 应用 logo 栏 -->
@@ -15,9 +15,7 @@
             :key="index"
             class="navigation-menu"
             @click="handleHeaderMenu(item)"
-          >
-            {{ item.name }}
-          </div>
+          >{{ item.name }}</div>
         </el-col>
 
         <!-- 头部操作栏 -->
@@ -49,8 +47,7 @@
                 v-for="(item, index) in dropdown"
                 :key="index"
                 :command="index"
-                >{{ item.name }}</el-dropdown-item
-              >
+              >{{ item.name }}</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </el-col>
@@ -60,7 +57,8 @@
 </template>
 
 <script>
-import {headerHeight} from '@/assets/export.less'
+import {HEADER_HEIGHT} from '@/assets/export.less'
+
 export default {
   name: 'LayoutHeader',
 
@@ -142,7 +140,7 @@ export default {
 
   data() {
     return {
-      headerHeight,
+      HEADER_HEIGHT,
     }
   },
 
@@ -180,7 +178,6 @@ export default {
 .layout-header {
   width: 100%;
   min-width: @--min-width;
-  height: @--header-height;
   background-color: @--background-color-header;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   user-select: none;
