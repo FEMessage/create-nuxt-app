@@ -52,6 +52,13 @@ const multiple = {
   template: 'multiple',
 }
 
+// nuxt-admin 框架配置
+const admin = {
+  ...desktop,
+  folder: 'nuxt-admin',
+  template: 'admin',
+}
+
 // nuxt-mobile 框架配置
 const mobile = {
   ...common,
@@ -59,4 +66,4 @@ const mobile = {
   template: 'mobile',
 }
 
-module.exports = [single, multiple, mobile]
+module.exports = [single, multiple, mobile, admin]

@@ -1,0 +1,63 @@
+/*
+  支持自动引入less变量表，使用时无需手动引入
+*/
+
+// base color
+
+/* Color
+-------------------------- */
+/// color|1|Brand Color|0
+@--color-primary: #5D81F9; // 409EFF
+@primary-color: @--color-primary;
+/// color|1|Background Color|4
+@--color-white: #FFFFFF;
+/// color|1|Background Color|4
+@--color-black: #000000;
+/// color|1|Functional Color|1
+@--color-success: #2FD163; // 67C23A
+/// color|1|Functional Color|1
+@--color-warning: #F5A623; // E6A23C
+/// color|1|Functional Color|1
+@--color-danger: #FF4D4F; // F56C6C
+/// color|1|Functional Color|1
+@--color-info: #A7A8AD; // 909399
+
+/// color|1|Font Color|2
+@--color-text-primary: #2D303B; // 303133
+/// color|1|Font Color|2
+@--color-text-regular: #6A6C73; // 606266
+/// color|1|Font Color|2
+@--color-text-secondary: #A7A8AD; // 909399
+/// color|1|Font Color|2
+@--color-text-placeholder: #C6C7CA; // C0C4CC
+/// color|1|Border Color|3
+@--border-color-base: #DCDEE6; // DCDFE6
+/// color|1|Border Color|3
+@--border-color-light: #E4E8F3; // E4E7ED
+/// color|1|Border Color|3
+@--border-color-lighter: #EBEEF5;
+/// color|1|Border Color|3
+@--border-color-extra-light: #F2F6FC;
+
+// Background
+/// color|1|Background Color|4
+@--background-color-base: #F0F2F5; // F5F7FA
+@--background-color-header: #2D303B;
+
+// main content width
+@--max-width: 1920px;
+@--min-width: 1280px;
+@--header-height: 48px;
+@--footer-height: 48px;
+@--aside-width: 200px;
+@--breadcrumb-height: 40px;
+
+@menu-text-color: @--color-text-secondary;
+@menu-active-text-color: @--color-white;
+@submenu-active-text-color:#f4f4f5;
+@menu-bg-color: #333643;
+@submenu-bg-color:#1f2d3d;
+@submenu-hover-color:#001528;
+@sidebar-width: 200px; // 侧边栏宽度
+@sidebar-min-width: 80px; // 侧边栏最小宽度
+@breadcrumb-height: 40px; // 面包屑高度

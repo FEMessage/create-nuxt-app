@@ -1,6 +1,8 @@
 require('dotenv').config()
-const {getRouterBase} = require('./src/utils')
+const path = require('path')
 const {env} = process
+
+const {getRouterBase} = require('./src/utils')
 ;['PUBLIC_PATH', 'API_SERVER', 'NO_LOGIN', 'COOKIE_PATH'].forEach(key =>
   // eslint-disable-next-line no-console
   console.log('%s\t: %s', key, env[key])
@@ -108,6 +110,21 @@ module.exports = {
       // config.externals = {
       //   xlsx: 'XLSX'
       // }
+     <% if (template === 'admin') { %>
+      config.module.rules.find(item =>
+        item.test.test('.svg'),
+      ).test = /\.(png|jpe?g|gif|webp)$/i
+
+      // svg-icon support
+      config.module.rules.push({
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        include: [path.join(__dirname, 'src', 'assets', 'svg')],
+        options: {
+          symbolId: 'icon-[name]',
+        },
+      })
+      <%}%>
     },
   },
   /*
@@ -183,8 +200,11 @@ module.exports = {
     {src: '~plugins/vant'},
     <%_ } else { _%>
     {src: '~plugins/element'},
-    {src: '~plugins/icon-font'}
+    {src: '~plugins/icon-font'},
     <%_ } _%>
+    <% if (template === 'admin') { %>
+    {src: '~plugins/svg-icon'},
+    <% } %>
   ],
   // FYI: https://analytics.google.com/analytics/web/
   // buildModules: [
