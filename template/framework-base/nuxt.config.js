@@ -88,9 +88,16 @@ module.exports = {
   build: {
     publicPath,
     extractCSS: isProd,
-    <%_ if (template === 'mobile') { _%>
     babel: {
-      plugins: [
+      presets: [
+        [
+          "@babel/env",
+          {
+            useBuiltIns: "usage",
+            corejs: 3
+          },
+        ],
+        <%_ if (template === 'mobile') { _%>
         [
           'import',
           {
@@ -100,9 +107,10 @@ module.exports = {
           },
           '@femessage/vant'
         ]
-      ]
+        <% } %>
+      ],
+      plugins: ["@babel/plugin-proposal-optional-chaining", "@babel/plugin-proposal-nullish-coalescing-operator"]
     },
-    <%_ } _%>
     extend(config, {isDev}) {
       if (isDev) {
         config.devtool = '#source-map'
