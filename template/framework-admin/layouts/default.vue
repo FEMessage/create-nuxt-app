@@ -5,7 +5,7 @@
       :menus="mainMenu"
       :user-info="userInfo"
       :dropdown="dropDownList"
-      @clickTitle="$router.push('/?skip=1')"
+      @clickTitle="$router.push('/')"
     >
       <template slot="title">
         <svg-icon icon-class="logo" style="margin-right: 5px;"></svg-icon>DEEPEXI ADMIN
@@ -102,6 +102,7 @@ export default {
   }
 
   .content {
+    padding: 20px;
     margin: 0 20px;
     min-height: calc(
       100vh - @--header-height - @--breadcrumb-height - @--footer-height

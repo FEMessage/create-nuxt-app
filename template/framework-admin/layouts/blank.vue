@@ -5,7 +5,7 @@
       :menus="mainMenu"
       :user-info="userInfo"
       :dropdown="dropDownList"
-      @clickTitle="$router.push('/?skip=1')"
+      @clickTitle="$router.push('/')"
     >
       <template slot="title">
         <svg-icon icon-class="logo" style="margin-right: 5px;"></svg-icon>DEEPEXI ADMIN
