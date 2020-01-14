@@ -49,6 +49,10 @@ const config = {
     dev: {
       '/security': 'http://your.dev.server'
     }
+    <%_ } else if (template === 'admin') { _%>
+      dev: {
+        '/deepexi-cloud': apiServer,
+      }
     <%_ } _%>
   }
 }
@@ -209,13 +213,14 @@ module.exports = {
   plugins: [
     {src: '~plugins/axios'},
     {src: '~plugins/filters'},
+    {src: '~plugins/api'},
     <%_ if (template === 'mobile') { _%>
     {src: '~plugins/vant'},
     <%_ } else { _%>
     {src: '~plugins/element'},
     {src: '~plugins/icon-font'},
     <%_ } _%>
-    <% if (template === 'admin') { %>
+    <%_ if (template === 'admin') { _%>
     {src: '~plugins/svg-icon'},
     <% } %>
   ],

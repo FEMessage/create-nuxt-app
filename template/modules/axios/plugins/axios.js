@@ -2,7 +2,7 @@
  * @Author: Han
  * @Date: 2019-05-08 15:13:59
  * @Last Modified by: Han
- * @Last Modified time: 2019-06-03 14:26:26
+ * @Last Modified time: 2020-01-14 17:05:26
  * @Description 请求拦截，适配 restEasy 后端API服务框架，若数据格式不符合下面的数据格式，则会按照 httpStatusCode 正常触发对应的事件。
  * @Example
  * 适配api返回格式：
@@ -18,26 +18,61 @@
 
 import Vue from 'vue'
 
+// 如果接口路径包含 skipUrls 中的 string 将会跳过拦截
 const skipUrls = ['easy-mock']
 
-export default function({$axios, store, app, redirect}) {
+// 如果 http methods 匹配将清除请求中的 query，部分后端框架升级后，对 post 和 put 进行了 query 的限制
+const methods = ['post', 'put']
+
+export default function({$axios, store, route}) {
   $axios.onRequest(config => {
     let url = config.url
-
+    let method = config.method
+    // 因后端框架进行规范改造，故post，put方法query后边不传参数
+    const checkoutMethod = methods.some(v => v == method)
     if (skipUrls.some(skipUrl => url.indexOf(skipUrl) > -1)) return
 
+    const state = store.state
+    const token = state.token
+
+    // 只传有值的参数
+    const paramsList = ['tenantId', 'appId', 'userId'].filter(v => {
+      return state[v]
+    })
+
+    // post put参数
+    const paramsData = paramsList.reduce((cur, pre) => {
+      cur[pre] = state[pre]
+      return cur
+    }, {})
+
+    // query参数
+    let queryData = paramsList
+      .map(v => {
+        return `${v}=${state[v]}`
+      })
+      .join('&')
+
     // jwt 验证
-    if (store.state.token) {
-      config.headers.common['Authorization'] = `Bearer ${store.state.token}`
+    if (token) {
+      config.headers.common['Authorization'] = `Bearer ${token}`
     }
 
-    url += url.indexOf('?') > -1 ? '&' : '?'
-    url += `tenantId=${store.state.tenantId}&userId=${
-      store.state.userId
-    }&_=${new Date().getTime()}`
+    if (!checkoutMethod) {
+      url += url.indexOf('?') > -1 ? '&' : '?'
+      url += queryData
+    } else {
+      if (!Array.isArray(config.data)) {
+        config.data = {
+          ...config.data,
+          ...paramsData,
+        }
+      }
+    }
 
-    config.url = url
-
+    config.url = `${url}${
+      url.indexOf('?') > -1 ? '&' : '?'
+    }_=${new Date().getTime()}`
     return config
   })
 
@@ -59,17 +94,25 @@ export default function({$axios, store, app, redirect}) {
   $axios.onError(error => {
     if (process.client) {
       // axios 数据结构
-      let resp = error.response
-      let data = resp.data
+      const resp = error.response
+      const data = resp.data
+      const {fullPath} = route
 
-      Vue.$notify.error({
-        title: data.code || resp.status,
-        message: data.msg || data.payload,
-      })
-
-      if (resp.status == 401) {
-        // 没有权限，执行一次logout，然后重新登录
-        store.commit('logout')
+      if(resp.status == 401) {
+        Vue.$notify.error({
+          title: '提示',
+          message: '登陆超时，请重新登录！',
+          duration: 2000,
+          onClose() {
+            store.commit('logout', fullPath)
+          }
+        })
+      } else {
+        Vue.$notify.error({
+          title: data.code || resp.status,
+          message: data.msg || codeMessage[resp.status],
+          duration: 2000,
+        })
       }
     } else {
       // TODO asyncData 的错误 需要日志监控

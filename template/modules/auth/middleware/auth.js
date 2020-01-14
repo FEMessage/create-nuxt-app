@@ -2,7 +2,7 @@
  * @Author: Han
  * @Date: 2019-05-08 14:32:04
  * @Last Modified by: Han
- * @Last Modified time: 2019-06-04 17:22:28
+ * @Last Modified time: 2020-01-14 18:58:37
  * @Description 路由鉴权中间件，实现其他路由守卫功能请新建一个中间件
  *
  * **********************************************************
@@ -21,7 +21,7 @@ export default async ({store, redirect, env, route}) => {
   if (process.server) return
 
   const {NO_LOGIN} = env
-  const {path} = route
+  const {path, fullPath} = route
 
   // 开发时可以用 NO_LOGIN 跳过路由鉴权
   if (NO_LOGIN > 0) return
@@ -35,29 +35,32 @@ export default async ({store, redirect, env, route}) => {
     cookieInfo[key] = cookie.get(key)
   })
 
-  const {userId, token<%= template === 'multiple' ? ', tenantId' : '' %>} = cookieInfo
+  const {token} = cookieInfo
 
   // 未登录
-  if (!userId || !token) {
-    <% if (template !== 'mobile') { %>
-    redirect(LOGIN_PATH)
-    <% } %>
+  if (!token) {
+    <%_ if (template !== 'mobile') { _%>
+    redirect(`${LOGIN_PATH}?redirect=${encodeURIComponent(fullPath)}`)
+    <%_ } _%>
     return
   }
 
   // 已登录但是state因刷新丢失
-  if (!store.state.userId) {
-    store.commit('update', cookieInfo)
+  if (token && !store.state.userId) {
     try {
-      <% if (template === 'single') { %>
+      <%_ if (template === 'single') { _%>
+      store.commit('update', cookieInfo)
       await store.dispatch('fetchUserAndMenuList', {
         userId
       })
-      <% } else if (template === 'multiple') { %>
+      <%_ } else if (template === 'multiple') { _%>
+      store.commit('update', cookieInfo)
       await store.dispatch('fetchThirdId', {
         tenantId
       })
-      <% } %>
+      <%_ } else if (template === 'admin') { _%>
+      await store.dispatch('refresh', token)
+      <%_ } _%>
     } catch (e) {
       console.error('auth error: ', e)
     }

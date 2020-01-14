@@ -168,7 +168,8 @@ export default {
     },
 
     isActive(url) {
-      return this.value.startsWith(url)
+      const path = url.split('/').filter(v => v)
+      return this.value.startsWith(`/${path[0]}`)
     },
   },
 }
