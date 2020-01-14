@@ -68,6 +68,11 @@ if (isProd && apiServer) {
 module.exports = {
   srcDir: 'src/',
   mode: 'spa',
+  head: {
+    htmlAttrs: {
+      lang: 'zh-CN',
+    },
+  },
   env: {
     NO_LOGIN: env.NO_LOGIN,
     COOKIE_PATH: env.COOKIE_PATH || '/',

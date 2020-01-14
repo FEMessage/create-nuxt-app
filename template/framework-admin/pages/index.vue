@@ -15,7 +15,7 @@ export default {
   position: relative;
   max-width: (@--min-width - 48px);
   height: calc(
-    100vh - @--header-height - @--footer-height - @--breadcrumb-height
+    100vh - @--header-height - @--breadcrumb-height - @--footer-height
   );
 }
 </style>

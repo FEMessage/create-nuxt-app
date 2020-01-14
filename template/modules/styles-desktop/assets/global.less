@@ -1,8 +1,8 @@
-body {
-  margin: 0;
+html {
   font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 14px;
   line-height: 1.5;
+  box-sizing: border-box;
   color: @--color-text-regular;
   background-color: @--background-color-white;
 }
@@ -11,6 +11,7 @@ body {
 *::before,
 *::after {
   margin: 0;
+  box-sizing: inherit;
 }
 
 a {

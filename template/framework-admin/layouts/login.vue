@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import Copyright from '@/components/copyright.vue'
 import Logo from '@/components/logo.vue'
+import Copyright from '@/components/copyright.vue'
 
 export default {
   name: 'Login',
@@ -41,7 +41,7 @@ export default {
     content: '';
     display: block;
     width: 100%;
-    padding-top: 20%;
+    padding-top: 10%;
   }
 
   .logo-login {
