@@ -80,6 +80,7 @@ module.exports = {
   env: {
     NO_LOGIN: env.NO_LOGIN,
     COOKIE_PATH: env.COOKIE_PATH || '/',
+    APP_ID: env.APP_ID,
   },
   proxy: config.env[env.MODE],
   router: {

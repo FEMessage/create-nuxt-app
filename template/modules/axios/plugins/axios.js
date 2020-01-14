@@ -2,7 +2,7 @@
  * @Author: Han
  * @Date: 2019-05-08 15:13:59
  * @Last Modified by: Han
- * @Last Modified time: 2020-01-14 17:05:26
+ * @Last Modified time: 2020-01-14 20:59:04
  * @Description 请求拦截，适配 restEasy 后端API服务框架，若数据格式不符合下面的数据格式，则会按照 httpStatusCode 正常触发对应的事件。
  * @Example
  * 适配api返回格式：
@@ -22,7 +22,7 @@ import Vue from 'vue'
 const skipUrls = ['easy-mock']
 
 // 如果 http methods 匹配将清除请求中的 query，部分后端框架升级后，对 post 和 put 进行了 query 的限制
-const methods = ['post', 'put']
+const methods = []
 
 export default function({$axios, store, route}) {
   $axios.onRequest(config => {
