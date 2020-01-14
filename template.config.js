@@ -40,18 +40,18 @@ const desktop = {
 }
 
 // nuxt-element-dashboard 框架配置
-const single = {
-  ...desktop,
-  folder: 'nuxt-element-dashboard',
-  template: 'single',
-}
+// const single = {
+//   ...desktop,
+//   folder: 'nuxt-element-dashboard',
+//   template: 'single',
+// }
 
 // nuxt-multiple-spa 框架配置
-const multiple = {
-  ...desktop,
-  folder: 'nuxt-multiple-spa',
-  template: 'multiple',
-}
+// const multiple = {
+//   ...desktop,
+//   folder: 'nuxt-multiple-spa',
+//   template: 'multiple',
+// }
 
 // nuxt-admin 框架配置
 const admin = {
@@ -67,4 +67,4 @@ const mobile = {
   template: 'mobile',
 }
 
-module.exports = [single, multiple, mobile, admin]
+module.exports = [mobile, admin]
