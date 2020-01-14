@@ -5,7 +5,7 @@ const cookieConfig = {
   get domain() {
     const {hostname} = location
     // 本地环境
-    if (/^(127.0.0.1|localhost)/.test(hostname)) return hostname
+    if (/^(127.0.0.1|localhost)|(netlify.com)$/.test(hostname)) return hostname
     // 线上环境
     const s = hostname.indexOf('.')
     return hostname.slice(s)

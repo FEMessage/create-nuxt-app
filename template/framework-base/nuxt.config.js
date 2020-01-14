@@ -120,9 +120,9 @@ module.exports = {
       ]
     },
     extend(config, {isDev}) {
-      if (isDev) {
+      // if (isDev) {
         config.devtool = '#source-map'
-      }
+      // }
       /**
        * 有些依赖如 excel-it 组件依赖 XLSX 脚本，体积较大。
        * 这里将该依赖放在script处用引入，可利用cdn加速，并减少项目最终打包体积
@@ -131,7 +131,7 @@ module.exports = {
       // config.externals = {
       //   xlsx: 'XLSX'
       // }
-     <% if (template === 'admin') { %>
+     <%_ if (template === 'admin') { _%>
       config.module.rules.find(item =>
         item.test.test('.svg'),
       ).test = /\.(png|jpe?g|gif|webp)$/i
@@ -145,7 +145,7 @@ module.exports = {
           symbolId: 'icon-[name]',
         },
       })
-      <%}%>
+      <%_ } _%>
     },
   },
   /*
