@@ -39,20 +39,6 @@ const desktop = {
   componentsDesktop: 'components-desktop',
 }
 
-// nuxt-element-dashboard 框架配置
-// const single = {
-//   ...desktop,
-//   folder: 'nuxt-element-dashboard',
-//   template: 'single',
-// }
-
-// nuxt-multiple-spa 框架配置
-// const multiple = {
-//   ...desktop,
-//   folder: 'nuxt-multiple-spa',
-//   template: 'multiple',
-// }
-
 // nuxt-admin 框架配置
 const admin = {
   ...desktop,

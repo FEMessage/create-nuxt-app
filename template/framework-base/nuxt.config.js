@@ -1,8 +1,8 @@
 require('dotenv').config()
 const path = require('path')
+const {getRouterBase} = require('./src/utils')
 const {env} = process
 
-const {getRouterBase} = require('./src/utils')
 ;['PUBLIC_PATH', 'API_SERVER', 'NO_LOGIN', 'COOKIE_PATH'].forEach(key =>
   // eslint-disable-next-line no-console
   console.log('%s\t: %s', key, env[key])
