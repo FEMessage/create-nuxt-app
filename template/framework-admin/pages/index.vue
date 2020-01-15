@@ -14,7 +14,6 @@ export default {
 <style lang="less">
 .index {
   position: relative;
-  max-width: (@--min-width - 48px);
   height: calc(
     100vh - @--header-height - @--breadcrumb-height - @--footer-height
   );
