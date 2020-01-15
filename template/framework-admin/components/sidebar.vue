@@ -1,5 +1,5 @@
 <template>
-  <div :class="{hideSidebar: collapse}" class="sidebar-container">
+  <div :class="{hideSidebar: collapse}" class="sidebar-container scroller-vertical">
     <el-menu
       :collapse="collapse"
       :default-active="$route.path"
@@ -10,7 +10,7 @@
       router
       class="aside-menu"
     >
-      <el-scrollbar wrap-class="scrollbar-wrapper">
+      <el-scrollbar>
         <menu-item :menu-list="menuList"></menu-item>
       </el-scrollbar>
     </el-menu>

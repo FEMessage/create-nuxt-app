@@ -14,16 +14,18 @@
 
     <section class="sub-container">
       <sidebar :menu-list="sideMenu" class="nav"></sidebar>
-      <section class="main-content">
+      <section class="main-content scroller-vertical">
         <bread-crumb />
-        <section class="sub-content">
-          <section class="content">
-            <nuxt />
+        <el-scrollbar wrap-class="scrollbar-wrapper">
+          <section class="sub-content">
+            <section class="content">
+              <nuxt />
+            </section>
+            <el-footer :height="FOOTER_HEIGHT">
+              <copyright></copyright>
+            </el-footer>
           </section>
-          <el-footer :height="FOOTER_HEIGHT">
-            <copyright></copyright>
-          </el-footer>
-        </section>
+        </el-scrollbar>
       </section>
     </section>
   </section>
@@ -97,7 +99,7 @@ export default {
   }
 
   .sub-content {
-    overflow-y: auto;
+    // overflow-y: auto;
     height: calc(100vh - @--header-height - @--breadcrumb-height);
   }
 

@@ -1,5 +1,5 @@
 <template>
-  <section class="blank">
+  <section class="blank scroller-vertical">
     <layout-header
       :value="$route.path"
       :menus="mainMenu"
@@ -12,14 +12,16 @@
       </template>
     </layout-header>
 
-    <section class="sub-content">
-      <section class="content">
-        <nuxt />
+    <el-scrollbar wrap-class="scrollbar-wrapper">
+      <section class="sub-content">
+        <section class="content">
+          <nuxt />
+        </section>
+        <el-footer :height="FOOTER_HEIGHT">
+          <copyright></copyright>
+        </el-footer>
       </section>
-      <el-footer :height="FOOTER_HEIGHT">
-        <copyright></copyright>
-      </el-footer>
-    </section>
+    </el-scrollbar>
   </section>
 </template>
 
@@ -72,8 +74,7 @@ export default {
   }
 
   .content {
-    margin: 20px;
-    margin-bottom: 0;
+    padding: 20px;
     min-height: calc(100vh - @--header-height - @--footer-height);
     background-color: transparent;
   }

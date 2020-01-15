@@ -68,4 +68,20 @@ a {
   .el-scrollbar {
     height: 100%;
   }
+
+  .el-scrollbar__thumb {
+    background-color: #C3C3C3;
+  }
+
+  .scroller-vertical {
+    .el-scrollbar__wrap {
+      overflow-x: hidden;
+    }
+
+    .scrollbar-wrapper {
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: unset;
+    }
+  }
 }
