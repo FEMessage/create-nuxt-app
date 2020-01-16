@@ -111,7 +111,7 @@ export const actions = {
   },
 
   async refresh({ commit, dispatch }, token) {
-    const userInfo = await this.$http.userInfo.index({
+    const userInfo = await this.$http.userInfo.list({
       params: {
         token,
       },
@@ -122,7 +122,7 @@ export const actions = {
   },
 
   async getHeaderMenu({ commit }) {
-    const menus = await this.$http.menus.index({
+    const menus = await this.$http.menus.list({
       params: {
         appId: process.env.APP_ID,
         code: 'main',
@@ -132,7 +132,7 @@ export const actions = {
   },
 
   async getSiderMenu({ commit }) {
-    const menus = await this.$http.menus.index({
+    const menus = await this.$http.menus.list({
       params: {
         appId: process.env.APP_ID,
         code: 'account-enterprise',
