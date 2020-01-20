@@ -1,6 +1,8 @@
 require('dotenv').config()
+const path = require('path')
 const {getRouterBase} = require('./src/utils')
 const {env} = process
+
 ;['PUBLIC_PATH', 'API_SERVER', 'NO_LOGIN', 'COOKIE_PATH'].forEach(key =>
   // eslint-disable-next-line no-console
   console.log('%s\t: %s', key, env[key])
@@ -47,6 +49,10 @@ const config = {
     dev: {
       '/security': 'http://your.dev.server'
     }
+    <%_ } else if (template === 'admin') { _%>
+      dev: {
+        '/deepexi-cloud': apiServer,
+      }
     <%_ } _%>
   }
 }
@@ -66,9 +72,15 @@ if (isProd && apiServer) {
 module.exports = {
   srcDir: 'src/',
   mode: 'spa',
+  head: {
+    htmlAttrs: {
+      lang: 'zh-CN',
+    },
+  },
   env: {
     NO_LOGIN: env.NO_LOGIN,
     COOKIE_PATH: env.COOKIE_PATH || '/',
+    APP_ID: env.APP_ID,
   },
   proxy: config.env[env.MODE],
   router: {
@@ -81,9 +93,20 @@ module.exports = {
   build: {
     publicPath,
     extractCSS: isProd,
-    <%_ if (template === 'mobile') { _%>
     babel: {
+      presets: [
+        [
+          "@babel/env",
+          {
+            useBuiltIns: "usage",
+            corejs: 3
+          },
+        ],
+      ],
       plugins: [
+        "@babel/plugin-proposal-optional-chaining",
+        "@babel/plugin-proposal-nullish-coalescing-operator",
+        <%_ if(template === 'mobile') { _%>
         [
           'import',
           {
@@ -93,13 +116,13 @@ module.exports = {
           },
           '@femessage/vant'
         ]
+        <%_ } _%>
       ]
     },
-    <%_ } _%>
     extend(config, {isDev}) {
-      if (isDev) {
+      // if (isDev) {
         config.devtool = '#source-map'
-      }
+      // }
       /**
        * 有些依赖如 excel-it 组件依赖 XLSX 脚本，体积较大。
        * 这里将该依赖放在script处用引入，可利用cdn加速，并减少项目最终打包体积
@@ -108,6 +131,21 @@ module.exports = {
       // config.externals = {
       //   xlsx: 'XLSX'
       // }
+     <%_ if (template === 'admin') { _%>
+      config.module.rules.find(item =>
+        item.test.test('.svg'),
+      ).test = /\.(png|jpe?g|gif|webp)$/i
+
+      // svg-icon support
+      config.module.rules.push({
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        include: [path.join(__dirname, 'src', 'assets', 'svg')],
+        options: {
+          symbolId: 'icon-[name]',
+        },
+      })
+      <%_ } _%>
     },
   },
   /*
@@ -179,12 +217,16 @@ module.exports = {
   plugins: [
     {src: '~plugins/axios'},
     {src: '~plugins/filters'},
+    {src: '~plugins/api'},
     <%_ if (template === 'mobile') { _%>
     {src: '~plugins/vant'},
     <%_ } else { _%>
     {src: '~plugins/element'},
-    {src: '~plugins/icon-font'}
+    {src: '~plugins/icon-font'},
     <%_ } _%>
+    <%_ if (template === 'admin') { _%>
+    {src: '~plugins/svg-icon'},
+    <% } %>
   ],
   // FYI: https://analytics.google.com/analytics/web/
   // buildModules: [

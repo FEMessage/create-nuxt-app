@@ -15,6 +15,5 @@ export default {
   color: rgba(0, 0, 0, 0.45);
   font-size: 14px;
   text-align: center;
-  line-height: 60px;
 }
 </style>

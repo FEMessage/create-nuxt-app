@@ -26,6 +26,18 @@
 - 代码格式化：[prettier](https://github.com/prettier/prettier)
 - 环境变量: [dotenv](https://www.npmjs.com/package/dotenv)
 
+与此同时，还集成了一下泛用的实践
+
+- [x] 更完善的管理后台布局样式
+- [x] 多系统统一的滚动条样式
+- [x] 基于项目实践的 XHR 拦截
+- [x] 基于 RESTful 最佳实践，提供优雅管理 API 的方案
+- [x] 更友好的鉴权，超时重新登录后会重定向到失效时的页面
+- [x] 基于 deepexi design 的文字色彩方案
+- [x] 内置面包屑方案，支持动态面包屑
+- [x] 支持 svg-icon
+- [x] 支持 es [optional-chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) 和 [nullish-coalescing-operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator)
+
 [⬆ Back to Top](#table-of-contents)
 
 ## 快速开始

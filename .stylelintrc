@@ -1,6 +1,11 @@
 {
   "extends": "stylelint-config-standard",
   "rules": {
-    "no-empty-source": null
+    "no-empty-source": null,
+    "declaration-colon-newline-after": null,
+    "value-list-comma-newline-after": null,
+    "no-descending-specificity": null,
+    "no-duplicate-selectors": null,
+    "declaration-block-no-shorthand-property-overrides": null
   }
 }

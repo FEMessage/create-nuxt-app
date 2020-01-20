@@ -1,0 +1,17 @@
+{
+  "name": "nuxt-admin",
+  "description": "Nuxt2 + element UI project",
+  "keywords": [
+    "admin",
+    "dashboard",
+    "element-ui"
+  ],
+  "dependencies": {
+    "@femessage/el-data-table": "latest",
+    "@femessage/el-form-renderer": "latest",
+    "@femessage/element-ui": "latest"
+  },
+  "devDependencies": {
+    "svg-sprite-loader": "^4.1.6"
+  }
+}
