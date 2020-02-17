@@ -9,10 +9,6 @@ const {env} = process
 )
 
 const isProd = env.MODE == 'prod'
-<%_ if (template !== 'mobile') { _%>
-const mockServer =
-  'https://mockapi.eolinker.com/IeZWjzy87c204a1f7030b2a17b00f3776ce0a07a5030a1b'
-<%_ } _%>
 
 // 不能以斜杠结尾
 let apiServer = env.API_SERVER
@@ -22,37 +18,14 @@ let publicPath = env.PUBLIC_PATH<%- `${template === 'mobile' ? " || 'http://cdn.
 const config = {
   aliIconFont: '',
   env: {
-    <%_ if (template === 'single') { _%>
-    mock: {
-      '/deepexi-tenant': mockServer,
-      '/deepexi-permission': mockServer
-    },
-    dev: apiServer ? {
-      '/deepexi-tenant': apiServer,
-      '/deepexi-permission': apiServer
-    } : {}
-    <%_ } else if (template === 'multiple') { _%>
-    mock: {
-      '/deepexi-dashboard': mockServer,
-      '/xpaas-enterprise-contact': mockServer,
-      '/xpaas-console-api': mockServer
-    },
-    dev: apiServer ? {
-      '/deepexi-dashboard': apiServer,
-      '/xpaas-enterprise-contact': apiServer,
-      '/xpaas-console-api': apiServer
-    } : {}
-    <%_ } else if (template === 'mobile') { _%>
-    mock: {
-      '/security': 'http://yapi.demo.qunar.com/mock/9638'
-    },
+    <%_ if (template === 'mobile') { _%>
     dev: {
       '/security': 'http://your.dev.server'
     }
     <%_ } else if (template === 'admin') { _%>
-      dev: {
-        '/deepexi-cloud': apiServer,
-      }
+    dev: {
+      '/deepexi-cloud': apiServer,
+    }
     <%_ } _%>
   }
 }
@@ -69,14 +42,9 @@ if (isProd && apiServer) {
   }
 }
 
-module.exports = {
+module.export =  {
   srcDir: 'src/',
   mode: 'spa',
-  head: {
-    htmlAttrs: {
-      lang: 'zh-CN',
-    },
-  },
   env: {
     NO_LOGIN: env.NO_LOGIN,
     COOKIE_PATH: env.COOKIE_PATH || '/',
@@ -120,9 +88,6 @@ module.exports = {
       ]
     },
     extend(config, {isDev}) {
-      // if (isDev) {
-        config.devtool = '#source-map'
-      // }
       /**
        * 有些依赖如 excel-it 组件依赖 XLSX 脚本，体积较大。
        * 这里将该依赖放在script处用引入，可利用cdn加速，并减少项目最终打包体积
@@ -131,7 +96,11 @@ module.exports = {
       // config.externals = {
       //   xlsx: 'XLSX'
       // }
-     <%_ if (template === 'admin') { _%>
+      if (isDev) {
+        config.devtool = 'source-map'
+      }
+
+      <%_ if (template === 'admin') { _%>
       config.module.rules.find(item =>
         item.test.test('.svg'),
       ).test = /\.(png|jpe?g|gif|webp)$/i
@@ -152,10 +121,10 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    // script: [
-    //   {src: '//cdn.jsdelivr.net/npm/xlsx@0.15.1/dist/xlsx.full.min.js'}
-    // ],
     title: '',
+    htmlAttrs: {
+      lang: 'zh-CN',
+    },
     meta: [
       {charset: 'utf-8'},
       <%_ if (template === 'mobile') { _%>
@@ -223,10 +192,8 @@ module.exports = {
     <%_ } else { _%>
     {src: '~plugins/element'},
     {src: '~plugins/icon-font'},
-    <%_ } _%>
-    <%_ if (template === 'admin') { _%>
     {src: '~plugins/svg-icon'},
-    <% } %>
+    <%_ } _%>
   ],
   // FYI: https://analytics.google.com/analytics/web/
   // buildModules: [
