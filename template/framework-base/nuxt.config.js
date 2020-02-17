@@ -42,7 +42,7 @@ if (isProd && apiServer) {
   }
 }
 
-module.export =  {
+module.exports =  {
   srcDir: 'src/',
 
   mode: 'spa',
