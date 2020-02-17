@@ -27,7 +27,7 @@ const config = {
       '/deepexi-cloud': apiServer,
     },
     <%_ } _%>
-  }
+  },
 }
 
 let axios = {
@@ -42,7 +42,7 @@ if (isProd && apiServer) {
   }
 }
 
-module.exports =  {
+module.exports = {
   srcDir: 'src/',
 
   mode: 'spa',
@@ -69,16 +69,16 @@ module.exports =  {
     babel: {
       presets: [
         [
-          "@babel/env",
+          '@babel/env',
           {
-            useBuiltIns: "usage",
+            useBuiltIns: 'usage',
             corejs: 3,
           },
         ],
       ],
       plugins: [
-        "@babel/plugin-proposal-optional-chaining",
-        "@babel/plugin-proposal-nullish-coalescing-operator",
+        '@babel/plugin-proposal-optional-chaining',
+        '@babel/plugin-proposal-nullish-coalescing-operator',
         <%_ if(template === 'mobile') { _%>
         [
           'import',
@@ -88,9 +88,9 @@ module.exports =  {
             style: true,
           },
           '@femessage/vant',
-        ]
+        ],
         <%_ } _%>
-      ]
+      ],
     },
     extend(config, {isDev}) {
       /**
@@ -143,7 +143,7 @@ module.exports =  {
         hid: 'description',
         name: 'description',
         content: '',
-      }
+      },
     ],
     link: [
       {
@@ -165,8 +165,9 @@ module.exports =  {
       {
         rel: 'stylesheet',
         type: 'text/css',
-        href: 
-          `https://cdn.jsdelivr.net/npm/@femessage/element-ui@${require('@femessage/element-ui/package').version}/lib/theme-chalk/index.min.css`,
+        href: `https://cdn.jsdelivr.net/npm/@femessage/element-ui@${
+          require('@femessage/element-ui/package').version
+        }/lib/theme-chalk/index.min.css`,
       },
       <%_ } _%>
     ],
@@ -240,7 +241,7 @@ module.exports =  {
       {
         urlPattern: 'https://easy-mock.com/*',
         handler: 'staleWhileRevalidate',
-      }
+      },
     ],
   },
 }
