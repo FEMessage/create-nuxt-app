@@ -5,7 +5,7 @@ const {env} = process
 
 ;['PUBLIC_PATH', 'API_SERVER', 'NO_LOGIN', 'COOKIE_PATH'].forEach(key =>
   // eslint-disable-next-line no-console
-  console.log('%s\t: %s', key, env[key])
+  console.log('%s\t: %s', key, env[key]),
 )
 
 const isProd = env.MODE == 'prod'
@@ -20,41 +20,46 @@ const config = {
   env: {
     <%_ if (template === 'mobile') { _%>
     dev: {
-      '/security': 'http://your.dev.server'
-    }
+      '/security': 'http://your.dev.server',
+    },
     <%_ } else if (template === 'admin') { _%>
     dev: {
       '/deepexi-cloud': apiServer,
-    }
+    },
     <%_ } _%>
   }
 }
 
 let axios = {
-  proxy: true
+  proxy: true,
 }
 
 // 如果生产指定apiServer, 则使用绝对路径请求api
 if (isProd && apiServer) {
   axios = {
     proxy: false,
-    baseURL: apiServer
+    baseURL: apiServer,
   }
 }
 
 module.export =  {
   srcDir: 'src/',
+
   mode: 'spa',
+
   env: {
     NO_LOGIN: env.NO_LOGIN,
     COOKIE_PATH: env.COOKIE_PATH || '/',
     APP_ID: env.APP_ID,
   },
+
   proxy: config.env[env.MODE],
+
   router: {
     middleware: ['meta', 'auth'],
-    mode: 'hash'
+    mode: 'hash',
   },
+
   /*
    ** Build configuration
    */
@@ -67,7 +72,7 @@ module.export =  {
           "@babel/env",
           {
             useBuiltIns: "usage",
-            corejs: 3
+            corejs: 3,
           },
         ],
       ],
@@ -80,9 +85,9 @@ module.export =  {
           {
             libraryName: '@femessage/vant',
             libraryDirectory: 'es',
-            style: true
+            style: true,
           },
-          '@femessage/vant'
+          '@femessage/vant',
         ]
         <%_ } _%>
       ]
@@ -117,6 +122,7 @@ module.export =  {
       <%_ } _%>
     },
   },
+
   /*
    ** Headers of the page
    */
@@ -136,7 +142,7 @@ module.export =  {
       {
         hid: 'description',
         name: 'description',
-        content: ''
+        content: '',
       }
     ],
     link: [
@@ -144,45 +150,54 @@ module.export =  {
         rel: 'icon',
         type: 'image/x-icon',
         href:
-          'https://deepexi.oss-cn-shenzhen.aliyuncs.com/deepexi-services/favicon32x32.png'
+          'https://deepexi.oss-cn-shenzhen.aliyuncs.com/deepexi-services/favicon32x32.png',
       },
-      {
-        // rel: 'stylesheet',
-        // type: 'text/css',
-        // href: config.aliIconFont
-      },
+      // {
+      //   rel: 'stylesheet',
+      //   type: 'text/css',
+      //   href: config.aliIconFont
+      // },
       <%_ if (template !== 'mobile') { _%>
       {
         rel: 'preconnect',
-        href: 'https://cdn.jsdelivr.net'
+        href: 'https://cdn.jsdelivr.net',
       },
       {
         rel: 'stylesheet',
         type: 'text/css',
-        href: `https://cdn.jsdelivr.net/npm/@femessage/element-ui@${require('@femessage/element-ui/package').version}/lib/theme-chalk/index.min.css`
+        href: 
+          `https://cdn.jsdelivr.net/npm/@femessage/element-ui@${require('@femessage/element-ui/package').version}/lib/theme-chalk/index.min.css`,
       },
       <%_ } _%>
-    ]
+    ],
   },
+
   /*
    ** Customize the progress bar color
    */
   loading: {
-    color: '#5D81F9'
+    color: '#5D81F9',
   },
+
   /**
    * Share variables, mixins, functions across all style files (no @import needed)
    * @Link https://github.com/nuxt-community/style-resources-module/
    */
   styleResources: {
-    less: '~assets/var.less'
+    less: '~assets/var.less',
   },
+
   css: [
     {
+      src: '~assets/normalize.less',
+      lang: 'less',
+    },
+    {
       src: '~assets/global.less',
-      lang: 'less'
-    }
+      lang: 'less',
+    },
   ],
+
   plugins: [
     {src: '~plugins/axios'},
     {src: '~plugins/filters'},
@@ -195,6 +210,7 @@ module.export =  {
     {src: '~plugins/svg-icon'},
     <%_ } _%>
   ],
+
   // FYI: https://analytics.google.com/analytics/web/
   // buildModules: [
   //   [
@@ -204,6 +220,7 @@ module.export =  {
   //     }
   //   ]
   // ],
+
   modules: [
     // Doc: https://github.com/nuxt-community/style-resources-module
     '@nuxtjs/style-resources',
@@ -212,16 +229,18 @@ module.export =  {
     // Doc: https://github.com/nuxt-community/dotenv-module
     ['@nuxtjs/dotenv', {path: './'}],
     // Doc: https://pwa.nuxtjs.org/
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
   ],
+
   axios,
+
   workbox: {
     routerBase: getRouterBase(publicPath),
     runtimeCaching: [
       {
         urlPattern: 'https://easy-mock.com/*',
-        handler: 'staleWhileRevalidate'
+        handler: 'staleWhileRevalidate',
       }
-    ]
-  }
+    ],
+  },
 }

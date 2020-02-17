@@ -5,11 +5,9 @@
 </template>
 
 <script>
-  export default {
-    layout: 'blank'
-  }
+export default {
+  layout: 'blank',
+}
 </script>
 
-<style lang="less">
-
-</style>
+<style lang="less"></style>

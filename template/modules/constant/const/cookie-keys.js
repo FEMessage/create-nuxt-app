@@ -2,10 +2,4 @@
  * Created by levy on 2019/1/24.
  */
 
-export default [
-  'token',
-  'userId',
-  'tenantId',<% if (template === 'multiple') { %>
-  'username',
-  'thirdId'<% } %>
-]
+export default ['token', 'userId', 'tenantId']

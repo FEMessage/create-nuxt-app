@@ -2,7 +2,7 @@
  * @Author: Han
  * @Date: 2019-05-08 15:13:59
  * @Last Modified by: Han
- * @Last Modified time: 2020-02-17 16:13:05
+ * @Last Modified time: 2020-02-17 16:46:47
  * @Description 请求拦截，适配 restEasy 后端API服务框架，若数据格式不符合下面的数据格式，则会按照 httpStatusCode 正常触发对应的事件。
  * @Example
  * 适配api返回格式：
@@ -117,14 +117,14 @@ export default function({$axios, store, route}) {
       const data = resp.data
       const {fullPath} = route
 
-      if(resp.status == 401) {
+      if (resp.status == 401) {
         Vue.$notify.error({
           title: '提示',
           message: '登陆超时，请重新登录！',
           duration: 2000,
           onClose() {
             store.commit('logout', fullPath)
-          }
+          },
         })
       } else {
         Vue.$notify.error({

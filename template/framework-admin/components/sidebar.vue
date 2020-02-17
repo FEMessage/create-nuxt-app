@@ -1,5 +1,8 @@
 <template>
-  <div :class="{hideSidebar: collapse}" class="sidebar-container scroller-vertical">
+  <div
+    :class="{hideSidebar: collapse}"
+    class="sidebar-container scroller-vertical"
+  >
     <el-menu
       :collapse="collapse"
       :default-active="$route.path"

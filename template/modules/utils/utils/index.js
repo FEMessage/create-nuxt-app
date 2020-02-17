@@ -7,7 +7,7 @@ function getRouterBase(href = '') {
     return '/'
   }
 
-  const { pathname } = new URL(href)
+  const {pathname} = new URL(href)
   if (pathname === '/') {
     return '/'
   }
@@ -21,5 +21,5 @@ function getRouterBase(href = '') {
 }
 
 module.exports = {
-  getRouterBase
+  getRouterBase,
 }
