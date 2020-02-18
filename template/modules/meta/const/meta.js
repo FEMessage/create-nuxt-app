@@ -25,9 +25,6 @@ const meta = {
   // console 首页背景
   homePageImg:
     'https://deepexi.oss-cn-shenzhen.aliyuncs.com/deepexi-services/login-bg.jpg',
-
-  <% if (template === 'multiple') { %>// 当前应用名
-  spaName: '员工中心'<% } %>
 }
 
 export default meta

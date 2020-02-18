@@ -8,7 +8,8 @@
       @clickTitle="$router.push('/')"
     >
       <template slot="title">
-        <svg-icon icon-class="logo" style="margin-right: 5px;"></svg-icon>DEEPEXI ADMIN
+        <svg-icon icon-class="logo" style="margin-right: 5px;"></svg-icon
+        >DEEPEXI ADMIN
       </template>
     </layout-header>
 

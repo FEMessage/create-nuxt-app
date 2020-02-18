@@ -19,25 +19,27 @@ describe('测试 utils.getRouterBase 函数', () => {
   test('传入带有路由的域名，返回路由', () => {
     expect(getRouterBase('https://bing.com/aaa')).toBe('/aaa/')
     expect(getRouterBase('https://serverless.deepexi.top/bbb#/hash')).toBe(
-      '/bbb/'
+      '/bbb/',
     )
-    expect(getRouterBase('https://static.deepexi.top/aaa/bbb')).toBe('/aaa/bbb/')
+    expect(getRouterBase('https://static.deepexi.top/aaa/bbb')).toBe(
+      '/aaa/bbb/',
+    )
     expect(
-      getRouterBase('https://static.deepexi.top/serverless-console/aaa/bbb')
+      getRouterBase('https://static.deepexi.top/serverless-console/aaa/bbb'),
     ).toBe('/serverless-console/aaa/bbb/')
   })
 
   test('传入带有文件名的域名，只返回路由', () => {
     expect(
       getRouterBase(
-        'https://serverless.deepexi.top/serverless-console/index.html#/app-list'
-      )
+        'https://serverless.deepexi.top/serverless-console/index.html#/app-list',
+      ),
     ).toBe('/serverless-console/')
 
     expect(
       getRouterBase(
-        'https://serverless.deepexi.top/serverless-console/aaa/bbb/ccc/index.html#/app-list'
-      )
+        'https://serverless.deepexi.top/serverless-console/aaa/bbb/ccc/index.html#/app-list',
+      ),
     ).toBe('/serverless-console/aaa/bbb/ccc/')
   })
 })

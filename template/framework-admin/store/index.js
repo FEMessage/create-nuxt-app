@@ -3,9 +3,10 @@ import meta from '@/const/meta'
 
 const cookieConfig = {
   get domain() {
-    const { hostname } = location
+    const {hostname} = location
     // 本地环境
-    if (/^(127\.0\.0\.1|localhost)|(netlify\.com)$/.test(hostname)) return hostname
+    if (/^(127\.0\.0\.1|localhost)|(netlify\.com)$/.test(hostname))
+      return hostname
     // 线上环境
     const s = hostname.indexOf('.')
     return hostname.slice(s)
@@ -16,7 +17,7 @@ const cookieConfig = {
   },
 }
 
-const createMenuItem = ({ name = '', id = '', pathUrl = '/', iconUrl }) => {
+const createMenuItem = ({name = '', id = '', pathUrl = '/', iconUrl}) => {
   return {
     url: pathUrl,
     id: id,
@@ -86,7 +87,7 @@ export const mutations = {
   },
 
   setUserInfo(state, payload = {}) {
-    const { params = {}, username, avatar = '', tenantId, token } = payload
+    const {params = {}, username, avatar = '', tenantId, token} = payload
     state.username = params.nickname || username
     state.avatar = avatar
     state.tenantId = tenantId
@@ -96,7 +97,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async login({ commit, dispatch }, { body, redirect = '/' }) {
+  async login({commit, dispatch}, {body, redirect = '/'}) {
     try {
       const userInfo = await this.$http.login.create(body)
       commit('setUserInfo', userInfo.payload)
@@ -110,7 +111,7 @@ export const actions = {
     }
   },
 
-  async refresh({ commit, dispatch }, token) {
+  async refresh({commit, dispatch}, token) {
     const userInfo = await this.$http.userInfo.list({
       params: {
         token,
@@ -121,7 +122,7 @@ export const actions = {
     commit('setUserInfo', userInfo.payload)
   },
 
-  async getHeaderMenu({ commit }) {
+  async getHeaderMenu({commit}) {
     const menus = await this.$http.menus.list({
       params: {
         appId: process.env.APP_ID,
@@ -131,7 +132,7 @@ export const actions = {
     commit('setHeaderMenu', menus.payload)
   },
 
-  async getSiderMenu({ commit }) {
+  async getSiderMenu({commit}) {
     const menus = await this.$http.menus.list({
       params: {
         appId: process.env.APP_ID,
@@ -139,5 +140,5 @@ export const actions = {
       },
     })
     commit('setSiderMenu', menus.payload)
-  }
+  },
 }

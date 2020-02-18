@@ -15,7 +15,9 @@
             :key="index"
             class="navigation-menu"
             @click="handleHeaderMenu(item)"
-          >{{ item.name }}</div>
+          >
+            {{ item.name }}
+          </div>
         </el-col>
 
         <!-- 头部操作栏 -->
@@ -47,7 +49,8 @@
                 v-for="(item, index) in dropdown"
                 :key="index"
                 :command="index"
-              >{{ item.name }}</el-dropdown-item>
+                >{{ item.name }}</el-dropdown-item
+              >
             </el-dropdown-menu>
           </el-dropdown>
         </el-col>
