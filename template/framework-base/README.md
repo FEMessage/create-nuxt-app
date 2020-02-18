@@ -73,12 +73,15 @@ yarn generate
 ├── nuxt.config.js         框架配置文件
 ├── package.json
 ├── src                    开发目录
+│   ├── api                api 资源管理
+│   │   ├── index.js       统一入口，定义 RESTful API 资源
+│   │   ├── repository.js  RESTful 生成类，可以继承实现满足业务需求
+│   │   └── serverList.js  统一管理服务路径和 API version
 │   ├── assets             资源，包括样式文件与图片
 │   │   ├── global.less    全局样式类
 │   │   └── var.less       样式变量，支持less变量自动引入，即不用在less中import就能直接使用变量
 │   ├── components         业务无关的可复用的组件
 │   ├── const              常量文件
-│   │   ├── api.js         定义api路径
 │   │   ├── path.js        定义页面跳转路径
 │   │   └── cookie-keys.js cookie key管理
 │   ├── container          业务有关的vue组件
@@ -124,7 +127,35 @@ Nuxt.js 会依据 `pages` 目录中的所有 `*.vue` 文件生成应用的路由
 
 ### 调用接口
 
-使用`this.$axios` 调用接口：
+[推荐使用 service 层管理 API：](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/api.md)
+
+1. 在 `api/index.js` 中定义一个 API
+
+```js
+// 创建了一个菜单资源的 RESTful API
+export const menus = new Repository(`${SERVICE}/${VERSION}/menus`)
+```
+
+2. 在 `*.vue`、`store/*.js` 的 `actions` 都可以调用
+
+```js
+// 获取资源的服务器路径
+this.$http.menus.uri()
+// 获取所有菜单资源，返回一个列表
+this.$http.menus.list()
+// 获取某个菜单资源的详情
+this.$http.menus.detail(MENUS_ID)
+// 创建一个菜单资源
+this.$http.menus.create(payload)
+// 更新一个菜单资源
+this.$http.menus.update(MENUS_ID, payload)
+// 删除一个菜单资源
+this.$http.menus.delete(MENUS_ID)
+```
+
+3. 如果接口是非标准的 RESTful API 可以参考此[文档](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/api.md#%E8%BF%9B%E9%98%B6)
+
+也可以继续使用`this.$axios` 调用接口：
 
 - 建议使用`$get $post $[methods]`等方法，respone 中会直接返回请求的 body
 - 可以在 `*.vue` 文件中的生命周期钩子函数中调用
@@ -264,12 +295,12 @@ mounted() {
 
 **自带的环境变量说明**
 
-| 环境变量名  | 说明                                                                                                                        | 是否必须 | 默认值 | 示例                      |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------- | -------- | ------ | ------------------------- |
-| PUBLIC_PATH | 对应 webpack 的 publicPath，用于指定静态文件访问路径                                                                        | 是       |        | http://cdn.deepexi.com    |
-| API_SERVER  | axios 的 baseURL，可不传。不传时，使用相对路径发送请求                                                                      | 否       |        | https://www.easy-mock.com |
-| NO_LOGIN    | 是否登陆拦截，传 1 则不会有登录拦截                                                                                         | 否       |        | 1                         |
-| COOKIE_PATH | 用于设置 cookie 的 path，如果多个项目需要共享 cookie，则应该保证项目在共同的目录下，且设置 COOKIE_PATH 为它们的共同目录地址 | 否       | /      | /xpaas                    |
+| 环境变量名  | 说明                                                   | 是否必须 | 默认值 | 示例                      |
+| ----------- | ------------------------------------------------------ | -------- | ------ | ------------------------- |
+| PUBLIC_PATH | 对应 webpack 的 publicPath，用于指定静态文件访问路径   | 是       |        | http://cdn.deepexi.com    |
+| API_SERVER  | axios 的 baseURL，可不传。不传时，使用相对路径发送请求 | 否       |        | https://www.easy-mock.com |
+| NO_LOGIN    | 是否登陆拦截，传 1 则不会有登录拦截                    | 否       |        | 1                         |
+| APP_ID      | 应用 ID | 否       |        |                           |
 
 [⬆ Back to Top](#table-of-contents)
 
