@@ -35,6 +35,7 @@ Create an enterprise nuxt app in seconds.
 - [x] [element-ui](https://element.eleme.io/) A Vue.js 2.0 UI Toolkit for Web
 - [x] [vant](https://youzan.github.io/vant) Lightweight Mobile UI Components built on Vue
 - [x] [PWA](https://pwa.nuxtjs.org) Nuxt Progressive Web Apps solution
+- [x] [API Manage](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/api.md) RESTful API management
 
 [⬆ Back to Top](#table-of-contents)
 
@@ -80,7 +81,7 @@ Options:
 
 <details><summary>Preview</summary>
 
-![preview](https://i.loli.net/2019/06/24/5d108d92206de47421.gif)
+![preview](https://i.loli.net/2020/02/17/B8FHNTerut53m14.gif)
 
 </details>
 
@@ -90,23 +91,20 @@ Options:
 
 ## Frameworks
 
-### Single
+### Admin
 
 ```bash
-npx @femessage/create-nuxt-app -t single
+npx @femessage/create-nuxt-app -t admin
 ```
 
-![nuxt-element-dashboard](https://i.loli.net/2019/06/24/5d108e301184d60426.png)
+![nuxt-admin](https://i.loli.net/2020/02/17/sMtU3kHCefAyRTN.jpg)
 
-### Multiple
+An PC admin template
 
-```bash
-npx @femessage/create-nuxt-app -t multiple
-```
-
-![nuxt-multiple-spa](https://i.loli.net/2019/06/24/5d108e300bc8e21918.png)
-
-This is a pratice of micro-frontends
+Default account
+admin
+admin
+abcd1234
 
 ### Mobile
 

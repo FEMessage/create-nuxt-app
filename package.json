@@ -23,6 +23,7 @@
     "test": "ava test --verbose",
     "test:snapshot": "ava test --verbose --update-snapshots",
     "generate": "node bin/cli.js -a -o release",
+    "clean": "rm -rf release",
     "zip": "node bin/zip.js",
     "build": "node bin/deploy/build.js",
     "release": "gren release --override"

@@ -26,7 +26,7 @@ export default {
   name: 'Login',
   head() {
     return {
-      title: 'DEEPEXI IAM 登录',
+      title: 'DEEPEXI ADMIN 登录',
     }
   },
   data() {

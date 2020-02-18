@@ -1,7 +1,12 @@
 <template>
   <el-header class="breadcrumb-header" :height="BREADCRUMB_HEIGHT">
     <el-breadcrumb class="bread-crumb">
-      <el-breadcrumb-item v-for="(item, index) of breads" :key="index" :to="item.to">{{ item.name }}</el-breadcrumb-item>
+      <el-breadcrumb-item
+        v-for="(item, index) of breads"
+        :key="index"
+        :to="item.to"
+        >{{ item.name }}</el-breadcrumb-item
+      >
     </el-breadcrumb>
   </el-header>
 </template>

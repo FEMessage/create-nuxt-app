@@ -2,7 +2,7 @@
  * @Author: Han
  * @Date: 2019-05-08 14:32:04
  * @Last Modified by: Han
- * @Last Modified time: 2020-01-14 18:58:37
+ * @Last Modified time: 2020-02-17 16:46:31
  * @Description 路由鉴权中间件，实现其他路由守卫功能请新建一个中间件
  *
  * **********************************************************
@@ -48,17 +48,7 @@ export default async ({store, redirect, env, route}) => {
   // 已登录但是state因刷新丢失
   if (token && !store.state.userId) {
     try {
-      <%_ if (template === 'single') { _%>
-      store.commit('update', cookieInfo)
-      await store.dispatch('fetchUserAndMenuList', {
-        userId
-      })
-      <%_ } else if (template === 'multiple') { _%>
-      store.commit('update', cookieInfo)
-      await store.dispatch('fetchThirdId', {
-        tenantId
-      })
-      <%_ } else if (template === 'admin') { _%>
+      <%_ if (template === 'admin') { _%>
       await store.dispatch('refresh', token)
       <%_ } _%>
     } catch (e) {

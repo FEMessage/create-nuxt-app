@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'Index',
-  layout: 'blank'
+  layout: 'blank',
 }
 </script>
 
