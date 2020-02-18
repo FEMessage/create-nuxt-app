@@ -24,7 +24,7 @@ const config = {
     },
     <%_ } else if (template === 'admin') { _%>
     dev: {
-      '/deepexi-cloud': apiServer,
+      '/security': apiServer,
     },
     <%_ } _%>
   },

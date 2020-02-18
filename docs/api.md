@@ -6,10 +6,10 @@
 
 ```javascript
 // Page 1 获取一个用户的信息
-this.$axios.$get('/deepexi-cloud/users/1')
+this.$axios.$get('/security/users/1')
 
 // Page 2 创建一个用户
-this.$axios.$post('/deepexi-cloud/users', body)
+this.$axios.$post('/security/users', body)
 ```
 
 对于 RESTful API 同一个资源，需要创建多个字符串来维护，即便可以通过抽离常量来维护，但对于调用者，还必须 import apiUrl，使用对应的 methods 来调用接口。
