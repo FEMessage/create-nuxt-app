@@ -15,13 +15,13 @@ const date = 0
  */
 describe('price', () => {
   test('normal', () => {
-    // expect(price(1234)).toBe('￥1,234.00')
-    // expect(price(123.4)).toBe('￥123.40')
-    // expect(price(12.34)).toBe('￥12.34')
-    // expect(price(1.234)).toBe('￥1.23')
+    expect(price(1234)).toBe('￥1,234.00')
+    expect(price(123.4)).toBe('￥123.40')
+    expect(price(12.34)).toBe('￥12.34')
+    expect(price(1.234)).toBe('￥1.23')
   })
   test('cancelFixed = true', () => {
-    // expect(price(1234, true)).toBe('￥1,234')
+    expect(price(1234, true)).toBe('￥1,234')
   })
   test('no params', () => {
     expect(price()).toBeUndefined()
