@@ -133,7 +133,7 @@ Nuxt.js 会依据 `pages` 目录中的所有 `*.vue` 文件生成应用的路由
 
 ```js
 // 创建了一个菜单资源的 RESTful API
-export const menus = new Repository(`${DEEPEXI_CLOUD_TENANT}/${VERSION}/menus`)
+export const menus = new Repository(`${SERVICE}/${VERSION}/menus`)
 ```
 
 2. 在 `*.vue`、`store/*.js` 的 `actions` 都可以调用
@@ -300,7 +300,7 @@ mounted() {
 | PUBLIC_PATH | 对应 webpack 的 publicPath，用于指定静态文件访问路径   | 是       |        | http://cdn.deepexi.com    |
 | API_SERVER  | axios 的 baseURL，可不传。不传时，使用相对路径发送请求 | 否       |        | https://www.easy-mock.com |
 | NO_LOGIN    | 是否登陆拦截，传 1 则不会有登录拦截                    | 否       |        | 1                         |
-| APP_ID      | 如果需要对接 cloud-deepexi 则需要提供平台的产品应用 ID | 否       |        |                           |
+| APP_ID      | 应用 ID | 否       |        |                           |
 
 [⬆ Back to Top](#table-of-contents)
 
