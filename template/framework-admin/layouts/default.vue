@@ -100,7 +100,7 @@ export default {
   }
 
   .sub-content {
-    // overflow-y: auto;
+    width: calc(100vw - @sidebar-width);
     height: calc(100vh - @--header-height - @--breadcrumb-height);
   }
 
