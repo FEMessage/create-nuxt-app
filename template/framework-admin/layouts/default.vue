@@ -15,18 +15,18 @@
 
     <section class="sub-container">
       <sidebar :menu-list="sideMenu" class="nav"></sidebar>
-      <section class="main-content scroller-vertical">
+      <section class="main-content">
         <bread-crumb />
-        <el-scrollbar wrap-class="scrollbar-wrapper">
-          <section class="sub-content">
+        <section class="sub-content">
+          <el-scrollbar wrap-class="scrollbar-wrapper">
             <section class="content">
               <nuxt />
             </section>
             <el-footer :height="FOOTER_HEIGHT">
               <copyright></copyright>
             </el-footer>
-          </section>
-        </el-scrollbar>
+          </el-scrollbar>
+        </section>
       </section>
     </section>
   </section>
@@ -97,14 +97,18 @@ export default {
   .main-content {
     flex: 1;
     width: calc(100vw - @sidebar-width);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .sub-content {
-    width: calc(100vw - @sidebar-width);
     height: calc(100vh - @--header-height - @--breadcrumb-height);
+    overflow: hidden;
   }
 
   .content {
+    box-sizing: border-box;
     padding: 20px;
     margin: 0 20px;
     min-height: calc(
