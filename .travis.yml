@@ -23,12 +23,12 @@ cache:
     - release/nuxt-admin/node_modules
     - release/nuxt-vant/node_modules
 deploy:
-  #- provider: pages
-  #  skip_cleanup: true
-  #  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  #  local-dir: dist
-  #  on:
-  #    branch: master
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+    local-dir: dist
+    on:
+      branch: master
   - provider: script
     skip_cleanup: true
     script: npx semantic-release
