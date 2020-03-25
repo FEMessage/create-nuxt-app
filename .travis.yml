@@ -12,8 +12,9 @@ install:
 script:
   - yarn test
   - yarn generate
+  - yarn build
   # https://stackoverflow.com/questions/37544306/travis-different-script-for-different-branch
-  - test "$TRAVIS_BRANCH" = "dev" && yarn build && ./lhci.sh || echo skip
+  - test "$TRAVIS_BRANCH" = "dev" && ./lhci.sh || echo skip
   - test "$TRAVIS_BRANCH" = "master" &&  yarn zip || echo skip
 addons:
   chrome: stable
