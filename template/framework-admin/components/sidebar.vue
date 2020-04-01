@@ -68,29 +68,29 @@ export default {
   flex-direction: column;
   justify-content: space-between;
 
-  .el-menu {
+  > .el-menu {
     box-sizing: border-box;
     padding-top: 12px;
     flex: 1;
     border: none;
     height: calc(100vh - @--footer-height - @--header-height);
     width: 100% !important;
+  }
 
-    .el-menu-item {
-      &:hover {
-        color: @menu-active-text-color !important;
-        background-color: transparent !important;
-      }
-
-      &.is-active {
-        background-color: @--color-primary !important;
-      }
+  .el-menu-item {
+    &:hover {
+      color: @menu-active-text-color !important;
+      background-color: transparent !important;
     }
 
-    [class*='icon'] {
-      font-size: 14px;
-      margin-right: 5px;
+    &.is-active {
+      background-color: @--color-primary !important;
     }
+  }
+
+  [class*='icon'] {
+    font-size: 14px;
+    margin-right: 5px;
   }
 
   .fix-btn-wrap {

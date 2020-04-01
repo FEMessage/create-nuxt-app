@@ -5,7 +5,7 @@ const cookieConfig = {
   get domain() {
     const {hostname} = location
     // 本地环境
-    if (/^(127\.0\.0\.1|localhost)|(netlify\.com)$/.test(hostname))
+    if (!(/deepexi\.(com|top)$/.test(hostname)))
       return hostname
     // 线上环境
     const s = hostname.indexOf('.')
@@ -17,12 +17,19 @@ const cookieConfig = {
   },
 }
 
-const createMenuItem = ({name = '', id = '', pathUrl = '/', iconUrl}) => {
+const createMenuItem = ({
+  name = '',
+  id = '',
+  pathUrl = '/',
+  iconUrl,
+  children = [],
+}) => {
   return {
     url: pathUrl,
     id: id,
     name: name,
     icon: iconUrl,
+    children: children?.length ? children.map(createMenuItem) : null,
   }
 }
 
