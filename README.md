@@ -10,6 +10,7 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Demo](#demo)
 - [Features](#features)
 - [Links](#links)
 - [Usage](#usage)
@@ -45,6 +46,22 @@ Create an enterprise nuxt app in seconds.
 - [nuxt-element-dashboard](https://github.com/levy9527/nuxt-element-dashboard)
 
 [⬆ Back to Top](#table-of-contents)
+
+## [Demo](https://femessage.github.io/create-nuxt-app/)
+
+### Nuxt-Admin
+
+- 租户id admin
+- 帐号   admin
+- 密码   abcd1234
+
+**run local dev server**
+
+```sh
+# white a .env file in root
+API_SERVER=https://mockapi.eolinker.com/IeZWjzy87c204a1f7030b2a17b00f3776ce0a07a5030a1b
+APP_ID=1204701543597604893
+```
 
 ## Usage
 
