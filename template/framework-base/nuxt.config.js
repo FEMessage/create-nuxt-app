@@ -67,15 +67,6 @@ module.exports = {
     publicPath,
     extractCSS: isProd,
     babel: {
-      presets: [
-        [
-          '@babel/env',
-          {
-            useBuiltIns: 'usage',
-            corejs: 3,
-          },
-        ],
-      ],
       plugins: [
         '@babel/plugin-proposal-optional-chaining',
         '@babel/plugin-proposal-nullish-coalescing-operator',
