@@ -6,7 +6,7 @@ language: node_js
 node_js:
 - lts/*
 git:
-  depth: 15
+  depth: 30
 install:
 - yarn --frozen-lockfile
 script:
@@ -16,9 +16,11 @@ script:
   # https://stackoverflow.com/questions/37544306/travis-different-script-for-different-branch
   - test "$TRAVIS_BRANCH" = "dev" && ./lhci.sh || echo skip
   - test "$TRAVIS_BRANCH" = "master" &&  yarn zip || echo skip
+after_script:
+  - ./notify.sh
 addons:
   chrome: stable
-cache: 
+cache:
   - yarn
   - directories:
     - release/nuxt-admin/node_modules
@@ -35,5 +37,3 @@ deploy:
     script: npx semantic-release
     on:
       branch: master
-after_script:
-  - ./notify.sh
