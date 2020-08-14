@@ -11,7 +11,7 @@ fi
 
 if [ "$BRANCH" != "dev" ] && [ "$HEAD" != "dev" ]
 then
-  yarn doc
+  yarn generate && yarn build
 else
   echo "this script only runs in targeting dev's PR deploy preview, bye"
 fi
