@@ -41,13 +41,18 @@ function run(config, outDir) {
   if (options.l) {
     configs.forEach(item => console.log(item.template))
   } else if (options.a) {
-    configs.forEach(c => run(c, outDir))
+    configs.forEach(c =>
+      run(
+        {...c, docker: dockerMap[options.d || options.docker] || false},
+        outDir,
+      ),
+    )
   } else {
     const config = {
       ...(folder ? {folder} : {}),
       ...(options.t ? {template: options.t} : {}),
     }
-    if ('docker' in config) {
+    if ('d' in options) {
       config.docker = dockerMap[options.d || options.docker]
     }
     run(config, outDir)
