@@ -29,6 +29,7 @@
     "release": "gren release --override"
   },
   "dependencies": {
+    "@femessage/dockerize-cli": "^1.0.1",
     "cac": "^6.5.2",
     "cross-spawn": "^6.0.5",
     "glob": "^7.1.3",

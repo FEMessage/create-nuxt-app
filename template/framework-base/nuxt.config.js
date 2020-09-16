@@ -3,6 +3,11 @@ const path = require('path')
 const {getRouterBase} = require('./src/utils')
 const {env} = process
 
+<%_ if (docker) { _%>
+const {setPlaceHolderEnv} =  require('./webpack.definePlugin')
+const IS_IMAGE = process.env.BUILD_TYPE === 'image'
+<%_ } _%>
+
 ;['PUBLIC_PATH', 'API_SERVER', 'NO_LOGIN', 'COOKIE_PATH'].forEach(key =>
   // eslint-disable-next-line no-console
   console.log('%s\t: %s', key, env[key]),
@@ -64,7 +69,11 @@ module.exports = {
    ** Build configuration
    */
   build: {
+    <%_ if (docker) { _%>
+    [!IS_IMAGE && 'publicPath']: publicPath,
+    <%_ } else { _%>
     publicPath,
+    <%_ } _%>
     extractCSS: isProd,
     babel: {
       plugins: [
@@ -110,6 +119,9 @@ module.exports = {
           symbolId: 'icon-[name]',
         },
       })
+      <%_ } _%>
+      <%_ if (docker) { _%>
+      IS_IMAGE && [setPlaceHolderEnv].forEach(config)
       <%_ } _%>
     },
   },
