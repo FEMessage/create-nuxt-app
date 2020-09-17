@@ -5,7 +5,6 @@ const configs = require('../template.config')
 const {mergeJson, sortObj} = require('./utils')
 
 const getDockerRunScript = () => {
-  // 这里为了兼容 nuxt 跟 vue-cli 有些变量是在 webpack config 执行之前就已经使用了，目前只发现这2个，如果项目中不一样可以自行改动。
   const scripts = {
     preinstall: 'sh ./.preinstall.sh',
   }
