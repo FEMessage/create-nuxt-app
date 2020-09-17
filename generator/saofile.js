@@ -4,30 +4,14 @@ const validate = require('validate-npm-package-name')
 const configs = require('../template.config')
 const {mergeJson, sortObj} = require('./utils')
 
-const resolveDockerPath = dir =>
-  path.resolve(__dirname, '../node_modules/@femessage/dockerize-cli', dir)
-
-// TODO 给dockerize-cli提pr，将该方法export出来
 const getDockerRunScript = () => {
-  const PUBLIC_PATH = '__PLACEHOLDER_PUBLIC_PATH'
-  const API_SERVER = '__PLACEHOLDER_API_SERVER'
-  const dockerizePkg = require('@femessage/dockerize-cli/package.json')
   // 这里为了兼容 nuxt 跟 vue-cli 有些变量是在 webpack config 执行之前就已经使用了，目前只发现这2个，如果项目中不一样可以自行改动。
   const scripts = {
-    'build:replace': 'yarn build:placeholder && yarn replace',
-    'build:placeholder': 'yarn build:set-env && yarn build',
-    'build:image': 'sh ./build.sh | ./build.sh',
-    'build:set-env': `cross-env BUILD_TYPE=image PUBLIC_PATH=${PUBLIC_PATH} API_SERVER=${API_SERVER}`,
-    replace: `npx dockerize-cli replace dist ${PUBLIC_PATH}`,
+    preinstall: 'sh ./.preinstall.sh',
   }
 
-  const devDependencies = {
-    '@femessage/dockerize-cli': `^${dockerizePkg.version}`,
-    'cross-env': 'latest',
-  }
   return {
     scripts,
-    devDependencies,
   }
 }
 
@@ -189,7 +173,7 @@ module.exports = {
         {
           type: 'add',
           files: '**',
-          templateDir: resolveDockerPath('templates/docker'),
+          templateDir: resolveDir('docker-cmd'),
         },
       ]
     }
@@ -208,6 +192,11 @@ module.exports = {
     const cd = () => {
       console.log(`\t${this.chalk.cyan('cd')} ${this.outDir}`)
     }
+
+    console.log()
+    console.log(this.chalk.bold(' To install dependence:\n'))
+    cd()
+    console.log(`\t${this.npmClient}`)
 
     console.log()
     console.log(this.chalk.bold(`  To get started:\n`))
