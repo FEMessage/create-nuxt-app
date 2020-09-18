@@ -6,7 +6,7 @@ const {mergeJson, sortObj} = require('./utils')
 
 const getDockerRunScript = () => {
   const scripts = {
-    preinstall: 'sh ./.preinstall.sh',
+    preinstall: 'sh ./.postinstall.sh',
   }
 
   return {
