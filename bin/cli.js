@@ -10,6 +10,7 @@ cli.help()
 cli.option('-l, --list', 'the list of preset template') // 优先级 1
 cli.option('-a, --all', 'generate all preset template') // 优先级 2
 cli.option('-t, --template <template>', 'create a preset template')
+cli.option('-d, --docker', 'use docker build')
 cli.option('-o, --output <output>', 'the output path of the generator')
 
 function run(config, outDir) {
@@ -32,11 +33,14 @@ function run(config, outDir) {
   if (options.l) {
     configs.forEach(item => console.log(item.template))
   } else if (options.a) {
-    configs.forEach(c => run(c, outDir))
+    configs.forEach(c => run({...c, docker: 'd' in options}, outDir))
   } else {
     const config = {
       ...(folder ? {folder} : {}),
       ...(options.t ? {template: options.t} : {}),
+    }
+    if ('d' in options) {
+      config.docker = true
     }
     run(config, outDir)
   }

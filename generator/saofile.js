@@ -4,6 +4,16 @@ const validate = require('validate-npm-package-name')
 const configs = require('../template.config')
 const {mergeJson, sortObj} = require('./utils')
 
+const getDockerRunScript = () => {
+  const scripts = {
+    postinstall: 'sh ./.postinstall.sh',
+  }
+
+  return {
+    scripts,
+  }
+}
+
 module.exports = {
   prompts() {
     if (this.sao.opts.mock) return []
@@ -29,6 +39,19 @@ module.exports = {
                 value: c.template,
               })),
               message: 'Choose a template',
+            },
+          ]),
+      ...('docker' in config
+        ? []
+        : [
+            {
+              name: 'docker',
+              type: 'list',
+              choices: [true, false].map(b => ({
+                name: b ? 'Use' : "Don't use",
+                value: b,
+              })),
+              message: 'Use dockerize-cli or not',
             },
           ]),
     ]
@@ -103,7 +126,13 @@ module.exports = {
             opts.outDir,
             '_package.json',
           ))
-          const result = mergeJson(basePackage, customPackage)
+          let result = mergeJson(basePackage, {
+            ...customPackage,
+            name: opts.config.folder,
+          })
+          if (opts.config.docker) {
+            result = mergeJson(result, getDockerRunScript())
+          }
           ;['dependencies', 'devDependencies'].forEach(k => sortObj(result[k]))
           return result
         },
@@ -137,6 +166,17 @@ module.exports = {
       },
     }
 
+    let addDockerFile = []
+    if (opts.config.docker) {
+      addDockerFile = [
+        {
+          type: 'add',
+          files: '**',
+          templateDir: resolveDir('docker-cmd'),
+        },
+      ]
+    }
+
     return [
       addBaseFramework,
       restoreConfigsName,
@@ -144,12 +184,18 @@ module.exports = {
       mergePackageJson,
       addModules,
       moveDirsToSrc,
+      addDockerFile,
     ].reduce((r, a) => r.concat(a), []) // 和 flat（node >= 11.15.0) 效果一样，性能差点
   },
   completed() {
     const cd = () => {
       console.log(`\t${this.chalk.cyan('cd')} ${this.outDir}`)
     }
+
+    console.log()
+    console.log(this.chalk.bold(' To install dependence:\n'))
+    cd()
+    console.log(`\t${this.npmClient}`)
 
     console.log()
     console.log(this.chalk.bold(`  To get started:\n`))
