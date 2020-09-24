@@ -33,8 +33,8 @@ Create an enterprise nuxt app in seconds.
 - [x] [commitlint](https://conventional-changelog.github.io/commitlint/) Lint commit messages
 - [x] [gitlab-ci](https://about.gitlab.com/product/continuous-integration/) GitLab CI
 - [x] [dotenv](https://github.com/motdotla/dotenv) Loads environment variables from .env for nodejs projects
-- [x] [element-ui](https://element.eleme.io/) A Vue.js 2.0 UI Toolkit for Web
-- [x] [vant](https://youzan.github.io/vant) Lightweight Mobile UI Components built on Vue
+- [x] [@femessage/element-ui](http://femessage.github.io/element/) A Vue.js 2.0 UI Toolkit for Web
+- [x] [@femessage/vant](http://femessage.github.io/vant/) Lightweight Mobile UI Components built on Vue
 - [x] [PWA](https://pwa.nuxtjs.org) Nuxt Progressive Web Apps solution
 - [x] [API Manage](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/api.md) RESTful API management
 
