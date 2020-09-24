@@ -1,5 +1,11 @@
 #!/bin/sh
 # https://stackoverflow.com/questions/13872048/bash-script-what-does-bin-bash-mean
+if [ "$TRAVIS_BRANCH" != "master" ]
+then
+  echo "do not notify cause not on master branch"
+  exit 0
+fi
+
 echo "1/5: checking TRAVIS_TEST_RESULT"
 if [ "$TRAVIS_TEST_RESULT" != "0" ]
 then
