@@ -37,6 +37,7 @@ Create an enterprise nuxt app in seconds.
 - [x] [@femessage/vant](http://femessage.github.io/vant/) Lightweight Mobile UI Components built on Vue
 - [x] [PWA](https://pwa.nuxtjs.org) Nuxt Progressive Web Apps solution
 - [x] [API Manage](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/api.md) RESTful API management
+- [x] [breadcrumb](https://www.yuque.com/docs/share/2fb86219-e8be-4007-a2b8-39641d5e79df)
 
 [⬆ Back to Top](#table-of-contents)
 
@@ -51,9 +52,9 @@ Create an enterprise nuxt app in seconds.
 
 ### Nuxt-Admin
 
-- 租户id admin
-- 帐号   admin
-- 密码   abcd1234
+- tenantId admin
+- account   admin
+- password   abcd1234
 
 **run local dev server**
 
