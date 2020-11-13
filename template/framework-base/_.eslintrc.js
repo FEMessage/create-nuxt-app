@@ -10,7 +10,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:jest/recommended',
-    'plugin:vue/recommended',
+    'plugin:nuxt/recommended',
     'plugin:prettier/recommended',
     /**
      * 关闭 plugin:vue 中与 prettier 冲突的 rule
@@ -21,7 +21,7 @@ module.exports = {
   plugins: [
     'jest',
     // To lint *.vue files
-    'vue',
+    'nuxt',
     // To apply .prettierrc
     'prettier'
   ],
