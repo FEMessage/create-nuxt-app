@@ -1,4 +1,3 @@
-require('dotenv').config()
 const path = require('path')
 const {getRouterBase} = require('./src/utils')
 const {env} = process
@@ -52,7 +51,11 @@ module.exports = {
 
   mode: 'spa',
 
-  env: {
+  /**
+   * 如果是 SSR 推荐使用 privateRuntimeConfig
+   * @see https://www.nuxtjs.cn/guide/runtime-config
+   */
+  publicRuntimeConfig: {
     NO_LOGIN: env.NO_LOGIN,
     COOKIE_PATH: env.COOKIE_PATH || '/',
     APP_ID: env.APP_ID,
