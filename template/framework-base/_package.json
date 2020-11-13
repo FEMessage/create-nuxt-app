@@ -27,9 +27,9 @@
   "dependencies": {
     "@femessage/upload-to-ali": "latest",
     "@femessage/v-img": "latest",
-    "@nuxtjs/axios": "5.9.0",
-    "@nuxtjs/google-analytics": "2.2.2",
-    "@nuxtjs/pwa": "3.0.0-beta.19",
+    "@nuxtjs/axios": "5.12.2",
+    "@nuxtjs/google-analytics": "2.4.0",
+    "@nuxtjs/pwa": "3.2.2",
     "@nuxtjs/style-resources": "0.1.2",
     "dayjs": "1.8.18",
     "js-cookie": "2.2.1",
