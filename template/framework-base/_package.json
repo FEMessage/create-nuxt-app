@@ -76,9 +76,12 @@
     }
   },
   "lint-staged": {
-    "*.{js,vue}": ["eslint --fix", "git add"],
-    "*.{vue,less}": ["stylelint --fix", "git add"],
-    "*.{md,json}": ["prettier --write", "git add"]
+    "linters": {
+      "*.{js,vue}": ["eslint --fix", "git add"],
+      "*.{vue,less}": ["stylelint --fix", "git add"],
+      "*.{md,json}": ["prettier --write", "git add"]
+    },
+    "ignore": ["test/**/*expect.vue"]
   },
   "browserslist": ["defaults"]
 }
