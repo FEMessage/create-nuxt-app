@@ -1,4 +1,4 @@
-const {getRouterBase} = require('../src/utils')
+const {getRouterBase} = require('@/utils')
 
 describe('测试 utils.getRouterBase 函数', () => {
   test('传入非法的参数，返回根路径', () => {
