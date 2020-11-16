@@ -46,11 +46,8 @@ module.exports = {
         : [
             {
               name: 'docker',
-              type: 'list',
-              choices: [true, false].map(b => ({
-                name: b ? 'Use' : "Don't use",
-                value: b,
-              })),
+              type: 'confirm',
+              default: true,
               message: 'Use dockerize-cli or not',
             },
           ]),
