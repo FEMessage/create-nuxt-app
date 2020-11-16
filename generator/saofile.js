@@ -51,12 +51,16 @@ module.exports = {
               message: 'Use dockerize-cli or not',
             },
           ]),
-      {
-        name: 'cypress',
-        type: 'confirm',
-        default: true,
-        message: 'Use cypress or not',
-      },
+      ...('cypress' in config
+        ? []
+        : [
+            {
+              name: 'cypress',
+              type: 'confirm',
+              default: true,
+              message: 'Use cypress or not',
+            },
+          ]),
     ]
   },
   templateData() {
