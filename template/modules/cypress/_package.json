@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "cypress:local": "cypress open --env config=local",
+    "cypress": "yarn cypress:local"
+  },
+
+  "devDependencies": {
+    "cypress": "5.6.0",
+    "eslint-plugin-cypress": "^2.11.2"
+  }
+}
