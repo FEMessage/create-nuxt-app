@@ -136,6 +136,7 @@ module.exports = {
           if (opts.config.docker) {
             result = mergeJson(result, getDockerRunScript())
           }
+          result['create-nuxt-app'] = require('../package.json').version
           ;['dependencies', 'devDependencies'].forEach(k => sortObj(result[k]))
           return result
         },
