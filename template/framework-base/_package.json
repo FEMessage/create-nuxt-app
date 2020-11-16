@@ -62,12 +62,6 @@
     "stylelint": "9.10.1",
     "stylelint-config-standard": "18.3.0"
   },
-  "jest": {
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1",
-      "^~/(.*)$": "<rootDir>/src/$1"
-    }
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
