@@ -159,6 +159,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/zhn4"><img src="https://avatars2.githubusercontent.com/u/11404946?v=4" width="100px;" alt=""/><br /><sub><b>zhn4</b></sub></a><br /><a href="https://github.com/FEMessage/create-nuxt-app/commits?author=zhn4" title="Code">💻</a></td>
+    <td align="center"><a href="https://4ark.me"><img src="https://avatars0.githubusercontent.com/u/27952659?v=4" width="100px;" alt=""/><br /><sub><b>4Ark</b></sub></a><br /><a href="https://github.com/FEMessage/create-nuxt-app/commits?author=gd4Ark" title="Code">💻</a> <a href="https://github.com/FEMessage/create-nuxt-app/issues?q=author%3Agd4Ark" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
