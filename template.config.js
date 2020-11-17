@@ -53,4 +53,4 @@ const mobile = {
   template: 'mobile',
 }
 
-module.exports = [mobile, admin]
+module.exports = [admin, mobile]

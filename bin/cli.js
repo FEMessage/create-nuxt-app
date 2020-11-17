@@ -29,6 +29,8 @@ function run(config, outDir) {
 }
 
 ;(function main({options, args: [folder]}) {
+  if (options.v || options.h) return
+
   const outDir = options.o || '.'
   if (options.l) {
     configs.forEach(item => console.log(item.template))

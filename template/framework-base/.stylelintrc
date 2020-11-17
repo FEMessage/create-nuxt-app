@@ -1,7 +1,6 @@
 {
   "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-prettier"
+    "stylelint-config-standard"
   ],
   "rules": {
     "no-empty-source": null,
