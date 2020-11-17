@@ -23,6 +23,7 @@ Cypress.Commands.add(
   },
 )
 
+// 打开某个 el-select，并根据 index 或者 文本选中 option
 Cypress.Commands.add(
   '$select',
   {

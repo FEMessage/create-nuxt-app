@@ -26,7 +26,7 @@ const common = {
   release: 'release-log',
   styles: 'styles',
   'icon-font': 'icon-font',
-  unit: 'jest',
+  test: 'jest',
   utils: 'utils',
   service: 'service',
 }

@@ -48,7 +48,7 @@ module.exports = {
               name: 'docker',
               type: 'confirm',
               default: true,
-              message: 'Use dockerize-cli or not',
+              message: 'Dockerize or not',
             },
           ]),
       ...('cypress' in config

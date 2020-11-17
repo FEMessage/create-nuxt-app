@@ -1,3 +1,6 @@
+/**
+ * @FYI https://deepexi.yuque.com/docs/share/6537d0c9-6d70-4302-a37d-ba388fd74a15?# 《Cypress 实战》
+ */
 describe('login', function () {
   before(() => {
     cy.fixture('user').as('user')

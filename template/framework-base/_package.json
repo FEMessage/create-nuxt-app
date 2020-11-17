@@ -10,6 +10,7 @@
   "keywords": ["vue", "nuxt"],
   "private": true,
   "engines": {
+    "node": ">= 14",
     "npm": ">= 5.2.0"
   },
   "scripts": {
