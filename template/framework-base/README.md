@@ -12,6 +12,7 @@
   - **[调用接口](#调用接口)**
   - **[CRUD](#CRUD)**
   - **[设置代理](#设置代理)**
+  - **[FAQ](#FAQ)**
 - **[环境变量](#环境变量)**
 - **[构建](#构建)**
 - **[License](#license)**
@@ -267,6 +268,11 @@ env: {
 1. 在 `yarn dev` 模式下，都会变成 `http://real.api.server/api`
 
 **注意，每次修改代理设置，都需要重新启动应用才能生效**
+
+[⬆ Back to Top](#table-of-contents)
+
+### FAQ
+- [TypeScript FAQ](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/typescript-faq.md)
 
 [⬆ Back to Top](#table-of-contents)
 

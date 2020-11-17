@@ -27,6 +27,7 @@ Create an enterprise nuxt app in seconds.
 
 ## Features
 
+- [x] [typescript](https://www.typescriptlang.org/) TypeScript extends JavaScript by adding types.
 - [x] [prettier](https://prettier.io/) Prettier is an opinionated code formatter
 - [x] [eslint](https://eslint.org/) A fully pluggable tool for identifying and reporting on patterns in JavaScript
 - [x] [stylelint](https://stylelint.io/) A mighty, modern style linter
@@ -63,6 +64,9 @@ Create an enterprise nuxt app in seconds.
 API_SERVER=https://mockapi.eolinker.com/IeZWjzy87c204a1f7030b2a17b00f3776ce0a07a5030a1b
 APP_ID=1204701543597604893
 ```
+
+## Links
+- [TypeScript FAQ](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/typescript-faq.md)
 
 ## Usage
 
