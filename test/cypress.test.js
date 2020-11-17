@@ -10,7 +10,8 @@ configs.forEach(c => {
   const answers = {
     ...c,
     docker: false,
-    cypress: false,
+    cypress: true,
+    folder: `${c.folder}-cypress`,
   }
   return ava(c.template, t => verifyPkg(t, answers))
 })

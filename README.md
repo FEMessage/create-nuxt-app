@@ -37,6 +37,7 @@ Create an enterprise nuxt app in seconds.
 - [x] [@femessage/vant](http://femessage.github.io/vant/) Lightweight Mobile UI Components built on Vue
 - [x] [PWA](https://pwa.nuxtjs.org) Nuxt Progressive Web Apps solution
 - [x] [API Manage](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/api.md) RESTful API management
+- [x] [breadcrumb](https://www.yuque.com/docs/share/2fb86219-e8be-4007-a2b8-39641d5e79df)
 
 [⬆ Back to Top](#table-of-contents)
 
@@ -51,9 +52,9 @@ Create an enterprise nuxt app in seconds.
 
 ### Nuxt-Admin
 
-- 租户id admin
-- 帐号   admin
-- 密码   abcd1234
+- tenantId admin
+- account   admin
+- password   abcd1234
 
 **run local dev server**
 
@@ -158,6 +159,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/zhn4"><img src="https://avatars2.githubusercontent.com/u/11404946?v=4" width="100px;" alt=""/><br /><sub><b>zhn4</b></sub></a><br /><a href="https://github.com/FEMessage/create-nuxt-app/commits?author=zhn4" title="Code">💻</a></td>
+    <td align="center"><a href="https://4ark.me"><img src="https://avatars0.githubusercontent.com/u/27952659?v=4" width="100px;" alt=""/><br /><sub><b>4Ark</b></sub></a><br /><a href="https://github.com/FEMessage/create-nuxt-app/commits?author=gd4Ark" title="Code">💻</a> <a href="https://github.com/FEMessage/create-nuxt-app/issues?q=author%3Agd4Ark" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

@@ -7,7 +7,8 @@
  * 所有需要使用的定义都要 export
  */
 
-import {Repository, ExampleRepository} from './repository'
+// import {ExampleRepository} from './repository'
+import {Repository} from './repository'
 import {VERSION, SECURITY_CLOUD, SECURITY_CLOUD_TENANT} from './serviceList'
 
 export const login = new Repository(`${SECURITY_CLOUD}/${VERSION}/login`)

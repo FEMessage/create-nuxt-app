@@ -12,12 +12,12 @@ function getRouterBase(href = '') {
     return '/'
   }
 
-  return (
-    pathname
-      .split('/')
-      .filter(p => !/\./g.test(p))
-      .join('/') + '/'
-  )
+  const routeBase = pathname
+    .split('/')
+    .filter((p) => !/\./g.test(p))
+    .join('/')
+
+  return routeBase.endsWith('/') ? routeBase : routeBase + '/'
 }
 
 module.exports = {

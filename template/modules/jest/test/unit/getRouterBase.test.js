@@ -1,4 +1,4 @@
-const {getRouterBase} = require('../src/utils')
+const {getRouterBase} = require('@/utils')
 
 describe('测试 utils.getRouterBase 函数', () => {
   test('传入非法的参数，返回根路径', () => {
@@ -41,5 +41,11 @@ describe('测试 utils.getRouterBase 函数', () => {
         'https://serverless.deepexi.top/serverless-console/aaa/bbb/ccc/index.html#/app-list',
       ),
     ).toBe('/serverless-console/aaa/bbb/ccc/')
+  })
+
+  test('传入 / 结尾的 URL，不再另外拼接 / 到末尾', () => {
+    expect(
+      getRouterBase('https://serverless.deepexi.top/serverless-console/'),
+    ).toBe('/serverless-console/')
   })
 })

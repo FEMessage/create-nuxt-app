@@ -5,8 +5,7 @@ const cookieConfig = {
   get domain() {
     const {hostname} = location
     // 本地环境
-    if (!(/deepexi\.(com|top)$/.test(hostname)))
-      return hostname
+    if (!/deepexi\.(com|top)$/.test(hostname)) return hostname
     // 线上环境
     const s = hostname.indexOf('.')
     return hostname.slice(s)
@@ -105,17 +104,13 @@ export const mutations = {
 
 export const actions = {
   async login({commit, dispatch}, {body, redirect = '/'}) {
-    try {
-      const userInfo = await this.$http.login.create(body)
-      commit('setUserInfo', userInfo.payload)
-      dispatch('getHeaderMenu')
-      dispatch('getSiderMenu')
-      this.$router.replace(redirect)
+    const userInfo = await this.$http.login.create(body)
+    commit('setUserInfo', userInfo.payload)
+    dispatch('getHeaderMenu')
+    dispatch('getSiderMenu')
+    this.$router.replace(redirect)
 
-      return userInfo
-    } catch (error) {
-      throw error
-    }
+    return userInfo
   },
 
   async refresh({commit, dispatch}, token) {
