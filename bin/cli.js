@@ -36,7 +36,10 @@ function run(config, outDir) {
     configs.forEach(item => console.log(item.template))
   } else if (options.a) {
     configs.forEach(c =>
-      run({...c, docker: 'd' in options, cypress: false}, outDir),
+      run(
+        {...c, docker: 'd' in options, cypress: false, language: 'JavaScript'},
+        outDir,
+      ),
     )
   } else {
     const config = {

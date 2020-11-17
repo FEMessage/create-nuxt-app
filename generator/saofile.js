@@ -41,6 +41,19 @@ module.exports = {
               message: 'Choose a template',
             },
           ]),
+      ...('language' in config
+        ? []
+        : [
+            {
+              name: 'language',
+              type: 'list',
+              choices: ['JavaScript', 'TypeScript'].map(v => ({
+                name: v,
+                value: v,
+              })),
+              message: 'Programming language',
+            },
+          ]),
       ...('docker' in config
         ? []
         : [
@@ -66,6 +79,7 @@ module.exports = {
   templateData() {
     return this.sao.opts.config
   },
+  // TODO: 这个方法太大了，需要抽离子方法
   actions() {
     const {
       sao: {opts},
@@ -227,6 +241,40 @@ module.exports = {
       ]
     }
 
+    let addTypeScriptModule = []
+    if (opts.config.language === 'TypeScript') {
+      const typescriptModulePath = resolveDir('modules/typescript')
+
+      addTypeScriptModule = [
+        {
+          type: 'add',
+          files: '**',
+          templateDir: resolveDir('modules/typescript'),
+        },
+        {
+          type: 'modify',
+          files: 'package.json',
+          handler(basePackage) {
+            const customPackage = require(path.resolve(
+              typescriptModulePath,
+              '_package.json',
+            ))
+
+            let result = mergeJson(basePackage, customPackage)
+
+            ;['dependencies', 'devDependencies'].forEach(k =>
+              sortObj(result[k]),
+            )
+            return result
+          },
+        },
+        {
+          type: 'remove',
+          files: ['_package.json', 'jsconfig.json'],
+        },
+      ]
+    }
+
     return [
       addBaseFramework,
       restoreConfigsName,
@@ -236,6 +284,7 @@ module.exports = {
       moveDirsToSrc,
       addDockerFile,
       addE2eModule,
+      addTypeScriptModule,
     ].reduce((r, a) => r.concat(a), []) // 和 flat（node >= 11.15.0) 效果一样，性能差点
   },
   completed() {

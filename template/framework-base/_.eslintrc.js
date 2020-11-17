@@ -4,10 +4,15 @@ module.exports = {
     browser: true,
     node: true
   },
+  <%_ if (language !== 'TypeScript') { _%>
   parserOptions: {
     parser: 'babel-eslint'
   },
+  <%_ } _%>
   extends: [
+    <%_ if (language === 'TypeScript') { _%>
+    '@nuxtjs/eslint-config-typescript',
+    <%_ } _%>
     'eslint:recommended',
     'plugin:jest/recommended',
     'plugin:nuxt/recommended',

@@ -219,15 +219,18 @@ module.exports = {
     <%_ } _%>
   ],
 
-  // FYI: https://analytics.google.com/analytics/web/
-  // buildModules: [
-  //   [
-  //     '@nuxtjs/google-analytics',
-  //     {
-  //       id: ''
-  //     }
-  //   ]
-  // ],
+  buildModules: [
+    <%_ if (language === 'TypeScript') { _%>
+    '@nuxt/typescript-build',
+    <%_ } _%>
+    // FYI: https://analytics.google.com/analytics/web/
+    // [
+    //   '@nuxtjs/google-analytics',
+    //   {
+    //     id: ''
+    //   }
+    // ]
+  ],
 
   modules: [
     // Doc: https://github.com/nuxt-community/style-resources-module
@@ -249,4 +252,12 @@ module.exports = {
       },
     ],
   },
+  <%_ if (language === 'TypeScript') { _%>
+
+  typescript: {
+    typeCheck: {
+      async: false, // 将报错信息显示在页面上
+    },
+  },
+  <%_ } _%>
 }
