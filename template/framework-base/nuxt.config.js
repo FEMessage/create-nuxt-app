@@ -3,6 +3,11 @@ const path = require('path')
 const {getRouterBase} = require('./src/utils')
 const {env} = process
 
+<%_ if (docker) { _%>
+const {setPlaceHolderEnv} =  require('./webpack.definePlugin')
+const IS_IMAGE = process.env.BUILD_TYPE === 'image'
+<%_ } _%>
+
 ;['PUBLIC_PATH', 'API_SERVER', 'NO_LOGIN', 'COOKIE_PATH'].forEach(key =>
   // eslint-disable-next-line no-console
   console.log('%s\t: %s', key, env[key]),
@@ -13,14 +18,20 @@ const isProd = env.MODE == 'prod'
 // 不能以斜杠结尾
 let apiServer = env.API_SERVER
 // 必须以斜杠结尾
-let publicPath = env.PUBLIC_PATH
+let publicPath = env.PUBLIC_PATH<%- `${template === 'mobile' ? " || 'http://cdn.deepexi.com/'" : ''}` %>
 
 const config = {
   aliIconFont: '',
   env: {
+    <%_ if (template === 'mobile') { _%>
+    dev: {
+      '/security': 'http://your.dev.server',
+    },
+    <%_ } else if (template === 'admin') { _%>
     dev: {
       '/security': apiServer,
     },
+    <%_ } _%>
   },
 }
 
@@ -62,12 +73,27 @@ module.exports = {
    ** Build configuration
    */
   build: {
+    <%_ if (docker) { _%>
+    [!IS_IMAGE && 'publicPath']: publicPath,
+    <%_ } else { _%>
     publicPath,
+    <%_ } _%>
     extractCSS: isProd,
     babel: {
       plugins: [
         '@babel/plugin-proposal-optional-chaining',
         '@babel/plugin-proposal-nullish-coalescing-operator',
+        <%_ if(template === 'mobile') { _%>
+        [
+          'import',
+          {
+            libraryName: '@femessage/vant',
+            libraryDirectory: 'es',
+            style: true,
+          },
+          '@femessage/vant',
+        ],
+        <%_ } _%>
       ],
     },
     extend(config, {isDev}) {
@@ -83,6 +109,7 @@ module.exports = {
         config.devtool = 'source-map'
       }
 
+      <%_ if (template === 'admin') { _%>
       config.module.rules.find(item =>
         item.test.test('.svg'),
       ).test = /\.(png|jpe?g|gif|webp)$/i
@@ -96,6 +123,10 @@ module.exports = {
           symbolId: 'icon-[name]',
         },
       })
+      <%_ } _%>
+      <%_ if (docker) { _%>
+      IS_IMAGE && [setPlaceHolderEnv].forEach(config)
+      <%_ } _%>
     },
   },
 
@@ -109,7 +140,11 @@ module.exports = {
     },
     meta: [
       {charset: 'utf-8'},
+      <%_ if (template === 'mobile') { _%>
+      {name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover'},
+      <%_ } else { _%>
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      <%_ } _%>
       {'http-equiv': 'x-ua-compatible', content: 'IE=edge, chrome=1'},
       {
         hid: 'description',
@@ -129,6 +164,7 @@ module.exports = {
       //   type: 'text/css',
       //   href: config.aliIconFont
       // },
+      <%_ if (template !== 'mobile') { _%>
       {
         rel: 'preconnect',
         href: 'https://cdn.jsdelivr.net',
@@ -140,6 +176,7 @@ module.exports = {
           require('@femessage/element-ui/package').version
         }/lib/theme-chalk/index.min.css`,
       },
+      <%_ } _%>
     ],
   },
 
@@ -173,9 +210,13 @@ module.exports = {
     {src: '~plugins/axios'},
     {src: '~plugins/filters'},
     {src: '~plugins/api'},
+    <%_ if (template === 'mobile') { _%>
+    {src: '~plugins/vant'},
+    <%_ } else { _%>
     {src: '~plugins/element'},
     {src: '~plugins/icon-font'},
     {src: '~plugins/svg-icon'},
+    <%_ } _%>
   ],
 
   // FYI: https://analytics.google.com/analytics/web/
