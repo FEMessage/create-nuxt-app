@@ -1,4 +1,4 @@
-require('dotenv').config()
+/* eslint-disable nuxt/no-cjs-in-config */
 const path = require('path')
 const {getRouterBase} = require('./src/utils')
 const {env} = process
@@ -52,7 +52,11 @@ module.exports = {
 
   mode: 'spa',
 
-  env: {
+  /**
+   * 如果是 SSR 推荐使用 privateRuntimeConfig
+   * @see https://www.nuxtjs.cn/guide/runtime-config
+   */
+  publicRuntimeConfig: {
     NO_LOGIN: env.NO_LOGIN,
     COOKIE_PATH: env.COOKIE_PATH || '/',
     APP_ID: env.APP_ID,
@@ -230,8 +234,6 @@ module.exports = {
     '@nuxtjs/style-resources',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    ['@nuxtjs/dotenv', {path: './'}],
     // Doc: https://pwa.nuxtjs.org/
     '@nuxtjs/pwa',
   ],

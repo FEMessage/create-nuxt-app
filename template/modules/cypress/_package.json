@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "e2e": "cypress open --env config=local",
+    "e2e:ci": "cypress run --env config=uat"
+  },
+
+  "devDependencies": {
+    "cypress": "5.6.0",
+    "eslint-plugin-cypress": "^2.11.2"
+  }
+}

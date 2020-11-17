@@ -17,10 +17,10 @@ const LOGIN_PATH = '/login'
 // 路由白名单，直接绕过路由守卫
 const whiteList = [LOGIN_PATH]
 
-export default async ({store, redirect, env, route}) => {
+export default async ({store, redirect, $config, route}) => {
   if (process.server) return
 
-  const {NO_LOGIN} = env
+  const {NO_LOGIN} = $config
   const {path, fullPath} = route
 
   // 开发时可以用 NO_LOGIN 跳过路由鉴权

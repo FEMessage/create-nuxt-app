@@ -18,3 +18,5 @@ coverage
 # build
 release/
 dist/
+
+package-lock.json

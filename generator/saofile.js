@@ -46,12 +46,19 @@ module.exports = {
         : [
             {
               name: 'docker',
-              type: 'list',
-              choices: [true, false].map(b => ({
-                name: b ? 'Use' : "Don't use",
-                value: b,
-              })),
-              message: 'Use dockerize-cli or not',
+              type: 'confirm',
+              default: true,
+              message: 'Dockerize or not',
+            },
+          ]),
+      ...('cypress' in config
+        ? []
+        : [
+            {
+              name: 'cypress',
+              type: 'confirm',
+              default: true,
+              message: 'Use cypress or not',
             },
           ]),
     ]
@@ -133,6 +140,7 @@ module.exports = {
           if (opts.config.docker) {
             result = mergeJson(result, getDockerRunScript())
           }
+          result['create-nuxt-app'] = require('../package.json').version
           ;['dependencies', 'devDependencies'].forEach(k => sortObj(result[k]))
           return result
         },
@@ -176,6 +184,48 @@ module.exports = {
         },
       ]
     }
+    let addE2eModule = []
+    if (opts.config.cypress) {
+      const cypressModulePath = resolveDir('modules/cypress')
+
+      addE2eModule = [
+        {
+          type: 'add',
+          files: '**',
+          templateDir: resolveDir('modules/cypress'),
+        },
+        {
+          type: 'move',
+          patterns: {
+            [path.resolve(
+              opts.outDir,
+              'test/e2e/_.eslintrc.js',
+            )]: 'test/e2e/.eslintrc.js',
+          },
+        },
+        {
+          type: 'modify',
+          files: 'package.json',
+          handler(basePackage) {
+            const customPackage = require(path.resolve(
+              cypressModulePath,
+              '_package.json',
+            ))
+
+            let result = mergeJson(basePackage, customPackage)
+
+            ;['dependencies', 'devDependencies'].forEach(k =>
+              sortObj(result[k]),
+            )
+            return result
+          },
+        },
+        {
+          type: 'remove',
+          files: '_package.json',
+        },
+      ]
+    }
 
     return [
       addBaseFramework,
@@ -185,6 +235,7 @@ module.exports = {
       addModules,
       moveDirsToSrc,
       addDockerFile,
+      addE2eModule,
     ].reduce((r, a) => r.concat(a), []) // 和 flat（node >= 11.15.0) 效果一样，性能差点
   },
   completed() {

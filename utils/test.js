@@ -1,7 +1,13 @@
 const sao = require('sao')
 
 const getPkgFields = pkg => {
-  const blackList = ['name', 'author', 'version', 'description']
+  const blackList = [
+    'name',
+    'author',
+    'version',
+    'description',
+    'create-nuxt-app',
+  ]
   pkg = JSON.parse(pkg)
   blackList.forEach(p => delete pkg[p])
   return pkg
