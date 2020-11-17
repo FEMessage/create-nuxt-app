@@ -11,6 +11,7 @@ configs.forEach(c => {
     ...c,
     docker: false,
     cypress: true,
+    language: 'JavaScript',
     folder: `${c.folder}-cypress`,
   }
   return ava(c.template, t => verifyPkg(t, answers))
