@@ -24,11 +24,7 @@ import {mapActions} from 'vuex'
 export default {
   layout: 'login',
   name: 'Login',
-  head() {
-    return {
-      title: 'DEEPEXI ADMIN 登录',
-    }
-  },
+
   data() {
     return {
       loading: false,
@@ -117,6 +113,12 @@ export default {
         }
       })
     },
+  },
+
+  head() {
+    return {
+      title: 'DEEPEXI ADMIN 登录',
+    }
   },
 }
 </script>

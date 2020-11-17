@@ -27,9 +27,9 @@ export default async ({store, redirect, $config, route}) => {
   if (NO_LOGIN > 0) return
 
   // 鉴权白名单
-  if (whiteList.indexOf(path) > -1) return
+  if (whiteList.includes(path)) return
 
-  let cookieInfo = {}
+  const cookieInfo = {}
 
   cookieKeys.forEach(key => {
     cookieInfo[key] = cookie.get(key)
@@ -39,18 +39,14 @@ export default async ({store, redirect, $config, route}) => {
 
   // 未登录
   if (!token) {
-    <%_ if (template !== 'mobile') { _%>
     redirect(`${LOGIN_PATH}?redirect=${encodeURIComponent(fullPath)}`)
-    <%_ } _%>
     return
   }
 
   // 已登录但是state因刷新丢失
   if (token && !store.state.userId) {
     try {
-      <%_ if (template === 'admin') { _%>
       await store.dispatch('refresh', token)
-      <%_ } _%>
     } catch (e) {
       console.error('auth error: ', e)
     }

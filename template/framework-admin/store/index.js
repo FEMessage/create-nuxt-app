@@ -25,8 +25,8 @@ const createMenuItem = ({
 }) => {
   return {
     url: pathUrl,
-    id: id,
-    name: name,
+    id,
+    name,
     icon: iconUrl,
     children: children?.length ? children.map(createMenuItem) : null,
   }
@@ -39,7 +39,7 @@ export const state = () => ({
   avatar: '',
 
   // meta info
-  meta: meta,
+  meta,
 
   // auth info
   get token() {

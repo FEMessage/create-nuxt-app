@@ -46,10 +46,10 @@ const codeMessage = {
 export default function({$axios, store, route}) {
   $axios.onRequest(config => {
     let url = config.url
-    let method = config.method
+    const method = config.method
     // 因后端框架进行规范改造，故post，put方法query后边不传参数
-    const checkoutMethod = methods.some(v => v == method)
-    if (skipUrls.some(skipUrl => url.indexOf(skipUrl) > -1)) return
+    const checkoutMethod = methods.some(v => v === method)
+    if (skipUrls.some(skipUrl => url.includes(skipUrl))) return
 
     const state = store.state
     const token = state.token
@@ -66,7 +66,7 @@ export default function({$axios, store, route}) {
     }, {})
 
     // query参数
-    let queryData = paramsList
+    const queryData = paramsList
       .map(v => {
         return `${v}=${state[v]}`
       })
@@ -74,23 +74,21 @@ export default function({$axios, store, route}) {
 
     // jwt 验证
     if (token) {
-      config.headers.common['Authorization'] = `Bearer ${token}`
+      config.headers.common.Authorization = `Bearer ${token}`
     }
 
     if (!checkoutMethod) {
-      url += url.indexOf('?') > -1 ? '&' : '?'
+      url += url.includes('?') ? '&' : '?'
       url += queryData
-    } else {
-      if (!Array.isArray(config.data)) {
-        config.data = {
-          ...config.data,
-          ...paramsData,
-        }
+    } else if (!Array.isArray(config.data)) {
+      config.data = {
+        ...config.data,
+        ...paramsData,
       }
     }
 
     config.url = `${url}${
-      url.indexOf('?') > -1 ? '&' : '?'
+      url.includes('?') ? '&' : '?'
     }_=${new Date().getTime()}`
     return config
   })
@@ -103,7 +101,7 @@ export default function({$axios, store, route}) {
     if (code !== 0 && !Number.isNaN(code)) {
       // 如果httpStatusCode = 200, 但是操作失败的请求，将响应转为error
       // 兼容error的数据结构
-      return Promise.reject({response: resp})
+      return Promise.reject(new Error(resp))
     } else {
       // 不能直接resolve resp.data 因为部分组件是按照axios原本的返回数据结构进行设计的
       return Promise.resolve(resp)
@@ -117,7 +115,7 @@ export default function({$axios, store, route}) {
       const data = resp.data
       const {fullPath} = route
 
-      if (resp.status == 401) {
+      if (parseInt(resp.status) === 401) {
         Vue.$notify.error({
           title: '提示',
           message: '登陆超时，请重新登录！',
