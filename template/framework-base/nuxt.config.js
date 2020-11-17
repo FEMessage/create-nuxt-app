@@ -13,12 +13,12 @@ const IS_IMAGE = process.env.BUILD_TYPE === 'image'
   console.log('%s\t: %s', key, env[key]),
 )
 
-const isProd = env.MODE == 'prod'
+const isProd = env.MODE === 'prod'
 
 // 不能以斜杠结尾
-let apiServer = env.API_SERVER
+const apiServer = env.API_SERVER
 // 必须以斜杠结尾
-let publicPath = env.PUBLIC_PATH<%- `${template === 'mobile' ? " || 'http://cdn.deepexi.com/'" : ''}` %>
+const publicPath = env.PUBLIC_PATH<%- `${template === 'mobile' ? " || 'http://cdn.deepexi.com/'" : ''}` %>
 
 const config = {
   aliIconFont: '',
