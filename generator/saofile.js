@@ -129,7 +129,6 @@ module.exports = {
         '_.eslintrc.js': '.eslintrc.js',
         '_.gitignore': '.gitignore',
         '_package.json': 'package.json',
-        'test/unit/_.eslintrc.js': 'test/unit/.eslintrc.js',
       },
     }
 
@@ -196,6 +195,7 @@ module.exports = {
           opts.outDir,
           'test/unit/_.eslintrc.js',
         )]: 'test/unit/.eslintrc.js',
+        '_.babelrc': '.babelrc',
       },
     }
 
