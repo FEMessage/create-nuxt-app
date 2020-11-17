@@ -14,7 +14,6 @@ module.exports = {
     '@nuxtjs/eslint-config-typescript',
     <%_ } _%>
     'eslint:recommended',
-    'plugin:jest/recommended',
     'plugin:nuxt/recommended',
     'plugin:prettier/recommended',
     /**
@@ -24,7 +23,6 @@ module.exports = {
     'prettier/vue',
   ],
   plugins: [
-    'jest',
     // To lint *.vue files
     'nuxt',
     // To apply .prettierrc

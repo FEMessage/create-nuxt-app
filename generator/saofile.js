@@ -129,6 +129,7 @@ module.exports = {
         '_.eslintrc.js': '.eslintrc.js',
         '_.gitignore': '.gitignore',
         '_package.json': 'package.json',
+        'test/unit/_.eslintrc.js': 'test/unit/.eslintrc.js',
       },
     }
 
@@ -185,6 +186,16 @@ module.exports = {
           )
           .reduce((dirs1, dirs2) => [...dirs1, ...dirs2])
           .reduce((res, dir) => ({...res, [dir]: `src/${dir}`}), {}),
+      },
+    }
+
+    const moveJestEslintrc = {
+      type: 'move',
+      patterns: {
+        [path.resolve(
+          opts.outDir,
+          'test/unit/_.eslintrc.js',
+        )]: 'test/unit/.eslintrc.js',
       },
     }
 
@@ -282,6 +293,7 @@ module.exports = {
       mergePackageJson,
       addModules,
       moveDirsToSrc,
+      moveJestEslintrc,
       addDockerFile,
       addE2eModule,
       addTypeScriptModule,
