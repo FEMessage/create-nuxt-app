@@ -68,7 +68,7 @@ APP_ID=1204701543597604893
 
 ## Links
 - [TypeScript FAQ](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/typescript-faq.md)
-- [Best Practices for Composition API](https://deepexi.yuque.com/docs/share/54bd68ca-27bb-4db8-8b26-f2dd1de406ff)
+- [Composition API Best Practices](https://deepexi.yuque.com/docs/share/54bd68ca-27bb-4db8-8b26-f2dd1de406ff)
 
 ## Usage
 
