@@ -157,7 +157,6 @@ function getModules(opts) {
   const addModules = Object.keys(opts.config)
     .filter(k => !skipModules.includes(k))
     .map(k => {
-      console.log('k:::', k, opts.config[k])
       return {
         type: 'add',
         files: '**',
