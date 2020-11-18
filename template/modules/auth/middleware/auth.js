@@ -39,14 +39,18 @@ export default async ({store, redirect, $config, route}) => {
 
   // 未登录
   if (!token) {
+    <%_ if (template !== 'mobile') { _%>
     redirect(`${LOGIN_PATH}?redirect=${encodeURIComponent(fullPath)}`)
+    <%_ } _%>
     return
   }
 
   // 已登录但是state因刷新丢失
   if (token && !store.state.userId) {
     try {
+      <%_ if (template === 'admin') { _%>
       await store.dispatch('refresh', token)
+      <%_ } _%>
     } catch (e) {
       console.error('auth error: ', e)
     }

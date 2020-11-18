@@ -1,5 +1,7 @@
 ## TypeScript FAQ
 
+**注意**：本文内容不一定能及时更新，可以到 [《如何在 Nuxt 项目中引入 TypeScript》](https://deepexi.yuque.com/docs/share/ec81b0e7-b1b4-426c-a66c-8c293e7185c2) 查看最新内容。
+
 ## 库类型声明文件
 
 ### FEMessage 组件库声明文件

@@ -280,8 +280,9 @@ module.exports = {
   <%_ if (language === 'TypeScript') { _%>
 
   typescript: {
+    // @FYI https://github.com/TypeStrong/fork-ts-checker-webpack-plugin
     typeCheck: {
-      async: false, // 将报错信息显示在页面上
+      async: false, // 将 TS 错误信息显示在页面上
     },
   },
   <%_ } _%>
