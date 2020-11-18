@@ -152,13 +152,18 @@ function getModules(opts) {
     },
   ]
 
+  const skipModules = ['folder', 'template', 'docker', 'cypress', 'language']
+
   const addModules = Object.keys(opts.config)
-    .filter(k => !['folder', 'template'].includes(k))
-    .map(k => ({
-      type: 'add',
-      files: '**',
-      templateDir: resolveDir(`modules/${opts.config[k]}`),
-    }))
+    .filter(k => !skipModules.includes(k))
+    .map(k => {
+      console.log('k:::', k, opts.config[k])
+      return {
+        type: 'add',
+        files: '**',
+        templateDir: resolveDir(`modules/${opts.config[k]}`),
+      }
+    })
 
   // 生成的nuxt项目的srcDir配置=src。这里我们把除test以外的文件夹移动到src目录下
   const moveDirsToSrc = {
