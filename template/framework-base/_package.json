@@ -29,6 +29,7 @@
     "@femessage/upload-to-ali": "latest",
     "@femessage/v-img": "latest",
     "@nuxtjs/axios": "5.12.2",
+    "@nuxtjs/composition-api": "0.15.1",
     "@nuxtjs/google-analytics": "2.4.0",
     "@nuxtjs/pwa": "3.2.2",
     "@nuxtjs/style-resources": "0.1.2",

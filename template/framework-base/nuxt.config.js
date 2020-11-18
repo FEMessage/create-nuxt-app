@@ -223,6 +223,7 @@ module.exports = {
     <%_ if (language === 'TypeScript') { _%>
     '@nuxt/typescript-build',
     <%_ } _%>
+    '@nuxtjs/composition-api',
     // FYI: https://analytics.google.com/analytics/web/
     // [
     //   '@nuxtjs/google-analytics',
