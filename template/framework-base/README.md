@@ -12,7 +12,7 @@
   - **[调用接口](#调用接口)**
   - **[CRUD](#CRUD)**
   - **[设置代理](#设置代理)**
-  - **[FAQ](#FAQ)**
+  - **[参考链接](#参考链接)**
 - **[环境变量](#环境变量)**
 - **[构建](#构建)**
 - **[License](#license)**
@@ -271,8 +271,9 @@ env: {
 
 [⬆ Back to Top](#table-of-contents)
 
-### FAQ
+### 参考链接
 - [TypeScript FAQ](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/typescript-faq.md)
+- [Best Practices for Composition API](https://deepexi.yuque.com/docs/share/54bd68ca-27bb-4db8-8b26-f2dd1de406ff)
 
 [⬆ Back to Top](#table-of-contents)
 

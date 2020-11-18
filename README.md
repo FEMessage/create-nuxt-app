@@ -28,6 +28,7 @@ Create an enterprise nuxt app in seconds.
 ## Features
 
 - [x] [typescript](https://www.typescriptlang.org/) TypeScript extends JavaScript by adding types.
+- [x] [composition-api](https://composition-api.vuejs.org/) a set of additive, function-based APIs that allow flexible composition of component logic.
 - [x] [prettier](https://prettier.io/) Prettier is an opinionated code formatter
 - [x] [eslint](https://eslint.org/) A fully pluggable tool for identifying and reporting on patterns in JavaScript
 - [x] [stylelint](https://stylelint.io/) A mighty, modern style linter
@@ -67,6 +68,7 @@ APP_ID=1204701543597604893
 
 ## Links
 - [TypeScript FAQ](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/typescript-faq.md)
+- [Best Practices for Composition API](https://deepexi.yuque.com/docs/share/54bd68ca-27bb-4db8-8b26-f2dd1de406ff)
 
 ## Usage
 
