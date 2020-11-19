@@ -128,17 +128,15 @@ export const actions = {
     const menus = await this.$http.menus.list({
       params: {
         appId: process.env.APP_ID,
-        code: 'main',
       },
     })
     commit('setHeaderMenu', menus.payload)
   },
 
   async getSiderMenu({commit}) {
-    const menus = await this.$http.menus.list({
+    const menus = await this.$http.subMenus.list({
       params: {
         appId: process.env.APP_ID,
-        code: 'account-enterprise',
       },
     })
     commit('setSiderMenu', menus.payload)
