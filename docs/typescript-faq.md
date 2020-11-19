@@ -1,6 +1,6 @@
 ## TypeScript FAQ
 
-**注意**：本文内容不一定能及时更新，可以到 [《如何在 Nuxt 项目中引入 TypeScript》](https://deepexi.yuque.com/docs/share/ec81b0e7-b1b4-426c-a66c-8c293e7185c2) 查看最新内容。
+<span style="color: red; font-weight: bold;">注意</span>：本文内容不一定能及时更新，建议到 [《如何在 Nuxt 项目中引入 TypeScript》](https://deepexi.yuque.com/docs/share/ec81b0e7-b1b4-426c-a66c-8c293e7185c2) 查看最新内容。
 
 ## 库类型声明文件
 
@@ -174,135 +174,7 @@ formatter: (row: Feedback) => (
 
 #### 3. vue-tsx-support
 
-如果想从根源解决，就用这种方式，在社区逛了一圈，发现大家用的都是 [vue-tsx-support](https://github.com/wonderful-panda/vue-tsx-support) 这个插件（个人维护）。
-
-我给它的一句话介绍就是：**可以在 JSX 中为 Tag/Component 提供属性类型检查。**
-
-下面介绍一下如何在项目中使用，以及其中的坑。
-
-##### 1. 安装和引入
-
-安装
-
-```bash
-yarn add -D vue-tsx-support
-```
-
-修改 tsconfig.json
-
-```diff
-{
-   "jsx": "preserve",
-+  "jsxFactory": "VueTsxSupport",
-}
-```
-
-引入类型
-
-```typescript
-// src/types/tsx-shim.d.ts
-import 'vue-tsx-support/enable-check'
-```
-
-截止书写本文时间，最新版本为：v3.0.2，这个版本存在一些问题，下面会说。
-
-##### 2. 使用
-
-像上面的例子，我们要做的就是为 `StatusSelector` 这个组件编写类型，以便可以在 JSX 中识别。
-
-编写的方式分为两种：
-
-1. 不修改原组件（适用于第三方组件
-1. 直接修改原组件（适用于项目内的组件
-
-###### 不修改原组件，大概就是这样：
-
-```typescript
-import StatusSelectorOrig from '@/components/feedback/status-selector.vue'
-
-import * as tsx from 'vue-tsx-support'
-import {Status} from '~/constant/feedback'
-
-type StatusSelectorProps = {
-  value: Status
-  readonly?: boolean
-}
-
-type StatusSelectorEvent = {
-  onChange: (status: Status) => void
-}
-
-export default tsx
-  .ofType<StatusSelectorProps, StatusSelectorEvent>()
-  .convert(StatusSelectorOrig)
-```
-
-直接修改原组件，大概就是这样：
-
-```typescript
-import * as tsx from 'vue-tsx-support'
-
-import {Status, statusNameMap, statusOptions} from '@/constant/feedback'
-
-// 如果有自定义事件
-type StatusSelectorEvents = {
-  onChange: (status: Status) => void
-}
-
-// 主要是这里，Vue.extend 替换为 tsx.componentFactoryOf().create
-export default tsx.componentFactoryOf<StatusSelectorEvents>().create({
-  name: 'StatusSelector',
-
-  props: {
-    value: {
-      type: String as () => Status,
-      required: true,
-    },
-    readonly: {
-      type: Boolean,
-      default: false,
-    },
-  } as const,
-
-  /**
-   * 这就是上面说的坑，data 必须以这种方式使用，否则会报错
-   * 该问题截止到 v3.0.2 仍未修复，已提 issue：
-   * @see https://github.com/wonderful-panda/vue-tsx-support/issues/72
-   */
-  data: () => ({
-    statusValue: '' as Status,
-    statusNameMap,
-    statusOptions,
-  }),
-
-  computed: {
-    status(): string {
-      return statusNameMap[this.statusValue as Status]
-    },
-  },
-
-  watch: {
-    value: {
-      handler(id: Status) {
-        this.statusValue = id
-      },
-      immediate: true,
-    },
-  },
-
-  methods: {
-    onChange(value: Status) {
-      this.statusValue = value
-      this.$emit('input:value', value)
-      // this.$emit('change', value)
-      // 相当于 $emit，但是可以静态检查
-      tsx.emitOn(this, 'onChange', value)
-    },
-  },
-})
-```
-
-好了，为组件编写完类型，就可以愉快地使用了，出了提供类型检查以外，还有编辑器提示哦！
+此段篇幅较长，点击 [vue-tsx-support](https://deepexi.yuque.com/docs/share/ec81b0e7-b1b4-426c-a66c-8c293e7185c2#yj1JX) 进入查看
 
 ### 因在 JSX 使用自定义指令导致 ESLint 报错
 
