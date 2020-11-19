@@ -97,12 +97,12 @@ module.exports = {
       ],
       presets({isServer}) {
         return [
-          /**
-           * 支持 tsx
-           * @see https://github.com/vuejs/composition-api/issues/168
-           * @see https://qiita.com/nkjmsss/items/7c61193efe390c14aa16#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
-           */
-          [require.resolve('babel-preset-vca-jsx')],
+          [
+            '@vue/babel-preset-jsx',
+            {
+              compositionAPI: true,
+            },
+          ],
           [
             require.resolve('@nuxt/babel-preset-app'),
             {
