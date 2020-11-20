@@ -25,8 +25,8 @@ const createMenuItem = ({
 }) => {
   return {
     url: pathUrl,
-    id: id,
-    name: name,
+    id,
+    name,
     icon: iconUrl,
     children: children?.length ? children.map(createMenuItem) : null,
   }
@@ -39,7 +39,7 @@ export const state = () => ({
   avatar: '',
 
   // meta info
-  meta: meta,
+  meta,
 
   // auth info
   get token() {
@@ -128,17 +128,15 @@ export const actions = {
     const menus = await this.$http.menus.list({
       params: {
         appId: process.env.APP_ID,
-        code: 'main',
       },
     })
     commit('setHeaderMenu', menus.payload)
   },
 
   async getSiderMenu({commit}) {
-    const menus = await this.$http.menus.list({
+    const menus = await this.$http.subMenus.list({
       params: {
         appId: process.env.APP_ID,
-        code: 'account-enterprise',
       },
     })
     commit('setSiderMenu', menus.payload)

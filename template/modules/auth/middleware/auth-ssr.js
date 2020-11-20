@@ -6,13 +6,13 @@
 export default async function(context) {
   if (process.env.NO_LOGIN > 0) return
 
-  let {store, route, redirect, req} = context
+  const {store, route, redirect, req} = context
 
   // https://stackoverflow.com/questions/10730362/get-cookie-by-name
   const getCookie = function(cookie, name) {
-    var value = '; ' + cookie
-    var parts = value.split('; ' + name + '=')
-    if (parts.length == 2)
+    const value = '; ' + cookie
+    const parts = value.split('; ' + name + '=')
+    if (parts.length === 2)
       return parts
         .pop()
         .split(';')
@@ -21,7 +21,7 @@ export default async function(context) {
 
   // 应对刷新 状态丢失
   if (process.server && route.name && route.path !== '/login') {
-    let userId = getCookie(req.headers.cookie, 'userId')
+    const userId = getCookie(req.headers.cookie, 'userId')
 
     // 未登录
     if (!userId) return redirect('/login')

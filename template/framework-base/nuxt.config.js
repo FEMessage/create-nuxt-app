@@ -13,12 +13,12 @@ const IS_IMAGE = process.env.BUILD_TYPE === 'image'
   console.log('%s\t: %s', key, env[key]),
 )
 
-const isProd = env.MODE == 'prod'
+const isProd = env.MODE === 'prod'
 
 // 不能以斜杠结尾
-let apiServer = env.API_SERVER
+const apiServer = env.API_SERVER
 // 必须以斜杠结尾
-let publicPath = env.PUBLIC_PATH<%- `${template === 'mobile' ? " || 'http://cdn.deepexi.com/'" : ''}` %>
+const publicPath = env.PUBLIC_PATH<%- `${template === 'mobile' ? " || 'http://cdn.deepexi.com/'" : ''}` %>
 
 const config = {
   aliIconFont: '',
@@ -95,6 +95,30 @@ module.exports = {
         ],
         <%_ } _%>
       ],
+      presets({isServer}) {
+        return [
+          [
+            '@vue/babel-preset-jsx',
+            {
+              compositionAPI: true,
+            },
+          ],
+          [
+            require.resolve('@nuxt/babel-preset-app'),
+            {
+              corejs: {version: 3},
+              targets: isServer
+                ? {
+                    node: 'current',
+                  }
+                : {
+                    ie: 11,
+                    chrome: 57,
+                  },
+            },
+          ],
+        ]
+      },
     },
     extend(config, {isDev}) {
       /**
@@ -219,15 +243,19 @@ module.exports = {
     <%_ } _%>
   ],
 
-  // FYI: https://analytics.google.com/analytics/web/
-  // buildModules: [
-  //   [
-  //     '@nuxtjs/google-analytics',
-  //     {
-  //       id: ''
-  //     }
-  //   ]
-  // ],
+  buildModules: [
+    <%_ if (language === 'TypeScript') { _%>
+    '@nuxt/typescript-build',
+    <%_ } _%>
+    '@nuxtjs/composition-api',
+    // FYI: https://analytics.google.com/analytics/web/
+    // [
+    //   '@nuxtjs/google-analytics',
+    //   {
+    //     id: ''
+    //   }
+    // ]
+  ],
 
   modules: [
     // Doc: https://github.com/nuxt-community/style-resources-module
@@ -249,4 +277,13 @@ module.exports = {
       },
     ],
   },
+  <%_ if (language === 'TypeScript') { _%>
+
+  typescript: {
+    // @FYI https://github.com/TypeStrong/fork-ts-checker-webpack-plugin
+    typeCheck: {
+      async: false, // 将 TS 错误信息显示在页面上
+    },
+  },
+  <%_ } _%>
 }

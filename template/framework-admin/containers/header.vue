@@ -11,8 +11,8 @@
         <el-col :span="14" class="navigation">
           <div
             v-for="(item, index) in menus"
-            :class="{active: isActive(item.url)}"
             :key="index"
+            :class="{active: isActive(item.url)}"
             class="navigation-menu"
             @click="handleHeaderMenu(item)"
           >
@@ -24,8 +24,8 @@
         <el-col :span="5" class="action">
           <el-button
             v-for="(item, index) in actions"
-            :class="item.icon"
             :key="index"
+            :class="item.icon"
             class="icon-button"
             circle
             @click="handleActions(item)"
