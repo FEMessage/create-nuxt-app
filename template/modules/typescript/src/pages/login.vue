@@ -19,8 +19,14 @@
   </div>
 </template>
 
-<script>
-import {defineComponent, getCurrentInstance, ref} from '@nuxtjs/composition-api'
+<script lang="ts">
+import {
+  defineComponent,
+  getCurrentInstance,
+  Ref,
+  ref,
+} from '@nuxtjs/composition-api'
+import {ElFormRendererType, FormContent} from '@femessage/el-form-renderer'
 
 export default defineComponent({
   layout: 'login',
@@ -44,7 +50,7 @@ export default defineComponent({
   },
 })
 
-function useFormContent() {
+function useFormContent(): Ref<FormContent> {
   return ref([
     {
       type: 'input',
@@ -97,13 +103,13 @@ function useFormContent() {
 }
 
 function useLogin() {
-  const ctx = getCurrentInstance()
+  const ctx = getCurrentInstance()!
 
   const loading = ref(false)
   const {redirect} = ctx.$route.query
 
   const handleLogin = () => {
-    const form = ctx.$refs.form
+    const form = ctx.$refs.form as ElFormRendererType
 
     form.validate(async valid => {
       if (!valid) return

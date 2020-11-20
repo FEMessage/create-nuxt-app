@@ -27,9 +27,9 @@ export default async ({store, redirect, $config, route}) => {
   if (NO_LOGIN > 0) return
 
   // 鉴权白名单
-  if (whiteList.indexOf(path) > -1) return
+  if (whiteList.includes(path)) return
 
-  let cookieInfo = {}
+  const cookieInfo = {}
 
   cookieKeys.forEach(key => {
     cookieInfo[key] = cookie.get(key)

@@ -44,12 +44,12 @@ export const actions = {
     }
 
     if (meta && meta.breadcrumb) {
-      setBreads(meta.breadcrumb)
+      await setBreads(meta.breadcrumb)
     } else {
       const found = breadData.find(item => item.name === name)
 
       if (found) {
-        setBreads(found.breadcrumb)
+        await setBreads(found.breadcrumb)
       }
     }
   },

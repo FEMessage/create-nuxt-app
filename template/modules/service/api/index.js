@@ -17,5 +17,9 @@ export const userInfo = new Repository(`${SECURITY_CLOUD}/${VERSION}/token`)
 
 export const menus = new Repository(`${SECURITY_CLOUD_TENANT}/${VERSION}/menus`)
 
+export const subMenus = new Repository(
+  `${SECURITY_CLOUD_TENANT}/${VERSION}/sub-menus`,
+)
+
 // 重新定义请求方法的例子
 // export const example = new ExampleRepository('/example/api')

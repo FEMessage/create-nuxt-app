@@ -11,6 +11,7 @@ configs.forEach(c => {
     ...c,
     docker: false,
     cypress: false,
+    language: 'JavaScript',
   }
   return ava(c.template, t => verifyPkg(t, answers))
 })

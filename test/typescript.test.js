@@ -9,10 +9,10 @@ const {verifyPkg} = require('../utils/test')
 configs.forEach(c => {
   const answers = {
     ...c,
-    docker: true,
+    docker: false,
     cypress: false,
-    language: 'JavaScript',
-    folder: `${c.folder}-docker`,
+    language: 'TypeScript',
+    folder: `${c.folder}-typescript`,
   }
   return ava(c.template, t => verifyPkg(t, answers))
 })
