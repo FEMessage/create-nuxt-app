@@ -17,13 +17,13 @@ import {BREADCRUMB_HEIGHT} from '@/assets/export.less'
 
 export default {
   name: 'BreadCrumb',
-  computed: {
-    ...mapGetters('bread', ['breads']),
-  },
   data() {
     return {
       BREADCRUMB_HEIGHT,
     }
+  },
+  computed: {
+    ...mapGetters('bread', ['breads']),
   },
   watch: {
     '$route.fullPath': {

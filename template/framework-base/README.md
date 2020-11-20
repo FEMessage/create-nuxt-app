@@ -12,6 +12,7 @@
   - **[调用接口](#调用接口)**
   - **[CRUD](#CRUD)**
   - **[设置代理](#设置代理)**
+  - **[参考链接](#参考链接)**
 - **[环境变量](#环境变量)**
 - **[构建](#构建)**
 - **[License](#license)**
@@ -267,6 +268,12 @@ env: {
 1. 在 `yarn dev` 模式下，都会变成 `http://real.api.server/api`
 
 **注意，每次修改代理设置，都需要重新启动应用才能生效**
+
+[⬆ Back to Top](#table-of-contents)
+
+### 参考链接
+- [TypeScript FAQ](https://deepexi.yuque.com/docs/share/ec81b0e7-b1b4-426c-a66c-8c293e7185c2)
+- [Composition API Best Practices](https://deepexi.yuque.com/docs/share/54bd68ca-27bb-4db8-8b26-f2dd1de406ff)
 
 [⬆ Back to Top](#table-of-contents)
 

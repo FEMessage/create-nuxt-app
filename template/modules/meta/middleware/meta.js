@@ -9,15 +9,15 @@ export default function({store, app}) {
   if (!store.state.meta.appName) {
     store.commit('update', {meta: META})
 
-    let meta = store.state.meta
-    let head = app.head
+    const meta = store.state.meta
+    const head = app.head
 
-    let headLinks = head.link
+    const headLinks = head.link
     let link = {}
 
     // 为了支持IE。。。
     for (let i = 0; i < headLinks.length; i++) {
-      if (headLinks[i].rel == 'icon') {
+      if (headLinks[i].rel === 'icon') {
         link = headLinks[i]
         break
       }

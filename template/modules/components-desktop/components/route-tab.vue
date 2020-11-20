@@ -16,10 +16,10 @@
 </template>
 
 <script>
-//import ElTabs from 'element-ui/lib/tabs'
-//import ElTabPane from 'element-ui/lib/tab-pane'
-//import tabCss from 'element-ui/lib/theme-chalk/tabs.css'
-//import tabPaneCss from 'element-ui/lib/theme-chalk/tab-pane.css'
+// import ElTabs from 'element-ui/lib/tabs'
+// import ElTabPane from 'element-ui/lib/tab-pane'
+// import tabCss from 'element-ui/lib/theme-chalk/tabs.css'
+// import tabPaneCss from 'element-ui/lib/theme-chalk/tab-pane.css'
 import Vue from 'vue'
 import {Tabs, TabPane} from '@femessage/element-ui'
 

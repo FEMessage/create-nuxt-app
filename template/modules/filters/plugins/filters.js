@@ -3,7 +3,7 @@ import Vue from 'vue'
 import dayjs from 'dayjs'
 
 function isNull(o) {
-  return o === null || o === void 0
+  return o === null || o === undefined
 }
 
 // 千分位分隔符表示价格
