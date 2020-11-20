@@ -74,10 +74,10 @@ yarn generate
 ├── nuxt.config.js         框架配置文件
 ├── package.json
 ├── src                    开发目录
-│   ├── api                api 资源管理
+│   ├── services                api 资源管理
 │   │   ├── index.js       统一入口，定义 RESTful API 资源
 │   │   ├── repository.js  RESTful 生成类，可以继承实现满足业务需求
-│   │   └── serverList.js  统一管理服务路径和 API version
+│   │   └── api.js  统一管理服务路径和 API version
 │   ├── assets             资源，包括样式文件与图片
 │   │   ├── global.less    全局样式类
 │   │   └── var.less       样式变量，支持less变量自动引入，即不用在less中import就能直接使用变量
@@ -130,7 +130,7 @@ Nuxt.js 会依据 `pages` 目录中的所有 `*.vue` 文件生成应用的路由
 
 [推荐使用 service 层管理 API：](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/api.md)
 
-1. 在 `api/index.js` 中定义一个 API
+1. 在 `services/index.js` 中定义一个 API
 
 ```js
 // 创建了一个菜单资源的 RESTful API
@@ -141,17 +141,17 @@ export const menus = new Repository(`${SERVICE}/${VERSION}/menus`)
 
 ```js
 // 获取资源的服务器路径
-this.$http.menus.uri()
+this.$services.menus.uri()
 // 获取所有菜单资源，返回一个列表
-this.$http.menus.list()
+this.$services.menus.list()
 // 获取某个菜单资源的详情
-this.$http.menus.detail(MENUS_ID)
+this.$services.menus.detail(MENUS_ID)
 // 创建一个菜单资源
-this.$http.menus.create(payload)
+this.$services.menus.create(payload)
 // 更新一个菜单资源
-this.$http.menus.update(MENUS_ID, payload)
+this.$services.menus.update(MENUS_ID, payload)
 // 删除一个菜单资源
-this.$http.menus.delete(MENUS_ID)
+this.$services.menus.delete(MENUS_ID)
 ```
 
 3. 如果接口是非标准的 RESTful API 可以参考此[文档](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/api.md#%E8%BF%9B%E9%98%B6)

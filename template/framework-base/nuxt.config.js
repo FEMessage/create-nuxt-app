@@ -233,7 +233,7 @@ module.exports = {
   plugins: [
     {src: '~plugins/axios'},
     {src: '~plugins/filters'},
-    {src: '~plugins/api'},
+    {src: '~plugins/services'},
     <%_ if (template === 'mobile') { _%>
     {src: '~plugins/vant'},
     <%_ } else { _%>

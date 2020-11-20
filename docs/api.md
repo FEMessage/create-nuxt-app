@@ -23,7 +23,7 @@ this.$axios.$post('/security/users', body)
 ## 使用
 
 ```javascript
-// 创建一个 API 资源，修改文件 src/api/index.js
+// 创建一个 API 资源，修改文件 src/services/index.js
 
 // 创建了一个菜单资源的 CRUD 接口方法
 + export const menus = new Repository(`${DEEPEXI_CLOUD_TENANT}/${VERSION}/menus`)
@@ -33,23 +33,23 @@ this.$axios.$post('/security/users', body)
 // 在 page 中
 mounted() {
   // 获取资源的服务器路径
-  this.$http.menus.uri()
+  this.$services.menus.uri()
   // 获取所有菜单资源，返回一个列表
-  this.$http.menus.list()
+  this.$services.menus.list()
   // 获取某个菜单资源的详情
-  this.$http.menus.detail(MENUS_ID)
+  this.$services.menus.detail(MENUS_ID)
   // 创建一个菜单资源
-  this.$http.menus.create(payload)
+  this.$services.menus.create(payload)
   // 更新一个菜单资源
-  this.$http.menus.update(MENUS_ID, payload)
+  this.$services.menus.update(MENUS_ID, payload)
   // 删除一个菜单资源
-  this.$http.menus.delete(MENUS_ID)
+  this.$services.menus.delete(MENUS_ID)
 }
 
 // 在 store 中
 export const actions = {
   async getMenus(store, payload) {
-    const data = await this.$http.menus.detail(payload)
+    const data = await this.$services.menus.detail(payload)
     ...
   }
 }
@@ -60,7 +60,7 @@ export const actions = {
 有些时候，后端的接口并不是严格遵循 RESTful 的最佳实践，这个时候就需要自己重新实现默认的方法
 
 ```javascript
-// 在 src/api/repository.js 中增加一个类，继承 Repository
+// 在 src/services/repository.js 中增加一个类，继承 Repository
 export class ExampleRepository extends Repository {
   constructor(resource, id) {
     super(resource)
@@ -81,10 +81,10 @@ export class ExampleRepository extends Repository {
 export const example = new ExampleRepository('/example/api')
 
 // 调用
-this.$http.example.uri(appId)
-this.$http.example.detail(id)
-this.$http.example.list()
-this.$http.example.create(payload)
-this.$http.example.update(appId, payload)
-this.$http.example.delete(id)
+this.$services.example.uri(appId)
+this.$services.example.detail(id)
+this.$services.example.list()
+this.$services.example.create(payload)
+this.$services.example.update(appId, payload)
+this.$services.example.delete(id)
 ```
