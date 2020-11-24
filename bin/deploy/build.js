@@ -64,7 +64,7 @@ class BuildProcess {
     this.options = {
       cwd: path.join(releaseDir, templateName),
       env: {
-        API_SERVER: 'https://mockapi.eolinker.com/IeZWjzy87c204a1f7030b2a17b00f3776ce0a07a5030a1b',
+        API_SERVER: 'https://mockapi.eolinker.com/jttjNwp60fc1c9e944fdf1cc494b28a7ca4cfe66bbafee1',
         ...process.env,
         ...env,
         PUBLIC_PATH: `${process.env.PUBLIC_PATH || ''}/${this.folderName}`
