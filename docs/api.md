@@ -88,3 +88,51 @@ this.$services.example.default.create(payload)
 this.$services.example.default.update(appId, payload)
 this.$services.example.default.delete(id)
 ```
+## 注意
+
+services 会根据文件名作为 scope，将该文件 export 出去的所有值挂在这个 scope 下。
+
+比如 `basic.js`
+```js
+export const login = new Repository(`${SECURITY_CLOUD}/${VERSION}/login`)
+
+export const userInfo = new Repository(`${SECURITY_CLOUD}/${VERSION}/token`)
+
+export const menus = new Repository(`${SECURITY_CLOUD_TENANT}/${VERSION}/menus`)
+
+export const subMenus = new Repository(
+  `${SECURITY_CLOUD_TENANT}/${VERSION}/sub-menus`,
+)
+```
+
+就会将它们挂在 `this.$services.basic` 下：
+```js
+this.$services.basic.menus.list()
+```
+
+如果文件中只有一个 `export default`，则会直接挂在这个 scope 下。
+
+比如 `example.js`：
+```js
+export default new Repository(`${VERSION}/example/api`)
+```
+
+就会将它直接挂在 `this.$services.example`：
+```js
+this.$services.example.list()
+```
+
+如果文件中既有 `export default` 又有 `export const`，则会将 `default` 作为 `key` 挂在 scope 下。
+
+举个例子，假设 `example.js` 是这样的：
+```js
+export default new Repository(`${VERSION}/example/api`)
+
+export const other = new Repository(`${VERSION}/example/api/other`)
+```
+
+就会将它们挂在 `this.$services.example` 下：
+```js
+this.$services.example.default.list()
+this.$services.example.other.list()
+```

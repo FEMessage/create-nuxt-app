@@ -24,9 +24,17 @@ function parseServices(serviceModules, axios) {
   const services = {}
   Object.keys(serviceModules).forEach(scope => {
     services[scope] = {}
-    Object.keys(serviceModules[scope]).forEach(key => {
-      services[scope][key] = serviceModules[scope][key].init(axios)
-    })
+
+    const keys = Object.keys(serviceModules[scope])
+
+    // 如果只导出了一个 default，则直接挂在 scope 下
+    if (serviceModules[scope].default && keys.length === 1) {
+      services[scope] = serviceModules[scope].default.init(axios)
+    } else {
+      Object.keys(serviceModules[scope]).forEach(key => {
+        services[scope][key] = serviceModules[scope][key].init(axios)
+      })
+    }
   })
 
   return services

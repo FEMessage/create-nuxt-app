@@ -148,17 +148,17 @@ export default new Repository(`${VERSION}/example/api`)
 
 ```js
 // 获取资源的服务器路径
-this.$services.example.default.uri()
+this.$services.example.uri()
 // 获取所有资源，返回一个列表
-this.$services.example.default.list()
+this.$services.example.list()
 // 获取某个资源的详情
-this.$services.example.default.detail(ID)
+this.$services.example.detail(ID)
 // 创建一个资源
-this.$services.example.default.create(payload)
+this.$services.example.create(payload)
 // 更新一个资源
-this.$services.example.default.update(ID, payload)
+this.$services.example.update(ID, payload)
 // 删除一个资源
-this.$services.example.default.delete(ID)
+this.$services.example.delete(ID)
 ```
 
 3. 如果接口是非标准的 RESTful API 可以参考此[文档](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/api.md#%E8%BF%9B%E9%98%B6)

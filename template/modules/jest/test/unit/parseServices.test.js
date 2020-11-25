@@ -48,9 +48,7 @@ describe('测试 utils.parseServices 函数', () => {
         subMenus: serviceModules.basis.subMenus.init(moackAxios),
         token: serviceModules.basis.token.init(moackAxios),
       },
-      example: {
-        default: serviceModules.example.default.init(moackAxios),
-      },
+      example: serviceModules.example.default.init(moackAxios),
     }
     expect(parseServices(serviceModules, moackAxios)).toMatchObject(expected)
   })
