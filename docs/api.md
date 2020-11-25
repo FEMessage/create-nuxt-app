@@ -81,12 +81,12 @@ export class ExampleRepository extends Repository {
 export default new ExampleRepository('/example/api')
 
 // 调用
-this.$services.example.default.uri(appId)
-this.$services.example.default.detail(id)
-this.$services.example.default.list()
-this.$services.example.default.create(payload)
-this.$services.example.default.update(appId, payload)
-this.$services.example.default.delete(id)
+this.$services.example.uri(appId)
+this.$services.example.detail(id)
+this.$services.example.list()
+this.$services.example.create(payload)
+this.$services.example.update(appId, payload)
+this.$services.example.delete(id)
 ```
 ## 注意
 

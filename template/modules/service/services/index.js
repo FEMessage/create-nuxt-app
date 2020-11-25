@@ -9,7 +9,7 @@
 const serviceModules = require.context('./', false, /\.js|.ts$/)
 
 /**
- * 使用文件名作为 scope，然后将该文件的所有导出内容（）挂在这个 scope 下
+ * 使用文件名作为 scope，然后将该文件的所有导出内容挂在这个 scope 下
  * 就如 basis.js 导出了 login、menus 等，就会变成 servers.basis.login 这样
  * 另外需要注意的是 export default 时 default 会作为 key
  * 关于如何处理该数据可以看 src/plugins/services.js

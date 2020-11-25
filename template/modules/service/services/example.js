@@ -1,4 +1,4 @@
-import {Repository} from './common/repository'
+import {ExampleRepository} from './common/repository'
 import {VERSION} from './common/api'
 
-export default new Repository(`${VERSION}/example/api`)
+export default new ExampleRepository(`${VERSION}/example/api`)
