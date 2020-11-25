@@ -74,10 +74,13 @@ yarn generate
 ├── nuxt.config.js         框架配置文件
 ├── package.json
 ├── src                    开发目录
-│   ├── services                api 资源管理
-│   │   ├── index.js       统一入口，定义 RESTful API 资源
-│   │   ├── repository.js  RESTful 生成类，可以继承实现满足业务需求
-│   │   └── api.js  统一管理服务路径和 API version
+│   ├── services           api 资源管理
+│   │   ├── common         service 公用的类库、BASE URL 定义等 
+│   │   │   ├── api.js         统一管理服务路径和 API version
+│   │   │   └── repository.js  RESTful 生成类，可以继承实现满足业务需求
+│   │   ├── basic.js       一些基本的 services
+│   │   ├── example.js     一个 example 的 service
+│   │   └── index.js       统一入口，会导出所有 services
 │   ├── assets             资源，包括样式文件与图片
 │   │   ├── global.less    全局样式类
 │   │   └── var.less       样式变量，支持less变量自动引入，即不用在less中import就能直接使用变量
@@ -130,28 +133,32 @@ Nuxt.js 会依据 `pages` 目录中的所有 `*.vue` 文件生成应用的路由
 
 [推荐使用 service 层管理 API：](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/api.md)
 
-1. 在 `services/index.js` 中定义一个 API
+1. 在 `services` 中定义一个 API
 
+在 `src/services` 下新建一个 `example.js`
 ```js
-// 创建了一个菜单资源的 RESTful API
-export const menus = new Repository(`${SERVICE}/${VERSION}/menus`)
+// 创建了一个 example 的 RESTful API
+import {Repository} from './common/repository'
+import {VERSION} from './common/api'
+
+export const example = new Repository(`${VERSION}/example/api`)
 ```
 
 2. 在 `*.vue`、`store/*.js` 的 `actions` 都可以调用
 
 ```js
 // 获取资源的服务器路径
-this.$services.menus.uri()
-// 获取所有菜单资源，返回一个列表
-this.$services.menus.list()
-// 获取某个菜单资源的详情
-this.$services.menus.detail(MENUS_ID)
-// 创建一个菜单资源
-this.$services.menus.create(payload)
-// 更新一个菜单资源
-this.$services.menus.update(MENUS_ID, payload)
-// 删除一个菜单资源
-this.$services.menus.delete(MENUS_ID)
+this.$services.example.uri()
+// 获取所有资源，返回一个列表
+this.$services.example.list()
+// 获取某个资源的详情
+this.$services.example.detail(ID)
+// 创建一个资源
+this.$services.example.create(payload)
+// 更新一个资源
+this.$services.example.update(ID, payload)
+// 删除一个资源
+this.$services.example.delete(ID)
 ```
 
 3. 如果接口是非标准的 RESTful API 可以参考此[文档](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/api.md#%E8%BF%9B%E9%98%B6)

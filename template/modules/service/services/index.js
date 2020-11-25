@@ -1,25 +1,23 @@
 /*
- * @Author: Han
- * @Date: 2020-01-14 11:43:00
- * @Last Modified by: Han
- * @Last Modified time: 2020-02-18 17:36:32
- * @Description 项目接口统一定义入口，定义后可以直接通过 this.$services.login.create 的方式调用接口
- * 所有需要使用的定义都要 export
+ * @Author: 4Ark
+ * @Date: 2020-11-25 11:01:23
+ * @Last Modified by: 4Ark
+ * @Last Modified time: 2020-11-25 11:01:23
+ * @Description 将 @/services 第一层 .js|.ts 文件中的所有 service 以 key=>value 的形式导出去
+ * 详情查看 './basic.js,example.js'
+ * 一个业务模块的 service 应该单独一个文件
  */
+const serviceModules = require.context('./', false, /\.js|.ts$/)
 
-// import {ExampleRepository} from './repository'
-import {Repository} from './repository'
-import {VERSION, SECURITY_CLOUD, SECURITY_CLOUD_TENANT} from './api'
+export default serviceModules
+  .keys()
+  .filter(key => key !== './index.js') // 排除当前文件
+  .reduce((services, path) => {
+    const modules = serviceModules(path)
 
-export const login = new Repository(`${SECURITY_CLOUD}/${VERSION}/login`)
+    Object.keys(modules).forEach(key => {
+      services[key] = modules[key]
+    })
 
-export const userInfo = new Repository(`${SECURITY_CLOUD}/${VERSION}/token`)
-
-export const menus = new Repository(`${SECURITY_CLOUD_TENANT}/${VERSION}/menus`)
-
-export const subMenus = new Repository(
-  `${SECURITY_CLOUD_TENANT}/${VERSION}/sub-menus`,
-)
-
-// 重新定义请求方法的例子
-// export const example = new ExampleRepository('/example/api')
+    return services
+  }, {})
