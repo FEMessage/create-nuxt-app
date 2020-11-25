@@ -23,7 +23,7 @@ this.$axios.$post('/security/users', body)
 ## 使用
 
 ```javascript
-// 创建一个 API 资源，修改文件 src/services/index.js
+// 创建一个 API 资源，修改文件 src/services/basis.js
 
 // 创建了一个菜单资源的 CRUD 接口方法
 + export const menus = new Repository(`${DEEPEXI_CLOUD_TENANT}/${VERSION}/menus`)
@@ -33,23 +33,23 @@ this.$axios.$post('/security/users', body)
 // 在 page 中
 mounted() {
   // 获取资源的服务器路径
-  this.$services.menus.uri()
+  this.$services.basis.menus.uri()
   // 获取所有菜单资源，返回一个列表
-  this.$services.menus.list()
+  this.$services.basis.menus.list()
   // 获取某个菜单资源的详情
-  this.$services.menus.detail(MENUS_ID)
+  this.$services.basis.menus.detail(MENUS_ID)
   // 创建一个菜单资源
-  this.$services.menus.create(payload)
+  this.$services.basis.menus.create(payload)
   // 更新一个菜单资源
-  this.$services.menus.update(MENUS_ID, payload)
+  this.$services.basis.menus.update(MENUS_ID, payload)
   // 删除一个菜单资源
-  this.$services.menus.delete(MENUS_ID)
+  this.$services.basis.menus.delete(MENUS_ID)
 }
 
 // 在 store 中
 export const actions = {
   async getMenus(store, payload) {
-    const data = await this.$services.menus.detail(payload)
+    const data = await this.$services.basis.menus.detail(payload)
     ...
   }
 }
@@ -78,13 +78,13 @@ export class ExampleRepository extends Repository {
 }
 
 // 基于 ExampleRepository 创建一个 API
-export const example = new ExampleRepository('/example/api')
+export default new ExampleRepository('/example/api')
 
 // 调用
-this.$services.example.uri(appId)
-this.$services.example.detail(id)
-this.$services.example.list()
-this.$services.example.create(payload)
-this.$services.example.update(appId, payload)
-this.$services.example.delete(id)
+this.$services.example.default.uri(appId)
+this.$services.example.default.detail(id)
+this.$services.example.default.list()
+this.$services.example.default.create(payload)
+this.$services.example.default.update(appId, payload)
+this.$services.example.default.delete(id)
 ```

@@ -28,6 +28,9 @@ export class Repository {
    */
   constructor(resource) {
     this.resource = resource
+
+    this.$axios = null
+    this.methods = null
   }
 
   /**
@@ -111,25 +114,30 @@ export class Repository {
    * @memberof Repository
    */
   init($axios) {
-    // bind this 是为了继承 Repository 的属性方法，方便扩展
-    return {
-      [RepositoryInterface.URI]: this[RepositoryInterface.URI].bind(this),
-      [RepositoryInterface.CREATE]: this[RepositoryInterface.CREATE](
-        $axios,
-      ).bind(this),
-      [RepositoryInterface.DETAIL]: this[RepositoryInterface.DETAIL](
-        $axios,
-      ).bind(this),
-      [RepositoryInterface.LIST]: this[RepositoryInterface.LIST]($axios).bind(
-        this,
-      ),
-      [RepositoryInterface.DELETE]: this[RepositoryInterface.DELETE](
-        $axios,
-      ).bind(this),
-      [RepositoryInterface.UPDATE]: this[RepositoryInterface.UPDATE](
-        $axios,
-      ).bind(this),
+    // 确保多次 init 且传入相同的 axios 实例时返回相同的引用
+    if (!this.methods && this.$axios !== $axios) {
+      // bind this 是为了继承 Repository 的属性方法，方便扩展
+      this.methods = {
+        [RepositoryInterface.URI]: this[RepositoryInterface.URI].bind(this),
+        [RepositoryInterface.CREATE]: this[RepositoryInterface.CREATE](
+          $axios,
+        ).bind(this),
+        [RepositoryInterface.DETAIL]: this[RepositoryInterface.DETAIL](
+          $axios,
+        ).bind(this),
+        [RepositoryInterface.LIST]: this[RepositoryInterface.LIST]($axios).bind(
+          this,
+        ),
+        [RepositoryInterface.DELETE]: this[RepositoryInterface.DELETE](
+          $axios,
+        ).bind(this),
+        [RepositoryInterface.UPDATE]: this[RepositoryInterface.UPDATE](
+          $axios,
+        ).bind(this),
+      }
     }
+
+    return this.methods
   }
 }
 

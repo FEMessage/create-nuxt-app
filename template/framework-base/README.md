@@ -141,24 +141,24 @@ Nuxt.js 会依据 `pages` 目录中的所有 `*.vue` 文件生成应用的路由
 import {Repository} from './common/repository'
 import {VERSION} from './common/api'
 
-export const example = new Repository(`${VERSION}/example/api`)
+export default new Repository(`${VERSION}/example/api`)
 ```
 
 2. 在 `*.vue`、`store/*.js` 的 `actions` 都可以调用
 
 ```js
 // 获取资源的服务器路径
-this.$services.example.uri()
+this.$services.example.default.uri()
 // 获取所有资源，返回一个列表
-this.$services.example.list()
+this.$services.example.default.list()
 // 获取某个资源的详情
-this.$services.example.detail(ID)
+this.$services.example.default.detail(ID)
 // 创建一个资源
-this.$services.example.create(payload)
+this.$services.example.default.create(payload)
 // 更新一个资源
-this.$services.example.update(ID, payload)
+this.$services.example.default.update(ID, payload)
 // 删除一个资源
-this.$services.example.delete(ID)
+this.$services.example.default.delete(ID)
 ```
 
 3. 如果接口是非标准的 RESTful API 可以参考此[文档](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/api.md#%E8%BF%9B%E9%98%B6)

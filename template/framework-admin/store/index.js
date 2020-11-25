@@ -104,7 +104,7 @@ export const mutations = {
 
 export const actions = {
   async login({commit, dispatch}, {body, redirect = '/'}) {
-    const userInfo = await this.$services.login.create(body)
+    const userInfo = await this.$services.basic.login.create(body)
     commit('setUserInfo', userInfo.payload)
     dispatch('getHeaderMenu')
     dispatch('getSiderMenu')
@@ -114,7 +114,7 @@ export const actions = {
   },
 
   async refresh({commit, dispatch}, token) {
-    const userInfo = await this.$services.userInfo.list({
+    const userInfo = await this.$services.basic.userInfo.list({
       params: {
         token,
       },
@@ -125,7 +125,7 @@ export const actions = {
   },
 
   async getHeaderMenu({commit}) {
-    const menus = await this.$services.menus.list({
+    const menus = await this.$services.basic.menus.list({
       params: {
         appId: process.env.APP_ID,
       },
@@ -134,7 +134,7 @@ export const actions = {
   },
 
   async getSiderMenu({commit}) {
-    const menus = await this.$services.subMenus.list({
+    const menus = await this.$services.basic.subMenus.list({
       params: {
         appId: process.env.APP_ID,
       },
