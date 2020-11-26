@@ -110,7 +110,7 @@ export const subMenus = new Repository(
 this.$services.basic.menus.list()
 ```
 
-如果文件中只有一个 `export default`，则会直接挂在这个 scope 下。
+如果文件中有 `export default`，则会直接挂在这个 scope 下。
 
 比如 `example.js`：
 ```js
@@ -122,7 +122,7 @@ export default new Repository(`${VERSION}/example/api`)
 this.$services.example.list()
 ```
 
-如果文件中既有 `export default` 又有 `export const`，则会将 `default` 作为 `key` 挂在 scope 下。
+如果文件中既有 `export default` 又有 `export const`，则会将 `export const` 挂在 scope 下。
 
 举个例子，假设 `example.js` 是这样的：
 ```js
@@ -133,6 +133,11 @@ export const other = new Repository(`${VERSION}/example/api/other`)
 
 就会将它们挂在 `this.$services.example` 下：
 ```js
-this.$services.example.default.list()
+this.$services.example.list()
 this.$services.example.other.list()
+```
+
+**需要注意**：导出的 `service` 名字不能与 `Repository` 的接口名字重复，也就是下面这几个：
+```js
+['uri','create','list','detail','update','delete']
 ```

@@ -1,3 +1,12 @@
+const RepositoryInterface = {
+  URI: 'uri',
+  CREATE: 'create',
+  LIST: 'list',
+  DETAIL: 'detail',
+  UPDATE: 'update',
+  DELETE: 'delete',
+}
+
 function getRouterBase(href = '') {
   if (!href || typeof href !== 'string') {
     return '/'
@@ -25,16 +34,20 @@ function parseServices(serviceModules, axios) {
   Object.keys(serviceModules).forEach(scope => {
     services[scope] = {}
 
-    const keys = Object.keys(serviceModules[scope])
+    Object.keys(serviceModules[scope]).forEach(key => {
+      // 将 export default 直接挂在 scope 下
+      if (key === 'default') {
+        services[scope] = serviceModules[scope].default.init(axios)
+      }
 
-    // 如果只导出了一个 default，则直接挂在 scope 下
-    if (serviceModules[scope].default && keys.length === 1) {
-      services[scope] = serviceModules[scope].default.init(axios)
-    } else {
-      Object.keys(serviceModules[scope]).forEach(key => {
-        services[scope][key] = serviceModules[scope][key].init(axios)
-      })
-    }
+      if (Object.values(RepositoryInterface).includes(key)) {
+        throw new Error(
+          `Service 名字「${scope}.${key}」与 Repository 接口名字冲突`,
+        )
+      }
+
+      services[scope][key] = serviceModules[scope][key].init(axios)
+    })
   })
 
   return services
