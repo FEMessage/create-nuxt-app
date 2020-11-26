@@ -1,9 +1,5 @@
-/*
- * @Author: 4Ark
- * @Date: 2020-11-25 11:01:23
- * @Last Modified by: 4Ark
- * @Last Modified time: 2020-11-25 11:01:23
- * @Description 将 @/services 第一层 .js|.ts 文件中的所有 service 导出去
+/**
+ * 将 @/services 第一层 .js|.ts 文件中的所有 service 导出去
  * 一个业务模块的 service 应该单独一个文件
  */
 const serviceModules = require.context('./', false, /\.js|.ts$/)

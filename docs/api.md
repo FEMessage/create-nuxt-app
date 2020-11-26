@@ -110,34 +110,26 @@ export const subMenus = new Repository(
 this.$services.basic.menus.list()
 ```
 
-如果文件中有 `export default`，则会直接挂在这个 scope 下。
+如果文件中有 `export default`，则会有些不同。
 
 比如 `example.js`：
 ```js
 export default new Repository(`${VERSION}/example/api`)
-```
 
-就会将它直接挂在 `this.$services.example`：
-```js
+// 使用
 this.$services.example.list()
 ```
 
-如果文件中既有 `export default` 又有 `export const`，则会将 `export const` 挂在 scope 下。
-
-举个例子，假设 `example.js` 是这样的：
+如果文件中既有 `export default` 又有 `export const`：
 ```js
 export default new Repository(`${VERSION}/example/api`)
 
 export const other = new Repository(`${VERSION}/example/api/other`)
-```
 
-就会将它们挂在 `this.$services.example` 下：
-```js
+// 使用
 this.$services.example.list()
 this.$services.example.other.list()
 ```
 
-**需要注意**：导出的 `service` 名字不能与 `Repository` 的接口名字重复，也就是下面这几个：
-```js
-['uri','create','list','detail','update','delete']
-```
+**需要注意**：导出的 `service` 名字不能与 `Repository` 的接口名字重复，接口名字列表可以在这里看到：
+https://github.com/femessage/create-nuxt-app/blob/dev/template/modules/service/services/common/repository.js#L8
