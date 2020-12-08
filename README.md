@@ -40,6 +40,7 @@ Create an enterprise nuxt app in seconds.
 - [x] [PWA](https://pwa.nuxtjs.org) Nuxt Progressive Web Apps solution
 - [x] [API Manage](https://github.com/FEMessage/create-nuxt-app/blob/dev/docs/api.md) RESTful API management
 - [x] [breadcrumb](https://www.yuque.com/docs/share/2fb86219-e8be-4007-a2b8-39641d5e79df)
+- [x] [Cypress](https://www.cypress.io/)
 
 [⬆ Back to Top](#table-of-contents)
 
