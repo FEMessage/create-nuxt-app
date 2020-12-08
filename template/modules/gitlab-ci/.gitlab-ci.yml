@@ -1,5 +1,10 @@
-image: node:10
+image: node:14
+stages:
+  - deploy
+  - e2e
+
 pages:
+  stage: deploy
   cache:
     paths:
     - node_modules/
@@ -12,3 +17,19 @@ pages:
     - public
   only:
   - master
+
+cypress:
+  image:
+    name: cypress/included:6.0.1
+    entrypoint: [""]
+  stage: e2e
+  when: manual
+  tags:
+    - docker
+  script:
+    - cypress run --env config=dev
+  artifacts:
+    paths:
+      - test/e2e/screenshots
+      - test/e2e/video
+    expire_in: 3 day
