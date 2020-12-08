@@ -1,10 +1,13 @@
+/**
+ * https://docs.cypress.io/api/plugins/configuration-api.html#Switch-between-multiple-configuration-files
+ */
 const path = require('path')
-const fs = require('fs-extra')
+const fs = require('fs')
 
-function getConfigurationByFile(file) {
+async function getConfigurationByFile(file) {
   const pathToConfigFile = path.resolve(__dirname, '../config', `${file}.json`)
 
-  return fs.readJson(pathToConfigFile)
+  return JSON.parse(await fs.promises.readFile(pathToConfigFile, 'utf-8'))
 }
 
 /**
