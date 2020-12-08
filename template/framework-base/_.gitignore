@@ -85,3 +85,8 @@ dist
 sw.*
 
 package-lock.json
+
+# cypress
+test/e2e/screenshots/
+test/e2e/videos/
+
