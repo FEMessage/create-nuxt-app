@@ -38,6 +38,7 @@
 - [x] 内置面包屑方案，支持动态面包屑
 - [x] 支持 svg-icon
 - [x] 支持 es [optional-chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) 和 [nullish-coalescing-operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator)
+- [x] 支持[commitizen](https://github.com/commitizen/cz-cli)规范 git commit
 
 [⬆ Back to Top](#table-of-contents)
 
@@ -75,7 +76,7 @@ yarn generate
 ├── package.json
 ├── src                    开发目录
 │   ├── services           api 资源管理
-│   │   ├── common         service 公用的类库、BASE URL 定义等 
+│   │   ├── common         service 公用的类库、BASE URL 定义等
 │   │   │   ├── api.js         统一管理服务路径和 API version
 │   │   │   └── repository.js  RESTful 生成类，可以继承实现满足业务需求
 │   │   ├── basic.js       一些基本的 services
@@ -136,6 +137,7 @@ Nuxt.js 会依据 `pages` 目录中的所有 `*.vue` 文件生成应用的路由
 1. 在 `services` 中定义一个 API
 
 在 `src/services` 下新建一个 `example.js`
+
 ```js
 // 创建了一个 example 的 RESTful API
 import {Repository} from './common/repository'
@@ -276,9 +278,14 @@ env: {
 
 **注意，每次修改代理设置，都需要重新启动应用才能生效**
 
+### git 规范 commit 信息
+
+在`git add xx`添加修改的文件之后，使用`yarn commit`或者`npm run commit`代替`git commit -m`
+
 [⬆ Back to Top](#table-of-contents)
 
 ### 参考链接
+
 - [TypeScript FAQ](https://deepexi.yuque.com/docs/share/ec81b0e7-b1b4-426c-a66c-8c293e7185c2)
 - [Composition API Best Practices](https://deepexi.yuque.com/docs/share/54bd68ca-27bb-4db8-8b26-f2dd1de406ff)
 
@@ -309,12 +316,12 @@ mounted() {
 
 **自带的环境变量说明**
 
-| 环境变量名  | 说明                                                   | 是否必须 | 默认值 | 示例                      |
-| ----------- | ------------------------------------------------------ | -------- | ------ | ------------------------- |
-| PUBLIC_PATH | 对应 webpack 的 publicPath，用于指定静态文件访问路径   | 是       |        | http://cdn.deepexi.com    |
-| API_SERVER  | axios 的 baseURL，可不传。不传时，使用相对路径发送请求 | 否       |        | https://www.easy-mock.com |
-| NO_LOGIN    | 是否登陆拦截，传 1 则不会有登录拦截                    | 否       |        | 1                         |
-| APP_ID      | 应用 ID | 否       |        |                           |
+| 环境变量名  | 说明                                                   | 是否必须 | 默认值 | 示例                        |
+| ----------- | ------------------------------------------------------ | -------- | ------ | --------------------------- |
+| PUBLIC_PATH | 对应 webpack 的 publicPath，用于指定静态文件访问路径   | 是       |        | <http://cdn.deepexi.com>    |
+| API_SERVER  | axios 的 baseURL，可不传。不传时，使用相对路径发送请求 | 否       |        | <https://www.easy-mock.com> |
+| NO_LOGIN    | 是否登陆拦截，传 1 则不会有登录拦截                    | 否       |        | 1                           |
+| APP_ID      | 应用 ID                                                | 否       |        |                             |
 
 [⬆ Back to Top](#table-of-contents)
 
